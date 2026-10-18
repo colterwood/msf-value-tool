@@ -39,14 +39,23 @@ Everything runs in your browser from a folder on your machine. No server, no acc
 
 ## Pulling your store through Chrome
 
-The pull needs a Claude session running on your computer with Claude in Chrome connected,
+The pull needs a Claude Code session running on your computer with the Chrome integration,
 because the web store only shows offers to a logged-in browser and there is no public API.
+Claude opens its own tabs in your Chrome and shares your login state, so it sees what you see.
+Steps from the Claude Code docs (https://code.claude.com/docs/en/chrome):
 
-1. Sign in to https://marvelstrikeforce.com in Chrome.
-2. Open this folder in the Claude Desktop app with Claude in Chrome connected.
-3. Ask it to run `/msf-store-pull`. The skill reads the store and the roster stats table,
-   refreshes msfwar's observed averages, writes the three data files and opens `index.html`.
-4. Reload `index.html`. The header shows how many items have values, how many offers loaded and
+1. Install the Claude in Chrome extension from the Chrome Web Store and sign it in to the same
+   claude.ai account as Claude Code. Needs a Pro, Max, Team or Enterprise plan. Not supported
+   inside WSL.
+2. Sign in to https://marvelstrikeforce.com in Chrome.
+3. Open this folder in the Claude Desktop app with Claude in Chrome connected, or in a terminal
+   in this folder run `claude --chrome` and confirm with `/chrome` that the extension is
+   detected (restart Chrome and run `/chrome` again if it is not).
+4. Ask it to run `/msf-store-pull`. The skill reads the store and the roster stats table,
+   refreshes msfwar's observed averages, writes the three data files, checks `index.html`,
+   runs the tests and commits. Approve the "Claude in Chrome wants to" prompts; allowing the
+   site for the session saves clicks.
+5. Reload `index.html`. The header shows how many items have values, how many offers loaded and
    how many roster characters.
 
 The skill never clicks Buy or touches a payment form. It records what the store shows and flags

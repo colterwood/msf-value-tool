@@ -16,7 +16,9 @@ This playbook was run successfully on 18 October 2026. Sections 1 to 3 describe 
 
 1. Claude in Chrome tools must exist in this session (`mcp__claude-in-chrome__*`). Load the
    `chrome-browser` skill before the first browser step. The built-in browser pane is not signed
-   in to the portal, so use Chrome. If there are no browser tools, say so and stop.
+   in to the portal, so use Chrome. If there are no browser tools, say so and stop: a cloud
+   session cannot do this. In the CLI the user starts the session with `claude --chrome` and
+   can check the connection with `/chrome`.
 2. The user must already be signed in to marvelstrikeforce.com in Chrome. If the portal shows a
    sign-in page, ask the user to sign in and continue afterwards; do not enter their credentials.
    The signed-in player name shows at the top right of every portal page.
@@ -117,6 +119,16 @@ https://www.msfwar.com/spenders-guide/:
 3. Run `npm test` if Node is installed.
 4. Report the top offers by score, which items could not be valued, and the time the store was
    read. If anything above could not be done, say exactly what and why.
+
+## 5. Commit and push
+
+Commit the changed files on the current branch with a message such as
+`Load live store offers, roster and msfwar values` and push with `git push -u origin <branch>`.
+Offers and roster are the user's own game data; if they would rather not commit them, write
+them to `data/offers.local.js` and `data/roster.local.js` instead (ignored by git), load those
+files in `index.html` in place of the tracked ones, and say so. A push from a Claude session
+needs the user's GitHub sign-in through Git Credential Manager; if it fails on a stale token,
+run the push in the user's terminal so the browser sign-in can open.
 
 ## Gotchas (18 October 2026)
 
