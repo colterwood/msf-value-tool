@@ -46,6 +46,10 @@
   .grade.Fair { background: rgba(210,153,34,.18); color: var(--fair); }
   .grade.Poor { background: rgba(248,81,73,.18); color: var(--poor); }
   .grade.none { background: rgba(154,163,178,.18); color: var(--muted); }
+  .grade.letter-A { background: rgba(163,113,247,.18); color: var(--excellent); }
+  .grade.letter-B { background: rgba(63,185,80,.18); color: var(--good); }
+  .grade.letter-C { background: rgba(210,153,34,.18); color: var(--fair); }
+  .grade.letter-D, .grade.letter-F { background: rgba(248,81,73,.18); color: var(--poor); }
   .big { font-size: 30px; font-weight: 700; line-height: 1.1; }
   .muted { color: var(--muted); }
   .warn { color: var(--fair); }
@@ -102,7 +106,7 @@
 
 <section id="tab-store" hidden>
   <div class="panel">
-    <p class="muted">Offers load from <code>data/offers.js</code> when the page opens. A desktop Claude session with Chrome writes that file from your logged-in web store (see README). The same JSON can also be pasted here.</p>
+    <p class="muted">Offers load from <code>data/offers.js</code> when the page opens. A desktop Claude session with Chrome writes that file from your logged-in web store (see README). The same JSON can also be pasted here. Click an offer to see its breakdown. Scores follow msfwar's method: typical value is C · 70, 25% more per dollar is B · 80, 50% more is A · 90.</p>
     <textarea id="store-paste" placeholder='{"updated":"2026-10-18","source":"web-store","offers":[{"name":"Gold Pack","price":9.99,"currency":"USD","contents":[{"item":"Gold","qty":500000}]}]}'></textarea>
     <div class="actions">
       <button class="primary" id="store-import">Import pasted offers</button>

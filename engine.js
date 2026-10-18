@@ -7,15 +7,22 @@
  * Value table shape (see data/values.js):
  *   {
  *     meta: {
- *       source: "msfwar.com Spenders Guide",
+ *       source: "msfwar.com Spender's Guide",
  *       unit: "USD" | "cores",       // what item values are expressed in
  *       unitPerUsd: 1,                // how many units one US dollar buys (1 for USD)
- *       grades: [{ min: 3, label: "Excellent" }, ...], // by value-per-dollar, descending
+ *       fxToUsd: { USD: 1, CAD: 0.71 }, // US dollars per unit of each price currency
+ *       grades: [{ min: 1.5, label: "Excellent" }, ...], // by value-per-dollar, descending
+ *       scoring: {                    // msfwar-style 0-100 score (optional)
+ *         typicalScore: 70, scorePerRatio: 40, maxScore: 100, minScore: 0,
+ *         weights: { gold: 30, training: 30, orangeIso: 20, shard: 15, other: 5 },
+ *         letters: [{ min: 90, label: "A" }, ...]
+ *       },
  *       shardRules: { maxedMultiplier: 0 }
  *     },
  *     items: {
- *       "gold": { name: "Gold", category: "currency", per: 100000, value: 0.5, aliases: [] },
- *       "shard:iron man": { name: "Iron Man shards", category: "shard", character: "Iron Man", per: 1, value: 0.2 }
+ *       "gold": { name: "Gold", category: "currency", per: 1000000, value: 1.13, aliases: [] },
+ *       "shard:iron man": { name: "Iron Man shards", category: "shard", character: "Iron Man", per: 1, value: 0.2 },
+ *       "points:iron_vengeance": { name: "...", category: "points", excludeFromValue: true }
  *     }
  *   }
  *
@@ -44,6 +51,25 @@
     maxedMultiplier: 0,
     // Star count that counts as maxed.
     maxStars: 7
+  };
+
+  // msfwar's published scoring rules: typical historical value earns 70 (C); a resource giving
+  // 25% more for the price earns 80 (B), 50% more earns 90 (A). Categories combine by weight and
+  // only the categories present share the weighting. Letters below C and the clamp are this
+  // tool's reading, so they live in the value table's meta.scoring where they can be edited.
+  var DEFAULT_SCORING = {
+    typicalScore: 70,
+    scorePerRatio: 40,
+    maxScore: 100,
+    minScore: 0,
+    weights: { gold: 30, training: 30, orangeIso: 20, shard: 15, other: 5 },
+    letters: [
+      { min: 90, label: 'A' },
+      { min: 80, label: 'B' },
+      { min: 70, label: 'C' },
+      { min: 60, label: 'D' },
+      { min: 0, label: 'F' }
+    ]
   };
 
   function normalizeKey(s) {
@@ -167,6 +193,78 @@
     return valueInUnits / unitPerUsd;
   }
 
+  /** Convert an offer price to US dollars through meta.fxToUsd. Unknown currencies pass through at 1. */
+  function priceToUsd(price, currency, meta) {
+    var p = Number(price);
+    if (isNaN(p)) return null;
+    var fx = (meta && meta.fxToUsd) || {};
+    var cur = String(currency || 'USD').toUpperCase();
+    var rate = Number(fx[cur]);
+    if (!(rate > 0)) rate = 1;
+    return p * rate;
+  }
+
+  /** Which msfwar weighting bucket an item belongs to. */
+  function scoringCategory(item, key) {
+    if (!item) return 'other';
+    if (key === 'gold' || normalizeKey(item.name) === 'gold') return 'gold';
+    if (item.category === 'training') return 'training';
+    if (item.category === 'shard') return 'shard';
+    if (item.category === 'iso8' && /\b(t4|orange)\b/i.test(String(item.name) + ' ' + String(key))) return 'orangeIso';
+    return 'other';
+  }
+
+  function letterFor(score, letters) {
+    var list = (letters && letters.length ? letters : DEFAULT_SCORING.letters).slice().sort(function (a, b) {
+      return b.min - a.min;
+    });
+    if (score == null || isNaN(score)) return null;
+    for (var i = 0; i < list.length; i++) {
+      if (score >= list[i].min) return list[i].label;
+    }
+    return list[list.length - 1].label;
+  }
+
+  /**
+   * msfwar-style score for a set of valued lines against a US-dollar price.
+   * Each line's ratio is (what its quantity is worth at the observed average) / (the offer price):
+   * the units per dollar this offer gives, relative to the units per dollar seen historically.
+   * ratio 1 scores typicalScore; every +1.0 of ratio adds scorePerRatio, clamped to the range.
+   * Lines average within their category, categories combine by weight.
+   * Returns { score, letter, categories: [...] } or { score: null } when nothing can be scored.
+   */
+  function scoreLines(lines, priceUsd, scoring, useKey) {
+    var rules = Object.assign({}, DEFAULT_SCORING, scoring || {});
+    var weights = Object.assign({}, DEFAULT_SCORING.weights, rules.weights || {});
+    if (!(priceUsd > 0)) return { score: null, letter: null, categories: [] };
+    var byCat = {};
+    lines.forEach(function (l) {
+      if (l.excluded || l.unitValue == null) return;
+      var v = useKey === 'personalValue' ? l.personalValue : l.value;
+      if (v == null) return;
+      var ratio = v / priceUsd;
+      var s = rules.typicalScore + (ratio - 1) * rules.scorePerRatio;
+      s = Math.max(rules.minScore, Math.min(rules.maxScore, s));
+      l.ratio = ratio;
+      if (useKey === 'personalValue') l.personalScore = s; else l.score = s;
+      var cat = l.scoringCategory || 'other';
+      (byCat[cat] = byCat[cat] || []).push(s);
+    });
+    var cats = Object.keys(byCat);
+    if (!cats.length) return { score: null, letter: null, categories: [] };
+    var totalWeight = 0, acc = 0, breakdown = [];
+    cats.forEach(function (c) {
+      var w = Number(weights[c]);
+      if (!(w > 0)) w = Number(weights.other) || 1;
+      var avg = byCat[c].reduce(function (a, b) { return a + b; }, 0) / byCat[c].length;
+      totalWeight += w;
+      acc += w * avg;
+      breakdown.push({ category: c, weight: w, score: avg, items: byCat[c].length });
+    });
+    var score = acc / totalWeight;
+    return { score: score, letter: letterFor(score, rules.letters), categories: breakdown };
+  }
+
   /**
    * Value a single offer.
    *
@@ -179,11 +277,14 @@
     var personalize = options.personalize == null ? !!roster : !!options.personalize;
     var price = Number(offer && offer.price);
     var hasPrice = !isNaN(price) && price > 0;
+    var currency = (offer && offer.currency) || meta.currency || 'USD';
+    var priceUsd = hasPrice ? priceToUsd(price, currency, meta) : null;
     var contents = (offer && offer.contents) || [];
 
     var lines = [];
     var unknown = [];
     var unpriced = [];
+    var excluded = [];
     var totalUnits = 0;
     var personalTotalUnits = 0;
     var complete = true;
@@ -197,6 +298,11 @@
         unknown.push(label);
         complete = false;
         lines.push({ item: label, key: null, qty: qty, unitValue: null, multiplier: 1, value: null, personalValue: null, note: 'not in value table' });
+        return;
+      }
+      if (resolved.item.excludeFromValue) {
+        excluded.push(resolved.item.name || resolved.key);
+        lines.push({ item: resolved.item.name || label, key: resolved.key, qty: qty, unitValue: null, multiplier: 1, value: null, personalValue: null, excluded: true, note: 'not counted: event or loyalty points' });
         return;
       }
       var uv = unitValue(resolved.item);
@@ -219,20 +325,40 @@
         multiplier: pm.multiplier,
         value: value,
         personalValue: personalValue,
+        scoringCategory: scoringCategory(resolved.item, resolved.key),
+        earlyEstimate: !!(resolved.item.observed && resolved.item.observed.earlyEstimate),
         note: pm.note
       });
     });
 
+    if (offer && offer.notes) complete = false;
+
     var totalUsd = toUsd(totalUnits, meta);
     var personalUsd = toUsd(personalTotalUnits, meta);
-    var perDollar = hasPrice ? totalUsd / price : null;
-    var personalPerDollar = hasPrice ? personalUsd / price : null;
+    var perDollar = priceUsd ? totalUsd / priceUsd : null;
+    var personalPerDollar = priceUsd ? personalUsd / priceUsd : null;
     var effective = personalize ? personalPerDollar : perDollar;
+
+    // msfwar-style score works on dollar-valued lines; convert line values when the table is in cores.
+    var usdLines = lines.map(function (l) {
+      var c = Object.assign({}, l);
+      if (c.value != null) c.value = toUsd(c.value, meta);
+      if (c.personalValue != null) c.personalValue = toUsd(c.personalValue, meta);
+      return c;
+    });
+    var generic = scoreLines(usdLines, priceUsd, meta.scoring, 'value');
+    var personal = personalize ? scoreLines(usdLines, priceUsd, meta.scoring, 'personalValue') : generic;
+    usdLines.forEach(function (c, i) {
+      lines[i].ratio = c.ratio;
+      lines[i].score = c.score;
+      lines[i].personalScore = c.personalScore;
+    });
 
     return {
       name: (offer && offer.name) || '',
       price: hasPrice ? price : null,
-      currency: (offer && offer.currency) || meta.currency || 'USD',
+      currency: currency,
+      priceUsd: priceUsd,
       unit: meta.unit || 'USD',
       totalUnits: totalUnits,
       personalTotalUnits: personalTotalUnits,
@@ -241,15 +367,22 @@
       perDollar: perDollar,
       personalPerDollar: personalPerDollar,
       grade: gradeFor(effective, options.grades || meta.grades),
+      score: generic.score,
+      letter: generic.letter,
+      personalScore: personal.score,
+      personalLetter: personal.letter,
+      scoring: personalize ? personal.categories : generic.categories,
       personalized: personalize,
       complete: complete,
       unknown: unknown,
       unpriced: unpriced,
+      excluded: excluded,
+      notes: (offer && offer.notes) || null,
       lines: lines
     };
   }
 
-  /** Value every offer and sort best value-per-dollar first. Incomplete offers sort last. */
+  /** Value every offer and sort best first. Score (when the table has one) beats ratio; incomplete offers sort last. */
   function rankOffers(offers, table, roster, options) {
     options = options || {};
     var index = options.index || buildIndex(table);
@@ -258,9 +391,15 @@
       r.offer = o;
       return r;
     });
+    function sortKey(r) {
+      var s = r.personalized ? r.personalScore : r.score;
+      if (s != null) return s;
+      var v = r.personalized ? r.personalPerDollar : r.perDollar;
+      return v;
+    }
     results.sort(function (a, b) {
-      var av = a.personalized ? a.personalPerDollar : a.perDollar;
-      var bv = b.personalized ? b.personalPerDollar : b.perDollar;
+      var av = sortKey(a);
+      var bv = sortKey(b);
       if (a.complete !== b.complete) return a.complete ? -1 : 1;
       if (av == null && bv == null) return 0;
       if (av == null) return 1;
@@ -297,12 +436,17 @@
   return {
     DEFAULT_GRADES: DEFAULT_GRADES,
     DEFAULT_SHARD_RULES: DEFAULT_SHARD_RULES,
+    DEFAULT_SCORING: DEFAULT_SCORING,
     normalizeKey: normalizeKey,
     buildIndex: buildIndex,
     resolveItem: resolveItem,
     unitValue: unitValue,
     personalMultiplier: personalMultiplier,
     gradeFor: gradeFor,
+    letterFor: letterFor,
+    priceToUsd: priceToUsd,
+    scoringCategory: scoringCategory,
+    scoreLines: scoreLines,
     valueOffer: valueOffer,
     rankOffers: rankOffers,
     parseContentsText: parseContentsText

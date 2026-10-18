@@ -39,6 +39,10 @@
   }
   function fmtRatio(r) { return r == null || isNaN(r) ? '–' : fmtNum(r, 2) + '×'; }
   function gradeBadge(g) { return '<span class="grade ' + (g ? esc(g) : 'none') + '">' + (g ? esc(g) : 'no grade') + '</span>'; }
+  function scoreBadge(letter, score) {
+    if (score == null || isNaN(score)) return '<span class="grade none">no score</span>';
+    return '<span class="grade letter-' + esc(letter || 'F') + '">' + esc(letter || '–') + ' · ' + fmtNum(score, 0) + '/100</span>';
+  }
   function slugKey(name, category) {
     var base = E.normalizeKey(name).replace(/\bshards?\b/g, '').trim();
     if (category === 'shard') return 'shard:' + base;
@@ -124,7 +128,7 @@
     bits.push(esc(t.meta.source || 'no value source'));
     bits.push(s.priced + ' of ' + s.total + ' items have values');
     if (t.meta.updated) bits.push('values updated ' + esc(t.meta.updated));
-    bits.push(state.offers ? state.offers.offers.length + ' store offers loaded' : 'no store offers loaded');
+    bits.push(state.offers ? state.offers.offers.length + ' store offers loaded' + (state.offers.updated ? ' (read ' + esc(String(state.offers.updated).slice(0, 16).replace('T', ' ')) + ' UTC)' : '') : 'no store offers loaded');
     bits.push(state.roster ? Object.keys(state.roster.characters).length + ' roster characters' : 'no roster');
     $('status').innerHTML = bits.join(' · ');
     if (s.priced === 0) $('status').innerHTML += ' · <span class="warn">value table has no numbers yet</span>';
@@ -246,14 +250,15 @@
   }
   function breakdownTable(r) {
     var rows = r.lines.map(function (l) {
-      var cls = l.value == null ? ' class="warn"' : '';
+      var cls = l.excluded ? ' class="muted"' : (l.value == null ? ' class="warn"' : '');
       var personal = l.personalValue != null && l.multiplier !== 1 ? '<br><span class="muted">for you: ' + fmtMoney(l.personalValue, 'USD') + '</span>' : '';
       return '<tr' + cls + '><td>' + esc(l.item) + (l.note ? '<br><span class="muted">' + esc(l.note) + '</span>' : '') + '</td>' +
         '<td class="num">' + fmtNum(l.qty, 3) + '</td>' +
         '<td class="num">' + (l.unitValue == null ? '–' : fmtNum(l.unitValue, 4)) + '</td>' +
-        '<td class="num">' + (l.value == null ? '–' : fmtNum(l.value, 2)) + personal + '</td></tr>';
+        '<td class="num">' + (l.value == null ? '–' : fmtNum(l.value, 2)) + personal + '</td>' +
+        '<td class="num">' + (l.ratio == null ? '–' : fmtRatio(l.ratio)) + '</td></tr>';
     }).join('');
-    return '<table><thead><tr><th>Item</th><th class="num">Qty</th><th class="num">Unit value (' + esc(r.unit) + ')</th><th class="num">Value (' + esc(r.unit) + ')</th></tr></thead><tbody>' + rows + '</tbody></table>';
+    return '<table><thead><tr><th>Item</th><th class="num">Qty</th><th class="num">Unit value (' + esc(r.unit) + ')</th><th class="num">Value (' + esc(r.unit) + ')</th><th class="num">vs typical</th></tr></thead><tbody>' + rows + '</tbody></table>';
   }
   function warnings(r) {
     var out = [];
@@ -263,22 +268,30 @@
       }).join(', ') + '</p>');
     }
     if (r.unpriced.length) out.push('<p class="warn">In the table but without a value yet: ' + r.unpriced.map(esc).join(', ') + ' (fill them in on the Value table tab).</p>');
+    if (r.notes) out.push('<p class="warn">' + esc(r.notes) + '.</p>');
+    if (r.excluded && r.excluded.length) out.push('<p class="muted">Not counted, as on msfwar: ' + r.excluded.map(esc).join(', ') + '.</p>');
     if (!r.complete) out.push('<p class="muted">Totals below count only the items with values, so the real value is higher than shown.</p>');
     return out.join('');
   }
   function summaryBlock(r) {
     var ratio = r.personalized ? r.personalPerDollar : r.perDollar;
     var usd = r.personalized ? r.personalUsd : r.totalUsd;
+    var score = r.personalized ? r.personalScore : r.score;
+    var letter = r.personalized ? r.personalLetter : r.letter;
     var html = '<div class="summary">';
-    html += '<div><div class="label">Grade</div><div class="big">' + gradeBadge(r.grade) + '</div></div>';
-    html += '<div><div class="label">Value per ' + esc(r.currency) + ' spent</div><div class="big">' + fmtRatio(ratio) + '</div></div>';
+    html += '<div><div class="label">msfwar-style grade</div><div class="big">' + scoreBadge(letter, score) + '</div></div>';
+    html += '<div><div class="label">Value per US$ spent</div><div class="big">' + fmtRatio(ratio) + ' ' + gradeBadge(r.grade) + '</div></div>';
     html += '<div><div class="label">' + (r.personalized ? 'Value to you' : 'Value') + '</div><div class="big">' + fmtMoney(usd, 'USD') + '</div></div>';
-    if (r.price != null) html += '<div><div class="label">Price</div><div class="big">' + fmtMoney(r.price, r.currency) + '</div></div>';
+    if (r.price != null) html += '<div><div class="label">Price</div><div class="big">' + fmtMoney(r.price, r.currency) + '</div>' + (r.priceUsd != null && r.currency !== 'USD' ? '<div class="muted">' + fmtMoney(r.priceUsd, 'USD') + ' at the table\'s rate</div>' : '') + '</div>';
     if (r.personalized && Math.abs(r.personalUsd - r.totalUsd) > 1e-9) {
       html += '<div><div class="label">Generic value</div><div>' + fmtMoney(r.totalUsd, 'USD') + ' (' + fmtRatio(r.perDollar) + ')</div></div>';
     }
     html += '</div>';
-    if (r.currency !== 'USD') html += '<p class="muted">Values are in US dollars; the ratio divides by the price as entered in ' + esc(r.currency) + '.</p>';
+    if (r.scoring && r.scoring.length) {
+      html += '<p class="muted">Score by category: ' + r.scoring.map(function (c) { return esc(c.category) + ' ' + fmtNum(c.score, 0) + ' (weight ' + c.weight + ', ' + c.items + ' item' + (c.items === 1 ? '' : 's') + ')'; }).join(' · ') + '. Typical value is 70; 25% more per dollar is 80, 50% more is 90.</p>';
+    }
+    if (r.lines.some(function (l) { return l.earlyEstimate; })) html += '<p class="muted">Early estimate: msfwar had fewer than seven observed days for some of these items.</p>';
+    if (r.currency !== 'USD') html += '<p class="muted">Values are in US dollars; the price was converted with the table\'s exchange rate before any ratio.</p>';
     return html;
   }
   function renderOfferResult() {
@@ -333,19 +346,22 @@
       var flags = [];
       if (r.unknown.length) flags.push(r.unknown.length + ' unknown');
       if (r.unpriced.length) flags.push(r.unpriced.length + ' unpriced');
+      if (r.notes) flags.push('hidden items');
+      var score = r.personalized ? r.personalScore : r.score;
+      var letter = r.personalized ? r.personalLetter : r.letter;
       var html = '<tr class="clickable" data-idx="' + i + '"><td>' + esc(off.name || '(unnamed)') +
         (sub.length ? '<br><span class="muted">' + esc(sub.join(' · ')) + '</span>' : '') + '</td>' +
         '<td class="num">' + fmtMoney(r.price, r.currency) + '</td>' +
         '<td class="num">' + fmtMoney(usd, 'USD') + '</td>' +
         '<td class="num">' + fmtRatio(ratio) + '</td>' +
-        '<td>' + gradeBadge(r.grade) + '</td>' +
+        '<td>' + scoreBadge(letter, score) + '</td>' +
         '<td class="warn">' + esc(flags.join(', ')) + '</td></tr>';
       if (state.expanded[i]) {
-        html += '<tr class="detail"><td colspan="6">' + warnings(r) + breakdownTable(r) + '</td></tr>';
+        html += '<tr class="detail"><td colspan="6">' + summaryBlock(r) + warnings(r) + breakdownTable(r) + '</td></tr>';
       }
       return html;
     }).join('');
-    list.innerHTML = '<table><thead><tr><th>Offer</th><th class="num">Price</th><th class="num">' + (state.personalize && state.roster ? 'Value to you' : 'Value') + '</th><th class="num">Per $</th><th>Grade</th><th>Flags</th></tr></thead><tbody>' + rows + '</tbody></table>';
+    list.innerHTML = '<table><thead><tr><th>Offer</th><th class="num">Price</th><th class="num">' + (state.personalize && state.roster ? 'Value to you' : 'Value') + '</th><th class="num">Per US$</th><th>Score</th><th>Flags</th></tr></thead><tbody>' + rows + '</tbody></table>';
   }
   $('store-list').addEventListener('click', function (e) {
     if (e.target.closest('button')) return;
@@ -398,7 +414,9 @@
       '<div class="muted">Unit</div><div><input id="meta-unit" value="' + esc(meta.unit || 'USD') + '" style="width:90px;display:inline-block"> <span class="muted">units per US dollar</span> <input id="meta-unitPerUsd" type="number" min="0" step="any" value="' + esc(meta.unitPerUsd == null ? 1 : meta.unitPerUsd) + '" style="width:90px;display:inline-block"></div>' +
       '<div class="muted">Updated</div><div>' + esc(meta.updated || 'never') + '</div>' +
       '<div class="muted">Items</div><div>' + s.priced + ' with values, ' + (s.total - s.priced) + ' without' + (Object.keys(state.overrides).length ? ', ' + Object.keys(state.overrides).length + ' local edits' : '') + (state.replacement ? ', table replaced from pasted JSON' : '') + '</div>' +
-      '<div class="muted">Grades</div><div>' + (meta.grades || E.DEFAULT_GRADES).map(function (g) { return esc(g.label) + ' ≥ ' + g.min + '×'; }).join(', ') + '</div>' +
+      '<div class="muted">Exchange rates</div><div>' + (meta.fxToUsd ? Object.keys(meta.fxToUsd).map(function (c) { return esc(c) + ' → US$' + meta.fxToUsd[c]; }).join(', ') : 'none (prices taken as US dollars)') + (meta.fxNote ? ' <span class="muted">' + esc(meta.fxNote) + '</span>' : '') + '</div>' +
+      '<div class="muted">Score</div><div>' + (meta.scoring ? 'msfwar method: typical ' + (meta.scoring.typicalScore == null ? 70 : meta.scoring.typicalScore) + ', +' + (meta.scoring.scorePerRatio == null ? 40 : meta.scoring.scorePerRatio) + ' per 1.0× above typical; weights ' + Object.keys(meta.scoring.weights || {}).map(function (k) { return esc(k) + ' ' + meta.scoring.weights[k]; }).join(', ') : 'default msfwar rules') + '</div>' +
+      '<div class="muted">Ratio grades</div><div>' + (meta.grades || E.DEFAULT_GRADES).map(function (g) { return esc(g.label) + ' ≥ ' + g.min + '×'; }).join(', ') + '</div>' +
       '<div class="muted">Maxed shards</div><div>shards of a ' + ((meta.shardRules || {}).maxStars || 7) + '-star character count ' + (((meta.shardRules || {}).maxedMultiplier || 0) * 100) + '% of their value</div>';
     $('meta-unit').addEventListener('change', function () { setOverride('__meta', { unit: $('meta-unit').value || 'USD' }); renderAll(); });
     $('meta-unitPerUsd').addEventListener('change', function () { setOverride('__meta', { unitPerUsd: Number($('meta-unitPerUsd').value) || 1 }); renderAll(); });
@@ -425,7 +443,7 @@
         '<td><select data-f="category">' + opts + '</select></td>' +
         '<td><input data-f="character" value="' + esc(it.character || '') + '" placeholder="' + (it.category === 'shard' ? 'character' : '') + '"></td>' +
         '<td><input data-f="per" type="number" min="0" step="any" value="' + esc(it.per == null ? 1 : it.per) + '" style="width:90px"></td>' +
-        '<td><input data-f="value" type="number" step="any" value="' + esc(it.value == null ? '' : it.value) + '" placeholder="none" style="width:110px"></td>' +
+        '<td><input data-f="value" type="number" step="any" value="' + esc(it.value == null ? '' : it.value) + '" placeholder="none" style="width:110px">' + (it.observed && it.observed.perUsd ? '<br><span class="muted" title="msfwar observed average">' + fmtNum(it.observed.perUsd, 2) + ' per $1' + (it.observed.earlyEstimate ? ' · early' : '') + '</span>' : (it.excludeFromValue ? '<br><span class="muted">not counted</span>' : '')) + '</td>' +
         '<td><input data-f="aliases" value="' + esc((it.aliases || []).join(', ')) + '" placeholder="comma separated"></td>' +
         '<td><button class="ghost small" data-delkey="' + esc(k) + '" title="Remove">✕</button></td></tr>';
     }).join('');
