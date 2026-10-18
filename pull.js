@@ -212,6 +212,8 @@
     };
     var offers = [];
     var seen = {};
+    var seenChains = {};
+    var stripCounter = function (t) { return String(t || '').replace(/^\s*\(\d+\s*\/\s*\d+\)\s*/, '').replace(/\s*\(\d+\s*\/\s*\d+\)\s*$/, '').trim(); };
     var parseContents = function (items, notes) {
       var contents = [];
       (items || []).forEach(function (it) {
@@ -237,27 +239,37 @@
       if (o.section === 'Power Cores' || o.section === 'Ultra Cores') return;
       var section = o.section + (o.sub ? ' / ' + o.sub : '');
       if (o.chainSteps && o.chainSteps.length > 1) {
-        var baseName = String(o.title || '').replace(/\s*\(\d+\s*\/\s*\d+\)\s*$/, '').trim() || 'Chain';
+        var baseName = stripCounter(o.title) || 'Chain';
         var steps = o.chainSteps.map(function (st) {
           var pp = parsePrice(st.price);
           var notes = [];
-          return { step: st.step, name: String(st.title || '').replace(/\s*\(\d+\s*\/\s*\d+\)\s*$/, '').trim() || (baseName + ' step ' + st.step), price: pp.price, currency: pp.currency, contents: parseContents(st.items, notes), notes: notes, limit: st.limit };
+          var contents = parseContents(st.items, notes);
+          if (pp.note) notes.push(pp.note);
+          else if (pp.price == null) notes.push('price unreadable');
+          return { step: st.step, name: stripCounter(st.title) || (baseName + ' step ' + st.step), price: pp.price, currency: pp.currency, contents: contents, notes: notes.length ? notes.join('; ') : undefined, limit: st.limit };
         });
         var current = Number(o.chainCurrent) || 1;
+        var chainSig = 'chain|' + baseName + '|' + JSON.stringify(steps.map(function (x) { return [x.price, x.currency, x.contents.map(function (c) { return [c.item, c.qty]; })]; }));
+        if (seenChains[chainSig]) {
+          seenChains[chainSig].forEach(function (e) { e.sections.push(section); });
+          return;
+        }
+        var emitted = [];
+        var packed = steps.map(function (x) { var y = { step: x.step, name: x.name, price: x.price, currency: x.currency, contents: x.contents }; if (x.notes) y.notes = x.notes; return y; });
         steps.forEach(function (st) {
           var entry = {
             name: st.name + ' (step ' + st.step + ' of ' + steps.length + ')',
             price: st.price, currency: st.currency,
             purchaseLimit: parseLimit(st.limit), expires: o.timer || null,
             section: section, sections: [section], contents: st.contents,
-            chain: { name: baseName, step: st.step, of: steps.length, current: current,
-              steps: steps.map(function (x) { return { step: x.step, name: x.name, price: x.price, currency: x.currency, contents: x.contents }; }) }
+            chain: { name: baseName, step: st.step, of: steps.length, current: current, steps: packed }
           };
-          if (st.step < current) entry.notes = 'already bought: step ' + st.step + ' of this chain';
-          else if (st.notes.length) entry.notes = st.notes.join('; ');
+          if (st.notes) entry.notes = st.notes;
           if (o.description && st.step === current) entry.description = o.description;
           offers.push(entry);
+          emitted.push(entry);
         });
+        seenChains[chainSig] = emitted;
         return;
       }
       (o.variants || []).forEach(function (v, vi) {

@@ -125,7 +125,9 @@ This follows the msfwar Spender's Guide as it described itself on 17 October 202
   bookmarklet reads every step of each chain (the card's step selector previews them), and each
   step becomes its own offer with the chain attached. A step beyond the first unbought one is
   ranked and graded on the whole path to it, steps and prices added together, and the breakdown
-  shows the path and the step on its own. Steps already bought are marked.
+  shows the path and the step on its own. Shop by resource and Best buys price such a step the
+  same way: the path's items against the path's price. Steps already bought are shown but not
+  ranked, and a path with an unreadable price on any step is left unvalued.
 - **Per item, "vs typical".** The breakdown also shows each item's own ratio: the units per
   dollar this offer gives divided by that item's msfwar average, counting the whole price. It
   tells you which part of a bundle is the bargain. msfwar's combined category score built from
@@ -166,9 +168,6 @@ This follows the msfwar Spender's Guide as it described itself on 17 October 202
   - "Only offers that help my plan" hides offers in which every item the table recognises was
     zeroed by those rules. An offer the table cannot value at all is neither hidden nor flagged.
   The Roster & plan tab shows every rule and lets you replace the character list.
-
-Chain offers are graded on the step shown; msfwar also counts the cost of the earlier steps,
-which the web store does not display.
 
 ## Data files
 

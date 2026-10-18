@@ -57,7 +57,10 @@ Strike Store) is on the one page, but offer cards render lazily: a card is a ske
    Clicking a step's `.step-inner` previews that step's title, price and contents in the card
    (it is not a purchase); the step without the `deselected` class is the first unbought one.
    Read every step and restore the original selection; `pull.js` does this in `readChains()`
-   and the normalizer emits one offer per step with the whole chain in `chain`.
+   and the normalizer emits one offer per step with the whole chain in `chain`. Step titles
+   carry a counter at either end ("(1/6) Boot Sequence", "Kestrel Starter (1/4)"), which the
+   normalizer strips; a step's hidden-item or unreadable-price note travels in `chain.steps`;
+   the same chain shown in two sections is emitted once with both sections.
 4. Power Core and Ultra Core packs are not `.offer-card`s. Read `.core-card` elements
    separately: `.offer-header > .item-count` is the core count, `.offer-footer p` the name,
    the nested `.item-container` the Strike Point web bonus.

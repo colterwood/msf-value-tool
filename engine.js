@@ -309,6 +309,25 @@
   }
 
   /**
+   * What a buyer actually pays and gets for a result: the offer itself, or, for a chain step that
+   * needs earlier steps, the whole path (their lines and prices added). Already-bought steps and
+   * paths with an unreadable price return null.
+   */
+  function pathLines(r) {
+    if (!r) return null;
+    var c = r.chain;
+    if (c && c.bought) return null;
+    if (c && c.requires.length) {
+      if (c.priceUnknown || !(c.cumulativePriceUsd > 0)) return null;
+      var lines = [];
+      c.requires.forEach(function (p) { lines = lines.concat(p.lines || []); });
+      return { priceUsd: c.cumulativePriceUsd, price: c.cumulativePrice, currency: r.currency, lines: lines.concat(r.lines), steps: c.requires.map(function (p) { return p.step; }).concat([c.step]), totalUsd: c.cumulativeUsd, personalUsd: c.cumulativePersonalUsd };
+    }
+    if (!(r.priceUsd > 0)) return null;
+    return { priceUsd: r.priceUsd, price: r.price, currency: r.currency, lines: r.lines, steps: null, totalUsd: r.totalUsd, personalUsd: r.personalUsd };
+  }
+
+  /**
    * Shopping view: every offer that contains something in `bucket`, with two readings:
    *   bucketRatio  what the bucket's items in the offer are worth divided by the whole price
    *                (the value you get for that resource alone, as if you bought the offer for it)
@@ -323,34 +342,48 @@
     var meta = (isTable(table) && table.meta) || {};
     var rows = [];
     (results || []).forEach(function (r) {
-      if (!r || !(r.priceUsd > 0)) return;
-      var items = [];
+      var path = pathLines(r);
+      if (!path) return;
+      var byKey = {};
+      var order = [];
       var valueUsd = 0, personalUsd = 0, valued = 0;
-      r.lines.forEach(function (l) {
+      path.lines.forEach(function (l) {
         if (!l.key) return;
         var item = table.items[l.key];
         if (!item || shopBucket(item, l.key) !== bucket) return;
-        var perUsd = l.qty > 0 ? l.qty / r.priceUsd : null;
-        var typical = item.observed && item.observed.perUsd != null ? Number(item.observed.perUsd) : null;
-        var v = l.value == null ? null : toUsd(l.value, meta);
-        var pv = l.personalValue == null ? null : toUsd(l.personalValue, meta);
-        if (v != null) { valueUsd += v; personalUsd += (pv == null ? v : pv); valued += 1; }
-        items.push({
-          item: l.item, key: l.key, qty: l.qty, perUsd: perUsd, typicalPerUsd: typical,
-          vsTypical: v != null ? v / r.priceUsd : (perUsd != null && typical ? perUsd / typical : null),
-          valueUsd: v, personalValueUsd: pv, multiplier: l.multiplier, note: l.note || null,
-          excluded: !!l.excluded, thin: !!l.thin
-        });
+        var agg = byKey[l.key];
+        if (!agg) {
+          agg = byKey[l.key] = { item: l.item, key: l.key, qty: 0, perUsd: null, typicalPerUsd: item.observed && item.observed.perUsd != null ? Number(item.observed.perUsd) : null, vsTypical: null, valueUsd: null, faceUsd: null, personalValueUsd: null, multiplier: l.multiplier, note: l.note || null, excluded: !!l.excluded, thin: !!l.thin };
+          order.push(l.key);
+        }
+        agg.qty += l.qty > 0 ? l.qty : 0;
+        if (l.value != null) {
+          var v = toUsd(l.value, meta);
+          var pv = l.personalValue == null ? v : toUsd(l.personalValue, meta);
+          agg.valueUsd = (agg.valueUsd || 0) + v;
+          agg.faceUsd = (agg.faceUsd || 0) + toUsd(l.faceValue == null ? l.value : l.faceValue, meta);
+          agg.personalValueUsd = (agg.personalValueUsd || 0) + pv;
+          valueUsd += v; personalUsd += pv; valued += 1;
+          if (l.multiplier !== agg.multiplier) agg.multiplier = null;
+        }
       });
-      if (!items.length) return;
+      if (!order.length) return;
+      var items = order.map(function (k) {
+        var a = byKey[k];
+        a.perUsd = a.qty > 0 ? a.qty / path.priceUsd : null;
+        // ratio to msfwar's typical, undiscounted: units per dollar against the observed average
+        a.vsTypical = a.faceUsd != null ? a.faceUsd / path.priceUsd : (a.perUsd != null && a.typicalPerUsd ? a.perUsd / a.typicalPerUsd : null);
+        return a;
+      });
       var useUsd = r.personalized ? personalUsd : valueUsd;
       rows.push({
         result: r,
         name: r.name, price: r.price, currency: r.currency, priceUsd: r.priceUsd,
+        pathPriceUsd: path.priceUsd, pathPrice: path.price, pathSteps: path.steps,
         items: items,
         bucketValueUsd: valued ? useUsd : null,
-        bucketRatio: valued ? useUsd / r.priceUsd : null,
-        wholeRatio: r.personalized ? r.personalPerDollar : r.perDollar,
+        bucketRatio: valued ? useUsd / path.priceUsd : null,
+        wholeRatio: r.rankRatio,
         grade: r.grade,
         complete: r.complete,
         helpsPlan: r.helpsPlan
@@ -535,7 +568,8 @@
         return;
       }
       var cm = valueMultiplier(resolved.item, meta);
-      var value = uv * qty * cm;
+      var face = uv * qty;
+      var value = face * cm;
       var personalValue = value * pm.multiplier;
       totalUnits += value;
       personalTotalUnits += personalValue;
@@ -548,6 +582,8 @@
         unitValue: uv,
         multiplier: pm.multiplier,
         value: value,
+        faceValue: face,
+        vsTypical: priceUsd ? toUsd(face, meta) / priceUsd : null,
         personalValue: personalValue,
         scoringCategory: scoringCategory(resolved.item, resolved.key),
         earlyEstimate: !!(resolved.item.observed && resolved.item.observed.earlyEstimate),
@@ -571,27 +607,41 @@
     if (ch && ch.steps && ch.steps.length) {
       var stepNo = Number(ch.step) || 1;
       var current = Number(ch.current) || 1;
-      var requires = ch.steps.filter(function (st) { var n = Number(st.step); return n >= current && n < stepNo; });
+      var bought = stepNo < current;
+      var requires = bought ? [] : ch.steps.filter(function (st) { var n = Number(st.step); return n >= current && n < stepNo; });
       var cumPrice = priceUsd || 0, cumUsd = totalUsd, cumPersonal = personalUsd, cumValued = valuedLines;
+      var priceUnknown = !(priceUsd > 0);
+      var assumedCurrency = priced.via === 'assumed';
+      var cumLocal = hasPrice ? price : null;
       var path = requires.map(function (st) {
-        var sr = valueOffer({ name: st.name, price: st.price, currency: st.currency, contents: st.contents }, table, roster, Object.assign({}, options, { index: index }));
+        var sr = valueOffer({ name: st.name, price: st.price, currency: st.currency, contents: st.contents, notes: st.notes }, table, roster, Object.assign({}, options, { index: index }));
+        if (!(sr.priceUsd > 0)) priceUnknown = true;
+        if (sr.priceVia === 'assumed') assumedCurrency = true;
         cumPrice += sr.priceUsd || 0;
         cumUsd += sr.totalUsd;
         cumPersonal += sr.personalUsd;
         cumValued += sr.valuedLines;
+        if (cumLocal != null) cumLocal = (sr.price != null && String(st.currency || currency) === String(currency)) ? cumLocal + sr.price : null;
         if (!sr.complete) complete = false;
-        return { step: Number(st.step), name: st.name, price: st.price, currency: st.currency, priceUsd: sr.priceUsd, totalUsd: sr.totalUsd, personalUsd: sr.personalUsd, perDollar: sr.perDollar, complete: sr.complete };
+        return { step: Number(st.step), name: st.name, price: st.price, currency: st.currency, priceUsd: sr.priceUsd, priceVia: sr.priceVia, totalUsd: sr.totalUsd, personalUsd: sr.personalUsd, perDollar: sr.perDollar, personalPerDollar: sr.personalPerDollar, complete: sr.complete, notes: sr.notes, lines: sr.lines };
       });
+      if (priceUnknown && !bought) complete = false;
       chainInfo = {
         name: ch.name || null, step: stepNo, of: Number(ch.of) || ch.steps.length, current: current,
+        bought: bought,
         requires: path,
-        cumulativePriceUsd: cumPrice, cumulativeUsd: cumUsd, cumulativePersonalUsd: cumPersonal,
-        cumulativePerDollar: cumPrice > 0 && cumValued ? cumUsd / cumPrice : null,
-        cumulativePersonalPerDollar: cumPrice > 0 && cumValued ? cumPersonal / cumPrice : null
+        priceUnknown: priceUnknown,
+        assumedCurrency: assumedCurrency,
+        cumulativePriceUsd: priceUnknown ? null : cumPrice,
+        cumulativePrice: cumLocal,
+        cumulativeUsd: cumUsd, cumulativePersonalUsd: cumPersonal,
+        cumulativePerDollar: !priceUnknown && cumPrice > 0 && cumValued ? cumUsd / cumPrice : null,
+        cumulativePersonalPerDollar: !priceUnknown && cumPrice > 0 && cumValued ? cumPersonal / cumPrice : null
       };
     }
     var effective = personalize ? personalPerDollar : perDollar;
-    if (chainInfo && chainInfo.requires.length) effective = personalize ? chainInfo.cumulativePersonalPerDollar : chainInfo.cumulativePerDollar;
+    if (chainInfo && chainInfo.bought) effective = null;
+    else if (chainInfo && chainInfo.requires.length) effective = personalize ? chainInfo.cumulativePersonalPerDollar : chainInfo.cumulativePerDollar;
     // Does this offer give the plan anything? null when nothing in it could be judged.
     var helpsPlan = null;
     if (personalize && planLines > 0) helpsPlan = planUseful > 0;
@@ -683,21 +733,34 @@
     var meta = (isTable(table) && table.meta) || {};
     var out = {};
     (results || []).forEach(function (r) {
-      if (!r || !(r.priceUsd > 0) || !(r.totalUsd > 0)) return;
-      r.lines.forEach(function (l) {
+      var path = pathLines(r);
+      if (!path) return;
+      // shares are allocated by face value (before any category discount), as the table's averages price things
+      var faceTotal = 0;
+      path.lines.forEach(function (l) { if (l.value != null && !l.excluded && !l.thin) faceTotal += toUsd(l.faceValue == null ? l.value : l.faceValue, meta); });
+      if (!(faceTotal > 0)) return;
+      // the same item can appear in several lines of a path (every step of a shard chain): total it first
+      var byKey = {}, order = [];
+      path.lines.forEach(function (l) {
         if (l.value == null || l.excluded || l.thin || !l.key || !(l.qty > 0)) return;
-        var valueUsd = toUsd(l.value, meta);
-        var sharePrice = r.priceUsd * (valueUsd / r.totalUsd);
-        var whole = l.qty / r.priceUsd;
+        var agg = byKey[l.key];
+        if (!agg) { agg = byKey[l.key] = { item: l.item, qty: 0, faceUsd: 0 }; order.push(l.key); }
+        agg.qty += l.qty;
+        agg.faceUsd += toUsd(l.faceValue == null ? l.value : l.faceValue, meta);
+      });
+      order.forEach(function (key) {
+        var l = byKey[key];
+        var sharePrice = path.priceUsd * (l.faceUsd / faceTotal);
+        var whole = l.qty / path.priceUsd;
         var share = sharePrice > 0 ? l.qty / sharePrice : null;
-        var item = table.items[l.key] || {};
-        var entry = out[l.key] || (out[l.key] = {
-          key: l.key, name: item.name || l.item, category: item.category || 'other',
+        var item = table.items[key] || {};
+        var entry = out[key] || (out[key] = {
+          key: key, name: item.name || l.item, category: item.category || 'other',
           typicalPerUsd: item.observed && item.observed.perUsd != null ? Number(item.observed.perUsd) : (unitValue(item) ? 1 / toUsd(unitValue(item), meta) : null),
           offers: 0, whole: null, share: null
         });
         entry.offers += 1;
-        var ref = { name: r.name, price: r.price, currency: r.currency, priceUsd: r.priceUsd, qty: l.qty };
+        var ref = { name: r.name, price: path.price, currency: r.currency, priceUsd: path.priceUsd, qty: l.qty, steps: path.steps };
         if (!entry.whole || whole > entry.whole.perUsd) entry.whole = Object.assign({ perUsd: whole }, ref);
         if (share != null && (!entry.share || share > entry.share.perUsd)) entry.share = Object.assign({ perUsd: share, sharePrice: sharePrice }, ref);
       });
@@ -759,6 +822,7 @@
     priceToUsd: priceToUsd,
     priceToUsdDetail: priceToUsdDetail,
     bestPrices: bestPrices,
+    pathLines: pathLines,
     DEFAULT_VALUE_MULTIPLIERS: DEFAULT_VALUE_MULTIPLIERS,
     valueMultiplier: valueMultiplier,
     SHOP_BUCKETS: SHOP_BUCKETS,

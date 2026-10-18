@@ -89,6 +89,28 @@ test('core packs come from their own cards and replace the stray items-wrapper e
   assert.ok(!out.offers.some((o) => o.name === '(untitled)'));
 });
 
+test('chain cards become one offer per step with the chain attached, counters stripped, notes kept, duplicates merged', () => {
+  const card = (section, titleStep1) => ({ section, sub: '', title: titleStep1, timer: '1d', limit: '1 purchases left', flags: ['daisy-chain'], chainCurrent: 2,
+    chainSteps: [
+      { step: 1, title: titleStep1, price: { text: 'CA$6.99', costCurrency: 'fiat' }, items: [{ name: 'Jocasta', count: 'x45', webBonus: false }, { name: '+2 More', count: '+2More', webBonus: true }], limit: '1 purchases left' },
+      { step: 2, title: '(2/6) Power Surge', price: { text: 'CA$12.99', costCurrency: 'fiat' }, items: [{ name: 'Jocasta', count: 'x80', webBonus: false }], limit: '1 purchases left' },
+      { step: 3, title: '(3/6) Overdrive', price: { text: '', costCurrency: 'fiat' }, items: [{ name: 'Jocasta', count: 'x100', webBonus: false }], limit: '1 purchases left' }
+    ],
+    variants: [{ price: { text: 'CA$12.99', costCurrency: 'fiat' }, items: [] }] });
+  const out = P.normalizeExtract({ readAt: 't', offers: [card('Buy Again', '(1/6) Boot Sequence'), card('Chain Offers', '(1/6) Boot Sequence')], cores: [] });
+  assert.equal(out.offers.length, 3);                                   // the second card is the same chain: merged, not repeated
+  assert.deepEqual(out.offers.map((o) => o.name), ['Boot Sequence (step 1 of 3)', 'Power Surge (step 2 of 3)', 'Overdrive (step 3 of 3)']);
+  assert.deepEqual(out.offers[0].sections, ['Buy Again', 'Chain Offers']);
+  assert.equal(out.offers[0].chain.name, 'Boot Sequence');
+  assert.equal(out.offers[0].chain.current, 2);
+  assert.equal(out.offers[0].notes, '2 more item(s) not shown on the card'); // the hidden-items note, not an 'already bought' note
+  assert.equal(out.offers[0].chain.steps[0].notes, '2 more item(s) not shown on the card');
+  assert.equal(out.offers[2].price, null);
+  assert.equal(out.offers[2].notes, 'price unreadable');
+  assert.equal(out.offers[2].chain.steps[2].notes, 'price unreadable');
+  assert.equal(out.offers[1].chain.steps[1].notes, undefined);
+});
+
 test('bookmarkletHref is a self-contained javascript: URL built from the two functions', () => {
   const href = P.bookmarkletHref();
   assert.ok(href.startsWith('javascript:'));

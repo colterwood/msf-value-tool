@@ -302,7 +302,7 @@
         '<td class="num">' + fmtNum(l.qty, 3) + '</td>' +
         '<td class="num">' + (l.unitValue == null ? '–' : fmtNum(l.unitValue, 4)) + '</td>' +
         '<td class="num">' + (l.value == null ? '–' : fmtNum(l.value, 2)) + personal + '</td>' +
-        '<td class="num">' + (l.ratio == null ? '–' : fmtRatio(l.ratio)) + '</td></tr>';
+        '<td class="num">' + (l.vsTypical == null ? '–' : fmtRatio(l.vsTypical)) + '</td></tr>';
     }).join('');
     return '<table><thead><tr><th>Item</th><th class="num">Qty</th><th class="num">Unit value (' + esc(r.unit) + ')</th><th class="num">Value (' + esc(r.unit) + ')</th><th class="num">vs typical</th></tr></thead><tbody>' + rows + '</tbody></table>';
   }
@@ -324,7 +324,7 @@
     var c = r.chain;
     if (!c) return '';
     var t = 'step ' + c.step + ' of ' + c.of + (c.name ? ' of ' + c.name : '');
-    if (c.step < c.current) return t + ', already bought';
+    if (c.bought) return t + ', already bought';
     if (c.requires.length) return t + ', needs step' + (c.requires.length > 1 ? 's ' + c.requires[0].step + '–' + c.requires[c.requires.length - 1].step : ' ' + c.requires[0].step) + ' first';
     return t + ', buyable now';
   }
@@ -332,9 +332,12 @@
     var c = r.chain;
     if (!c) return '';
     var html = '<p class="muted">' + esc(chainLabel(r)) + '.';
+    if (c.bought) html += ' Not ranked: this step is behind you.';
     if (c.requires.length) {
-      html += ' You cannot buy this step alone. The whole path from step ' + c.requires[0].step + ' to ' + c.step + ' costs ' + fmtMoney(c.cumulativePriceUsd, 'USD') + ' and is worth ' + fmtMoney(r.personalized ? c.cumulativePersonalUsd : c.cumulativeUsd, 'USD') + ' (' + fmtRatio(r.personalized ? c.cumulativePersonalPerDollar : c.cumulativePerDollar) + '), which is what the grade above rates. This step on its own: ' + fmtRatio(r.personalized ? r.personalPerDollar : r.perDollar) + '.';
-      html += '<br>' + c.requires.map(function (p) { return 'Step ' + p.step + ' ' + esc(p.name) + ': ' + fmtMoney(p.price, p.currency) + ', ' + fmtRatio(p.perDollar) + (p.complete ? '' : ' (incomplete)'); }).join('<br>');
+      if (c.priceUnknown) html += ' You cannot buy this step alone, and one of the earlier steps has no readable price, so the path cannot be valued.';
+      else html += ' You cannot buy this step alone. The whole path from step ' + c.requires[0].step + ' to ' + c.step + ' costs ' + (c.cumulativePrice != null ? fmtMoney(c.cumulativePrice, r.currency) + ' (' + fmtMoney(c.cumulativePriceUsd, 'USD') + ')' : fmtMoney(c.cumulativePriceUsd, 'USD')) + ' and is worth ' + fmtMoney(r.personalized ? c.cumulativePersonalUsd : c.cumulativeUsd, 'USD') + ' (' + fmtRatio(r.personalized ? c.cumulativePersonalPerDollar : c.cumulativePerDollar) + '), which is what the grade above rates. This step on its own: ' + fmtRatio(r.personalized ? r.personalPerDollar : r.perDollar) + '.';
+      if (c.assumedCurrency) html += ' A step is priced in a currency the table does not know, taken as US dollars.';
+      html += '<br>' + c.requires.map(function (p) { return 'Step ' + p.step + ' ' + esc(p.name) + ': ' + (p.price != null ? fmtMoney(p.price, p.currency) : 'price unreadable') + ', ' + fmtRatio(r.personalized ? p.personalPerDollar : p.perDollar) + (p.complete ? '' : ' (incomplete' + (p.notes ? ': ' + esc(p.notes) : '') + ')'); }).join('<br>');
     }
     return html + '</p>';
   }
@@ -418,10 +421,11 @@
       if (r.personalized && r.helpsPlan === false) flags.push('nothing for your plan');
       if (r.unpriced.length) flags.push(r.unpriced.length + ' unpriced');
       if (r.notes) flags.push('hidden items');
+      if (r.chain && r.chain.bought) flags.push('already bought');
       var idx = o.offers.indexOf(off);
       var html = '<tr class="clickable" data-idx="' + idx + '"><td>' + esc(off.name || '(unnamed)') +
         (sub.length ? '<br><span class="muted">' + esc(sub.join(' · ')) + '</span>' : '') + '</td>' +
-        '<td class="num">' + (r.priceVia === 'item' ? fmtNum(r.price, 0) + ' ' + esc(r.currency) : fmtMoney(r.price, r.currency)) + (r.chain && r.chain.requires.length ? '<br><span class="muted">' + fmtMoney(r.chain.cumulativePriceUsd / (r.priceUsd / r.price), r.currency) + ' with steps ' + r.chain.requires[0].step + '–' + r.chain.step + '</span>' : '') + '</td>' +
+        '<td class="num">' + (r.priceVia === 'item' ? fmtNum(r.price, 0) + ' ' + esc(r.currency) : fmtMoney(r.price, r.currency)) + (r.chain && r.chain.requires.length ? '<br><span class="muted">' + (r.chain.priceUnknown ? 'path price unknown' : (r.chain.cumulativePrice != null ? fmtMoney(r.chain.cumulativePrice, r.currency) : fmtMoney(r.chain.cumulativePriceUsd, 'USD')) + ' with steps ' + r.chain.requires[0].step + '–' + r.chain.step) + '</span>' : '') + '</td>' +
         '<td class="num">' + fmtMoney(usd, 'USD') + '</td>' +
         '<td class="num">' + fmtRatio(ratio) + '</td>' +
         '<td>' + gradeBadge(r.grade) + '</td>' +
@@ -463,13 +467,14 @@
       var flags = [];
       if (!r.complete) flags.push('incomplete');
       if (r.personalized && r.helpsPlan === false) flags.push('nothing for your plan');
+      var pathNote = row.pathSteps ? '<br><span class="muted">' + (row.pathPrice != null ? fmtMoney(row.pathPrice, r.currency) : fmtMoney(row.pathPriceUsd, 'USD')) + ' for steps ' + row.pathSteps[0] + '–' + row.pathSteps[row.pathSteps.length - 1] + '</span>' : '';
       return '<tr><td>' + esc(r.name) + (sub.length ? '<br><span class="muted">' + esc(sub.join(' · ')) + '</span>' : '') + '</td>' +
-        '<td class="num">' + (r.priceVia === 'item' ? fmtNum(r.price, 0) + ' ' + esc(r.currency) : fmtMoney(r.price, r.currency)) + '</td>' +
+        '<td class="num">' + (r.priceVia === 'item' ? fmtNum(r.price, 0) + ' ' + esc(r.currency) : fmtMoney(r.price, r.currency)) + pathNote + '</td>' +
         '<td><b>' + (row.bucketRatio != null ? fmtRatio(row.bucketRatio) : '–') + '</b>' + (row.bucketValueUsd != null ? ' <span class="muted">' + fmtMoney(row.bucketValueUsd, 'USD') + '</span>' : '') + '<br><span class="muted">' + itemsHtml + '</span></td>' +
         '<td class="num">' + fmtRatio(row.wholeRatio) + ' ' + gradeBadge(row.grade) + '</td>' +
         '<td class="warn">' + esc(flags.join(', ')) + '</td></tr>';
     }).join('');
-    box.innerHTML = '<p class="muted">' + rows.length + ' offer' + (rows.length === 1 ? '' : 's') + ' contain ' + esc(bucket.label.toLowerCase()) + ', best first. "' + esc(bucket.label) + ' alone" is what that part of the offer is worth divided by the whole price' + (oneItem ? ', with units per US$' : '') + '; "whole offer" is everything in it.</p>' +
+    box.innerHTML = '<p class="muted">' + rows.length + ' offer' + (rows.length === 1 ? '' : 's') + ' contain ' + esc(bucket.label.toLowerCase()) + ', best first. "' + esc(bucket.label) + ' alone" is what that part of the offer is worth divided by the whole price' + (oneItem ? ', with units per US$' : '') + '; "whole offer" is everything in it. A chain step that needs earlier steps is priced and counted over the whole path, and steps already bought are left out.</p>' +
       '<table><thead><tr><th>Offer</th><th class="num">Price</th><th>' + esc(bucket.label) + ' alone</th><th class="num">Whole offer</th><th>Flags</th></tr></thead><tbody>' + html + '</tbody></table>';
   }
   document.addEventListener('click', function (e) {
@@ -492,7 +497,7 @@
       var vs = b.typicalPerUsd && b.share ? fmtRatio(b.share.perUsd / b.typicalPerUsd) : '–';
       var cell = function (x, share) {
         if (!x) return '<td>–</td>';
-        return '<td>' + esc(x.name) + '<br><span class="muted">' + (x.currency && /^[A-Z]{3}$/.test(x.currency) ? fmtMoney(x.price, x.currency) : fmtNum(x.price, 0) + ' ' + esc(x.currency || '')) + ' · ' + fmtNum(x.qty, 0) + ' for ' + fmtMoney(share ? x.sharePrice : x.priceUsd, 'USD') + '</span></td>';
+        return '<td>' + esc(x.name) + '<br><span class="muted">' + (x.price != null ? (x.currency && /^[A-Z]{3}$/.test(x.currency) ? fmtMoney(x.price, x.currency) : fmtNum(x.price, 0) + ' ' + esc(x.currency || '')) + ' · ' : '') + fmtNum(x.qty, 0) + ' for ' + fmtMoney(share ? x.sharePrice : x.priceUsd, 'USD') + (x.steps ? ' over steps ' + x.steps[0] + '–' + x.steps[x.steps.length - 1] : '') + '</span></td>';
       };
       var vsWhole = b.typicalPerUsd && b.whole ? fmtRatio(b.whole.perUsd / b.typicalPerUsd) : '–';
       return head + '<tr><td>' + esc(b.name) + '<br><span class="muted">' + b.offers + ' offer' + (b.offers === 1 ? '' : 's') + (b.typicalPerUsd ? ' · msfwar typical ' + fmtPerUsd(b.typicalPerUsd) + ' per US$' : '') + '</span></td>' +
