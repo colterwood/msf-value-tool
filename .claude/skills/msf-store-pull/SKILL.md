@@ -14,7 +14,8 @@ Buy, Purchase, Claim, or any checkout or payment control, and never type into a 
 1. Browser tools must exist in this session (`mcp__claude-in-chrome__*`, `mcp__Claude_Browser__*`
    or their `mcp__remote-devices__*` forms). Load the matching skill (`chrome-browser` or
    `built-in-browser`) before the first browser step. If there are no browser tools, say so and
-   stop: a cloud session cannot do this.
+   stop: a cloud session cannot do this. In the CLI the user starts the session with
+   `claude --chrome` and can check the connection with `/chrome`.
 2. The user must already be signed in to marvelstrikeforce.com in that browser. If the portal
    shows a sign-in page, ask the user to sign in and continue afterwards; do not enter their
    credentials.
@@ -69,5 +70,15 @@ Buy, Purchase, Claim, or any checkout or payment control, and never type into a 
    how many items have values, how many offers loaded and how many roster characters.
 2. On "My store", list items flagged unknown or unpriced. Add unknown ones to `data/values.js`
    with `value: null` so they can be priced later, and tell the user which values are missing.
-3. Report the top offers by value per dollar, which items could not be valued, and the time the
+3. Run `node --test` in the repo folder if Node 18 or newer is installed; the engine tests must
+   still pass. If Node is missing, say so and move on.
+4. Report the top offers by value per dollar, which items could not be valued, and the time the
    store was read. If anything above could not be done, say exactly what and why.
+
+## 5. Commit and push
+
+Commit the changed files on the current branch with a message such as
+`Load live store offers, roster and msfwar values` and push with
+`git push -u origin <branch>`. Offers and roster are the user's own game data; if they would
+rather not commit them, write them to `data/offers.local.js` and `data/roster.local.js` instead
+(ignored by git), load those files in `index.html` in place of the tracked ones, and say so.

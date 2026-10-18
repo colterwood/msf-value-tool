@@ -38,16 +38,23 @@ marvelstrikeforce.com, so the value numbers and the store scraping could not be 
 
 ## Pulling your store through Chrome
 
-The pull needs a Claude session running on your computer with browser tools, because the web
-store only shows offers to a logged-in browser and there is no public API for them.
+The pull needs a Claude Code session running on your computer with the Chrome integration,
+because the web store only shows offers to a logged-in browser and there is no public API for
+them. Claude opens its own tabs in your Chrome and shares your login state, so it sees what you
+see. Steps from the Claude Code docs (https://code.claude.com/docs/en/chrome):
 
-1. Sign in to https://marvelstrikeforce.com in Chrome.
-2. Open this folder in the Claude Desktop app (with Claude in Chrome connected) or run `claude`
-   in a terminal in this folder.
-3. Ask it to run `/msf-store-pull`. The skill in `.claude/skills/msf-store-pull/SKILL.md` reads
-   the store and roster pages, writes `data/offers.js` and `data/roster.js`, loads the msfwar
-   values into `data/values.js`, then opens `index.html` to check the result.
-4. Reload `index.html`. The header shows how many offers and roster characters loaded.
+1. Install the Claude in Chrome extension from the Chrome Web Store and sign it in to the same
+   claude.ai account as Claude Code. Needs a Pro, Max, Team or Enterprise plan and Claude Code
+   signed in with `/login`. Not supported inside WSL.
+2. Sign in to https://marvelstrikeforce.com in Chrome.
+3. In a terminal in this folder run `claude --chrome`. The first time, press Enter on the
+   one-time dialog. Run `/chrome` to confirm "Status: Enabled" and "Extension: Installed"; if the
+   extension shows as not detected, restart Chrome and run `/chrome` again.
+4. Type `/msf-store-pull`. The skill in `.claude/skills/msf-store-pull/SKILL.md` reads the store
+   and roster pages, writes `data/offers.js` and `data/roster.js`, loads the msfwar values into
+   `data/values.js`, opens `index.html` to check the result, then commits and pushes. Approve
+   the "Claude in Chrome wants to" prompts; allowing the site for the session saves clicks.
+5. Reload `index.html`. The header shows how many offers and roster characters loaded.
 
 The skill never clicks Buy or touches a payment form. It records what the store shows and flags
 anything it could not read rather than guessing.
