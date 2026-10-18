@@ -53,6 +53,11 @@ Strike Store) is on the one page, but offer cards render lazily: a card is a ske
    (an `img[alt]` inside it means an item cost such as Strike Points) and the items from
    `.item-container`: `.item-count` text (x200, x3.6M, x40K), the last text-bearing child div
    as the name, and `.deco-web-bonus` / "Web Bonus" as the web-bonus flag.
+3b. Chain cards (`.offer-card.daisy-chain`) carry a step selector (`.chain-step`, 1 2 3 4).
+   Clicking a step's `.step-inner` previews that step's title, price and contents in the card
+   (it is not a purchase); the step without the `deselected` class is the first unbought one.
+   Read every step and restore the original selection; `pull.js` does this in `readChains()`
+   and the normalizer emits one offer per step with the whole chain in `chain`.
 4. Power Core and Ultra Core packs are not `.offer-card`s. Read `.core-card` elements
    separately: `.offer-header > .item-count` is the core count, `.offer-footer p` the name,
    the nested `.item-container` the Strike Point web bonus.

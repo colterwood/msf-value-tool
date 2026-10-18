@@ -28,12 +28,40 @@
  *   }
  */
 window.MSF_OFFERS = {
-  "updated": "2026-10-18T21:38:35.866Z",
+  "updated": "2026-10-18T22:19:33.141Z",
   "source": "web-store",
   "account": "CZARFACE level 105",
   "priceCurrency": "CAD",
   "note": "Read from the logged-in web store with the MSF Store Value bookmarklet. Cards that show \"+N More\" hide part of their contents; those offers carry a notes field and grade as incomplete.",
   "offers": [
+    {
+      "name": "Extra Energy Rush",
+      "price": 3.99,
+      "currency": "CAD",
+      "purchaseLimit": 3,
+      "expires": "2d 22h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / GENERAL"
+      ],
+      "contents": [
+        {
+          "item": "Campaign Energy",
+          "qty": 200
+        },
+        {
+          "item": "Premium Orb Fragments",
+          "qty": 4000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 300,
+          "webBonus": true
+        }
+      ],
+      "description": "Boost your power with extra energy and stack up gold to dominate the campaign!"
+    },
     {
       "name": "Golden Boost",
       "price": 3.99,
@@ -71,39 +99,11 @@ window.MSF_OFFERS = {
       "description": "Boost the ability and capability of your roster with this limited time offer!"
     },
     {
-      "name": "Extra Energy Rush",
-      "price": 3.99,
-      "currency": "CAD",
-      "purchaseLimit": 3,
-      "expires": "2d 23h",
-      "section": "Buy Again",
-      "sections": [
-        "Buy Again",
-        "Offers / GENERAL"
-      ],
-      "contents": [
-        {
-          "item": "Campaign Energy",
-          "qty": 200
-        },
-        {
-          "item": "Premium Orb Fragments",
-          "qty": 4000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 300,
-          "webBonus": true
-        }
-      ],
-      "description": "Boost your power with extra energy and stack up gold to dominate the campaign!"
-    },
-    {
       "name": "Raid Warzone: Mega Pack",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Buy Again",
       "sections": [
         "Buy Again",
@@ -131,7 +131,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 2,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "battle pass and s.t.r.i.k.e pass offers",
       "sections": [
         "battle pass and s.t.r.i.k.e pass offers"
@@ -154,11 +154,11 @@ window.MSF_OFFERS = {
       "description": "Get bonus Shop Credits when you purchase 1 Premium Plus Chapter Battle Pass Tickets with this Web Exclusive bundle! Tickets can be redeemed in-game to activate any single Premium Plus Chapter Battle Pass. Valid only for Chapter Battle Passes."
     },
     {
-      "name": "Kestrel Starter",
+      "name": "Kestrel Starter (step 1 of 4)",
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -174,15 +174,384 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
-      "description": "Fuel Kestrel (Zombie)'s power and let your Undying overwhelm every opponent in their path!",
-      "chain": true
+      "chain": {
+        "name": "Kestrel Starter",
+        "step": 1,
+        "of": 4,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Kestrel Starter",
+            "price": 6.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Kestrel Rising",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 130
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Kestrel Empowered",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 200
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Kestrel Unleashed",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      },
+      "description": "Fuel Kestrel (Zombie)'s power and let your Undying overwhelm every opponent in their path!"
     },
     {
-      "name": "Training Overdrive (1/5)",
+      "name": "Kestrel Rising (step 2 of 4)",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "2d 22h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Kestrel (Zombie)",
+          "qty": 130
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Kestrel Starter",
+        "step": 2,
+        "of": 4,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Kestrel Starter",
+            "price": 6.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Kestrel Rising",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 130
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Kestrel Empowered",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 200
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Kestrel Unleashed",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Kestrel Empowered (step 3 of 4)",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "2d 22h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Kestrel (Zombie)",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Kestrel Starter",
+        "step": 3,
+        "of": 4,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Kestrel Starter",
+            "price": 6.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Kestrel Rising",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 130
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Kestrel Empowered",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 200
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Kestrel Unleashed",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Kestrel Unleashed (step 4 of 4)",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "2d 22h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Kestrel (Zombie)",
+          "qty": 300
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Kestrel Starter",
+        "step": 4,
+        "of": 4,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Kestrel Starter",
+            "price": 6.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Kestrel Rising",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 130
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Kestrel Empowered",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 200
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Kestrel Unleashed",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Kestrel (Zombie)",
+                "qty": 300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Training Overdrive (step 1 of 5)",
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -198,15 +567,567 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
-      "description": "Ready to train your roster? Start here!",
-      "chain": true
+      "chain": {
+        "name": "Training Overdrive",
+        "step": 1,
+        "of": 5,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Training Overdrive",
+            "price": 6.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 900
+              },
+              {
+                "item": "Strike Points",
+                "qty": 500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Training Overdrive",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 2000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Training Overdrive",
+            "price": 19.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 3300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Training Overdrive",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 5000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Training Overdrive",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 5600
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      },
+      "description": "Ready to train your roster? Start here!"
+    },
+    {
+      "name": "Training Overdrive (step 2 of 5)",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "2d 22h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "L4 Training Module",
+          "qty": 2000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Training Overdrive",
+        "step": 2,
+        "of": 5,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Training Overdrive",
+            "price": 6.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 900
+              },
+              {
+                "item": "Strike Points",
+                "qty": 500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Training Overdrive",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 2000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Training Overdrive",
+            "price": 19.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 3300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Training Overdrive",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 5000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Training Overdrive",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 5600
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Training Overdrive (step 3 of 5)",
+      "price": 19.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "2d 22h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "L4 Training Module",
+          "qty": 3300
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1500,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Training Overdrive",
+        "step": 3,
+        "of": 5,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Training Overdrive",
+            "price": 6.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 900
+              },
+              {
+                "item": "Strike Points",
+                "qty": 500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Training Overdrive",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 2000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Training Overdrive",
+            "price": 19.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 3300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Training Overdrive",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 5000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Training Overdrive",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 5600
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Training Overdrive (step 4 of 5)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "2d 22h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "L4 Training Module",
+          "qty": 5000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Training Overdrive",
+        "step": 4,
+        "of": 5,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Training Overdrive",
+            "price": 6.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 900
+              },
+              {
+                "item": "Strike Points",
+                "qty": 500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Training Overdrive",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 2000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Training Overdrive",
+            "price": 19.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 3300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Training Overdrive",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 5000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Training Overdrive",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 5600
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Training Overdrive (step 5 of 5)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "2d 22h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "L4 Training Module",
+          "qty": 5600
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Training Overdrive",
+        "step": 5,
+        "of": 5,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Training Overdrive",
+            "price": 6.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 900
+              },
+              {
+                "item": "Strike Points",
+                "qty": 500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Training Overdrive",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 2000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Training Overdrive",
+            "price": 19.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 3300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Training Overdrive",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 5000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Training Overdrive",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "L4 Training Module",
+                "qty": 5600
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Iron Raider Combo (option 1)",
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": null,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "dual offers",
       "sections": [
         "dual offers"
@@ -236,7 +1157,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": null,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "dual offers",
       "sections": [
         "dual offers"
@@ -344,7 +1265,7 @@ window.MSF_OFFERS = {
       "price": 99.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / WEB EXCLUSIVE",
       "sections": [
         "Offers / WEB EXCLUSIVE"
@@ -371,7 +1292,7 @@ window.MSF_OFFERS = {
       "price": 179.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / WEB EXCLUSIVE",
       "sections": [
         "Offers / WEB EXCLUSIVE"
@@ -406,7 +1327,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 17h",
+      "expires": "1d 16h",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -441,7 +1362,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 17h",
+      "expires": "1d 16h",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -476,7 +1397,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 17h",
+      "expires": "1d 16h",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -511,7 +1432,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "6h 53m",
+      "expires": "6h 12m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -534,7 +1455,7 @@ window.MSF_OFFERS = {
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "6h 53m",
+      "expires": "6h 12m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -557,7 +1478,7 @@ window.MSF_OFFERS = {
       "price": 79.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "6h 53m",
+      "expires": "6h 12m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -580,7 +1501,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "6h 53m",
+      "expires": "6h 12m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -603,7 +1524,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "6h 53m",
+      "expires": "6h 12m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -638,7 +1559,7 @@ window.MSF_OFFERS = {
       "price": 79.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "6h 53m",
+      "expires": "6h 12m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -677,7 +1598,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "6h 53m",
+      "expires": "6h 12m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -708,7 +1629,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "6h 53m",
+      "expires": "6h 12m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -747,7 +1668,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "6h 53m",
+      "expires": "6h 12m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -770,7 +1691,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "6h 53m",
+      "expires": "6h 12m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -844,7 +1765,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -867,7 +1788,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -890,7 +1811,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -913,7 +1834,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -936,7 +1857,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -959,7 +1880,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -982,7 +1903,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1005,7 +1926,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1028,7 +1949,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1051,7 +1972,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1074,7 +1995,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1097,7 +2018,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1120,7 +2041,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1143,7 +2064,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1166,7 +2087,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1189,7 +2110,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1212,7 +2133,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1235,7 +2156,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1258,7 +2179,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1281,7 +2202,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1304,7 +2225,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1339,7 +2260,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1370,7 +2291,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1393,7 +2314,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1416,7 +2337,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1439,7 +2360,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1475,7 +2396,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1503,7 +2424,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1531,7 +2452,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "14d 23h",
+      "expires": "14d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1558,7 +2479,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "14d 23h",
+      "expires": "14d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1585,7 +2506,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 23h",
+      "expires": "1d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1609,7 +2530,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1632,7 +2553,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1655,7 +2576,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1678,7 +2599,7 @@ window.MSF_OFFERS = {
       "price": 3.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1701,7 +2622,7 @@ window.MSF_OFFERS = {
       "price": 3.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1724,7 +2645,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1763,7 +2684,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1790,7 +2711,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1817,7 +2738,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1844,7 +2765,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1871,7 +2792,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1898,7 +2819,7 @@ window.MSF_OFFERS = {
       "price": 49.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1933,7 +2854,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1970,7 +2891,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1998,7 +2919,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2021,7 +2942,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2044,7 +2965,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2067,7 +2988,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2094,7 +3015,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2121,7 +3042,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 4,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2152,7 +3073,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2183,7 +3104,7 @@ window.MSF_OFFERS = {
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2210,7 +3131,7 @@ window.MSF_OFFERS = {
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2237,7 +3158,7 @@ window.MSF_OFFERS = {
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2264,7 +3185,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2295,7 +3216,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2326,7 +3247,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2353,7 +3274,7 @@ window.MSF_OFFERS = {
       "price": 49.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2384,7 +3305,7 @@ window.MSF_OFFERS = {
       "price": 49.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2415,7 +3336,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2446,7 +3367,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2477,7 +3398,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2508,7 +3429,7 @@ window.MSF_OFFERS = {
       "price": 79.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2543,7 +3464,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2574,7 +3495,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2605,7 +3526,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2636,7 +3557,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2671,7 +3592,7 @@ window.MSF_OFFERS = {
       "price": 179.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2702,7 +3623,7 @@ window.MSF_OFFERS = {
       "price": 179.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2733,7 +3654,7 @@ window.MSF_OFFERS = {
       "price": 179.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2764,7 +3685,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "5d 23h",
+      "expires": "5d 22h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2787,7 +3708,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "23h 16m",
+      "expires": "22h 35m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -2845,7 +3766,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -2876,7 +3797,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -2903,7 +3824,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -2930,7 +3851,7 @@ window.MSF_OFFERS = {
       "price": 3.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -2961,7 +3882,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -2988,7 +3909,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3023,7 +3944,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3058,7 +3979,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3093,7 +4014,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3128,7 +4049,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3163,7 +4084,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3198,7 +4119,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3233,7 +4154,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 23h",
+      "expires": "2d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3268,7 +4189,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "1d 23h",
+      "expires": "1d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3303,7 +4224,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "1d 23h",
+      "expires": "1d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3338,7 +4259,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "1d 23h",
+      "expires": "1d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3373,7 +4294,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "1d 23h",
+      "expires": "1d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3408,7 +4329,7 @@ window.MSF_OFFERS = {
       "price": 99.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "3d 23h",
+      "expires": "3d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3431,7 +4352,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "3d 23h",
+      "expires": "3d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3470,7 +4391,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "3d 23h",
+      "expires": "3d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3509,7 +4430,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "3d 23h",
+      "expires": "3d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3548,7 +4469,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "3d 23h",
+      "expires": "3d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3587,7 +4508,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "3d 23h",
+      "expires": "3d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3626,7 +4547,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3653,7 +4574,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 25,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3676,7 +4597,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3699,7 +4620,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3722,7 +4643,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3745,7 +4666,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -3768,7 +4689,7 @@ window.MSF_OFFERS = {
       "price": 25000,
       "currency": "Strike Points",
       "purchaseLimit": 1,
-      "expires": "3d 23h",
+      "expires": "3d 22h",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -3787,7 +4708,7 @@ window.MSF_OFFERS = {
       "price": 6000,
       "currency": "Strike Points",
       "purchaseLimit": 1,
-      "expires": "3d 23h",
+      "expires": "3d 22h",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -3806,7 +4727,7 @@ window.MSF_OFFERS = {
       "price": 500,
       "currency": "Strike Points",
       "purchaseLimit": 5,
-      "expires": "7d 23h",
+      "expires": "7d 22h",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -3825,7 +4746,7 @@ window.MSF_OFFERS = {
       "price": 6000,
       "currency": "Strike Points",
       "purchaseLimit": 5,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -3844,7 +4765,7 @@ window.MSF_OFFERS = {
       "price": 5000,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -3863,7 +4784,7 @@ window.MSF_OFFERS = {
       "price": 2500,
       "currency": "Strike Points",
       "purchaseLimit": 99,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -3882,7 +4803,7 @@ window.MSF_OFFERS = {
       "price": 1000,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -3909,7 +4830,7 @@ window.MSF_OFFERS = {
       "price": 500,
       "currency": "Strike Points",
       "purchaseLimit": 30,
-      "expires": "21d 23h",
+      "expires": "21d 22h",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -3928,7 +4849,7 @@ window.MSF_OFFERS = {
       "price": 500,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "23h 21m",
+      "expires": "22h 40m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"

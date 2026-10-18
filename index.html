@@ -46,6 +46,8 @@
   .grade.Fair { background: rgba(210,153,34,.18); color: var(--fair); }
   .grade.Poor { background: rgba(248,81,73,.18); color: var(--poor); }
   .grade.none { background: rgba(154,163,178,.18); color: var(--muted); }
+  .chip { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font: inherit; font-size: 14px; cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
   .grade.letter-A { background: rgba(163,113,247,.18); color: var(--excellent); }
   .grade.letter-B { background: rgba(63,185,80,.18); color: var(--good); }
   .grade.letter-C { background: rgba(210,153,34,.18); color: var(--fair); }
@@ -127,6 +129,12 @@
       <label class="inline"><input type="checkbox" id="store-planonly"> Only offers that help my plan</label>
     </div>
     <div id="store-meta" class="muted" style="margin-top:10px"></div>
+  </div>
+  <div class="panel">
+    <h3 style="margin:0 0 6px">Shop by resource</h3>
+    <p class="muted">Pick what you want to buy. Each offer that contains it is listed best first, with the value of that resource alone and the value of the whole offer.</p>
+    <div id="shop-buckets" class="chips" style="display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px"></div>
+    <div id="shop-list"></div>
   </div>
   <div class="panel" id="store-list"></div>
   <div class="panel">

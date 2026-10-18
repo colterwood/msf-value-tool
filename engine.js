@@ -12,6 +12,7 @@
  *       unitPerUsd: 1,                // how many units one US dollar buys (1 for USD)
  *       fxToUsd: { USD: 1, CAD: 0.71 }, // US dollars per unit of each price currency
  *       grades: [{ min: 1.5, label: "Excellent" }, ...], // by value-per-dollar, descending
+ *       valueMultipliers: { orb: 0.2 },  // generic discount by item category: orbs are lottery tickets
  *       scoring: {                    // msfwar-style 0-100 score (optional)
  *         typicalScore: 70, scorePerRatio: 40, maxScore: 100, minScore: 0,
  *         minObservations: 5,         // baselines with fewer msfwar observations are not scored
@@ -30,7 +31,13 @@
  *
  * Offer shape (see data/offers.js and README):
  *   { name, price, currency, purchaseLimit, expires, source, notes,
- *     contents: [{ item: "Gold", qty: 500000 }, { key: "shard:iron man", qty: 50 }] }
+ *     contents: [{ item: "Gold", qty: 500000 }, { key: "shard:iron man", qty: 50 }],
+ *     chain: {                        // optional: one step of a chain offer
+ *       name: "Kestrel", step: 3, of: 4, current: 1,   // current = first step still unbought
+ *       steps: [{ step: 1, name, price, currency, contents }, ...]  // every step of the chain
+ *     } }
+ *   A step cannot be bought before the steps ahead of it, so a step beyond `current` is ranked
+ *   and graded on the whole path (steps current..step together): see result.chain.
  *
  * Roster shape (see data/roster.js):
  *   { characters: { "Iron Man": { stars: 7, redStars: 5, gearTier: 17 } } }
@@ -266,6 +273,98 @@
     return { multiplier: multiplier, notes: notes, note: notes.length ? notes.join('; ') : null, resource: rr };
   }
 
+  var DEFAULT_VALUE_MULTIPLIERS = { orb: 0.2 };
+
+  /** Generic discount for an item's category (orbs count a fraction of their face value). */
+  function valueMultiplier(item, meta) {
+    var m = Object.assign({}, DEFAULT_VALUE_MULTIPLIERS, (meta && meta.valueMultipliers) || {});
+    var v = item && item.category != null ? Number(m[item.category]) : NaN;
+    return isNaN(v) ? 1 : v;
+  }
+
+  var SHOP_BUCKETS = [
+    { key: 'gold', label: 'Gold' },
+    { key: 'training', label: 'Training materials' },
+    { key: 'character', label: 'Character upgrades' },
+    { key: 'ability', label: 'Ability materials' },
+    { key: 'points', label: 'Event points' },
+    { key: 'iso', label: 'ISO-8' },
+    { key: 'gear', label: 'Gear' },
+    { key: 'orbs', label: 'Orbs' },
+    { key: 'other', label: 'Everything else' }
+  ];
+
+  /** Which shopping bucket an item belongs to. Character-bound items of any kind are character upgrades. */
+  function shopBucket(item, key) {
+    if (!item) return 'other';
+    if (key === 'gold' || normalizeKey(item.name) === 'gold') return 'gold';
+    if (item.category === 'shard' || item.category === 'promotion') return 'character';
+    if (item.category === 'ability') return item.character ? 'character' : 'ability';
+    if (item.category === 'training') return 'training';
+    if (item.category === 'points') return 'points';
+    if (item.category === 'iso8') return 'iso';
+    if (item.category === 'gear') return 'gear';
+    if (item.category === 'orb') return 'orbs';
+    return 'other';
+  }
+
+  /**
+   * Shopping view: every offer that contains something in `bucket`, with two readings:
+   *   bucketRatio  what the bucket's items in the offer are worth divided by the whole price
+   *                (the value you get for that resource alone, as if you bought the offer for it)
+   *   wholeRatio   the whole offer's value per US dollar (r.perDollar, personal when personalized)
+   * Each bucket item also carries units per US dollar and its ratio to msfwar's typical, so gold
+   * can be read as "2.7M gold per US$, 3.1x typical". Event points have no value but do have
+   * units per dollar. Rows sort by bucketRatio, then by units per dollar; rows without a valued
+   * bucket item sort last. `results` come from rankOffers().
+   */
+  function shopBy(results, table, bucket, options) {
+    options = options || {};
+    var meta = (isTable(table) && table.meta) || {};
+    var rows = [];
+    (results || []).forEach(function (r) {
+      if (!r || !(r.priceUsd > 0)) return;
+      var items = [];
+      var valueUsd = 0, personalUsd = 0, valued = 0;
+      r.lines.forEach(function (l) {
+        if (!l.key) return;
+        var item = table.items[l.key];
+        if (!item || shopBucket(item, l.key) !== bucket) return;
+        var perUsd = l.qty > 0 ? l.qty / r.priceUsd : null;
+        var typical = item.observed && item.observed.perUsd != null ? Number(item.observed.perUsd) : null;
+        var v = l.value == null ? null : toUsd(l.value, meta);
+        var pv = l.personalValue == null ? null : toUsd(l.personalValue, meta);
+        if (v != null) { valueUsd += v; personalUsd += (pv == null ? v : pv); valued += 1; }
+        items.push({
+          item: l.item, key: l.key, qty: l.qty, perUsd: perUsd, typicalPerUsd: typical,
+          vsTypical: v != null ? v / r.priceUsd : (perUsd != null && typical ? perUsd / typical : null),
+          valueUsd: v, personalValueUsd: pv, multiplier: l.multiplier, note: l.note || null,
+          excluded: !!l.excluded, thin: !!l.thin
+        });
+      });
+      if (!items.length) return;
+      var useUsd = r.personalized ? personalUsd : valueUsd;
+      rows.push({
+        result: r,
+        name: r.name, price: r.price, currency: r.currency, priceUsd: r.priceUsd,
+        items: items,
+        bucketValueUsd: valued ? useUsd : null,
+        bucketRatio: valued ? useUsd / r.priceUsd : null,
+        wholeRatio: r.personalized ? r.personalPerDollar : r.perDollar,
+        grade: r.grade,
+        complete: r.complete,
+        helpsPlan: r.helpsPlan
+      });
+    });
+    rows.sort(function (a, b) {
+      if ((a.bucketRatio == null) !== (b.bucketRatio == null)) return a.bucketRatio == null ? 1 : -1;
+      if (a.bucketRatio != null && a.bucketRatio !== b.bucketRatio) return b.bucketRatio - a.bucketRatio;
+      var ap = a.items[0].perUsd || 0, bp = b.items[0].perUsd || 0;
+      return bp - ap;
+    });
+    return rows;
+  }
+
   function joinNotes(a, b) {
     return [a, b].filter(Boolean).join('; ') || null;
   }
@@ -435,11 +534,13 @@
         lines.push({ item: name, key: resolved.key, qty: qty, unitValue: null, multiplier: pm.multiplier, value: null, personalValue: null, thin: true, rawValue: uv * qty, resource: pm.resource ? pm.resource.status : null, note: joinNotes(problem, pm.note) });
         return;
       }
-      var value = uv * qty;
+      var cm = valueMultiplier(resolved.item, meta);
+      var value = uv * qty * cm;
       var personalValue = value * pm.multiplier;
       totalUnits += value;
       personalTotalUnits += personalValue;
       valuedLines += 1;
+      if (cm !== 1) pm.note = joinNotes(pm.note, resolved.item.category + ' items count ' + Math.round(cm * 100) + '% of face value');
       lines.push({
         item: name,
         key: resolved.key,
@@ -451,6 +552,8 @@
         scoringCategory: scoringCategory(resolved.item, resolved.key),
         earlyEstimate: !!(resolved.item.observed && resolved.item.observed.earlyEstimate),
         resource: pm.resource ? pm.resource.status : null,
+        categoryMultiplier: cm,
+        bucket: shopBucket(resolved.item, resolved.key),
         note: pm.note
       });
     });
@@ -461,7 +564,34 @@
     var personalUsd = toUsd(personalTotalUnits, meta);
     var perDollar = priceUsd && valuedLines ? totalUsd / priceUsd : null;
     var personalPerDollar = priceUsd && valuedLines ? personalUsd / priceUsd : null;
+
+    // Chain offers: the steps before this one (from the first unbought step) must be bought first.
+    var chainInfo = null;
+    var ch = offer && offer.chain;
+    if (ch && ch.steps && ch.steps.length) {
+      var stepNo = Number(ch.step) || 1;
+      var current = Number(ch.current) || 1;
+      var requires = ch.steps.filter(function (st) { var n = Number(st.step); return n >= current && n < stepNo; });
+      var cumPrice = priceUsd || 0, cumUsd = totalUsd, cumPersonal = personalUsd, cumValued = valuedLines;
+      var path = requires.map(function (st) {
+        var sr = valueOffer({ name: st.name, price: st.price, currency: st.currency, contents: st.contents }, table, roster, Object.assign({}, options, { index: index }));
+        cumPrice += sr.priceUsd || 0;
+        cumUsd += sr.totalUsd;
+        cumPersonal += sr.personalUsd;
+        cumValued += sr.valuedLines;
+        if (!sr.complete) complete = false;
+        return { step: Number(st.step), name: st.name, price: st.price, currency: st.currency, priceUsd: sr.priceUsd, totalUsd: sr.totalUsd, personalUsd: sr.personalUsd, perDollar: sr.perDollar, complete: sr.complete };
+      });
+      chainInfo = {
+        name: ch.name || null, step: stepNo, of: Number(ch.of) || ch.steps.length, current: current,
+        requires: path,
+        cumulativePriceUsd: cumPrice, cumulativeUsd: cumUsd, cumulativePersonalUsd: cumPersonal,
+        cumulativePerDollar: cumPrice > 0 && cumValued ? cumUsd / cumPrice : null,
+        cumulativePersonalPerDollar: cumPrice > 0 && cumValued ? cumPersonal / cumPrice : null
+      };
+    }
     var effective = personalize ? personalPerDollar : perDollar;
+    if (chainInfo && chainInfo.requires.length) effective = personalize ? chainInfo.cumulativePersonalPerDollar : chainInfo.cumulativePerDollar;
     // Does this offer give the plan anything? null when nothing in it could be judged.
     var helpsPlan = null;
     if (personalize && planLines > 0) helpsPlan = planUseful > 0;
@@ -496,6 +626,8 @@
       perDollar: perDollar,
       personalPerDollar: personalPerDollar,
       grade: gradeFor(effective, options.grades || meta.grades),
+      rankRatio: effective,
+      chain: chainInfo,
       score: generic.score,
       letter: generic.letter,
       personalScore: personal.score,
@@ -514,7 +646,7 @@
     };
   }
 
-  /** Value every offer and sort best first. Score (when the table has one) beats ratio; incomplete offers sort last. */
+  /** Value every offer and sort best value per dollar first (a chain step by its whole path); incomplete offers sort last. */
   function rankOffers(offers, table, roster, options) {
     options = options || {};
     var index = options.index || buildIndex(table);
@@ -524,10 +656,7 @@
       return r;
     });
     function sortKey(r) {
-      var s = r.personalized ? r.personalScore : r.score;
-      if (s != null) return s;
-      var v = r.personalized ? r.personalPerDollar : r.perDollar;
-      return v;
+      return r.rankRatio;
     }
     results.sort(function (a, b) {
       var av = sortKey(a);
@@ -630,6 +759,11 @@
     priceToUsd: priceToUsd,
     priceToUsdDetail: priceToUsdDetail,
     bestPrices: bestPrices,
+    DEFAULT_VALUE_MULTIPLIERS: DEFAULT_VALUE_MULTIPLIERS,
+    valueMultiplier: valueMultiplier,
+    SHOP_BUCKETS: SHOP_BUCKETS,
+    shopBucket: shopBucket,
+    shopBy: shopBy,
     scoringCategory: scoringCategory,
     scoreLines: scoreLines,
     valueOffer: valueOffer,

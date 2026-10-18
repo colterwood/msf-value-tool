@@ -62,8 +62,7 @@
       return step();
     }
 
-    function readCards() {
-      var parseItems = function (wrap) {
+    var parseItems = function (wrap) {
         return all('.item-container', wrap).map(function (ic) {
           var count = txt(ic.querySelector('.item-count'));
           var kids = all(':scope > div', ic).filter(function (ch) { return !ch.classList.contains('item-count') && txt(ch); });
@@ -73,13 +72,50 @@
           return { name: raw.replace(/\s*Web Bonus\s*$/i, '').trim(), count: count, webBonus: webBonus };
         });
       };
-      var priceOf = function (el) {
-        var btn = el.querySelector('.purchase-btn button, button.real-cost-button, button.item-cost-button') || el.querySelector('button');
-        if (!btn) return null;
-        var cost = btn.querySelector('.purchase-button-cost') || btn;
-        var img = cost.querySelector('img');
-        return { text: txt(cost), costCurrency: img ? (img.getAttribute('alt') || 'icon') : 'fiat' };
-      };
+    var priceOf = function (el) {
+      var btn = el.querySelector('.purchase-btn button, button.real-cost-button, button.item-cost-button') || el.querySelector('button');
+      if (!btn) return null;
+      var cost = btn.querySelector('.purchase-button-cost') || btn;
+      var img = cost.querySelector('img');
+      return { text: txt(cost), costCurrency: img ? (img.getAttribute('alt') || 'icon') : 'fiat' };
+    };
+
+    // Chain cards carry a step selector (1 2 3 4). Selecting a step previews that step's title,
+    // price and contents in the card, so every level can be read. Only the step numbers are
+    // clicked, never the purchase button; the originally selected step is restored afterwards.
+    function readChains() {
+      var cards = all('.offer-card.daisy-chain').filter(function (c) { return c.querySelectorAll('.chain-step').length > 1; });
+      var ci = 0;
+      function nextCard() {
+        if (ci >= cards.length) return Promise.resolve();
+        var card = cards[ci++];
+        var steps = all('.chain-step', card);
+        var originally = steps.findIndex(function (st) { var inner = st.querySelector('.step'); return inner && !/\bdeselected\b/.test(inner.className); });
+        if (originally < 0) originally = 0;
+        var read = [];
+        var si = 0;
+        function select(i) {
+          var target = steps[i].querySelector('.step-inner') || steps[i].querySelector('.step') || steps[i];
+          target.click();
+          return sleep(600);
+        }
+        function nextStep() {
+          if (si >= steps.length) {
+            return select(originally).then(function () { card.__msfChain = { current: originally + 1, steps: read }; return nextCard(); });
+          }
+          var i = si++;
+          return select(i).then(function () {
+            read.push({ step: i + 1, title: txt(card.querySelector('p.title, .offer-info p, h1.title')) || txt(card.querySelector('p')), price: priceOf(card), items: parseItems(card), limit: txt(card.querySelector('.purchase-limit')) });
+            return nextStep();
+          });
+        }
+        line.textContent = 'MSF Store Value: reading chain offer ' + ci + ' of ' + cards.length + ' (' + steps.length + ' steps).';
+        return nextStep();
+      }
+      return nextCard();
+    }
+
+    function readCards() {
       var h2 = '', h3 = '';
       var offers = [];
       all('h2, h3, .offer-card').forEach(function (el) {
@@ -93,6 +129,8 @@
         var labels = all('.labels-wrapper > *, .offer-tag, .pass-label-wrapper', el).filter(function (e) { return !e.classList.contains('timer'); }).map(txt).filter(Boolean);
         offers.push({
           section: h2, sub: h3,
+          chainSteps: el.__msfChain ? el.__msfChain.steps : undefined,
+          chainCurrent: el.__msfChain ? el.__msfChain.current : undefined,
           title: txt(el.querySelector('p.title, .offer-info p, h1.title')) || txt(el.querySelector('p')),
           description: txt(el.querySelector('.description')),
           timer: txt(el.querySelector('.timer .time')),
@@ -121,7 +159,7 @@
       };
     }
 
-    return render().then(function () {
+    return render().then(readChains).then(function () {
       var raw = readCards();
       var data = normalize(raw);
       var json = JSON.stringify(data, null, 1);
@@ -174,34 +212,62 @@
     };
     var offers = [];
     var seen = {};
+    var parseContents = function (items, notes) {
+      var contents = [];
+      (items || []).forEach(function (it) {
+        var nm = String(it.name || '').trim();
+        var more = nm.match(/^\+\s*(\d+)\s*More/i);
+        if (more || nm.charAt(0) === '+') {
+          notes.push(more ? more[1] + ' more item(s) not shown on the card' : 'more items not shown on the card');
+          return;
+        }
+        if (!nm) {
+          if (it.count) notes.push('item with no name (qty ' + it.count + ')');
+          return;
+        }
+        var qty = parseCount(it.count);
+        var row = { item: nm, qty: qty };
+        if (it.webBonus) row.webBonus = true;
+        if (qty == null) notes.push('qty unreadable for ' + nm);
+        contents.push(row);
+      });
+      return contents;
+    };
     (raw.offers || []).forEach(function (o) {
       if (o.section === 'Power Cores' || o.section === 'Ultra Cores') return;
+      var section = o.section + (o.sub ? ' / ' + o.sub : '');
+      if (o.chainSteps && o.chainSteps.length > 1) {
+        var baseName = String(o.title || '').replace(/\s*\(\d+\s*\/\s*\d+\)\s*$/, '').trim() || 'Chain';
+        var steps = o.chainSteps.map(function (st) {
+          var pp = parsePrice(st.price);
+          var notes = [];
+          return { step: st.step, name: String(st.title || '').replace(/\s*\(\d+\s*\/\s*\d+\)\s*$/, '').trim() || (baseName + ' step ' + st.step), price: pp.price, currency: pp.currency, contents: parseContents(st.items, notes), notes: notes, limit: st.limit };
+        });
+        var current = Number(o.chainCurrent) || 1;
+        steps.forEach(function (st) {
+          var entry = {
+            name: st.name + ' (step ' + st.step + ' of ' + steps.length + ')',
+            price: st.price, currency: st.currency,
+            purchaseLimit: parseLimit(st.limit), expires: o.timer || null,
+            section: section, sections: [section], contents: st.contents,
+            chain: { name: baseName, step: st.step, of: steps.length, current: current,
+              steps: steps.map(function (x) { return { step: x.step, name: x.name, price: x.price, currency: x.currency, contents: x.contents }; }) }
+          };
+          if (st.step < current) entry.notes = 'already bought: step ' + st.step + ' of this chain';
+          else if (st.notes.length) entry.notes = st.notes.join('; ');
+          if (o.description && st.step === current) entry.description = o.description;
+          offers.push(entry);
+        });
+        return;
+      }
       (o.variants || []).forEach(function (v, vi) {
         if (!v.price && !(v.items && v.items.length)) return;
         var pp = parsePrice(v.price);
-        var contents = [];
         var notes = [];
-        (v.items || []).forEach(function (it) {
-          var nm = String(it.name || '').trim();
-          var more = nm.match(/^\+\s*(\d+)\s*More/i);
-          if (more || nm.charAt(0) === '+') {
-            notes.push(more ? more[1] + ' more item(s) not shown on the card' : 'more items not shown on the card');
-            return;
-          }
-          if (!nm) {
-            if (it.count) notes.push('item with no name (qty ' + it.count + ')');
-            return;
-          }
-          var qty = parseCount(it.count);
-          var row = { item: nm, qty: qty };
-          if (it.webBonus) row.webBonus = true;
-          if (qty == null) notes.push('qty unreadable for ' + nm);
-          contents.push(row);
-        });
+        var contents = parseContents(v.items, notes);
         if (pp.note) notes.push(pp.note);
         var name = o.title || '(untitled)';
         if ((o.variants || []).length > 1) name += ' (option ' + (vi + 1) + ')';
-        var section = o.section + (o.sub ? ' / ' + o.sub : '');
         var sig = [o.title, pp.price, pp.currency, JSON.stringify(contents.map(function (c) { return [c.item, c.qty]; }))].join('|');
         if (seen[sig]) { seen[sig].sections.push(section); return; }
         var entry = {

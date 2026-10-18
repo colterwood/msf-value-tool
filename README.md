@@ -8,10 +8,14 @@ It does two things:
 
 - **Value an offer you type in.** Enter the price and the contents; it returns the value per US
   dollar with a grade, an msfwar-style letter, and a per-item breakdown.
-- **Rank the offers live in your store.** A desktop Claude session reads your logged-in web store
-  through Chrome into `data/offers.js`; the "My store" tab ranks them best first, by the msfwar
-  grade or, with "Personalize" on, by what the offer is worth to *your* plan: the characters you
-  build and the resources you are short of.
+- **Rank the offers live in your store.** Your logged-in web store is read into
+  `data/offers.js` (bookmarklet or a desktop Claude session); the "My store" tab ranks the
+  offers best first and, with "Personalize" on, by what each is worth to *your* plan: the
+  characters you build and the resources you are short of.
+- **Shop by resource.** Pick gold, training materials, character upgrades, ability materials,
+  event points, ISO-8, gear, orbs or everything else, and see every offer that contains it with
+  two numbers: what that resource alone is worth against the whole price, and what the whole
+  offer is worth.
 
 Everything runs in your browser from a folder on your machine. No server, no account, no install.
 
@@ -114,6 +118,14 @@ This follows the msfwar Spender's Guide as it described itself on 17 October 202
 
   The bands were set on 18 October 2026 so that the day's 50 fully valued offers spread
   2 / 7 / 11 / 13 / 17 across A to F.
+- **Orbs are lottery tickets.** Orb and orb-fragment items count 20% of their face value at
+  msfwar's averages (`meta.valueMultipliers`, editable), so a bundle cannot look good on the
+  strength of a gamble.
+- **Chain offers.** A chain's later steps cannot be bought before the earlier ones. The
+  bookmarklet reads every step of each chain (the card's step selector previews them), and each
+  step becomes its own offer with the chain attached. A step beyond the first unbought one is
+  ranked and graded on the whole path to it, steps and prices added together, and the breakdown
+  shows the path and the step on its own. Steps already bought are marked.
 - **Per item, "vs typical".** The breakdown also shows each item's own ratio: the units per
   dollar this offer gives divided by that item's msfwar average, counting the whole price. It
   tells you which part of a bundle is the bargain. msfwar's combined category score built from

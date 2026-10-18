@@ -16,7 +16,8 @@ const table = {
       { min: 1, label: 'Fair' },
       { min: 0, label: 'Poor' }
     ],
-    shardRules: { maxedMultiplier: 0, maxStars: 7 }
+    shardRules: { maxedMultiplier: 0, maxStars: 7 },
+    valueMultipliers: { orb: 1 }   // this fixture prices orbs at face value; the lottery discount is tested in shop.test.js
   },
   items: {
     'gold': { name: 'Gold', category: 'currency', per: 100000, value: 1, aliases: ['Gold Coins'] },
