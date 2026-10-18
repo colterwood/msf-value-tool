@@ -39,6 +39,23 @@ Everything runs in your browser from a folder on your machine. No server, no acc
    learn them. Edits are kept in the browser; "Export JSON" writes the merged table so you can
    paste it into `data/values.js` as the new baseline.
 
+## Refreshing your store yourself
+
+The page cannot read the store on its own: offers exist only in your signed-in browser. The My
+store tab has a three-click refresh that needs no Claude session:
+
+1. Once, drag the "MSF: grab my offers" link from the My store tab to your bookmarks bar. It is a
+   bookmarklet built from `pull.js`.
+2. Open https://marvelstrikeforce.com/en/store signed in and click the bookmark. It scrolls every
+   offer card into view (the store renders them lazily, so this takes about two minutes for 150
+   cards; keep the tab in front, cards only render while visible), reads them, and copies the
+   offers as JSON, also showing them in a box on the page with a Copy button.
+3. Back on the My store tab, paste into the box and click "Import pasted offers". The ranking
+   updates at once and the browser remembers it. To keep it in the repo, paste the same JSON into
+   `data/offers.js`, or let a Claude session run `/msf-store-pull`.
+
+The bookmarklet only reads the page. It never clicks Buy or touches a payment form.
+
 ## Pulling your store through Chrome
 
 The pull needs a Claude Code session running on your computer with the Chrome integration,
@@ -90,7 +107,12 @@ This follows the msfwar Spender's Guide as it described itself on 17 October 202
   Offers whose card hides part of its contents behind "+N More" carry a note and rank after
   complete ones.
 - **Value per dollar** is also shown: the sum of counted items' dollar values divided by the
-  US-dollar price, with the plain Excellent/Good/Fair/Poor label from `meta.grades`.
+  US-dollar price, with the plain Excellent/Good/Fair/Poor label from `meta.grades`. It answers
+  a different question from the score. The score asks "is each item cheaper here than it usually
+  is?", item by item, capped at 100 and averaged by category; the ratio asks "how much total
+  value per dollar?". A bundle of 200M gold at 4.5× typical plus two character shard lots at
+  0.9× typical scores B · 89 (gold 100, shards 66) while its ratio is 6.3×; a plain gold pack at
+  1.9× typical scores A · 100. Use the "Sort by" control on the My store tab to rank by either.
 - **Thin baselines.** An item whose msfwar average rests on fewer than
   `meta.scoring.minObservations` offer observations (5), or that the table flags as suspect
   (for example shards at thousands per dollar, which means msfwar counted a free claim), is

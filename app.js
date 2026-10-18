@@ -11,7 +11,8 @@
     personal: 'msfv.personalize',
     draft: 'msfv.offerDraft',
     plan: 'msfv.plan',
-    planOnly: 'msfv.planOnly'
+    planOnly: 'msfv.planOnly',
+    storeSort: 'msfv.storeSort'
   };
   var CATEGORIES = ['currency', 'shard', 'orb', 'gear', 'training', 'ability', 'iso8', 'other'];
 
@@ -68,7 +69,7 @@
     if (!src) return null;
     var offers = Array.isArray(src) ? src : src.offers;
     if (!Array.isArray(offers) || offers.length === 0) return null;
-    return { updated: src.updated || null, source: src.source || null, offers: offers };
+    return { updated: src.updated || null, source: src.source || null, account: src.account || null, priceCurrency: src.priceCurrency || null, offers: offers };
   }
   function normalizeRoster(src) {
     if (!src || typeof src !== 'object' || !src.characters || typeof src.characters !== 'object') return null;
@@ -106,6 +107,7 @@
     roster: pickSnapshot(normalizeRoster(window.MSF_ROSTER), load(LS.roster, null)),
     plan: pickSnapshot(normalizePlan(window.MSF_PERSONAL), load(LS.plan, null)),
     planOnly: load(LS.planOnly, false),
+    storeSort: load(LS.storeSort, 'score'),
     personalize: load(LS.personal, true),
     draft: load(LS.draft, null) || { name: '', price: '', currency: 'USD', rows: [{ item: '', qty: '' }] },
     filter: '',
@@ -255,6 +257,11 @@
     renderOfferResult();
     renderStore();
   });
+  $('store-sort').addEventListener('change', function () {
+    state.storeSort = $('store-sort').value === 'ratio' ? 'ratio' : 'score';
+    save(LS.storeSort, state.storeSort);
+    renderStore();
+  });
   $('store-planonly').addEventListener('change', function () {
     state.planOnly = $('store-planonly').checked;
     save(LS.planOnly, state.planOnly);
@@ -364,8 +371,20 @@
       return;
     }
     var o = state.offers;
-    meta.textContent = o.offers.length + ' offers' + (o.source ? ' from ' + o.source : '') + (o.updated ? ', read ' + o.updated : '') + (o.origin === 'file' ? ' (data/offers.js)' : ' (pasted)');
+    meta.textContent = o.offers.length + ' offers' + (o.source ? ' from ' + o.source : '') + (o.account ? ' for ' + o.account : '') + (o.updated ? ', read ' + String(o.updated).slice(0, 16).replace('T', ' ') + ' UTC' : '') + (o.origin === 'file' ? ' (data/offers.js)' : ' (pasted)');
     var ranked = E.rankOffers(o.offers, table(), rosterForUse(), valueOpts());
+    $('store-sort').value = state.storeSort;
+    if (state.storeSort === 'ratio') {
+      ranked.sort(function (a, b) {
+        var av = a.personalized ? a.personalPerDollar : a.perDollar;
+        var bv = b.personalized ? b.personalPerDollar : b.perDollar;
+        if (a.complete !== b.complete) return a.complete ? -1 : 1;
+        if (av == null && bv == null) return 0;
+        if (av == null) return 1;
+        if (bv == null) return -1;
+        return bv - av;
+      });
+    }
     if (state.planOnly && state.personalize && state.plan) ranked = ranked.filter(function (r) { return r.helpsPlan !== false; });
     if (state.planOnly && state.personalize && state.plan) meta.textContent += ' · showing ' + ranked.length + ' that help your plan';
     var rows = ranked.map(function (r, i) {
@@ -435,6 +454,17 @@
     renderStatus();
     renderStore();
   });
+
+  // ---------- Refresh from the store (bookmarklet) ----------
+  (function () {
+    var a = $('grab-bookmarklet');
+    if (!a || !window.MSFPull) return;
+    a.href = window.MSFPull.bookmarkletHref();
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      alert('Drag this link to your bookmarks bar instead of clicking it here. Then open your store on marvelstrikeforce.com and click the bookmark there.');
+    });
+  })();
 
   // ---------- Value table ----------
   function renderTable() {

@@ -28,79 +28,18 @@
  *   }
  */
 window.MSF_OFFERS = {
-  "updated": "2026-10-18T19:38:24.883Z",
+  "updated": "2026-10-18T21:38:35.866Z",
   "source": "web-store",
-  "account": "CZARFACE (level 105)",
+  "account": "CZARFACE level 105",
   "priceCurrency": "CAD",
-  "note": "Read from the logged-in web store (marvelstrikeforce.com/en/store), every section. Cards that show '+N More' hide part of their contents behind the Buy flow; those offers carry a `notes` field and grade as incomplete. Power Core and Ultra Core packs were read from their own cards. Prices are CA$ as shown; the value table converts with meta.fxToUsd.",
+  "note": "Read from the logged-in web store with the MSF Store Value bookmarklet. Cards that show \"+N More\" hide part of their contents; those offers carry a notes field and grade as incomplete.",
   "offers": [
-    {
-      "name": "Extra Energy Rush",
-      "price": 3.99,
-      "currency": "CAD",
-      "purchaseLimit": 3,
-      "expires": "3d 1h",
-      "section": "Buy Again",
-      "sections": [
-        "Buy Again",
-        "Offers / GENERAL"
-      ],
-      "contents": [
-        {
-          "item": "Campaign Energy",
-          "qty": 200
-        },
-        {
-          "item": "Premium Orb Fragments",
-          "qty": 4000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 300,
-          "webBonus": true
-        }
-      ],
-      "description": "Boost your power with extra energy and stack up gold to dominate the campaign!"
-    },
-    {
-      "name": "ISO Fest: T3 Level 1 Ions",
-      "price": 3.99,
-      "currency": "CAD",
-      "purchaseLimit": 92,
-      "expires": "1h 21m",
-      "section": "Buy Again",
-      "sections": [
-        "Buy Again",
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 6000000
-        },
-        {
-          "item": "T3 Level 1 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "Basic T3 Iso-8 Orb Fragments",
-          "qty": 30000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 300,
-          "webBonus": true
-        }
-      ],
-      "description": "Get a supply of T3 Level 1 Ions, also gain progress in the ISO Fest Milestone!"
-    },
     {
       "name": "Golden Boost",
       "price": 3.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "4d",
+      "expires": "3d 22h",
       "section": "Buy Again",
       "sections": [
         "Buy Again",
@@ -132,44 +71,39 @@ window.MSF_OFFERS = {
       "description": "Boost the ability and capability of your roster with this limited time offer!"
     },
     {
-      "name": "Override Orb",
-      "price": 49.99,
+      "name": "Extra Energy Rush",
+      "price": 3.99,
       "currency": "CAD",
-      "purchaseLimit": 8,
-      "expires": "1h 21m",
+      "purchaseLimit": 3,
+      "expires": "2d 23h",
       "section": "Buy Again",
       "sections": [
         "Buy Again",
-        "Offers / NEW CHARACTERS"
+        "Offers / GENERAL"
       ],
       "contents": [
         {
-          "item": "Override Orb Fragments",
-          "qty": 2000
+          "item": "Campaign Energy",
+          "qty": 200
         },
         {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 111000000
-        },
-        {
-          "item": "Mega Gold Orb Fragments",
-          "qty": 2000,
-          "webBonus": true
+          "item": "Premium Orb Fragments",
+          "qty": 4000
         },
         {
           "item": "Strike Points",
-          "qty": 4000,
+          "qty": 300,
           "webBonus": true
         }
       ],
-      "description": "Each Override Orb contains up to 410 Jocasta shards with 50 shards guaranteed! She sustains team with Repair, heals Tech allies, and calls coordinated attacks!"
+      "description": "Boost your power with extra energy and stack up gold to dominate the campaign!"
     },
     {
       "name": "Raid Warzone: Mega Pack",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "Buy Again",
       "sections": [
         "Buy Again",
@@ -193,106 +127,11 @@ window.MSF_OFFERS = {
       "description": "Get ahead in Raid Warzone Milestone and propel your Alliance to Gold Orb Fragments!"
     },
     {
-      "name": "Iron Vengeance: Iron Raiders",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 2,
-      "expires": "1h 21m",
-      "section": "Buy Again",
-      "sections": [
-        "Buy Again",
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Iron Raiders Mega Orb Fragments",
-          "qty": 2000
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Open this Orb for a chance to get 810 Shards for Iron Raiders, plus a bunch of points toward the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Amazing Avengers",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 2,
-      "expires": "1h 21m",
-      "section": "Buy Again",
-      "sections": [
-        "Buy Again",
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Amazing Avengers Mega Orb Fragments",
-          "qty": 2000
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Open this Orb for a chance to get 810 Shards for Amazing Avengers, plus a bunch of points toward the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Ultimate Pack",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 50,
-      "expires": "1h 21m",
-      "section": "Buy Again",
-      "sections": [
-        "Buy Again",
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 450000000
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 22500000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get ahead in the Iron Vengeance Leaderboard to secure 5-Diamond for Spider-Woman (Julia), Rachel Cole-Alves, and Blade (Mighty)!"
-    },
-    {
       "name": "Premium Plus Chapter Battle Pass Ticket Pack",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 2,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "battle pass and s.t.r.i.k.e pass offers",
       "sections": [
         "battle pass and s.t.r.i.k.e pass offers"
@@ -315,44 +154,11 @@ window.MSF_OFFERS = {
       "description": "Get bonus Shop Credits when you purchase 1 Premium Plus Chapter Battle Pass Tickets with this Web Exclusive bundle! Tickets can be redeemed in-game to activate any single Premium Plus Chapter Battle Pass. Valid only for Chapter Battle Passes."
     },
     {
-      "name": "(1/6) Boot Sequence",
-      "price": 39.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Chain Offers",
-      "sections": [
-        "Chain Offers"
-      ],
-      "contents": [
-        {
-          "item": "Jocasta",
-          "qty": 45
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 76000000
-        },
-        {
-          "item": "Mega Gold Orb Fragments",
-          "qty": 2000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 3000,
-          "webBonus": true
-        }
-      ],
-      "description": "A special launch offer has appeared for you! Recruit Jocasta, and grab points toward the Iron Vengeance Milestone event!",
-      "chain": true
-    },
-    {
       "name": "Kestrel Starter",
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -376,7 +182,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -396,11 +202,11 @@ window.MSF_OFFERS = {
       "chain": true
     },
     {
-      "name": "Amazing Avengers Surge (option 1)",
-      "price": 69.99,
+      "name": "Iron Raider Combo (option 1)",
+      "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": null,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "dual offers",
       "sections": [
         "dual offers"
@@ -408,29 +214,29 @@ window.MSF_OFFERS = {
       "contents": [
         {
           "item": "Gold",
-          "qty": 200000000
+          "qty": 77000000
         },
         {
-          "item": "Spider-Woman (Julia)",
-          "qty": 200
+          "item": "Iron Monger",
+          "qty": 100
         },
         {
-          "item": "Rachel Cole-Alves",
-          "qty": 200
+          "item": "Ulysses Klaue",
+          "qty": 100
         },
         {
           "item": "Strike Points",
-          "qty": 5000,
+          "qty": 3000,
           "webBonus": true
         }
       ]
     },
     {
-      "name": "Amazing Avengers Surge (option 2)",
-      "price": 19.99,
+      "name": "Iron Raider Combo (option 2)",
+      "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": null,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "dual offers",
       "sections": [
         "dual offers"
@@ -438,19 +244,19 @@ window.MSF_OFFERS = {
       "contents": [
         {
           "item": "Gold",
-          "qty": 50000000
+          "qty": 15000000
         },
         {
-          "item": "Spider-Woman (Julia)",
-          "qty": 50
+          "item": "Iron Monger",
+          "qty": 25
         },
         {
-          "item": "Rachel Cole-Alves",
-          "qty": 50
+          "item": "Ulysses Klaue",
+          "qty": 25
         },
         {
           "item": "Strike Points",
-          "qty": 1500,
+          "qty": 1000,
           "webBonus": true
         }
       ]
@@ -460,7 +266,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 2,
-      "expires": "4d",
+      "expires": "3d 22h",
       "section": "Offers / FOR NEW PLAYERS",
       "sections": [
         "Offers / FOR NEW PLAYERS"
@@ -499,7 +305,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 2,
-      "expires": "4d",
+      "expires": "3d 22h",
       "section": "Offers / FOR NEW PLAYERS",
       "sections": [
         "Offers / FOR NEW PLAYERS"
@@ -534,38 +340,38 @@ window.MSF_OFFERS = {
       "description": "Get 100 Spider-Man 2099 shards and send enemies to a painful future! Apply negative effects and grant Tangled Web allies Drain, Focus, and Resistance."
     },
     {
-      "name": "MEGA Override Orb",
-      "price": 129.99,
+      "name": "Gear Tier 21: Skill Bundle",
+      "price": 99.99,
       "currency": "CAD",
-      "purchaseLimit": 5,
-      "expires": "1h 21m",
-      "section": "Offers / NEW CHARACTERS",
+      "purchaseLimit": 3,
+      "expires": "23h 21m",
+      "section": "Offers / WEB EXCLUSIVE",
       "sections": [
-        "Offers / NEW CHARACTERS"
+        "Offers / WEB EXCLUSIVE"
       ],
       "contents": [
         {
-          "item": "MEGA Override Orb Fragments",
-          "qty": 2000
+          "item": "Crimson Security Bypass",
+          "qty": 35
         },
         {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
+          "item": "Crimson Remote Access Codes",
+          "qty": 35
         },
         {
           "item": "Strike Points",
-          "qty": 10000,
+          "qty": 8000,
           "webBonus": true
         }
       ],
-      "description": "Open MEGA Override Orb for a guaranteed 4-Yellow-Star Jocasta, with a chance up to 7 Yellow Stars!"
+      "description": "Take your roster to the next level with essential Gear Tier 21. Power up your characters and get ready for Annihilus. Don't wait!"
     },
     {
       "name": "Secret Warrior Diamond",
       "price": 179.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / WEB EXCLUSIVE",
       "sections": [
         "Offers / WEB EXCLUSIVE"
@@ -600,7 +406,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 19h",
+      "expires": "1d 17h",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -635,7 +441,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 19h",
+      "expires": "1d 17h",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -670,7 +476,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 19h",
+      "expires": "1d 17h",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -705,7 +511,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "8h 54m",
+      "expires": "6h 53m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -728,7 +534,7 @@ window.MSF_OFFERS = {
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "8h 54m",
+      "expires": "6h 53m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -751,7 +557,7 @@ window.MSF_OFFERS = {
       "price": 79.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "8h 54m",
+      "expires": "6h 53m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -774,7 +580,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "8h 54m",
+      "expires": "6h 53m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -797,7 +603,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "8h 54m",
+      "expires": "6h 53m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -832,7 +638,7 @@ window.MSF_OFFERS = {
       "price": 79.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "8h 54m",
+      "expires": "6h 53m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -871,7 +677,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "8h 54m",
+      "expires": "6h 53m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -902,7 +708,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "8h 54m",
+      "expires": "6h 53m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -941,7 +747,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "8h 54m",
+      "expires": "6h 53m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -964,7 +770,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "8h 54m",
+      "expires": "6h 53m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -1003,7 +809,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "2d 8h",
+      "expires": "2d 6h",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -1038,7 +844,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1061,7 +867,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1084,7 +890,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1107,7 +913,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1130,7 +936,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1153,7 +959,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1176,7 +982,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1199,7 +1005,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1222,7 +1028,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1245,7 +1051,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1268,7 +1074,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1291,7 +1097,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1314,7 +1120,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1337,7 +1143,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1360,7 +1166,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1383,7 +1189,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1406,7 +1212,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1429,7 +1235,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1452,7 +1258,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1475,7 +1281,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1498,7 +1304,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1533,7 +1339,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1564,7 +1370,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1587,7 +1393,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1610,7 +1416,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1633,7 +1439,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1669,7 +1475,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1697,7 +1503,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -1721,157 +1527,11 @@ window.MSF_OFFERS = {
       "description": "Take your roster to new heights of power by unlocking their potential with this pack of Ability Materials!"
     },
     {
-      "name": "Power Up Your Squad",
-      "price": 59.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Offers / RECOMMENDED",
-      "sections": [
-        "Offers / RECOMMENDED"
-      ],
-      "contents": [
-        {
-          "item": "Silver Surfer (Breaker)",
-          "qty": null
-        },
-        {
-          "item": "Ebony Maw",
-          "qty": null
-        },
-        {
-          "item": "Cull Obsidian",
-          "qty": null
-        },
-        {
-          "item": "Minn-Erva",
-          "qty": null
-        },
-        {
-          "item": "Ronan the Accuser",
-          "qty": null
-        }
-      ],
-      "description": "Start promoting your roster with a special limited time offer today!",
-      "notes": "qty unreadable for Silver Surfer (Breaker); qty unreadable for Ebony Maw; qty unreadable for Cull Obsidian; qty unreadable for Minn-Erva; qty unreadable for Ronan the Accuser; 2 more item(s) not shown on the card"
-    },
-    {
-      "name": "Shadow Conclave Boost Up",
-      "price": 59.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Offers / RECOMMENDED",
-      "sections": [
-        "Offers / RECOMMENDED"
-      ],
-      "contents": [
-        {
-          "item": "Malekith",
-          "qty": null
-        },
-        {
-          "item": "Executioner",
-          "qty": null
-        },
-        {
-          "item": "High Evolutionary",
-          "qty": null
-        },
-        {
-          "item": "Sylvie",
-          "qty": null
-        },
-        {
-          "item": "Thanos",
-          "qty": null
-        }
-      ],
-      "description": "Boost up your Shadow Conclave team's power with this special offer and strengthen your squad!",
-      "notes": "qty unreadable for Malekith; qty unreadable for Executioner; qty unreadable for High Evolutionary; qty unreadable for Sylvie; qty unreadable for Thanos; 2 more item(s) not shown on the card"
-    },
-    {
-      "name": "Shadow Conclave Combo",
-      "price": 39.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Offers / RECOMMENDED",
-      "sections": [
-        "Offers / RECOMMENDED"
-      ],
-      "contents": [
-        {
-          "item": "Malekith",
-          "qty": null
-        },
-        {
-          "item": "Executioner",
-          "qty": null
-        },
-        {
-          "item": "High Evolutionary",
-          "qty": null
-        },
-        {
-          "item": "Sylvie",
-          "qty": null
-        },
-        {
-          "item": "Thanos",
-          "qty": null
-        }
-      ],
-      "description": "Don't miss this chance to power up your Shadow Conclave team!",
-      "notes": "qty unreadable for Malekith; qty unreadable for Executioner; qty unreadable for High Evolutionary; qty unreadable for Sylvie; qty unreadable for Thanos; 2 more item(s) not shown on the card"
-    },
-    {
-      "name": "Symbiote Six Boost Up",
-      "price": 39.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Offers / RECOMMENDED",
-      "sections": [
-        "Offers / RECOMMENDED"
-      ],
-      "contents": [
-        {
-          "item": "Quicksilver (Symbiote)",
-          "qty": null
-        },
-        {
-          "item": "Toxin",
-          "qty": null
-        },
-        {
-          "item": "Riot",
-          "qty": null
-        },
-        {
-          "item": "Venom",
-          "qty": null
-        },
-        {
-          "item": "Gold",
-          "qty": 2040000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 3000,
-          "webBonus": true
-        }
-      ],
-      "description": "Boost up your Symbiote Six team's power with this special offer and strengthen your squad!",
-      "notes": "qty unreadable for Quicksilver (Symbiote); qty unreadable for Toxin; qty unreadable for Riot; qty unreadable for Venom"
-    },
-    {
       "name": "Halloween Haul",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "15d 1h",
+      "expires": "14d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1898,7 +1558,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "15d 1h",
+      "expires": "14d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1921,18 +1581,18 @@ window.MSF_OFFERS = {
       "description": "It's time to Trick or Treat! Add some extra fright to your roster with Shards, Red Stars, and Diamond upgrades!"
     },
     {
-      "name": "GT21 Mutant Calendar",
+      "name": "GT21 Mystic Calendar",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1h 21m",
+      "expires": "1d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
       ],
       "contents": [
         {
-          "item": "GT21 Mutant Calendar",
+          "item": "GT21 Mystic Calendar",
           "qty": null
         },
         {
@@ -1942,14 +1602,14 @@ window.MSF_OFFERS = {
         }
       ],
       "description": "Login daily to claim a cache of valuable Gear Tier 21 Mini-Unique, Crimson Catalyst Parts and Gold!",
-      "notes": "qty unreadable for GT21 Mutant Calendar"
+      "notes": "qty unreadable for GT21 Mystic Calendar"
     },
     {
       "name": "Kestrel (Zombie) Booster",
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1972,7 +1632,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -1995,7 +1655,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2018,7 +1678,7 @@ window.MSF_OFFERS = {
       "price": 3.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2041,7 +1701,7 @@ window.MSF_OFFERS = {
       "price": 3.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2064,7 +1724,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2103,7 +1763,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2130,7 +1790,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2157,7 +1817,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2184,7 +1844,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2211,7 +1871,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2238,7 +1898,7 @@ window.MSF_OFFERS = {
       "price": 49.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2269,137 +1929,11 @@ window.MSF_OFFERS = {
       "notes": "6 more item(s) not shown on the card"
     },
     {
-      "name": "Thena Power Pack",
-      "price": 69.99,
-      "currency": "CAD",
-      "purchaseLimit": 2,
-      "expires": "1h 21m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Crimson Armor Catalyst Part",
-          "qty": 125
-        },
-        {
-          "item": "Crimson Basic Catalyst Part",
-          "qty": 437
-        },
-        {
-          "item": "Crimson Damage Catalyst Part",
-          "qty": 50
-        },
-        {
-          "item": "Crimson Focus Catalyst Part",
-          "qty": 50
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 225
-        }
-      ],
-      "description": "Don't miss this chance to power up your Thena!",
-      "notes": "10 more item(s) not shown on the card"
-    },
-    {
-      "name": "Gilgamesh Power Pack",
-      "price": 69.99,
-      "currency": "CAD",
-      "purchaseLimit": 2,
-      "expires": "1h 21m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Crimson Armor Catalyst Part",
-          "qty": 50
-        },
-        {
-          "item": "Crimson Basic Catalyst Part",
-          "qty": 437
-        },
-        {
-          "item": "Crimson Damage Catalyst Part",
-          "qty": 125
-        },
-        {
-          "item": "Crimson Focus Catalyst Part",
-          "qty": 50
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 225
-        }
-      ],
-      "description": "Don't miss this chance to power up your Gilgamesh!",
-      "notes": "10 more item(s) not shown on the card"
-    },
-    {
-      "name": "Thena Power Pack",
-      "price": 49.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Thena",
-          "qty": 130
-        },
-        {
-          "item": "Gold",
-          "qty": 20000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 4000,
-          "webBonus": true
-        }
-      ],
-      "description": "Don't miss this chance to power up your Thena!"
-    },
-    {
-      "name": "Gilgamesh Power Pack",
-      "price": 69.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Gilgamesh",
-          "qty": 220
-        },
-        {
-          "item": "Gold",
-          "qty": 25000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 5000,
-          "webBonus": true
-        }
-      ],
-      "description": "Don't miss this chance to power up your Gilgamesh!"
-    },
-    {
       "name": "Age of Fear: T3 Ions Bundle",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 1h",
+      "expires": "23h 21m",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2436,7 +1970,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 1h",
+      "expires": "23h 21m",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2464,7 +1998,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "1d 1h",
+      "expires": "23h 21m",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2487,7 +2021,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "1d 1h",
+      "expires": "23h 21m",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2510,7 +2044,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "1d 1h",
+      "expires": "23h 21m",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -2533,7 +2067,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2560,7 +2094,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2587,7 +2121,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 4,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2618,7 +2152,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -2645,1543 +2179,11 @@ window.MSF_OFFERS = {
       "description": "Stock up on Raid Supplies and get ahead in the Raid Warzone Milestone!"
     },
     {
-      "name": "Iron Vengeance: Whiplash",
-      "price": 34.99,
-      "currency": "CAD",
-      "purchaseLimit": 16,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 60000000
-        },
-        {
-          "item": "Whiplash",
-          "qty": 50
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 3000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2500,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Whiplash Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Whiplash",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 2,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Whiplash",
-          "qty": 300
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Whiplash Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Ulysses Klaue",
-      "price": 34.99,
-      "currency": "CAD",
-      "purchaseLimit": 16,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 60000000
-        },
-        {
-          "item": "Ulysses Klaue",
-          "qty": 50
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 3000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2500,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Ulysses Klaue Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Ulysses Klaue",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 2,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Ulysses Klaue",
-          "qty": 300
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Ulysses Klaue Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Iron Monger",
-      "price": 34.99,
-      "currency": "CAD",
-      "purchaseLimit": 16,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 60000000
-        },
-        {
-          "item": "Iron Monger",
-          "qty": 50
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 3000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2500,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Iron Monger Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Iron Monger",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 2,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Iron Monger",
-          "qty": 300
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Iron Monger Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Spider-Woman (Julia)",
-      "price": 34.99,
-      "currency": "CAD",
-      "purchaseLimit": 8,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 60000000
-        },
-        {
-          "item": "Spider-Woman (Julia)",
-          "qty": 100
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 3000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2500,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Spider-Woman (Julia) Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Spider-Woman (Julia)",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Spider-Woman (Julia)",
-          "qty": 500
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Spider-Woman (Julia) Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Rachel Cole-Alves",
-      "price": 34.99,
-      "currency": "CAD",
-      "purchaseLimit": 8,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 60000000
-        },
-        {
-          "item": "Rachel Cole-Alves",
-          "qty": 100
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 3000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2500,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Rachel Cole-Alves Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Rachel Cole-Alves",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Rachel Cole-Alves",
-          "qty": 500
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Rachel Cole-Alves Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Blade (Mighty)",
-      "price": 34.99,
-      "currency": "CAD",
-      "purchaseLimit": 8,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 60000000
-        },
-        {
-          "item": "Blade (Mighty)",
-          "qty": 100
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 3000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2500,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Blade (Mighty) Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Blade (Mighty)",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Blade (Mighty)",
-          "qty": 500
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Blade (Mighty) Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Hulk",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 75000000
-        },
-        {
-          "item": "Hulk",
-          "qty": 810
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 3750000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Hulk Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Spider-Man",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 75000000
-        },
-        {
-          "item": "Spider-Man",
-          "qty": 810
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 3750000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Spider-Man Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Yellowjacket",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 75000000
-        },
-        {
-          "item": "Yellowjacket",
-          "qty": 810
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 3750000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Yellowjacket Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Crossbones",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 75000000
-        },
-        {
-          "item": "Crossbones",
-          "qty": 810
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 3750000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Crossbones Shards to power up this hero and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Crimson Elite Orb",
-      "price": 3.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 4500000
-        },
-        {
-          "item": "Crimson Elite Orb Fragments",
-          "qty": 2000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 300,
-          "webBonus": true
-        }
-      ],
-      "description": "Earn Gear Tier 19 and 20 Mini-Unique, and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: GT21 Mutant",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Crimson Nucleic Infusion",
-          "qty": 105
-        },
-        {
-          "item": "Crimson Biopolymers",
-          "qty": 105
-        },
-        {
-          "item": "Gold",
-          "qty": 10000000
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 1200
-        }
-      ],
-      "description": "Earn Gear Tier 21 Mutant Mini-Unique, and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!",
-      "notes": "7 more item(s) not shown on the card"
-    },
-    {
-      "name": "Iron Vengeance: GT21 Tech",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Crimson Liquid Hydrazine",
-          "qty": 105
-        },
-        {
-          "item": "Crimson Dargonite",
-          "qty": 105
-        },
-        {
-          "item": "Gold",
-          "qty": 10000000
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 1200
-        }
-      ],
-      "description": "Earn Gear Tier 21 Tech Mini-Unique, and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!",
-      "notes": "7 more item(s) not shown on the card"
-    },
-    {
-      "name": "Iron Vengeance: GT21 Bio",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Crimson Hyperphage",
-          "qty": 105
-        },
-        {
-          "item": "Crimson Nebulizer",
-          "qty": 105
-        },
-        {
-          "item": "Gold",
-          "qty": 10000000
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 1200
-        }
-      ],
-      "description": "Earn Gear Tier 21 Bio Mini-Unique, and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!",
-      "notes": "7 more item(s) not shown on the card"
-    },
-    {
-      "name": "Iron Vengeance: GT21 Skill",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Crimson Remote Access Codes",
-          "qty": 105
-        },
-        {
-          "item": "Crimson Security Bypass",
-          "qty": 105
-        },
-        {
-          "item": "Gold",
-          "qty": 10000000
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 1200
-        }
-      ],
-      "description": "Earn Gear Tier 21 Skill Mini-Unique, and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!",
-      "notes": "7 more item(s) not shown on the card"
-    },
-    {
-      "name": "Iron Vengeance: GT21 Mystic",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Crimson Psionic Essence",
-          "qty": 105
-        },
-        {
-          "item": "Crimson Ritual Salts",
-          "qty": 105
-        },
-        {
-          "item": "Gold",
-          "qty": 10000000
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 1200
-        }
-      ],
-      "description": "Earn Gear Tier 21 Mystic Mini-Unique, and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!",
-      "notes": "7 more item(s) not shown on the card"
-    },
-    {
-      "name": "Iron Vengeance: Ions Special",
-      "price": 19.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 30000000
-        },
-        {
-          "item": "T3 Level 4 Ions",
-          "qty": 2700000
-        },
-        {
-          "item": "T3 Level 5 Ions",
-          "qty": 2700000
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 1500000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1500,
-          "webBonus": true
-        }
-      ],
-      "description": "Earn T3 Level 4 and Level 5 Ions, and also gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Orange Mega Orb",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Orange Mega Orb",
-          "qty": 1
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Open this Orb to stock up on T4 Level 1 Ions and T4 Iso-8 Credits, also gain progress in the Iron Vengeance Milestone! This special Orb will automatically open upon purchase."
-    },
-    {
-      "name": "Iron Vengeance: Ability Power Up",
-      "price": 24.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 45000000
-        },
-        {
-          "item": "T4 Ability Material",
-          "qty": 840
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 2250000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2000,
-          "webBonus": true
-        }
-      ],
-      "description": "Strengthen your roster with T4 Ability Materials and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Terrific Training",
-      "price": 24.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 45000000
-        },
-        {
-          "item": "L4 Training Module",
-          "qty": 4620
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 2250000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2000,
-          "webBonus": true
-        }
-      ],
-      "description": "Pick up a great L4 Training Module bundle to level up characters and also grab a bunch of points to gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Power Core Bundle",
-      "price": 34.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 60000000
-        },
-        {
-          "item": "Power Cores",
-          "qty": 2500
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 3000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2500,
-          "webBonus": true
-        }
-      ],
-      "description": "Grab this deal to seize 2500 Power Cores and also gain progress in the Iron Vengeance Milestone!"
-    },
-    {
-      "name": "Iron Vengeance: Basic Pack",
-      "price": 24.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 75000000
-        },
-        {
-          "item": "Iron Vengeance Milestone Points",
-          "qty": 3750000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get ahead in the Iron Vengeance Leaderboard to secure 5-Diamond for Spider-Woman (Julia), Rachel Cole-Alves, and Blade (Mighty)!"
-    },
-    {
-      "name": "T3 L5 Ions Brawler Pack",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 10,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 20000000
-        },
-        {
-          "item": "T3 Level 5 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Level 4 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Level 1 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Brawler Armor Level 1 Iso-8",
-          "qty": 81
-        }
-      ],
-      "description": "ISO Fest: Earn a supply of T3 Level 5 Ions and T3 Brawler Level 1 Iso-8 Crystals, also gain progress in this Milestone event!",
-      "notes": "6 more item(s) not shown on the card"
-    },
-    {
-      "name": "T3 L5 Ions Blaster Pack",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 10,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 20000000
-        },
-        {
-          "item": "T3 Level 5 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Level 4 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Level 1 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Blaster Armor Level 1 Iso-8",
-          "qty": 81
-        }
-      ],
-      "description": "ISO Fest: Earn a supply of T3 Level 5 Ions and T3 Blaster Level 1 Iso-8 Crystals, also gain progress in this Milestone event!",
-      "notes": "6 more item(s) not shown on the card"
-    },
-    {
-      "name": "T3 L5 Ions Controller Pack",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 10,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 20000000
-        },
-        {
-          "item": "T3 Level 5 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Level 4 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Level 1 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Controller Armor Level 1 Iso-8",
-          "qty": 81
-        }
-      ],
-      "description": "ISO Fest: Earn a supply of T3 Level 5 Ions and T3 Controller Level 1 Iso-8 Crystals, also gain progress in this Milestone event!",
-      "notes": "6 more item(s) not shown on the card"
-    },
-    {
-      "name": "T3 L5 Ions Protector Pack",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 10,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 20000000
-        },
-        {
-          "item": "T3 Level 5 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Level 4 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Level 1 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Protector Armor Level 1 Iso-8",
-          "qty": 81
-        }
-      ],
-      "description": "ISO Fest: Earn a supply of T3 Level 5 Ions and T3 Protector Level 1 Iso-8 Crystals, also gain progress in this Milestone event!",
-      "notes": "6 more item(s) not shown on the card"
-    },
-    {
-      "name": "T3 L5 Ions Support Pack",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 10,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 20000000
-        },
-        {
-          "item": "T3 Level 5 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Level 4 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Level 1 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "T3 Support Armor Level 1 Iso-8",
-          "qty": 81
-        }
-      ],
-      "description": "ISO Fest: Earn a supply of T3 Level 5 Ions and T3 Support Level 1 Iso-8 Crystals, also gain progress in this Milestone event!",
-      "notes": "6 more item(s) not shown on the card"
-    },
-    {
-      "name": "ISO Fest: T3 Level 4 Ions",
-      "price": 6.99,
-      "currency": "CAD",
-      "purchaseLimit": 98,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 10000000
-        },
-        {
-          "item": "T3 Level 4 Ions",
-          "qty": 3600000
-        },
-        {
-          "item": "Basic T3 Iso-8 Orb Fragments",
-          "qty": 40000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 500,
-          "webBonus": true
-        }
-      ],
-      "description": "Seize a chance of T3 Level 4 Ions, also gain progress in the ISO Fest Milestone!"
-    },
-    {
-      "name": "ISO Fest: T3 Level 5 Ions",
-      "price": 6.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 10000000
-        },
-        {
-          "item": "T3 Level 5 Ions",
-          "qty": 3000000
-        },
-        {
-          "item": "Basic T3 Iso-8 Orb Fragments",
-          "qty": 50000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 500,
-          "webBonus": true
-        }
-      ],
-      "description": "Secure a trove of T3 Level 5 Ions, also gain progress in the ISO Fest Milestone!"
-    },
-    {
-      "name": "ISO Fest: T3 Level 1 Crystals Pack",
-      "price": 6.99,
-      "currency": "CAD",
-      "purchaseLimit": 20,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 10000000
-        },
-        {
-          "item": "T3 Brawler Armor Level 1 Iso-8",
-          "qty": 81
-        },
-        {
-          "item": "T3 Brawler Resist Level 1 Iso-8",
-          "qty": 81
-        },
-        {
-          "item": "T3 Brawler Health Level 1 Iso-8",
-          "qty": 81
-        },
-        {
-          "item": "T3 Brawler Focus Level 1 Iso-8",
-          "qty": 81
-        }
-      ],
-      "description": "Upgrade 1 character of each role trait to T3 Level 5 Iso-8 and also grab a bunch of points to gain progress in the ISO Fest Milestone!",
-      "notes": "23 more item(s) not shown on the card"
-    },
-    {
-      "name": "ISO Fest: T3 Level 5 Ions Cache",
-      "price": 39.99,
-      "currency": "CAD",
-      "purchaseLimit": 3,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 63000000
-        },
-        {
-          "item": "T3 Level 5 Ions",
-          "qty": 10000000
-        },
-        {
-          "item": "T3 Level 4 Ions",
-          "qty": 10000000
-        },
-        {
-          "item": "T3 Level 1 Ions",
-          "qty": 7500000
-        },
-        {
-          "item": "T3 Level 1 Ions",
-          "qty": 2500000
-        }
-      ],
-      "description": "Seize the T3 Level 5 Ions and boost 1 character of each role trait to T3 Level 5 Iso-8, also grab a bunch of points to gain progress in this Milestone event!",
-      "notes": "27 more item(s) not shown on the card"
-    },
-    {
-      "name": "ISO Fest: T3 Level 5 Ions Trove",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 3,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 225000000
-        },
-        {
-          "item": "T3 Level 5 Ions",
-          "qty": 40000000
-        },
-        {
-          "item": "T3 Level 4 Ions",
-          "qty": 40000000
-        },
-        {
-          "item": "T3 Level 1 Ions",
-          "qty": 7500000
-        },
-        {
-          "item": "T3 Level 1 Ions",
-          "qty": 7500000
-        }
-      ],
-      "description": "Seize the T3 Level 5 Ions and boost 5 characters of each role trait to T3 Level 5 Iso-8, also grab a bunch of points to gain progress in this Milestone event!",
-      "notes": "31 more item(s) not shown on the card"
-    },
-    {
-      "name": "ISO Fest: T2 Level 1 Crystals Kit",
-      "price": 2.99,
-      "currency": "CAD",
-      "purchaseLimit": 17,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 4000000
-        },
-        {
-          "item": "T2 Brawler Armor Level 1 Iso-8",
-          "qty": 81
-        },
-        {
-          "item": "T2 Brawler Resist Level 1 Iso-8",
-          "qty": 81
-        },
-        {
-          "item": "T2 Brawler Health Level 1 Iso-8",
-          "qty": 81
-        },
-        {
-          "item": "T2 Brawler Focus Level 1 Iso-8",
-          "qty": 81
-        }
-      ],
-      "description": "Upgrade 1 character of each role trait to T2 Level 5 Iso-8 and also grab a bunch of points to gain progress in the ISO Fest Milestone!",
-      "notes": "23 more item(s) not shown on the card"
-    },
-    {
-      "name": "ISO Fest: T2 Level 5 Ions Stash",
-      "price": 39.99,
-      "currency": "CAD",
-      "purchaseLimit": 3,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 63000000
-        },
-        {
-          "item": "T2 Level 5 Ions",
-          "qty": 10000000
-        },
-        {
-          "item": "T2 Level 5 Ions",
-          "qty": 10000000
-        },
-        {
-          "item": "T2 Level 5 Ions",
-          "qty": 10000000
-        },
-        {
-          "item": "T2 Level 5 Ions",
-          "qty": 4800000
-        }
-      ],
-      "description": "Seize the T2 Level 5 Ions and boost 5 characters of each role trait to T2 Level 5 Iso-8, also grab a bunch of points to gain progress in this Milestone event!",
-      "notes": "29 more item(s) not shown on the card"
-    },
-    {
-      "name": "ISO Fest: Orange Mega Orb",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 225000000
-        },
-        {
-          "item": "Orange Mega Orb",
-          "qty": 1
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Open this Orb to stock up on T4 Level 1 Ions and T4 Iso-8 Credits, also gain progress in the ISO Fest Milestone! This special Orb will automatically open upon purchase."
-    },
-    {
-      "name": "ISO Fest: ISO Fest Yellow Orb",
-      "price": 6.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 10000000
-        },
-        {
-          "item": "ISO-Fest Yellow Orb Fragments",
-          "qty": 2000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 500,
-          "webBonus": true
-        }
-      ],
-      "description": "Open this Orb to earn up to 810 Shards for select characters, also gain progress in the ISO Fest Milestone!"
-    },
-    {
-      "name": "ISO Fest: ISO Fest Yellow Orb",
-      "price": 34.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 52500000
-        },
-        {
-          "item": "ISO-Fest Yellow Orb Fragments",
-          "qty": 12000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2500,
-          "webBonus": true
-        }
-      ],
-      "description": "Open this Orb to earn up to 810 Shards for select characters, also gain progress in the ISO Fest Milestone!"
-    },
-    {
-      "name": "ISO Fest: ISO Fest Yellow Orb",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 225000000
-        },
-        {
-          "item": "ISO-Fest Yellow Orb Fragments",
-          "qty": 50000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Open this Orb to earn up to 810 Shards for select characters, also gain progress in the ISO Fest Milestone!"
-    },
-    {
-      "name": "ISO Fest: ISO Fest Diamond Orb",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 20000000
-        },
-        {
-          "item": "ISO-Fest Diamond Orb Fragments",
-          "qty": 2000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Open this Orb to earn up to 4 Diamonds for select characters, also gain progress in the ISO Fest Milestone!"
-    },
-    {
-      "name": "ISO Fest: ISO Fest Diamond Orb",
-      "price": 69.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 110000000
-        },
-        {
-          "item": "ISO-Fest Diamond Orb Fragments",
-          "qty": 12000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 5000,
-          "webBonus": true
-        }
-      ],
-      "description": "Open this Orb to earn up to 4 Diamonds for select characters, also gain progress in the ISO Fest Milestone!"
-    },
-    {
-      "name": "ISO Fest: ISO Fest Diamond Orb",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 225000000
-        },
-        {
-          "item": "ISO-Fest Diamond Orb Fragments",
-          "qty": 26000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Open this Orb to earn up to 4 Diamonds for select characters, also gain progress in the ISO Fest Milestone!"
-    },
-    {
-      "name": "ISO Fest: Points Surge",
-      "price": 24.99,
-      "currency": "CAD",
-      "purchaseLimit": 20,
-      "expires": "1h 21m",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "ISO Fest Milestone Points",
-          "qty": 40000000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2000,
-          "webBonus": true
-        }
-      ],
-      "description": "Progress through the ISO Fest Milestone to secure 5-Diamond Knull and 5-Diamond Professor Xavier!"
-    },
-    {
       "name": "Eternals Radiance: Kingo",
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4208,7 +2210,7 @@ window.MSF_OFFERS = {
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4235,7 +2237,7 @@ window.MSF_OFFERS = {
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4262,7 +2264,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4293,7 +2295,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4324,7 +2326,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4351,7 +2353,7 @@ window.MSF_OFFERS = {
       "price": 49.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4382,7 +2384,7 @@ window.MSF_OFFERS = {
       "price": 49.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4413,7 +2415,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4444,7 +2446,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4475,7 +2477,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4506,7 +2508,7 @@ window.MSF_OFFERS = {
       "price": 79.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4541,7 +2543,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4572,7 +2574,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4603,7 +2605,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4634,7 +2636,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4669,7 +2671,7 @@ window.MSF_OFFERS = {
       "price": 179.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4700,7 +2702,7 @@ window.MSF_OFFERS = {
       "price": 179.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4731,7 +2733,7 @@ window.MSF_OFFERS = {
       "price": 179.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4762,7 +2764,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "6d 1h",
+      "expires": "5d 23h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -4785,7 +2787,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "1d 1h",
+      "expires": "23h 16m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4808,7 +2810,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "11d",
+      "expires": "10d 22h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4843,7 +2845,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4874,7 +2876,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4901,7 +2903,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4928,7 +2930,7 @@ window.MSF_OFFERS = {
       "price": 3.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4959,7 +2961,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4986,7 +2988,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5021,7 +3023,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5056,7 +3058,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5091,7 +3093,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5126,7 +3128,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5161,7 +3163,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5196,7 +3198,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5231,7 +3233,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "3d 1h",
+      "expires": "2d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5266,7 +3268,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 1h",
+      "expires": "1d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5301,7 +3303,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 1h",
+      "expires": "1d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5336,7 +3338,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 1h",
+      "expires": "1d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5371,7 +3373,7 @@ window.MSF_OFFERS = {
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 1h",
+      "expires": "1d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5406,7 +3408,7 @@ window.MSF_OFFERS = {
       "price": 99.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "4d 1h",
+      "expires": "3d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5429,7 +3431,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "4d 1h",
+      "expires": "3d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5468,7 +3470,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "4d 1h",
+      "expires": "3d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5507,7 +3509,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "4d 1h",
+      "expires": "3d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5546,7 +3548,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "4d 1h",
+      "expires": "3d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5585,7 +3587,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "4d 1h",
+      "expires": "3d 23h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5624,7 +3626,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5651,7 +3653,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 25,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5670,34 +3672,11 @@ window.MSF_OFFERS = {
       "description": "Harness the power of Diamonds! Earn 20 Silver Diamond Credits and a guaranteed Diamond Promotion with each orb!"
     },
     {
-      "name": "Dark Promotion Sale - Diamond Tier",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 5,
-      "expires": "1h 21m",
-      "section": "Offers / GENERAL",
-      "sections": [
-        "Offers / GENERAL"
-      ],
-      "contents": [
-        {
-          "item": "Dark Promotion Credit",
-          "qty": 2750
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Power up the likes of Doctor Doom and Morgan Le Fay when you use these Dark Promotion Credits to get the next Red Star for them! Save big on 2,750 Dark Promotion Credits. Achieve new Red Star Levels with this offer today!"
-    },
-    {
       "name": "Elite 6 Star Orb Offer",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "1d 1h",
+      "expires": "23h 21m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5720,7 +3699,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5743,7 +3722,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5766,7 +3745,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -5789,7 +3768,7 @@ window.MSF_OFFERS = {
       "price": 25000,
       "currency": "Strike Points",
       "purchaseLimit": 1,
-      "expires": "4d 1h",
+      "expires": "3d 23h",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -5808,7 +3787,7 @@ window.MSF_OFFERS = {
       "price": 6000,
       "currency": "Strike Points",
       "purchaseLimit": 1,
-      "expires": "4d 1h",
+      "expires": "3d 23h",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -5827,7 +3806,7 @@ window.MSF_OFFERS = {
       "price": 500,
       "currency": "Strike Points",
       "purchaseLimit": 5,
-      "expires": "8d 1h",
+      "expires": "7d 23h",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -5846,7 +3825,7 @@ window.MSF_OFFERS = {
       "price": 6000,
       "currency": "Strike Points",
       "purchaseLimit": 5,
-      "expires": "1d 1h",
+      "expires": "23h 21m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -5865,7 +3844,7 @@ window.MSF_OFFERS = {
       "price": 5000,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -5883,8 +3862,8 @@ window.MSF_OFFERS = {
       "name": "Training Bootcamp",
       "price": 2500,
       "currency": "Strike Points",
-      "purchaseLimit": 100,
-      "expires": "1h 21m",
+      "purchaseLimit": 99,
+      "expires": "23h 21m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -5903,7 +3882,7 @@ window.MSF_OFFERS = {
       "price": 1000,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -5930,7 +3909,7 @@ window.MSF_OFFERS = {
       "price": 500,
       "currency": "Strike Points",
       "purchaseLimit": 30,
-      "expires": "22d 1h",
+      "expires": "21d 23h",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -5949,7 +3928,7 @@ window.MSF_OFFERS = {
       "price": 500,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "1h 21m",
+      "expires": "23h 21m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"

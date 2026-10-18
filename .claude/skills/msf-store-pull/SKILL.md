@@ -28,6 +28,11 @@ odejs (zip build, on the user PATH since 18 October 2026); open a new shell if `
 
 ## 1. Offers → `data/offers.js`
 
+Shortcut: if the user can click a bookmark themselves, the My store tab's "MSF: grab my offers"
+bookmarklet (built from `pull.js`) does steps 1 to 6 below in their browser and copies the JSON;
+you then only need to write it into `data/offers.js`. The steps below are for doing it through
+Claude in Chrome.
+
 The store is https://marvelstrikeforce.com/en/store, a Vue app. Every section (Buy Again,
 pass offers, Chain Offers, Dual Offers, Offers with its sub-sections, Power Cores, Ultra Cores,
 Strike Store) is on the one page, but offer cards render lazily: a card is a skeleton with
@@ -55,10 +60,13 @@ Strike Store) is on the one page, but offer cards render lazily: a card is a ske
    `console.log` it in 15,000-character chunks with a marker (`MSFPULL-Q <n> <chunk>`), then
    `read_console_messages` with that marker. A result over about 64 KB is saved to a file under
    the session's tool-results folder; reassemble the chunks from that file with Python.
-6. Normalize with Python: parse counts (K and M suffixes, commas), prices (`CA$` → CAD),
-   purchase limits, timers; drop the `+N More` placeholder into a `notes` field ("N more item(s)
-   not shown on the card"); dedupe cards that appear in several sections by (title, price,
-   contents) and keep every section name in `sections`; append the core packs.
+6. Normalize with `pull.js`: `require('./pull.js').normalizeExtract(raw)` in Node takes the raw
+   extract (the `offers` array plus the `cores` array, see test/fixtures/store-raw.json) and
+   returns the data/offers.js object: counts with K and M suffixes parsed, `CA$` → CAD,
+   purchase limits and timers, the `+N More` placeholder turned into a `notes` field, cards that
+   appear in several sections deduplicated by (title, price, contents) with every section kept
+   in `sections`, core packs appended. The same function powers the page's bookmarklet, so the
+   two routes produce identical files.
 7. Write `data/offers.js` as `window.MSF_OFFERS = {...};` with `updated` set to the time the
    store was read (ISO 8601), `source: "web-store"`, `priceCurrency` and the signed-in account.
    Keep the comment block at the top of the file.
