@@ -67,7 +67,8 @@ window.MSF_VALUE_TABLE = {
           "label": "F"
         }
       ],
-      "note": "Each resource is compared with its msfwar observed average: typical value scores 70 (C), 25% more per dollar 80 (B), 50% more 90 (A), capped at 100. Resource scores average within a category and categories combine by weight; only categories present share the weighting. Milestone and Strike Points are excluded. Letters below C and the 0-100 clamp are this tool's reading of msfwar's description, not confirmed from the site."
+      "note": "Each resource is compared with its msfwar observed average: typical value scores 70 (C), 25% more per dollar 80 (B), 50% more 90 (A), capped at 100. Resource scores average within a category and categories combine by weight; only categories present share the weighting. Milestone and Strike Points are excluded. Letters below C and the 0-100 clamp are this tool's reading of msfwar's description, not confirmed from the site. Baselines with fewer than minObservations msfwar observations, or flagged observed.suspect, are shown but not scored.",
+      "minObservations": 5
     },
     "grades": [
       {
@@ -760,7 +761,8 @@ window.MSF_VALUE_TABLE = {
         "days": 4,
         "observations": 24,
         "readAt": "2026-10-18",
-        "earlyEstimate": true
+        "earlyEstimate": true,
+        "suspect": "14,470 shards per dollar is far above any paid shard offer; msfwar likely counted a free claim or web bonus"
       }
     },
     "shard:kingo": {
@@ -779,7 +781,8 @@ window.MSF_VALUE_TABLE = {
         "days": 1,
         "observations": 1,
         "readAt": "2026-10-18",
-        "earlyEstimate": true
+        "earlyEstimate": true,
+        "suspect": "4,000 shards per dollar is far above any paid shard offer; msfwar likely counted a free claim or web bonus"
       }
     },
     "shard:loki (teen)": {
@@ -1545,7 +1548,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 8,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Phantom Rider"
     },
     "ability_material:phantom_rider_special_awakened": {
       "name": "Phantom Rider's Special Awakened Ability Material",
@@ -1563,7 +1567,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 8,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Phantom Rider"
     },
     "ability_material:phantom_rider_ultimate_awakened": {
       "name": "Phantom Rider's Ultimate Awakened Ability Material",
@@ -1581,7 +1586,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Phantom Rider"
     },
     "ability_material:t1": {
       "name": "T1 Ability Material",
@@ -3883,7 +3889,8 @@ window.MSF_VALUE_TABLE = {
         "days": 5,
         "observations": 35,
         "readAt": "2026-10-18",
-        "earlyEstimate": true
+        "earlyEstimate": true,
+        "suspect": "54,730,000 fragments per dollar is far above any paid orb offer; msfwar likely counted a web bonus"
       }
     },
     "orb:mega_override": {
@@ -3901,7 +3908,8 @@ window.MSF_VALUE_TABLE = {
         "days": 5,
         "observations": 5,
         "readAt": "2026-10-18",
-        "earlyEstimate": true
+        "earlyEstimate": true,
+        "suspect": "20,000,000 fragments per dollar is far above any paid orb offer; msfwar likely counted a web bonus"
       }
     },
     "orb:mutant_gt21_premium_orb": {
@@ -4048,7 +4056,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Domino"
     },
     "promotion:domino_—_7_red_star_promotion": {
       "name": "Domino — 7 red star promotion",
@@ -4066,7 +4075,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Domino"
     },
     "promotion:gilgamesh_—_2_diamond_promotion": {
       "name": "Gilgamesh — 2 diamond promotion",
@@ -4084,7 +4094,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 2,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Gilgamesh"
     },
     "promotion:gilgamesh_—_3_diamond_promotion": {
       "name": "Gilgamesh — 3 diamond promotion",
@@ -4102,7 +4113,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 2,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Gilgamesh"
     },
     "promotion:gilgamesh_—_4_diamond_promotion": {
       "name": "Gilgamesh — 4 diamond promotion",
@@ -4120,7 +4132,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 1,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Gilgamesh"
     },
     "promotion:gilgamesh_—_7_red_star_promotion": {
       "name": "Gilgamesh — 7 red star promotion",
@@ -4138,7 +4151,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Gilgamesh"
     },
     "promotion:hela_—_3_diamond_promotion": {
       "name": "Hela — 3 diamond promotion",
@@ -4156,7 +4170,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Hela"
     },
     "promotion:hela_—_7_red_star_promotion": {
       "name": "Hela — 7 red star promotion",
@@ -4174,7 +4189,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Hela"
     },
     "promotion:ikaris_—_2_diamond_promotion": {
       "name": "Ikaris — 2 diamond promotion",
@@ -4192,7 +4208,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 1,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Ikaris"
     },
     "promotion:ikaris_—_4_diamond_promotion": {
       "name": "Ikaris — 4 diamond promotion",
@@ -4210,7 +4227,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 1,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Ikaris"
     },
     "promotion:ikaris_—_7_red_star_promotion": {
       "name": "Ikaris — 7 red star promotion",
@@ -4228,7 +4246,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 3,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Ikaris"
     },
     "promotion:iron_man_(zombie)_—_3_diamond_promotion": {
       "name": "Iron Man (Zombie) — 3 diamond promotion",
@@ -4246,7 +4265,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Iron Man (Zombie)"
     },
     "promotion:iron_man_(zombie)_—_7_red_star_promotion": {
       "name": "Iron Man (Zombie) — 7 red star promotion",
@@ -4264,7 +4284,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Iron Man (Zombie)"
     },
     "promotion:jocasta_—_7_red_star_promotion": {
       "name": "Jocasta — 7 red star promotion",
@@ -4279,7 +4300,8 @@ window.MSF_VALUE_TABLE = {
       "observed": {
         "perUsd": null,
         "note": "no baseline yet on msfwar"
-      }
+      },
+      "character": "Jocasta"
     },
     "promotion:juggernaut_(zombie)_—_3_diamond_promotion": {
       "name": "Juggernaut (Zombie) — 3 diamond promotion",
@@ -4297,7 +4319,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Juggernaut (Zombie)"
     },
     "promotion:juggernaut_(zombie)_—_7_red_star_promotion": {
       "name": "Juggernaut (Zombie) — 7 red star promotion",
@@ -4315,7 +4338,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Juggernaut (Zombie)"
     },
     "promotion:kestrel_(zombie)_—_3_diamond_promotion": {
       "name": "Kestrel (Zombie) — 3 diamond promotion",
@@ -4332,8 +4356,10 @@ window.MSF_VALUE_TABLE = {
         "days": 4,
         "observations": 8,
         "readAt": "2026-10-18",
-        "earlyEstimate": true
-      }
+        "earlyEstimate": true,
+        "suspect": "60.0 promotions per dollar; every other promotion costs $30 to $50 each, so msfwar likely counted a free claim"
+      },
+      "character": "Kestrel (Zombie)"
     },
     "promotion:kestrel_(zombie)_—_7_red_star_promotion": {
       "name": "Kestrel (Zombie) — 7 red star promotion",
@@ -4350,8 +4376,10 @@ window.MSF_VALUE_TABLE = {
         "days": 4,
         "observations": 8,
         "readAt": "2026-10-18",
-        "earlyEstimate": true
-      }
+        "earlyEstimate": true,
+        "suspect": "60.0 promotions per dollar; every other promotion costs $30 to $50 each, so msfwar likely counted a free claim"
+      },
+      "character": "Kestrel (Zombie)"
     },
     "promotion:kingo_—_2_diamond_promotion": {
       "name": "Kingo — 2 diamond promotion",
@@ -4368,8 +4396,10 @@ window.MSF_VALUE_TABLE = {
         "days": 1,
         "observations": 2,
         "readAt": "2026-10-18",
-        "earlyEstimate": true
-      }
+        "earlyEstimate": true,
+        "suspect": "30.0 promotions per dollar; every other promotion costs $30 to $50 each, so msfwar likely counted a free claim"
+      },
+      "character": "Kingo"
     },
     "promotion:kingo_—_3_diamond_promotion": {
       "name": "Kingo — 3 diamond promotion",
@@ -4386,8 +4416,10 @@ window.MSF_VALUE_TABLE = {
         "days": 1,
         "observations": 2,
         "readAt": "2026-10-18",
-        "earlyEstimate": true
-      }
+        "earlyEstimate": true,
+        "suspect": "20.0 promotions per dollar; every other promotion costs $30 to $50 each, so msfwar likely counted a free claim"
+      },
+      "character": "Kingo"
     },
     "promotion:kingo_—_4_diamond_promotion": {
       "name": "Kingo — 4 diamond promotion",
@@ -4404,8 +4436,10 @@ window.MSF_VALUE_TABLE = {
         "days": 1,
         "observations": 1,
         "readAt": "2026-10-18",
-        "earlyEstimate": true
-      }
+        "earlyEstimate": true,
+        "suspect": "10.0 promotions per dollar; every other promotion costs $30 to $50 each, so msfwar likely counted a free claim"
+      },
+      "character": "Kingo"
     },
     "promotion:kingo_—_7_red_star_promotion": {
       "name": "Kingo — 7 red star promotion",
@@ -4422,8 +4456,10 @@ window.MSF_VALUE_TABLE = {
         "days": 1,
         "observations": 5,
         "readAt": "2026-10-18",
-        "earlyEstimate": true
-      }
+        "earlyEstimate": true,
+        "suspect": "20.0 promotions per dollar; every other promotion costs $30 to $50 each, so msfwar likely counted a free claim"
+      },
+      "character": "Kingo"
     },
     "promotion:negasonic_—_5_diamond_promotion": {
       "name": "Negasonic — 5 diamond promotion",
@@ -4441,7 +4477,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Negasonic"
     },
     "promotion:negasonic_—_7_red_star_promotion": {
       "name": "Negasonic — 7 red star promotion",
@@ -4459,7 +4496,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Negasonic"
     },
     "promotion:phantom_rider_—_5_diamond_promotion": {
       "name": "Phantom Rider — 5 diamond promotion",
@@ -4477,7 +4515,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Phantom Rider"
     },
     "promotion:phantom_rider_—_7_red_star_promotion": {
       "name": "Phantom Rider — 7 red star promotion",
@@ -4495,7 +4534,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Phantom Rider"
     },
     "promotion:quake_—_5_diamond_promotion": {
       "name": "Quake — 5 diamond promotion",
@@ -4513,7 +4553,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Quake"
     },
     "promotion:quake_—_7_red_star_promotion": {
       "name": "Quake — 7 red star promotion",
@@ -4531,7 +4572,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Quake"
     },
     "promotion:scarlet_witch_(zombie)_—_3_diamond_promotion": {
       "name": "Scarlet Witch (Zombie) — 3 diamond promotion",
@@ -4549,7 +4591,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Scarlet Witch (Zombie)"
     },
     "promotion:scarlet_witch_(zombie)_—_7_red_star_promotion": {
       "name": "Scarlet Witch (Zombie) — 7 red star promotion",
@@ -4567,7 +4610,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Scarlet Witch (Zombie)"
     },
     "promotion:sersi_—_2_diamond_promotion": {
       "name": "Sersi — 2 diamond promotion",
@@ -4585,7 +4629,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 1,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Sersi"
     },
     "promotion:sersi_—_4_diamond_promotion": {
       "name": "Sersi — 4 diamond promotion",
@@ -4603,7 +4648,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 1,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Sersi"
     },
     "promotion:sersi_—_7_red_star_promotion": {
       "name": "Sersi — 7 red star promotion",
@@ -4621,7 +4667,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 3,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Sersi"
     },
     "promotion:thena_—_2_diamond_promotion": {
       "name": "Thena — 2 diamond promotion",
@@ -4639,7 +4686,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 2,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Thena"
     },
     "promotion:thena_—_3_diamond_promotion": {
       "name": "Thena — 3 diamond promotion",
@@ -4657,7 +4705,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 2,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Thena"
     },
     "promotion:thena_—_4_diamond_promotion": {
       "name": "Thena — 4 diamond promotion",
@@ -4675,7 +4724,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 1,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Thena"
     },
     "promotion:thena_—_7_red_star_promotion": {
       "name": "Thena — 7 red star promotion",
@@ -4693,7 +4743,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Thena"
     },
     "promotion:yo-yo_—_5_diamond_promotion": {
       "name": "Yo-Yo — 5 diamond promotion",
@@ -4711,7 +4762,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Yo-Yo"
     },
     "promotion:yo-yo_—_7_red_star_promotion": {
       "name": "Yo-Yo — 7 red star promotion",
@@ -4729,7 +4781,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 4,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "character": "Yo-Yo"
     },
     "points:eternals_radiance": {
       "name": "Eternals Radiance Milestone Points",

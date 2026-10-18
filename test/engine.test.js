@@ -173,6 +173,6 @@ test('empty or malformed tables never throw', () => {
   assert.equal(r.complete, false);
   assert.deepEqual(r.unknown, ['Gold']);
   assert.equal(r.totalUsd, 0);
-  assert.equal(r.perDollar, 0);
-  assert.equal(r.grade, 'Poor');
+  assert.equal(r.perDollar, null);   // nothing could be valued: no ratio and no grade rather than a confident 0x
+  assert.equal(r.grade, null);
 });

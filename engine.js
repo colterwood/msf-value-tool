@@ -14,6 +14,7 @@
  *       grades: [{ min: 1.5, label: "Excellent" }, ...], // by value-per-dollar, descending
  *       scoring: {                    // msfwar-style 0-100 score (optional)
  *         typicalScore: 70, scorePerRatio: 40, maxScore: 100, minScore: 0,
+ *         minObservations: 5,         // baselines with fewer msfwar observations are not scored
  *         weights: { gold: 30, training: 30, orangeIso: 20, shard: 15, other: 5 },
  *         letters: [{ min: 90, label: "A" }, ...]
  *       },
@@ -21,17 +22,28 @@
  *     },
  *     items: {
  *       "gold": { name: "Gold", category: "currency", per: 1000000, value: 1.13, aliases: [] },
- *       "shard:iron man": { name: "Iron Man shards", category: "shard", character: "Iron Man", per: 1, value: 0.2 },
+ *       "shard:iron man": { name: "Iron Man shards", category: "shard", character: "Iron Man", per: 1, value: 0.2,
+ *                           observed: { perUsd: 5, days: 5, observations: 12, suspect: false } },
  *       "points:iron_vengeance": { name: "...", category: "points", excludeFromValue: true }
  *     }
  *   }
  *
  * Offer shape (see data/offers.js and README):
- *   { name, price, currency, purchaseLimit, expires, source,
+ *   { name, price, currency, purchaseLimit, expires, source, notes,
  *     contents: [{ item: "Gold", qty: 500000 }, { key: "shard:iron man", qty: 50 }] }
  *
  * Roster shape (see data/roster.js):
  *   { characters: { "Iron Man": { stars: 7, redStars: 5, gearTier: 17 } } }
+ *
+ * Plan shape (see data/personal.js): what the player builds and what they are short of.
+ *   {
+ *     characters: { "Iron Man": {} },        // the build list, keyed by roster name
+ *     offListMultiplier: 0,                   // character-bound items for anyone else count this much
+ *     surplusMultiplier: 0.25,                // resources marked surplus count this much
+ *     resources: { "gold": { status: "short", need: 1, have: 0, note: "..." } },  // by value-table key
+ *     resourceRules: [{ category: "iso8", pattern: "\\bT4\\b", status: "surplus", note: "..." }]
+ *                       // pattern: regex on the item name; keyPattern (optional): regex on the table key
+ *   }
  */
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) module.exports = factory();
@@ -53,15 +65,22 @@
     maxStars: 7
   };
 
+  var DEFAULT_PLAN_RULES = {
+    offListMultiplier: 0,
+    surplusMultiplier: 0.25
+  };
+
   // msfwar's published scoring rules: typical historical value earns 70 (C); a resource giving
   // 25% more for the price earns 80 (B), 50% more earns 90 (A). Categories combine by weight and
-  // only the categories present share the weighting. Letters below C and the clamp are this
-  // tool's reading, so they live in the value table's meta.scoring where they can be edited.
+  // only the categories present share the weighting. Letters below C, the clamp and the
+  // minimum-observation guard are this tool's reading, so they live in the value table's
+  // meta.scoring where they can be edited.
   var DEFAULT_SCORING = {
     typicalScore: 70,
     scorePerRatio: 40,
     maxScore: 100,
     minScore: 0,
+    minObservations: 5,
     weights: { gold: 30, training: 30, orangeIso: 20, shard: 15, other: 5 },
     letters: [
       { min: 90, label: 'A' },
@@ -145,35 +164,110 @@
     return Number(item.value) / per;
   }
 
-  function findRosterEntry(roster, character) {
-    if (!roster || !roster.characters || !character) return null;
-    var chars = roster.characters;
-    if (Object.prototype.hasOwnProperty.call(chars, character)) return chars[character];
-    var want = normalizeKey(character);
-    var keys = Object.keys(chars);
+  /**
+   * Why an item's msfwar baseline should not be scored, or null when it is fine.
+   * A baseline is thin when msfwar saw it in fewer than minObservations offers, and suspect when
+   * the table flags it (observed.suspect), for example shards at thousands per dollar.
+   */
+  function baselineProblem(item, scoring) {
+    var obs = item && item.observed;
+    if (!obs || obs.perUsd == null) return null;
+    if (item.userValue) return null;  // a value typed on the Value table tab overrides the baseline guard
+    if (obs.suspect) return 'baseline looks wrong' + (typeof obs.suspect === 'string' ? ': ' + obs.suspect : '');
+    var min = Number(scoring && scoring.minObservations);
+    if (isNaN(min)) min = DEFAULT_SCORING.minObservations;
+    if (obs.observations != null && Number(obs.observations) < min) {
+      return 'baseline too thin: ' + obs.observations + ' msfwar observation' + (Number(obs.observations) === 1 ? '' : 's') + ', fewer than ' + min;
+    }
+    return null;
+  }
+
+  function findByName(map, name) {
+    if (!map || !name) return null;
+    if (Object.prototype.hasOwnProperty.call(map, name)) return map[name];
+    var want = normalizeKey(name);
+    var keys = Object.keys(map);
     for (var i = 0; i < keys.length; i++) {
-      if (normalizeKey(keys[i]) === want) return chars[keys[i]];
+      if (normalizeKey(keys[i]) === want) return map[keys[i]];
+    }
+    return null;
+  }
+
+  function findRosterEntry(roster, character) {
+    if (!roster || !roster.characters) return null;
+    return findByName(roster.characters, character);
+  }
+
+  /** The plan's resource rule for an item: { status, note } or null. Explicit keys win over pattern rules. */
+  function resourceRule(item, key, plan) {
+    if (!plan || !item) return null;
+    var explicit = plan.resources && (plan.resources[key] || findByName(plan.resources, key));
+    if (explicit && explicit.status) return { status: explicit.status, note: explicit.note || null, source: 'resource' };
+    var rules = plan.resourceRules || [];
+    for (var i = 0; i < rules.length; i++) {
+      var r = rules[i];
+      if (r.category && r.category !== item.category) continue;
+      if (r.pattern) {
+        var re;
+        try { re = new RegExp(r.pattern, 'i'); } catch (e) { continue; }
+        if (!re.test(String(item.name || ''))) continue;
+      }
+      if (r.keyPattern) {
+        var kre;
+        try { kre = new RegExp(r.keyPattern, 'i'); } catch (e2) { continue; }
+        if (!kre.test(String(key || ''))) continue;
+      }
+      return { status: r.status, note: r.note || null, source: 'rule' };
     }
     return null;
   }
 
   /**
-   * Personal multiplier for an item given the roster. Returns { multiplier, note }.
-   * Only shard rules exist today; gear and ISO-8 rules can be added here later.
+   * Personal multiplier for an item given the roster and the plan. Returns { multiplier, notes }.
+   *   - shards of a character the roster has at maxStars count shardRules.maxedMultiplier
+   *   - character-bound items (shards, awakened ability materials, promotions) for a character
+   *     who is not on the plan's build list count plan.offListMultiplier
+   *   - resources the plan marks surplus count plan.surplusMultiplier; short ones count in full
+   * Multipliers multiply when more than one rule applies.
    */
-  function personalMultiplier(item, roster, shardRules) {
+  function personalMultiplier(item, roster, shardRules, plan, key) {
     var rules = Object.assign({}, DEFAULT_SHARD_RULES, shardRules || {});
-    if (!item || item.category !== 'shard' || !item.character) return { multiplier: 1, note: null };
-    var entry = findRosterEntry(roster, item.character);
-    if (!entry) return { multiplier: 1, note: null };
-    var stars = Number(entry.stars);
-    if (!isNaN(stars) && stars >= rules.maxStars) {
-      return {
-        multiplier: Number(rules.maxedMultiplier),
-        note: item.character + ' is already at ' + rules.maxStars + ' stars'
-      };
+    var prules = Object.assign({}, DEFAULT_PLAN_RULES, plan || {});
+    var multiplier = 1;
+    var notes = [];
+    if (!item) return { multiplier: 1, notes: [], note: null };
+
+    if (item.category === 'shard' && item.character) {
+      var entry = findRosterEntry(roster, item.character);
+      var stars = entry ? Number(entry.stars) : NaN;
+      if (!isNaN(stars) && stars >= rules.maxStars) {
+        multiplier *= Number(rules.maxedMultiplier);
+        notes.push(item.character + ' is already at ' + rules.maxStars + ' stars');
+      }
     }
-    return { multiplier: 1, note: null };
+
+    if (item.character && plan && plan.characters && Object.keys(plan.characters).length) {
+      if (!findByName(plan.characters, item.character)) {
+        var off = Number(prules.offListMultiplier);
+        if (isNaN(off)) off = DEFAULT_PLAN_RULES.offListMultiplier;
+        multiplier *= off;
+        notes.push(item.character + ' is not on your build list');
+      }
+    }
+
+    var rr = resourceRule(item, key, plan);
+    if (rr && rr.status === 'surplus') {
+      var sm = Number(prules.surplusMultiplier);
+      if (isNaN(sm)) sm = DEFAULT_PLAN_RULES.surplusMultiplier;
+      multiplier *= sm;
+      notes.push('you have enough of this' + (rr.note ? ': ' + rr.note : ''));
+    }
+
+    return { multiplier: multiplier, notes: notes, note: notes.length ? notes.join('; ') : null, resource: rr };
+  }
+
+  function joinNotes(a, b) {
+    return [a, b].filter(Boolean).join('; ') || null;
   }
 
   function gradeFor(perDollar, grades) {
@@ -245,8 +339,7 @@
       var ratio = v / priceUsd;
       var s = rules.typicalScore + (ratio - 1) * rules.scorePerRatio;
       s = Math.max(rules.minScore, Math.min(rules.maxScore, s));
-      l.ratio = ratio;
-      if (useKey === 'personalValue') l.personalScore = s; else l.score = s;
+      if (useKey === 'personalValue') { l.personalRatio = ratio; l.personalScore = s; } else { l.ratio = ratio; l.score = s; }
       var cat = l.scoringCategory || 'other';
       (byCat[cat] = byCat[cat] || []).push(s);
     });
@@ -268,13 +361,14 @@
   /**
    * Value a single offer.
    *
-   * options: { index, personalize (default true when roster given), grades }
+   * options: { index, personalize (default true when roster or plan given), grades, plan }
    */
   function valueOffer(offer, table, roster, options) {
     options = options || {};
     var meta = (isTable(table) && table.meta) || {};
+    var plan = options.plan || null;
     var index = options.index || buildIndex(table);
-    var personalize = options.personalize == null ? !!roster : !!options.personalize;
+    var personalize = options.personalize == null ? !!(roster || plan) : !!options.personalize;
     var price = Number(offer && offer.price);
     var hasPrice = !isNaN(price) && price > 0;
     var currency = (offer && offer.currency) || meta.currency || 'USD';
@@ -284,10 +378,14 @@
     var lines = [];
     var unknown = [];
     var unpriced = [];
+    var thin = [];
     var excluded = [];
     var totalUnits = 0;
     var personalTotalUnits = 0;
     var complete = true;
+    var valuedLines = 0;
+    var planLines = 0;      // resolvable lines the plan could judge
+    var planUseful = 0;     // ...of which it kept at least something
 
     contents.forEach(function (row) {
       var qty = Number(row && row.qty);
@@ -300,25 +398,36 @@
         lines.push({ item: label, key: null, qty: qty, unitValue: null, multiplier: 1, value: null, personalValue: null, note: 'not in value table' });
         return;
       }
+      var name = resolved.item.name || label;
       if (resolved.item.excludeFromValue) {
-        excluded.push(resolved.item.name || resolved.key);
-        lines.push({ item: resolved.item.name || label, key: resolved.key, qty: qty, unitValue: null, multiplier: 1, value: null, personalValue: null, excluded: true, note: 'not counted: event or loyalty points' });
+        excluded.push(name);
+        lines.push({ item: name, key: resolved.key, qty: qty, unitValue: null, multiplier: 1, value: null, personalValue: null, excluded: true, note: 'not counted: event or loyalty points' });
         return;
       }
+      var pm = personalize ? personalMultiplier(resolved.item, roster, meta.shardRules, plan, resolved.key) : { multiplier: 1, notes: [], note: null };
+      planLines += 1;
+      if (pm.multiplier > 0) planUseful += 1;
       var uv = unitValue(resolved.item);
       if (uv == null) {
-        unpriced.push(resolved.item.name || resolved.key);
+        unpriced.push(name);
         complete = false;
-        lines.push({ item: resolved.item.name || label, key: resolved.key, qty: qty, unitValue: null, multiplier: 1, value: null, personalValue: null, note: 'no value in table yet' });
+        lines.push({ item: name, key: resolved.key, qty: qty, unitValue: null, multiplier: pm.multiplier, value: null, personalValue: null, resource: pm.resource ? pm.resource.status : null, note: joinNotes('no value in table yet', pm.note) });
         return;
       }
-      var pm = personalize ? personalMultiplier(resolved.item, roster, meta.shardRules) : { multiplier: 1, note: null };
+      var problem = baselineProblem(resolved.item, meta.scoring);
+      if (problem) {
+        thin.push(name);
+        complete = false;
+        lines.push({ item: name, key: resolved.key, qty: qty, unitValue: null, multiplier: pm.multiplier, value: null, personalValue: null, thin: true, rawValue: uv * qty, resource: pm.resource ? pm.resource.status : null, note: joinNotes(problem, pm.note) });
+        return;
+      }
       var value = uv * qty;
       var personalValue = value * pm.multiplier;
       totalUnits += value;
       personalTotalUnits += personalValue;
+      valuedLines += 1;
       lines.push({
-        item: resolved.item.name || label,
+        item: name,
         key: resolved.key,
         qty: qty,
         unitValue: uv,
@@ -327,6 +436,7 @@
         personalValue: personalValue,
         scoringCategory: scoringCategory(resolved.item, resolved.key),
         earlyEstimate: !!(resolved.item.observed && resolved.item.observed.earlyEstimate),
+        resource: pm.resource ? pm.resource.status : null,
         note: pm.note
       });
     });
@@ -335,9 +445,12 @@
 
     var totalUsd = toUsd(totalUnits, meta);
     var personalUsd = toUsd(personalTotalUnits, meta);
-    var perDollar = priceUsd ? totalUsd / priceUsd : null;
-    var personalPerDollar = priceUsd ? personalUsd / priceUsd : null;
+    var perDollar = priceUsd && valuedLines ? totalUsd / priceUsd : null;
+    var personalPerDollar = priceUsd && valuedLines ? personalUsd / priceUsd : null;
     var effective = personalize ? personalPerDollar : perDollar;
+    // Does this offer give the plan anything? null when nothing in it could be judged.
+    var helpsPlan = null;
+    if (personalize && planLines > 0) helpsPlan = planUseful > 0;
 
     // msfwar-style score works on dollar-valued lines; convert line values when the table is in cores.
     var usdLines = lines.map(function (l) {
@@ -351,7 +464,8 @@
     usdLines.forEach(function (c, i) {
       lines[i].ratio = c.ratio;
       lines[i].score = c.score;
-      lines[i].personalScore = c.personalScore;
+      lines[i].personalRatio = personalize ? c.personalRatio : c.ratio;
+      lines[i].personalScore = personalize ? c.personalScore : c.score;
     });
 
     return {
@@ -373,9 +487,12 @@
       personalLetter: personal.letter,
       scoring: personalize ? personal.categories : generic.categories,
       personalized: personalize,
+      helpsPlan: helpsPlan,
+      valuedLines: valuedLines,
       complete: complete,
       unknown: unknown,
       unpriced: unpriced,
+      thin: thin,
       excluded: excluded,
       notes: (offer && offer.notes) || null,
       lines: lines
@@ -433,14 +550,27 @@
     return rows;
   }
 
+  /** Parse a plain-text character list, one name per line or comma separated, into a plan.characters map. */
+  function parseCharacterList(text) {
+    var out = {};
+    String(text || '').split(/\r?\n|,|;/).forEach(function (s) {
+      var n = s.trim();
+      if (n) out[n] = {};
+    });
+    return out;
+  }
+
   return {
     DEFAULT_GRADES: DEFAULT_GRADES,
     DEFAULT_SHARD_RULES: DEFAULT_SHARD_RULES,
+    DEFAULT_PLAN_RULES: DEFAULT_PLAN_RULES,
     DEFAULT_SCORING: DEFAULT_SCORING,
     normalizeKey: normalizeKey,
     buildIndex: buildIndex,
     resolveItem: resolveItem,
     unitValue: unitValue,
+    baselineProblem: baselineProblem,
+    resourceRule: resourceRule,
     personalMultiplier: personalMultiplier,
     gradeFor: gradeFor,
     letterFor: letterFor,
@@ -449,6 +579,7 @@
     scoreLines: scoreLines,
     valueOffer: valueOffer,
     rankOffers: rankOffers,
-    parseContentsText: parseContentsText
+    parseContentsText: parseContentsText,
+    parseCharacterList: parseCharacterList
   };
 });

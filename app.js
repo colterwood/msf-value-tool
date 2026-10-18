@@ -9,7 +9,9 @@
     overrides: 'msfv.tableOverrides',
     replacement: 'msfv.tableReplacement',
     personal: 'msfv.personalize',
-    draft: 'msfv.offerDraft'
+    draft: 'msfv.offerDraft',
+    plan: 'msfv.plan',
+    planOnly: 'msfv.planOnly'
   };
   var CATEGORIES = ['currency', 'shard', 'orb', 'gear', 'training', 'ability', 'iso8', 'other'];
 
@@ -73,6 +75,20 @@
     if (Object.keys(src.characters).length === 0) return null;
     return { updated: src.updated || null, characters: src.characters };
   }
+  function normalizePlan(src) {
+    if (!src || typeof src !== 'object') return null;
+    var chars = src.characters && typeof src.characters === 'object' ? src.characters : {};
+    return {
+      updated: src.updated || null,
+      sources: src.sources || [],
+      characters: chars,
+      offListMultiplier: src.offListMultiplier == null ? 0 : Number(src.offListMultiplier),
+      surplusMultiplier: src.surplusMultiplier == null ? 0.25 : Number(src.surplusMultiplier),
+      resources: src.resources || {},
+      resourceRules: src.resourceRules || [],
+      inventory: src.inventory || {}
+    };
+  }
   function pickSnapshot(fromFile, stored) {
     // Prefer the file when it is newer than what the browser remembers, or when the stored copy came from the file.
     if (!fromFile) return stored || null;
@@ -88,6 +104,8 @@
     overrides: load(LS.overrides, {}),
     offers: pickSnapshot(normalizeOffers(window.MSF_OFFERS), load(LS.offers, null)),
     roster: pickSnapshot(normalizeRoster(window.MSF_ROSTER), load(LS.roster, null)),
+    plan: pickSnapshot(normalizePlan(window.MSF_PERSONAL), load(LS.plan, null)),
+    planOnly: load(LS.planOnly, false),
     personalize: load(LS.personal, true),
     draft: load(LS.draft, null) || { name: '', price: '', currency: 'USD', rows: [{ item: '', qty: '' }] },
     filter: '',
@@ -95,6 +113,7 @@
   };
   save(LS.offers, state.offers);
   save(LS.roster, state.roster);
+  save(LS.plan, state.plan);
 
   function table() {
     var src = state.replacement || state.base || { meta: {}, items: {} };
@@ -105,10 +124,13 @@
       if (k === '__meta') { Object.assign(out.meta, o); return; }
       if (o && o._deleted) { delete out.items[k]; return; }
       out.items[k] = Object.assign({}, out.items[k] || {}, o);
+      if (o && o.value != null) out.items[k].userValue = true;  // typed on the Value table tab: trusted over msfwar's baseline
     });
     return out;
   }
   function rosterForUse() { return state.personalize && state.roster ? state.roster : null; }
+  function planForUse() { return state.personalize && state.plan ? state.plan : null; }
+  function valueOpts(extra) { return Object.assign({ plan: planForUse(), personalize: state.personalize && !!(state.roster || state.plan) }, extra || {}); }
   function tableStats(t) {
     var keys = Object.keys(t.items);
     var priced = keys.filter(function (k) { return E.unitValue(t.items[k]) != null; }).length;
@@ -130,12 +152,15 @@
     if (t.meta.updated) bits.push('values updated ' + esc(t.meta.updated));
     bits.push(state.offers ? state.offers.offers.length + ' store offers loaded' + (state.offers.updated ? ' (read ' + esc(String(state.offers.updated).slice(0, 16).replace('T', ' ')) + ' UTC)' : '') : 'no store offers loaded');
     bits.push(state.roster ? Object.keys(state.roster.characters).length + ' roster characters' : 'no roster');
+    bits.push(state.plan ? Object.keys(state.plan.characters).length + ' characters on your build list' : 'no build list');
     $('status').innerHTML = bits.join(' · ');
     if (s.priced === 0) $('status').innerHTML += ' · <span class="warn">value table has no numbers yet</span>';
     $('offer-personal').checked = state.personalize;
     $('store-personal').checked = state.personalize;
-    $('offer-personal').disabled = !state.roster;
-    $('store-personal').disabled = !state.roster;
+    $('offer-personal').disabled = !state.roster && !state.plan;
+    $('store-personal').disabled = !state.roster && !state.plan;
+    $('store-planonly').checked = state.planOnly;
+    $('store-planonly').disabled = !state.plan || !state.personalize;
   }
   function renderDatalist() {
     var t = table();
@@ -230,6 +255,11 @@
     renderOfferResult();
     renderStore();
   });
+  $('store-planonly').addEventListener('change', function () {
+    state.planOnly = $('store-planonly').checked;
+    save(LS.planOnly, state.planOnly);
+    renderStore();
+  });
   $('store-personal').addEventListener('change', function () {
     state.personalize = $('store-personal').checked;
     save(LS.personal, state.personalize);
@@ -250,8 +280,8 @@
   }
   function breakdownTable(r) {
     var rows = r.lines.map(function (l) {
-      var cls = l.excluded ? ' class="muted"' : (l.value == null ? ' class="warn"' : '');
-      var personal = l.personalValue != null && l.multiplier !== 1 ? '<br><span class="muted">for you: ' + fmtMoney(l.personalValue, 'USD') + '</span>' : '';
+      var cls = (l.excluded || l.thin) ? ' class="muted"' : (l.value == null ? ' class="warn"' : '');
+      var personal = l.personalValue != null && l.multiplier !== 1 ? '<br><span class="muted">for you: ' + fmtMoney(l.personalValue, 'USD') + ' (' + Math.round(l.multiplier * 100) + '%)</span>' : '';
       return '<tr' + cls + '><td>' + esc(l.item) + (l.note ? '<br><span class="muted">' + esc(l.note) + '</span>' : '') + '</td>' +
         '<td class="num">' + fmtNum(l.qty, 3) + '</td>' +
         '<td class="num">' + (l.unitValue == null ? '–' : fmtNum(l.unitValue, 4)) + '</td>' +
@@ -269,6 +299,7 @@
     }
     if (r.unpriced.length) out.push('<p class="warn">In the table but without a value yet: ' + r.unpriced.map(esc).join(', ') + ' (fill them in on the Value table tab).</p>');
     if (r.notes) out.push('<p class="warn">' + esc(r.notes) + '.</p>');
+    if (r.thin && r.thin.length) out.push('<p class="muted">Shown but not scored, msfwar baseline too thin or suspect: ' + r.thin.map(esc).join(', ') + '.</p>');
     if (r.excluded && r.excluded.length) out.push('<p class="muted">Not counted, as on msfwar: ' + r.excluded.map(esc).join(', ') + '.</p>');
     if (!r.complete) out.push('<p class="muted">Totals below count only the items with values, so the real value is higher than shown.</p>');
     return out.join('');
@@ -301,7 +332,7 @@
       box.innerHTML = '<p class="muted">Add the offer\'s contents above, with the price, to see its value.</p>';
       return;
     }
-    var r = E.valueOffer(offer, table(), rosterForUse());
+    var r = E.valueOffer(offer, table(), rosterForUse(), valueOpts());
     var html = summaryBlock(r);
     if (r.price == null) html += '<p class="muted">Enter the price to get a grade.</p>';
     html += warnings(r);
@@ -334,7 +365,9 @@
     }
     var o = state.offers;
     meta.textContent = o.offers.length + ' offers' + (o.source ? ' from ' + o.source : '') + (o.updated ? ', read ' + o.updated : '') + (o.origin === 'file' ? ' (data/offers.js)' : ' (pasted)');
-    var ranked = E.rankOffers(o.offers, table(), rosterForUse());
+    var ranked = E.rankOffers(o.offers, table(), rosterForUse(), valueOpts());
+    if (state.planOnly && state.personalize && state.plan) ranked = ranked.filter(function (r) { return r.helpsPlan !== false; });
+    if (state.planOnly && state.personalize && state.plan) meta.textContent += ' · showing ' + ranked.length + ' that help your plan';
     var rows = ranked.map(function (r, i) {
       var off = r.offer;
       var ratio = r.personalized ? r.personalPerDollar : r.perDollar;
@@ -345,23 +378,26 @@
       if (off.expires) sub.push('ends ' + off.expires);
       var flags = [];
       if (r.unknown.length) flags.push(r.unknown.length + ' unknown');
+      if (r.thin && r.thin.length) flags.push(r.thin.length + ' thin');
+      if (r.personalized && r.helpsPlan === false) flags.push('nothing for your plan');
       if (r.unpriced.length) flags.push(r.unpriced.length + ' unpriced');
       if (r.notes) flags.push('hidden items');
       var score = r.personalized ? r.personalScore : r.score;
       var letter = r.personalized ? r.personalLetter : r.letter;
-      var html = '<tr class="clickable" data-idx="' + i + '"><td>' + esc(off.name || '(unnamed)') +
+      var idx = o.offers.indexOf(off);
+      var html = '<tr class="clickable" data-idx="' + idx + '"><td>' + esc(off.name || '(unnamed)') +
         (sub.length ? '<br><span class="muted">' + esc(sub.join(' · ')) + '</span>' : '') + '</td>' +
         '<td class="num">' + fmtMoney(r.price, r.currency) + '</td>' +
         '<td class="num">' + fmtMoney(usd, 'USD') + '</td>' +
         '<td class="num">' + fmtRatio(ratio) + '</td>' +
         '<td>' + scoreBadge(letter, score) + '</td>' +
         '<td class="warn">' + esc(flags.join(', ')) + '</td></tr>';
-      if (state.expanded[i]) {
+      if (state.expanded[idx]) {
         html += '<tr class="detail"><td colspan="6">' + summaryBlock(r) + warnings(r) + breakdownTable(r) + '</td></tr>';
       }
       return html;
     }).join('');
-    list.innerHTML = '<table><thead><tr><th>Offer</th><th class="num">Price</th><th class="num">' + (state.personalize && state.roster ? 'Value to you' : 'Value') + '</th><th class="num">Per US$</th><th>Score</th><th>Flags</th></tr></thead><tbody>' + rows + '</tbody></table>';
+    list.innerHTML = '<table><thead><tr><th>Offer</th><th class="num">Price</th><th class="num">' + (state.personalize && (state.roster || state.plan) ? 'Value to you' : 'Value') + '</th><th class="num">Per US$</th><th>Score</th><th>Flags</th></tr></thead><tbody>' + rows + '</tbody></table>';
   }
   $('store-list').addEventListener('click', function (e) {
     if (e.target.closest('button')) return;
@@ -443,7 +479,7 @@
         '<td><select data-f="category">' + opts + '</select></td>' +
         '<td><input data-f="character" value="' + esc(it.character || '') + '" placeholder="' + (it.category === 'shard' ? 'character' : '') + '"></td>' +
         '<td><input data-f="per" type="number" min="0" step="any" value="' + esc(it.per == null ? 1 : it.per) + '" style="width:90px"></td>' +
-        '<td><input data-f="value" type="number" step="any" value="' + esc(it.value == null ? '' : it.value) + '" placeholder="none" style="width:110px">' + (it.observed && it.observed.perUsd ? '<br><span class="muted" title="msfwar observed average">' + fmtNum(it.observed.perUsd, 2) + ' per $1' + (it.observed.earlyEstimate ? ' · early' : '') + '</span>' : (it.excludeFromValue ? '<br><span class="muted">not counted</span>' : '')) + '</td>' +
+        '<td><input data-f="value" type="number" step="any" value="' + esc(it.value == null ? '' : it.value) + '" placeholder="none" style="width:110px">' + (it.observed && it.observed.perUsd ? '<br><span class="' + (it.observed.suspect || (it.observed.observations != null && it.observed.observations < ((table().meta.scoring || {}).minObservations == null ? 5 : table().meta.scoring.minObservations)) ? 'warn' : 'muted') + '" title="' + esc(it.observed.suspect || 'msfwar observed average') + '">' + fmtNum(it.observed.perUsd, 2) + ' per $1' + (it.observed.observations != null ? ' · ' + it.observed.observations + ' obs' : '') + (it.observed.suspect ? ' · suspect' : (it.observed.earlyEstimate ? ' · early' : '')) + (it.userValue ? ' · your value' : '') + '</span>' : (it.excludeFromValue ? '<br><span class="muted">not counted</span>' : '')) + '</td>' +
         '<td><input data-f="aliases" value="' + esc((it.aliases || []).join(', ')) + '" placeholder="comma separated"></td>' +
         '<td><button class="ghost small" data-delkey="' + esc(k) + '" title="Remove">✕</button></td></tr>';
     }).join('');
@@ -525,8 +561,55 @@
     renderAll();
   });
 
+  // ---------- Plan ----------
+  function renderPlan() {
+    var box = $('plan-summary');
+    if (!state.plan) { box.innerHTML = '<p class="muted">No build list loaded. Character-bound items count in full until one is.</p>'; syncPlanText(''); return; }
+    var p = state.plan;
+    var names = Object.keys(p.characters).sort();
+    var res = Object.keys(p.resources || {});
+    var rules = p.resourceRules || [];
+    box.innerHTML = '<div class="kv">' +
+      '<div class="muted">Build list</div><div>' + names.length + ' characters' + (p.origin === 'file' ? ' (data/personal.js)' : ' (edited here)') + (p.updated ? ', read ' + esc(p.updated) : '') + '</div>' +
+      '<div class="muted">Off the list</div><div>shards, awakened materials and promotions for anyone else count ' + Math.round(p.offListMultiplier * 100) + '% for you</div>' +
+      '<div class="muted">Surplus</div><div>resources you have enough of count ' + Math.round(p.surplusMultiplier * 100) + '%</div>' +
+      '<div class="muted">Resources</div><div>' + (res.length ? res.map(function (k) { var x = p.resources[k]; return '<code>' + esc(k) + '</code> ' + esc(x.status) + (x.note ? ' <span class="muted">' + esc(x.note) + '</span>' : ''); }).join('<br>') : 'none') + '</div>' +
+      '<div class="muted">Rules</div><div>' + (rules.length ? rules.map(function (r) { return esc(r.category || 'any') + (r.pattern ? ' matching <code>' + esc(r.pattern) + '</code>' : '') + ': ' + esc(r.status) + (r.note ? ' <span class="muted">' + esc(r.note) + '</span>' : ''); }).join('<br>') : 'none') + '</div>' +
+      (p.sources && p.sources.length ? '<div class="muted">Sources</div><div>' + p.sources.map(esc).join('<br>') + '</div>' : '') +
+      '</div>' +
+      '<p class="muted" style="margin-top:10px">' + names.map(esc).join(', ') + '</p>';
+    syncPlanText(names.join('\n'));
+  }
+  var lastPlanText = null;
+  function syncPlanText(want) {
+    var ta = $('plan-text');
+    // Rewrite the box only when it still shows what we last put there; typed-but-unapplied edits survive re-renders.
+    if (lastPlanText == null || ta.value === lastPlanText || ta.value.trim() === '') ta.value = want;
+    lastPlanText = want;
+  }
+  $('plan-apply').addEventListener('click', function () {
+    var chars = E.parseCharacterList($('plan-text').value);
+    var base = state.plan || normalizePlan({});
+    state.plan = Object.assign({}, base, { origin: 'edit', characters: chars, updated: new Date().toISOString() });
+    save(LS.plan, state.plan);
+    renderAll();
+  });
+  $('plan-reload').addEventListener('click', function () {
+    var n = normalizePlan(window.MSF_PERSONAL);
+    if (!n) { alert('data/personal.js has no plan.'); return; }
+    state.plan = Object.assign({ origin: 'file' }, n);
+    save(LS.plan, state.plan);
+    renderAll();
+  });
+  $('plan-clear').addEventListener('click', function () {
+    state.plan = null;
+    save(LS.plan, null);
+    renderAll();
+  });
+
   // ---------- Roster ----------
   function renderRoster() {
+    renderPlan();
     var box = $('roster-summary');
     if (!state.roster) { box.innerHTML = '<p class="muted">No roster loaded. Values are generic until one is.</p>'; return; }
     var chars = state.roster.characters;

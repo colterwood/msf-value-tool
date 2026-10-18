@@ -106,6 +106,34 @@ https://www.msfwar.com/spenders-guide/:
 5. Update the "Status" table and, if the methodology changed, "How value is computed" in
    `README.md`, in your own words, with the date read.
 
+## 3b. Plan → `data/personal.js`
+
+The personal score needs to know what the user builds and what they are short of. Both come from
+the user's Google Sheet "MSF Sheet" (id 1U-GfhH0GYt0xIPQdf19hyDGKYOHaoznOksnv2Z9VK_k) through the
+Google Sheets connector, plus the portal's Inventory page.
+
+1. Read the tab "Characters I Will Build" (column A, one name per row). Match each name to a
+   roster name from `data/roster.js`; the sheet spells a few differently (Iron Fist WWII,
+   Miles Morales, Ms Marvel, Professor X, Quiksilver Symbiote, Scorpion Breaker). Record the
+   sheet spelling as `sheetName` when it differs.
+2. Read "Resource Budgeting" (current gold and L4 modules, totals needed), "T4 Priority" (the
+   Blue / Pink / T4 totals in row 1) and "ISO Priority" (how many characters sit under GREEN,
+   BLUE, PURPLE and ORANGE). Write explicit `resources` entries for gold, `training_module:l4`
+   and the four ability tiers with `status: "short"` and the have/need numbers, and
+   `resourceRules` for ISO tiers (surplus when a tier lists no characters), gear (Crimson short,
+   lower tiers surplus) and L1 to L3 training modules (surplus).
+3. Open https://marvelstrikeforce.com/en/inventory, scroll to the bottom until the count of
+   "You own" stops growing, and read every `.item` card: the name element and the "You own"
+   span, parsing 51.9K-style counts. The page lists gear only. Store the counts under
+   `inventory` for reference.
+4. Write `window.MSF_PERSONAL = {...};` with `updated`, `sources`, `characters`,
+   `offListMultiplier` (0 unless the user chose otherwise), `surplusMultiplier` (0.25),
+   `resources`, `resourceRules` and `inventory`. Keep the comment block.
+5. In `data/values.js`, give awakened ability materials and diamond or red-star promotions a
+   `character` field so the build-list rule covers them, and flag `observed.suspect` on
+   baselines that cannot be right (shards above 1,000 per dollar, orb fragments above a million
+   per dollar).
+
 ## 4. Verify and report
 
 1. Check the page renders. The Chrome tools cannot open `file://` URLs (navigate rewrites them
@@ -116,7 +144,7 @@ https://www.msfwar.com/spenders-guide/:
    the ranked store table. The user can double-click `index.html` to see it themselves.
 2. On "My store", list items flagged unknown or unpriced. Add unknown ones to `data/values.js`
    with `value: null` so they can be priced later, and tell the user which values are missing.
-3. Run `npm test` if Node is installed.
+3. Run `npm test`; the engine, scoring and plan tests must pass.
 4. Report the top offers by score, which items could not be valued, and the time the store was
    read. If anything above could not be done, say exactly what and why.
 

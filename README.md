@@ -9,8 +9,9 @@ It does two things:
 - **Value an offer you type in.** Enter the price and the contents; it returns an msfwar-style
   score and letter, the value per US dollar, and a per-item breakdown.
 - **Rank the offers live in your store.** A desktop Claude session reads your logged-in web store
-  through Chrome into `data/offers.js`; the "My store" tab ranks them best first. Your roster
-  discounts shards you no longer need.
+  through Chrome into `data/offers.js`; the "My store" tab ranks them best first, by the msfwar
+  grade or, with "Personalize" on, by what the offer is worth to *your* plan: the characters you
+  build and the resources you are short of.
 
 Everything runs in your browser from a folder on your machine. No server, no account, no install.
 
@@ -23,6 +24,7 @@ Everything runs in your browser from a folder on your machine. No server, no acc
 | msfwar item values in `data/values.js` | **Loaded 18 October 2026**: 181 of 311 items carry msfwar's observed average; the rest are items msfwar had no baseline for (gear catalysts, most character shards, some orbs) and show as unpriced |
 | Live offers in `data/offers.js` | **Loaded 18 October 2026, 19:38 UTC**: 212 offers from every section of the web store, prices in CA$ |
 | Roster in `data/roster.js` | **Loaded 18 October 2026**: all 389 characters (237 unlocked, 28 at 7 stars) from the roster stats table |
+| Plan in `data/personal.js` | **Loaded 18 October 2026**: the 50 characters on the MSF Sheet's "Characters I Will Build" tab, gold and L4 budgets from "Resource Budgeting", ability totals from "T4 Priority", ISO tiers from "ISO Priority", and 351 gear counts from the portal's Inventory page |
 | Playbook for pulling store, roster and msfwar values through Chrome | Done and run once; `.claude/skills/msf-store-pull/SKILL.md` records what worked |
 
 ## Quick start
@@ -89,9 +91,26 @@ This follows the msfwar Spender's Guide as it described itself on 17 October 202
   complete ones.
 - **Value per dollar** is also shown: the sum of counted items' dollar values divided by the
   US-dollar price, with the plain Excellent/Good/Fair/Poor label from `meta.grades`.
-- **Personalization.** With a roster loaded and "Personalize" on, shards of a character already
-  at 7 stars count `meta.shardRules.maxedMultiplier` (default 0) of their value, and the
-  personal score follows. The generic number stays visible beside it.
+- **Thin baselines.** An item whose msfwar average rests on fewer than
+  `meta.scoring.minObservations` offer observations (5), or that the table flags as suspect
+  (for example shards at thousands per dollar, which means msfwar counted a free claim), is
+  shown but left out of the score, the way msfwar leaves ungraded resources out, and the offer is
+  marked incomplete. A value you type on the Value table tab overrides that guard.
+- **Personalization.** With "Personalize" on, the personal score replaces each item's value with
+  what it is worth to you, and the generic msfwar number stays visible beside it:
+  - shards of a character already at 7 stars on your roster count
+    `meta.shardRules.maxedMultiplier` (default 0);
+  - shards, awakened ability materials and diamond or red-star promotions for a character who is
+    not on your build list (`data/personal.js`, from the MSF Sheet) count `offListMultiplier`
+    (default 0);
+  - resources your plan marks surplus count `surplusMultiplier` (default 25%): L1 to L3 training
+    modules, orange (T4) ISO-8 while no character on the ISO list needs it, and gear below the
+    Crimson tier, of which the inventory holds hundreds to tens of thousands. Gold, L4 modules,
+    every ability material tier, T1 to T3 ISO-8 and Crimson gear are marked short and count in
+    full. Everything without a rule counts in full.
+  - "Only offers that help my plan" hides offers in which every item the table recognises was
+    zeroed by those rules. An offer the table cannot value at all is neither hidden nor flagged.
+  The Roster & plan tab shows every rule and lets you replace the character list.
 
 Chain offers are graded on the step shown; msfwar also counts the cost of the earlier steps,
 which the web store does not display.
@@ -103,6 +122,7 @@ which the web store does not display.
 | `data/values.js` | Item value table, exchange rates and scoring rules | The playbook from msfwar, or you |
 | `data/offers.js` | Offers in your store at the last pull | The playbook, or paste on the "My store" tab |
 | `data/roster.js` | Your characters' stars, red stars, diamonds, level and power | The playbook, or paste on the "Roster" tab |
+| `data/personal.js` | Your build list, resource shortages, surplus rules and gear inventory | The playbook from the MSF Sheet and the Inventory page, or edit on the "Roster & plan" tab |
 
 Schemas are documented at the top of each file. Files named `data/*.local.js` are ignored by git
 if you want to keep personal snapshots out of commits.

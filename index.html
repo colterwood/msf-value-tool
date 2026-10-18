@@ -77,7 +77,7 @@
   <button data-tab="offer" class="active">Value an offer</button>
   <button data-tab="store">My store</button>
   <button data-tab="table">Value table</button>
-  <button data-tab="roster">Roster</button>
+  <button data-tab="roster">Roster &amp; plan</button>
 </nav>
 <main>
 
@@ -94,7 +94,7 @@
       <button class="ghost" id="add-row">+ Add item</button>
       <button class="ghost" id="paste-toggle">Paste as text</button>
       <button class="ghost" id="offer-clear">Clear</button>
-      <label class="inline"><input type="checkbox" id="offer-personal"> Personalize to my roster</label>
+      <label class="inline"><input type="checkbox" id="offer-personal"> Personalize to my roster and plan</label>
     </div>
     <div id="paste-box" hidden style="margin-top:12px">
       <textarea id="paste-text" placeholder="One item per line:&#10;500,000 Gold&#10;50x Iron Man shards&#10;Premium Orb x3"></textarea>
@@ -112,7 +112,8 @@
       <button class="primary" id="store-import">Import pasted offers</button>
       <button class="ghost" id="store-reload">Reload data/offers.js</button>
       <button class="ghost" id="store-clear">Clear</button>
-      <label class="inline"><input type="checkbox" id="store-personal"> Personalize to my roster</label>
+      <label class="inline"><input type="checkbox" id="store-personal"> Personalize to my roster and plan</label>
+      <label class="inline"><input type="checkbox" id="store-planonly"> Only offers that help my plan</label>
     </div>
     <div id="store-meta" class="muted" style="margin-top:10px"></div>
   </div>
@@ -147,6 +148,16 @@
 
 <section id="tab-roster" hidden>
   <div class="panel">
+    <p class="muted">Your plan loads from <code>data/personal.js</code>: the characters you build (from the MSF Sheet) and the resources you are short of. Edit the list below, one name per line, and apply; edits are kept in the browser.</p>
+    <div id="plan-summary"></div>
+    <textarea id="plan-text" style="margin-top:12px" placeholder="One character per line"></textarea>
+    <div class="actions">
+      <button class="primary" id="plan-apply">Use this list</button>
+      <button class="ghost" id="plan-reload">Reload data/personal.js</button>
+      <button class="ghost" id="plan-clear">Clear plan</button>
+    </div>
+  </div>
+  <div class="panel">
     <p class="muted">The roster loads from <code>data/roster.js</code>. Paste roster JSON here to replace it. Only star counts are used today.</p>
     <textarea id="roster-paste" placeholder='{"updated":"2026-10-18","characters":{"Iron Man":{"stars":7,"redStars":5,"gearTier":17}}}'></textarea>
     <div class="actions">
@@ -164,6 +175,7 @@
 <script src="data/values.js"></script>
 <script src="data/offers.js"></script>
 <script src="data/roster.js"></script>
+<script src="data/personal.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
