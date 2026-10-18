@@ -41,6 +41,12 @@
     return new Intl.NumberFormat(undefined, { maximumFractionDigits: digits == null ? 2 : digits }).format(n);
   }
   function fmtRatio(r) { return r == null || isNaN(r) ? '–' : fmtNum(r, 2) + '×'; }
+  function fmtPerUsd(n) {
+    if (n == null || isNaN(n)) return '–';
+    if (n >= 1e6) return fmtNum(n / 1e6, 2) + 'M';
+    if (n >= 1e4) return fmtNum(n / 1e3, 1) + 'K';
+    return fmtNum(n, n >= 100 ? 0 : 2);
+  }
   function gradeBadge(g) { return '<span class="grade ' + (g ? esc(g) : 'none') + '">' + (g ? esc(g) : 'no grade') + '</span>'; }
   function scoreBadge(letter, score) {
     if (score == null || isNaN(score)) return '<span class="grade none">no score</span>';
@@ -107,7 +113,7 @@
     roster: pickSnapshot(normalizeRoster(window.MSF_ROSTER), load(LS.roster, null)),
     plan: pickSnapshot(normalizePlan(window.MSF_PERSONAL), load(LS.plan, null)),
     planOnly: load(LS.planOnly, false),
-    storeSort: load(LS.storeSort, 'score'),
+    storeSort: load(LS.storeSort, 'ratio'),
     personalize: load(LS.personal, true),
     draft: load(LS.draft, null) || { name: '', price: '', currency: 'USD', rows: [{ item: '', qty: '' }] },
     filter: '',
@@ -317,16 +323,16 @@
     var score = r.personalized ? r.personalScore : r.score;
     var letter = r.personalized ? r.personalLetter : r.letter;
     var html = '<div class="summary">';
-    html += '<div><div class="label">msfwar-style grade</div><div class="big">' + scoreBadge(letter, score) + '</div></div>';
     html += '<div><div class="label">Value per US$ spent</div><div class="big">' + fmtRatio(ratio) + ' ' + gradeBadge(r.grade) + '</div></div>';
+    html += '<div><div class="label">msfwar grade</div><div class="big">' + scoreBadge(letter, score) + '</div></div>';
     html += '<div><div class="label">' + (r.personalized ? 'Value to you' : 'Value') + '</div><div class="big">' + fmtMoney(usd, 'USD') + '</div></div>';
-    if (r.price != null) html += '<div><div class="label">Price</div><div class="big">' + fmtMoney(r.price, r.currency) + '</div>' + (r.priceUsd != null && r.currency !== 'USD' ? '<div class="muted">' + fmtMoney(r.priceUsd, 'USD') + ' at the table\'s rate</div>' : '') + '</div>';
+    if (r.price != null) html += '<div><div class="label">Price</div><div class="big">' + (r.priceVia === 'item' ? fmtNum(r.price, 0) + ' ' + esc(r.currency) : fmtMoney(r.price, r.currency)) + '</div>' + (r.priceUsd != null && r.currency !== 'USD' ? '<div class="muted">' + fmtMoney(r.priceUsd, 'USD') + (r.priceVia === 'item' ? ' at the table\'s value for ' + esc(r.currency) : (r.priceVia === 'assumed' ? ', currency unknown so taken as US$' : ' at the table\'s rate')) + '</div>' : '') + '</div>';
     if (r.personalized && Math.abs(r.personalUsd - r.totalUsd) > 1e-9) {
       html += '<div><div class="label">Generic value</div><div>' + fmtMoney(r.totalUsd, 'USD') + ' (' + fmtRatio(r.perDollar) + ')</div></div>';
     }
     html += '</div>';
     if (r.scoring && r.scoring.length) {
-      html += '<p class="muted">Score by category: ' + r.scoring.map(function (c) { return esc(c.category) + ' ' + fmtNum(c.score, 0) + ' (weight ' + c.weight + ', ' + c.items + ' item' + (c.items === 1 ? '' : 's') + ')'; }).join(' · ') + '. Typical value is 70; 25% more per dollar is 80, 50% more is 90.</p>';
+      html += '<p class="muted">msfwar grade by category: ' + r.scoring.map(function (c) { return esc(c.category) + ' ' + fmtNum(c.score, 0) + ' (weight ' + c.weight + ', ' + c.items + ' item' + (c.items === 1 ? '' : 's') + ')'; }).join(' · ') + '. It asks whether each item is cheaper than usual: typical is 70, 25% cheaper is 80, 50% cheaper is 90, capped at 100, so it cannot tell a 2× deal from a 5× one. The value per US$ above can.</p>';
     }
     if (r.lines.some(function (l) { return l.earlyEstimate; })) html += '<p class="muted">Early estimate: msfwar had fewer than seven observed days for some of these items.</p>';
     if (r.currency !== 'USD') html += '<p class="muted">Values are in US dollars; the price was converted with the table\'s exchange rate before any ratio.</p>';
@@ -368,6 +374,7 @@
     if (!state.offers) {
       meta.textContent = 'No offers loaded.';
       list.innerHTML = '<p class="muted">Nothing to rank yet.</p>';
+      renderBestBuys(null);
       return;
     }
     var o = state.offers;
@@ -406,9 +413,9 @@
       var idx = o.offers.indexOf(off);
       var html = '<tr class="clickable" data-idx="' + idx + '"><td>' + esc(off.name || '(unnamed)') +
         (sub.length ? '<br><span class="muted">' + esc(sub.join(' · ')) + '</span>' : '') + '</td>' +
-        '<td class="num">' + fmtMoney(r.price, r.currency) + '</td>' +
+        '<td class="num">' + (r.priceVia === 'item' ? fmtNum(r.price, 0) + ' ' + esc(r.currency) : fmtMoney(r.price, r.currency)) + '</td>' +
         '<td class="num">' + fmtMoney(usd, 'USD') + '</td>' +
-        '<td class="num">' + fmtRatio(ratio) + '</td>' +
+        '<td class="num">' + fmtRatio(ratio) + ' ' + gradeBadge(r.grade) + '</td>' +
         '<td>' + scoreBadge(letter, score) + '</td>' +
         '<td class="warn">' + esc(flags.join(', ')) + '</td></tr>';
       if (state.expanded[idx]) {
@@ -416,7 +423,30 @@
       }
       return html;
     }).join('');
-    list.innerHTML = '<table><thead><tr><th>Offer</th><th class="num">Price</th><th class="num">' + (state.personalize && (state.roster || state.plan) ? 'Value to you' : 'Value') + '</th><th class="num">Per US$</th><th>Score</th><th>Flags</th></tr></thead><tbody>' + rows + '</tbody></table>';
+    renderBestBuys(E.rankOffers(o.offers, table(), null, { personalize: false }));
+    list.innerHTML = '<table><thead><tr><th>Offer</th><th class="num">Price</th><th class="num">' + (state.personalize && (state.roster || state.plan) ? 'Value to you' : 'Value') + '</th><th class="num">Value per US$</th><th>msfwar grade</th><th>Flags</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  }
+  function renderBestBuys(ranked) {
+    var box = $('best-list');
+    if (!box) return;
+    if (!ranked || !ranked.length) { box.innerHTML = ''; return; }
+    var best = E.bestPrices(ranked, table());
+    if (!best.length) { box.innerHTML = '<p class="muted">Nothing in the store has a value yet.</p>'; return; }
+    var cat = '';
+    var rows = best.map(function (b) {
+      var head = '';
+      if (b.category !== cat) { cat = b.category; head = '<tr><th colspan="5">' + esc(cat) + '</th></tr>'; }
+      var vs = b.typicalPerUsd && b.share ? fmtRatio(b.share.perUsd / b.typicalPerUsd) : '–';
+      var cell = function (x, share) {
+        if (!x) return '<td>–</td>';
+        return '<td>' + esc(x.name) + '<br><span class="muted">' + (x.currency && /^[A-Z]{3}$/.test(x.currency) ? fmtMoney(x.price, x.currency) : fmtNum(x.price, 0) + ' ' + esc(x.currency || '')) + ' · ' + fmtNum(x.qty, 0) + ' for ' + fmtMoney(share ? x.sharePrice : x.priceUsd, 'USD') + '</span></td>';
+      };
+      var vsWhole = b.typicalPerUsd && b.whole ? fmtRatio(b.whole.perUsd / b.typicalPerUsd) : '–';
+      return head + '<tr><td>' + esc(b.name) + '<br><span class="muted">' + b.offers + ' offer' + (b.offers === 1 ? '' : 's') + (b.typicalPerUsd ? ' · msfwar typical ' + fmtPerUsd(b.typicalPerUsd) + ' per US$' : '') + '</span></td>' +
+        '<td class="num"><b>' + (b.whole ? fmtPerUsd(b.whole.perUsd) : '–') + '</b> per US$<br><span class="muted">' + vsWhole + ' typical</span></td>' + cell(b.whole, false) +
+        '<td class="num">' + (b.share ? fmtPerUsd(b.share.perUsd) : '–') + ' per US$<br><span class="muted">' + vs + ' typical</span></td>' + cell(b.share, true) + '</tr>';
+    }).join('');
+    box.innerHTML = '<table><thead><tr><th>Resource</th><th class="num">Cheapest if this is all you want</th><th>in</th><th class="num">Cheapest inside a bundle</th><th>in</th></tr></thead><tbody>' + rows + '</tbody></table>';
   }
   $('store-list').addEventListener('click', function (e) {
     if (e.target.closest('button')) return;

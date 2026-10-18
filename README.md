@@ -6,8 +6,8 @@ and your own roster.
 
 It does two things:
 
-- **Value an offer you type in.** Enter the price and the contents; it returns an msfwar-style
-  score and letter, the value per US dollar, and a per-item breakdown.
+- **Value an offer you type in.** Enter the price and the contents; it returns the value per US
+  dollar with a grade, an msfwar-style letter, and a per-item breakdown.
 - **Rank the offers live in your store.** A desktop Claude session reads your logged-in web store
   through Chrome into `data/offers.js`; the "My store" tab ranks them best first, by the msfwar
   grade or, with "Personalize" on, by what the offer is worth to *your* plan: the characters you
@@ -93,10 +93,20 @@ This follows the msfwar Spender's Guide as it described itself on 17 October 202
 - **Price in US dollars.** msfwar's averages are US prices before tax. This store shows CA$, so
   `meta.fxToUsd` converts the price first (CAD 0.7138 on 18 September 2026, Federal Reserve H.10
   via YCharts; edit it on the Value table tab when the rate moves).
-- **Score per item.** Each counted item's ratio is the units per dollar this offer gives divided
-  by the observed average, which is the same as the item's value divided by the whole price.
-  A ratio of 1 (typical) scores 70, 1.25 scores 80 and 1.5 scores 90: `70 + (ratio - 1) * 40`,
-  capped at 100 and floored at 0.
+- **Price in in-game currency.** Strike Store offers are priced in Strike Points; such a price
+  converts through the value table's own entry for that currency (Strike Points at msfwar's
+  average, 100 per dollar) rather than being mistaken for dollars.
+- **Value per dollar is the ranking.** Offer value is the sum of counted items' dollar values at
+  the observed averages; divided by the US-dollar price it gives the value per dollar, graded
+  Excellent at 1.5×, Good at 1.25×, Fair at 1× and Poor below (`meta.grades`). With Personalize
+  on, items are first multiplied by what they are worth to your plan. This is what the My store
+  tab sorts by, and what "Best buys" is built on.
+- **The msfwar grade is secondary.** Each counted item's ratio is the units per dollar this offer
+  gives divided by the observed average, which is the same as the item's value divided by the
+  whole price. A ratio of 1 (typical) scores 70, 1.25 scores 80 and 1.5 scores 90:
+  `70 + (ratio - 1) * 40`, capped at 100 and floored at 0. The cap is why it cannot separate a
+  2× deal from a 5× one, and why a bundle whose shards are priced as usual can score below a
+  plain gold pack that is merely better than usual.
 - **Score per offer.** Items average within their category and categories combine by weight:
   gold 30, training materials 30, orange (T4) ISO-8 20, character shards 15, everything else 5.
   Only the categories present share the weighting, so extra item types cannot inflate a grade.
@@ -106,13 +116,11 @@ This follows the msfwar Spender's Guide as it described itself on 17 October 202
   Items msfwar has no baseline for are listed as unpriced and leave the offer marked incomplete.
   Offers whose card hides part of its contents behind "+N More" carry a note and rank after
   complete ones.
-- **Value per dollar** is also shown: the sum of counted items' dollar values divided by the
-  US-dollar price, with the plain Excellent/Good/Fair/Poor label from `meta.grades`. It answers
-  a different question from the score. The score asks "is each item cheaper here than it usually
-  is?", item by item, capped at 100 and averaged by category; the ratio asks "how much total
-  value per dollar?". A bundle of 200M gold at 4.5× typical plus two character shard lots at
-  0.9× typical scores B · 89 (gold 100, shards 66) while its ratio is 6.3×; a plain gold pack at
-  1.9× typical scores A · 100. Use the "Sort by" control on the My store tab to rank by either.
+- **Best buys by resource.** Under the store list, every resource the store sells with the
+  offer that sells it cheapest, two ways: "price share" charges each item in a bundle its share
+  of the price in proportion to its value, so bundles compare fairly; "whole price" counts the
+  full price against that one resource. Both are shown as units per US dollar next to msfwar's
+  typical figure, in generic terms (your plan does not change what gold costs).
 - **Thin baselines.** An item whose msfwar average rests on fewer than
   `meta.scoring.minObservations` offer observations (5), or that the table flags as suspect
   (for example shards at thousands per dollar, which means msfwar counted a free claim), is

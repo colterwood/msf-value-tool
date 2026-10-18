@@ -287,15 +287,28 @@
     return valueInUnits / unitPerUsd;
   }
 
-  /** Convert an offer price to US dollars through meta.fxToUsd. Unknown currencies pass through at 1. */
-  function priceToUsd(price, currency, meta) {
+  /**
+   * Convert an offer price to US dollars: through meta.fxToUsd for money, or through the value
+   * table when the price is in an in-game currency the table knows (Strike Points, Power Cores).
+   * Returns { usd, via } where via is 'fx', 'item' or 'assumed' (unknown currency taken at 1).
+   */
+  function priceToUsdDetail(price, currency, table, index) {
     var p = Number(price);
-    if (isNaN(p)) return null;
-    var fx = (meta && meta.fxToUsd) || {};
-    var cur = String(currency || 'USD').toUpperCase();
-    var rate = Number(fx[cur]);
-    if (!(rate > 0)) rate = 1;
-    return p * rate;
+    if (isNaN(p)) return { usd: null, via: null };
+    var meta = (isTable(table) && table.meta) || (table && table.fxToUsd ? table : {});
+    var fx = meta.fxToUsd || {};
+    var cur = String(currency || 'USD');
+    var rate = Number(fx[cur.toUpperCase()]);
+    if (rate > 0) return { usd: p * rate, via: 'fx' };
+    if (isTable(table)) {
+      var resolved = resolveItem(table, index, cur);
+      var uv = resolved ? unitValue(resolved.item) : null;
+      if (uv != null) return { usd: toUsd(p * uv, meta), via: 'item' };
+    }
+    return { usd: p, via: 'assumed' };
+  }
+  function priceToUsd(price, currency, meta) {
+    return priceToUsdDetail(price, currency, isTable(meta) ? meta : { meta: meta, items: {} }).usd;
   }
 
   /** Which msfwar weighting bucket an item belongs to. */
@@ -372,7 +385,8 @@
     var price = Number(offer && offer.price);
     var hasPrice = !isNaN(price) && price > 0;
     var currency = (offer && offer.currency) || meta.currency || 'USD';
-    var priceUsd = hasPrice ? priceToUsd(price, currency, meta) : null;
+    var priced = hasPrice ? priceToUsdDetail(price, currency, table, index) : { usd: null, via: null };
+    var priceUsd = priced.usd;
     var contents = (offer && offer.contents) || [];
 
     var lines = [];
@@ -473,6 +487,7 @@
       price: hasPrice ? price : null,
       currency: currency,
       priceUsd: priceUsd,
+      priceVia: priced.via,
       unit: meta.unit || 'USD',
       totalUnits: totalUnits,
       personalTotalUnits: personalTotalUnits,
@@ -527,6 +542,44 @@
   }
 
   /**
+   * For every resource the ranked offers contain, the offer that sells it cheapest.
+   * Two readings per resource: `whole` counts the offer's full price against that one resource
+   * (what you pay if you only wanted it); `share` charges each item its share of the price in
+   * proportion to its value at the table's averages, so bundles are compared fairly.
+   * Only generic values are used: the best price for gold does not depend on your plan.
+   * Returns [{ key, name, category, typicalPerUsd, offers, whole: {name, perUsd, price, currency, qty}, share: {...} }],
+   * sorted by category then name. perUsd is units per US dollar.
+   */
+  function bestPrices(results, table) {
+    var meta = (isTable(table) && table.meta) || {};
+    var out = {};
+    (results || []).forEach(function (r) {
+      if (!r || !(r.priceUsd > 0) || !(r.totalUsd > 0)) return;
+      r.lines.forEach(function (l) {
+        if (l.value == null || l.excluded || l.thin || !l.key || !(l.qty > 0)) return;
+        var valueUsd = toUsd(l.value, meta);
+        var sharePrice = r.priceUsd * (valueUsd / r.totalUsd);
+        var whole = l.qty / r.priceUsd;
+        var share = sharePrice > 0 ? l.qty / sharePrice : null;
+        var item = table.items[l.key] || {};
+        var entry = out[l.key] || (out[l.key] = {
+          key: l.key, name: item.name || l.item, category: item.category || 'other',
+          typicalPerUsd: item.observed && item.observed.perUsd != null ? Number(item.observed.perUsd) : (unitValue(item) ? 1 / toUsd(unitValue(item), meta) : null),
+          offers: 0, whole: null, share: null
+        });
+        entry.offers += 1;
+        var ref = { name: r.name, price: r.price, currency: r.currency, priceUsd: r.priceUsd, qty: l.qty };
+        if (!entry.whole || whole > entry.whole.perUsd) entry.whole = Object.assign({ perUsd: whole }, ref);
+        if (share != null && (!entry.share || share > entry.share.perUsd)) entry.share = Object.assign({ perUsd: share, sharePrice: sharePrice }, ref);
+      });
+    });
+    return Object.keys(out).map(function (k) { return out[k]; }).sort(function (a, b) {
+      if (a.category !== b.category) return a.category < b.category ? -1 : 1;
+      return a.name < b.name ? -1 : 1;
+    });
+  }
+
+  /**
    * Parse a quick plain-text offer description, one item per line:
    *   500000 Gold
    *   50x Iron Man shards
@@ -575,6 +628,8 @@
     gradeFor: gradeFor,
     letterFor: letterFor,
     priceToUsd: priceToUsd,
+    priceToUsdDetail: priceToUsdDetail,
+    bestPrices: bestPrices,
     scoringCategory: scoringCategory,
     scoreLines: scoreLines,
     valueOffer: valueOffer,
