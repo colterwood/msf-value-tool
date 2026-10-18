@@ -21,7 +21,8 @@ This playbook was run successfully on 18 October 2026. Sections 1 to 3 describe 
    sign-in page, ask the user to sign in and continue afterwards; do not enter their credentials.
    The signed-in player name shows at the top right of every portal page.
 3. Work in the user's clone of this repository so the data files land next to `index.html`.
-4. Python 3 is on the machine; Node may not be (it was not on 18 October 2026).
+4. Python 3 is on the machine. Node 24 is installed per-user at %LOCALAPPDATA%\Programs
+odejs (zip build, on the user PATH since 18 October 2026); open a new shell if `node` is not found.
 
 ## 1. Offers → `data/offers.js`
 
