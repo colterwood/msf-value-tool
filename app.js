@@ -11,8 +11,7 @@
     personal: 'msfv.personalize',
     draft: 'msfv.offerDraft',
     plan: 'msfv.plan',
-    planOnly: 'msfv.planOnly',
-    storeSort: 'msfv.storeSort'
+    planOnly: 'msfv.planOnly'
   };
   var CATEGORIES = ['currency', 'shard', 'orb', 'gear', 'training', 'ability', 'iso8', 'other'];
 
@@ -47,7 +46,15 @@
     if (n >= 1e4) return fmtNum(n / 1e3, 1) + 'K';
     return fmtNum(n, n >= 100 ? 0 : 2);
   }
-  function gradeBadge(g) { return '<span class="grade ' + (g ? esc(g) : 'none') + '">' + (g ? esc(g) : 'no grade') + '</span>'; }
+  function gradeBadge(g) {
+    if (!g) return '<span class="grade none">no grade</span>';
+    var cls = /^[A-F]$/.test(g) ? 'letter-' + g : g;
+    return '<span class="grade ' + esc(cls) + '">' + esc(g) + '</span>';
+  }
+  function gradeChart(t) {
+    var grades = ((t || table()).meta.grades || E.DEFAULT_GRADES).slice().sort(function (a, b) { return b.min - a.min; });
+    return '<span class="chart">' + grades.map(function (g) { return gradeBadge(g.label) + ' <span class="muted">' + (g.note ? esc(g.note) : '≥ ' + g.min + '×') + '</span>'; }).join('<br>') + '</span>';
+  }
   function scoreBadge(letter, score) {
     if (score == null || isNaN(score)) return '<span class="grade none">no score</span>';
     return '<span class="grade letter-' + esc(letter || 'F') + '">' + esc(letter || '–') + ' · ' + fmtNum(score, 0) + '/100</span>';
@@ -113,7 +120,6 @@
     roster: pickSnapshot(normalizeRoster(window.MSF_ROSTER), load(LS.roster, null)),
     plan: pickSnapshot(normalizePlan(window.MSF_PERSONAL), load(LS.plan, null)),
     planOnly: load(LS.planOnly, false),
-    storeSort: load(LS.storeSort, 'ratio'),
     personalize: load(LS.personal, true),
     draft: load(LS.draft, null) || { name: '', price: '', currency: 'USD', rows: [{ item: '', qty: '' }] },
     filter: '',
@@ -263,11 +269,6 @@
     renderOfferResult();
     renderStore();
   });
-  $('store-sort').addEventListener('change', function () {
-    state.storeSort = $('store-sort').value === 'ratio' ? 'ratio' : 'score';
-    save(LS.storeSort, state.storeSort);
-    renderStore();
-  });
   $('store-planonly').addEventListener('change', function () {
     state.planOnly = $('store-planonly').checked;
     save(LS.planOnly, state.planOnly);
@@ -320,20 +321,15 @@
   function summaryBlock(r) {
     var ratio = r.personalized ? r.personalPerDollar : r.perDollar;
     var usd = r.personalized ? r.personalUsd : r.totalUsd;
-    var score = r.personalized ? r.personalScore : r.score;
-    var letter = r.personalized ? r.personalLetter : r.letter;
     var html = '<div class="summary">';
     html += '<div><div class="label">Value per US$ spent</div><div class="big">' + fmtRatio(ratio) + ' ' + gradeBadge(r.grade) + '</div></div>';
-    html += '<div><div class="label">msfwar grade</div><div class="big">' + scoreBadge(letter, score) + '</div></div>';
     html += '<div><div class="label">' + (r.personalized ? 'Value to you' : 'Value') + '</div><div class="big">' + fmtMoney(usd, 'USD') + '</div></div>';
     if (r.price != null) html += '<div><div class="label">Price</div><div class="big">' + (r.priceVia === 'item' ? fmtNum(r.price, 0) + ' ' + esc(r.currency) : fmtMoney(r.price, r.currency)) + '</div>' + (r.priceUsd != null && r.currency !== 'USD' ? '<div class="muted">' + fmtMoney(r.priceUsd, 'USD') + (r.priceVia === 'item' ? ' at the table\'s value for ' + esc(r.currency) : (r.priceVia === 'assumed' ? ', currency unknown so taken as US$' : ' at the table\'s rate')) + '</div>' : '') + '</div>';
     if (r.personalized && Math.abs(r.personalUsd - r.totalUsd) > 1e-9) {
       html += '<div><div class="label">Generic value</div><div>' + fmtMoney(r.totalUsd, 'USD') + ' (' + fmtRatio(r.perDollar) + ')</div></div>';
     }
     html += '</div>';
-    if (r.scoring && r.scoring.length) {
-      html += '<p class="muted">msfwar grade by category: ' + r.scoring.map(function (c) { return esc(c.category) + ' ' + fmtNum(c.score, 0) + ' (weight ' + c.weight + ', ' + c.items + ' item' + (c.items === 1 ? '' : 's') + ')'; }).join(' · ') + '. It asks whether each item is cheaper than usual: typical is 70, 25% cheaper is 80, 50% cheaper is 90, capped at 100, so it cannot tell a 2× deal from a 5× one. The value per US$ above can.</p>';
-    }
+    html += '<p class="muted">1× means priced like msfwar\'s average web-store offer for the same things. The "vs typical" column below shows each item on its own.</p>';
     if (r.lines.some(function (l) { return l.earlyEstimate; })) html += '<p class="muted">Early estimate: msfwar had fewer than seven observed days for some of these items.</p>';
     if (r.currency !== 'USD') html += '<p class="muted">Values are in US dollars; the price was converted with the table\'s exchange rate before any ratio.</p>';
     return html;
@@ -380,8 +376,7 @@
     var o = state.offers;
     meta.textContent = o.offers.length + ' offers' + (o.source ? ' from ' + o.source : '') + (o.account ? ' for ' + o.account : '') + (o.updated ? ', read ' + String(o.updated).slice(0, 16).replace('T', ' ') + ' UTC' : '') + (o.origin === 'file' ? ' (data/offers.js)' : ' (pasted)');
     var ranked = E.rankOffers(o.offers, table(), rosterForUse(), valueOpts());
-    $('store-sort').value = state.storeSort;
-    if (state.storeSort === 'ratio') {
+    {
       ranked.sort(function (a, b) {
         var av = a.personalized ? a.personalPerDollar : a.perDollar;
         var bv = b.personalized ? b.personalPerDollar : b.perDollar;
@@ -394,6 +389,7 @@
     }
     if (state.planOnly && state.personalize && state.plan) ranked = ranked.filter(function (r) { return r.helpsPlan !== false; });
     if (state.planOnly && state.personalize && state.plan) meta.textContent += ' · showing ' + ranked.length + ' that help your plan';
+    $('store-chart').innerHTML = gradeChart();
     var rows = ranked.map(function (r, i) {
       var off = r.offer;
       var ratio = r.personalized ? r.personalPerDollar : r.perDollar;
@@ -408,15 +404,13 @@
       if (r.personalized && r.helpsPlan === false) flags.push('nothing for your plan');
       if (r.unpriced.length) flags.push(r.unpriced.length + ' unpriced');
       if (r.notes) flags.push('hidden items');
-      var score = r.personalized ? r.personalScore : r.score;
-      var letter = r.personalized ? r.personalLetter : r.letter;
       var idx = o.offers.indexOf(off);
       var html = '<tr class="clickable" data-idx="' + idx + '"><td>' + esc(off.name || '(unnamed)') +
         (sub.length ? '<br><span class="muted">' + esc(sub.join(' · ')) + '</span>' : '') + '</td>' +
         '<td class="num">' + (r.priceVia === 'item' ? fmtNum(r.price, 0) + ' ' + esc(r.currency) : fmtMoney(r.price, r.currency)) + '</td>' +
         '<td class="num">' + fmtMoney(usd, 'USD') + '</td>' +
-        '<td class="num">' + fmtRatio(ratio) + ' ' + gradeBadge(r.grade) + '</td>' +
-        '<td>' + scoreBadge(letter, score) + '</td>' +
+        '<td class="num">' + fmtRatio(ratio) + '</td>' +
+        '<td>' + gradeBadge(r.grade) + '</td>' +
         '<td class="warn">' + esc(flags.join(', ')) + '</td></tr>';
       if (state.expanded[idx]) {
         html += '<tr class="detail"><td colspan="6">' + summaryBlock(r) + warnings(r) + breakdownTable(r) + '</td></tr>';
@@ -424,7 +418,7 @@
       return html;
     }).join('');
     renderBestBuys(E.rankOffers(o.offers, table(), null, { personalize: false }));
-    list.innerHTML = '<table><thead><tr><th>Offer</th><th class="num">Price</th><th class="num">' + (state.personalize && (state.roster || state.plan) ? 'Value to you' : 'Value') + '</th><th class="num">Value per US$</th><th>msfwar grade</th><th>Flags</th></tr></thead><tbody>' + rows + '</tbody></table>';
+    list.innerHTML = '<table><thead><tr><th>Offer</th><th class="num">Price</th><th class="num">' + (state.personalize && (state.roster || state.plan) ? 'Value to you' : 'Value') + '</th><th class="num">Value per US$</th><th>Grade</th><th>Flags</th></tr></thead><tbody>' + rows + '</tbody></table>';
   }
   function renderBestBuys(ranked) {
     var box = $('best-list');
@@ -511,8 +505,8 @@
       '<div class="muted">Updated</div><div>' + esc(meta.updated || 'never') + '</div>' +
       '<div class="muted">Items</div><div>' + s.priced + ' with values, ' + (s.total - s.priced) + ' without' + (Object.keys(state.overrides).length ? ', ' + Object.keys(state.overrides).length + ' local edits' : '') + (state.replacement ? ', table replaced from pasted JSON' : '') + '</div>' +
       '<div class="muted">Exchange rates</div><div>' + (meta.fxToUsd ? Object.keys(meta.fxToUsd).map(function (c) { return esc(c) + ' → US$' + meta.fxToUsd[c]; }).join(', ') : 'none (prices taken as US dollars)') + (meta.fxNote ? ' <span class="muted">' + esc(meta.fxNote) + '</span>' : '') + '</div>' +
-      '<div class="muted">Score</div><div>' + (meta.scoring ? 'msfwar method: typical ' + (meta.scoring.typicalScore == null ? 70 : meta.scoring.typicalScore) + ', +' + (meta.scoring.scorePerRatio == null ? 40 : meta.scoring.scorePerRatio) + ' per 1.0× above typical; weights ' + Object.keys(meta.scoring.weights || {}).map(function (k) { return esc(k) + ' ' + meta.scoring.weights[k]; }).join(', ') : 'default msfwar rules') + '</div>' +
-      '<div class="muted">Ratio grades</div><div>' + (meta.grades || E.DEFAULT_GRADES).map(function (g) { return esc(g.label) + ' ≥ ' + g.min + '×'; }).join(', ') + '</div>' +
+
+      '<div class="muted">Grades</div><div>' + (meta.grades || E.DEFAULT_GRADES).map(function (g) { return esc(g.label) + ' ≥ ' + g.min + '×'; }).join(', ') + (meta.gradeNote ? ' <span class="muted">' + esc(meta.gradeNote) + '</span>' : '') + '</div>' +
       '<div class="muted">Maxed shards</div><div>shards of a ' + ((meta.shardRules || {}).maxStars || 7) + '-star character count ' + (((meta.shardRules || {}).maxedMultiplier || 0) * 100) + '% of their value</div>';
     $('meta-unit').addEventListener('change', function () { setOverride('__meta', { unit: $('meta-unit').value || 'USD' }); renderAll(); });
     $('meta-unitPerUsd').addEventListener('change', function () { setOverride('__meta', { unitPerUsd: Number($('meta-unitPerUsd').value) || 1 }); renderAll(); });

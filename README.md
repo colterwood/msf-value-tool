@@ -96,17 +96,30 @@ This follows the msfwar Spender's Guide as it described itself on 17 October 202
 - **Price in in-game currency.** Strike Store offers are priced in Strike Points; such a price
   converts through the value table's own entry for that currency (Strike Points at msfwar's
   average, 100 per dollar) rather than being mistaken for dollars.
-- **Value per dollar is the ranking.** Offer value is the sum of counted items' dollar values at
-  the observed averages; divided by the US-dollar price it gives the value per dollar, graded
-  Excellent at 1.5×, Good at 1.25×, Fair at 1× and Poor below (`meta.grades`). With Personalize
-  on, items are first multiplied by what they are worth to your plan. This is what the My store
-  tab sorts by, and what "Best buys" is built on.
-- **The msfwar grade is secondary.** Each counted item's ratio is the units per dollar this offer
-  gives divided by the observed average, which is the same as the item's value divided by the
-  whole price. A ratio of 1 (typical) scores 70, 1.25 scores 80 and 1.5 scores 90:
-  `70 + (ratio - 1) * 40`, capped at 100 and floored at 0. The cap is why it cannot separate a
-  2× deal from a 5× one, and why a bundle whose shards are priced as usual can score below a
-  plain gold pack that is merely better than usual.
+- **Value per dollar is the score.** Offer value is the sum of counted items' dollar values at
+  the observed averages; divided by the US-dollar price it gives the value per dollar. 1× means
+  the offer is priced like msfwar's average web-store offer for the same things. With
+  Personalize on, items are first multiplied by what they are worth to your plan. This is what
+  the My store tab sorts by, and what "Best buys" is built on.
+
+  Scoring chart (`meta.grades`, editable on the Value table tab):
+
+  | Grade | Value per US$ | Meaning |
+  | --- | --- | --- |
+  | A | 2.5× and up | the deals of the day |
+  | B | 1.75× to 2.5× | clearly better than the usual price |
+  | C | 1.25× to 1.75× | a bit better than usual |
+  | D | 1× to 1.25× | about the usual price |
+  | F | below 1× | worse than usual; wait |
+
+  The bands were set on 18 October 2026 so that the day's 50 fully valued offers spread
+  2 / 7 / 11 / 13 / 17 across A to F.
+- **Per item, "vs typical".** The breakdown also shows each item's own ratio: the units per
+  dollar this offer gives divided by that item's msfwar average, counting the whole price. It
+  tells you which part of a bundle is the bargain. msfwar's combined category score built from
+  those ratios (typical 70, capped at 100) is no longer shown: it judged every item as if it
+  were the whole offer, so a five-item bundle worth 1.8× its price scored an F while a plain
+  gold pack scored an A. The engine still computes it for anyone who wants it.
 - **Score per offer.** Items average within their category and categories combine by weight:
   gold 30, training materials 30, orange (T4) ISO-8 20, character shards 15, everything else 5.
   Only the categories present share the weighting, so extra item types cannot inflate a grade.

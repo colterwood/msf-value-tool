@@ -67,31 +67,41 @@ window.MSF_VALUE_TABLE = {
           "label": "F"
         }
       ],
-      "note": "Each resource is compared with its msfwar observed average: typical value scores 70 (C), 25% more per dollar 80 (B), 50% more 90 (A), capped at 100. Resource scores average within a category and categories combine by weight; only categories present share the weighting. Milestone and Strike Points are excluded. Letters below C and the 0-100 clamp are this tool's reading of msfwar's description, not confirmed from the site. Baselines with fewer than minObservations msfwar observations, or flagged observed.suspect, are shown but not scored.",
+      "note": "Kept for reference and for the per-item 'vs typical' column: each item's units per dollar against its own msfwar average. The combined category score is no longer shown, because it judges every item as if it were the whole offer and so punishes bundles. Each resource is compared with its msfwar observed average: typical value scores 70 (C), 25% more per dollar 80 (B), 50% more 90 (A), capped at 100. Resource scores average within a category and categories combine by weight; only categories present share the weighting. Milestone and Strike Points are excluded. Letters below C and the 0-100 clamp are this tool's reading of msfwar's description, not confirmed from the site. Baselines with fewer than minObservations msfwar observations, or flagged observed.suspect, are shown but not scored.",
       "minObservations": 5
     },
     "grades": [
       {
-        "min": 1.5,
-        "label": "Excellent"
+        "min": 2.5,
+        "label": "A",
+        "note": "2.5× msfwar's typical price or better: the deals of the day"
+      },
+      {
+        "min": 1.75,
+        "label": "B",
+        "note": "1.75× to 2.5×: clearly better than the usual web-store price"
       },
       {
         "min": 1.25,
-        "label": "Good"
+        "label": "C",
+        "note": "1.25× to 1.75×: a bit better than usual"
       },
       {
         "min": 1,
-        "label": "Fair"
+        "label": "D",
+        "note": "1× to 1.25×: about the usual price"
       },
       {
         "min": 0,
-        "label": "Poor"
+        "label": "F",
+        "note": "below 1×: worse than usual, wait for a better one"
       }
     ],
     "shardRules": {
       "maxedMultiplier": 0,
       "maxStars": 7
-    }
+    },
+    "gradeNote": "Value per US$: the offer's contents at msfwar's observed averages, divided by its price in US dollars (your plan applied when personalized). 1× means the offer is priced like msfwar's average web-store offer for the same things. Bands were set on 18 October 2026 so that the day's 50 fully valued offers spread 2 / 7 / 11 / 13 / 17 across A to F; adjust them here or on the Value table tab."
   },
   "items": {
     "battle_pass_tokens": {

@@ -49,7 +49,8 @@
   .grade.letter-A { background: rgba(163,113,247,.18); color: var(--excellent); }
   .grade.letter-B { background: rgba(63,185,80,.18); color: var(--good); }
   .grade.letter-C { background: rgba(210,153,34,.18); color: var(--fair); }
-  .grade.letter-D, .grade.letter-F { background: rgba(248,81,73,.18); color: var(--poor); }
+  .grade.letter-D { background: rgba(154,163,178,.18); color: var(--muted); }
+  .grade.letter-F { background: rgba(248,81,73,.18); color: var(--poor); }
   .big { font-size: 30px; font-weight: 700; line-height: 1.1; }
   .muted { color: var(--muted); }
   .warn { color: var(--fair); }
@@ -113,13 +114,15 @@
       <li><a href="https://marvelstrikeforce.com/en/store" target="_blank" rel="noopener" style="color:var(--accent)">Open your store</a> (signed in), then click the bookmark there. It renders every card, which takes a minute or two, and copies the offers.</li>
       <li>Come back here, paste into the box below and click <b>Import pasted offers</b>. The ranking updates at once; to keep it for next time, also paste it into <code>data/offers.js</code> or ask a Claude session to run <code>/msf-store-pull</code>.</li>
     </ol>
-    <p class="muted">Offers otherwise load from <code>data/offers.js</code> when the page opens. Click an offer to see its breakdown. <b>Value per US$</b> is the sum of the contents at msfwar's average prices divided by the price in US dollars, with your plan applied when Personalize is on; it is the ranking. The <b>msfwar grade</b> beside it only says whether each item is cheaper than usual (C · 70 typical, B · 80 at 25% cheaper, A · 90 at 50% cheaper, capped at 100), so it cannot separate a 2× deal from a 5× one.</p>
+    <p class="muted">Offers otherwise load from <code>data/offers.js</code> when the page opens. Click an offer to see its breakdown.</p>
+    <h3 style="margin:14px 0 6px">Scoring chart</h3>
+    <p class="muted"><b>Value per US$</b> is the one number: the offer's contents at msfwar's average web-store prices, divided by its price in US dollars, with your plan applied when Personalize is on. 1× means priced like the average offer for the same things.</p>
+    <div id="store-chart" class="muted" style="line-height:1.9"></div>
     <textarea id="store-paste" placeholder='Paste the JSON the bookmark copied, or {"updated":"2026-10-18","source":"web-store","offers":[{"name":"Gold Pack","price":9.99,"currency":"USD","contents":[{"item":"Gold","qty":500000}]}]}'></textarea>
     <div class="actions">
       <button class="primary" id="store-import">Import pasted offers</button>
       <button class="ghost" id="store-reload">Reload data/offers.js</button>
       <button class="ghost" id="store-clear">Clear</button>
-      <label class="inline">Sort by <select id="store-sort" style="width:auto;display:inline-block;padding:4px 6px"><option value="ratio">value per US$</option><option value="score">msfwar grade</option></select></label>
       <label class="inline"><input type="checkbox" id="store-personal"> Personalize to my roster and plan</label>
       <label class="inline"><input type="checkbox" id="store-planonly"> Only offers that help my plan</label>
     </div>
