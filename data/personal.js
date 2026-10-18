@@ -6,16 +6,20 @@
  *                   awakened ability materials, diamond and red-star promotions) for anyone
  *                   not listed count offListMultiplier of their value in the personal score.
  * resources         explicit rules by value-table key: status "short" counts in full,
- *                   "surplus" counts surplusMultiplier. have/need are for reference.
+ *                   "surplus" counts surplusMultiplier, "useless" counts uselessMultiplier
+ *                   (0 unless set); a multiplier on the entry overrides either. have/need
+ *                   are for reference.
  * resourceRules     pattern rules, first match wins, for items without an explicit entry:
  *                   { category, pattern (regex on the item name), keyPattern (regex on the
- *                   value-table key, optional), status, note }.
+ *                   value-table key, optional), status, multiplier (optional), note }.
+ * updated           bump this whenever the file changes by hand: the page keeps a plan edited
+ *                   in the browser unless the file is newer.
  * inventory         gear counts from the web portal, for reference and future need columns.
  *
  * The Roster tab can replace the character list; edits are kept in the browser.
  */
 window.MSF_PERSONAL = {
-  "updated": "2026-10-18T20:59:04.769Z",
+  "updated": "2026-10-18T23:28:12.000Z",
   "sources": [
     "MSF Sheet, tab 'Characters I Will Build' (50 names), read 18 October 2026",
     "MSF Sheet, tab 'Resource Budgeting' (gold and L4 modules, have and need), 'T4 Priority' (ability material totals), 'ISO Priority' (characters per ISO tier)",
@@ -114,24 +118,25 @@ window.MSF_PERSONAL = {
       "note": "Resource Budgeting: 10,045 of 39,848 L4 modules"
     },
     "ability_material:t1": {
-      "status": "short",
+      "status": "useless",
       "need": 73,
-      "note": "T4 Priority: 73 green ability materials still needed"
+      "note": "a nuisance more than anything, you said on 18 Oct 2026 (the sheet's T4 Priority still lists 73 green needed)"
     },
     "ability_material:t2": {
-      "status": "short",
+      "status": "useless",
       "need": 1560,
-      "note": "T4 Priority: 1,560 blue ability materials still needed"
+      "note": "useless to you, you said on 18 Oct 2026 (the sheet lists 1,560 blue needed)"
     },
     "ability_material:t3": {
-      "status": "short",
+      "status": "useless",
+      "multiplier": 0.1,
       "need": 5900,
-      "note": "T4 Priority: 5,900 pink ability materials still needed"
+      "note": "next to useless to you, you said on 18 Oct 2026, so 10% (the sheet lists 5,900 pink needed)"
     },
     "ability_material:t4": {
       "status": "short",
       "need": 6580,
-      "note": "T4 Priority: 6,580 T4 ability materials still needed"
+      "note": "by far the most valuable ability material to you; T4 Priority: 6,580 still needed"
     }
   },
   "resourceRules": [

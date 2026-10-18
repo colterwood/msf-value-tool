@@ -12,7 +12,8 @@
     draft: 'msfv.offerDraft',
     plan: 'msfv.plan',
     planOnly: 'msfv.planOnly',
-    bucket: 'msfv.bucket'
+    bucket: 'msfv.bucket',
+    chain: 'msfv.chainMode'
   };
   var CATEGORIES = ['currency', 'shard', 'orb', 'gear', 'training', 'ability', 'iso8', 'other'];
 
@@ -99,6 +100,7 @@
       characters: chars,
       offListMultiplier: src.offListMultiplier == null ? 0 : Number(src.offListMultiplier),
       surplusMultiplier: src.surplusMultiplier == null ? 0.25 : Number(src.surplusMultiplier),
+      uselessMultiplier: src.uselessMultiplier == null ? 0 : Number(src.uselessMultiplier),
       resources: src.resources || {},
       resourceRules: src.resourceRules || [],
       inventory: src.inventory || {}
@@ -121,7 +123,8 @@
     roster: pickSnapshot(normalizeRoster(window.MSF_ROSTER), load(LS.roster, null)),
     plan: pickSnapshot(normalizePlan(window.MSF_PERSONAL), load(LS.plan, null)),
     planOnly: load(LS.planOnly, false),
-    bucket: load(LS.bucket, 'gold'),
+    bucket: load(LS.bucket, 'all'),
+    chainMode: load(LS.chain, 'step') === 'path' ? 'path' : 'step',
     personalize: load(LS.personal, true),
     draft: load(LS.draft, null) || { name: '', price: '', currency: 'USD', rows: [{ item: '', qty: '' }] },
     filter: '',
@@ -146,11 +149,13 @@
   }
   function rosterForUse() { return state.personalize && state.roster ? state.roster : null; }
   function planForUse() { return state.personalize && state.plan ? state.plan : null; }
-  function valueOpts(extra) { return Object.assign({ plan: planForUse(), personalize: state.personalize && !!(state.roster || state.plan) }, extra || {}); }
+  function valueOpts(extra) { return Object.assign({ plan: planForUse(), personalize: state.personalize && !!(state.roster || state.plan), chainMode: state.chainMode }, extra || {}); }
   function tableStats(t) {
-    var keys = Object.keys(t.items);
-    var priced = keys.filter(function (k) { return E.unitValue(t.items[k]) != null; }).length;
-    return { total: keys.length, priced: priced };
+    var items = E.itemsOf(t);   // derived items count as priced, as the store prices them
+    var keys = Object.keys(items);
+    var priced = keys.filter(function (k) { return E.unitValue(items[k]) != null; }).length;
+    var derived = keys.filter(function (k) { return items[k].derived && E.unitValue(items[k]) != null; }).length;
+    return { total: keys.length, priced: priced, derived: derived };
   }
   function setOverride(key, patch) {
     var cur = state.overrides[key] || {};
@@ -177,6 +182,7 @@
     $('store-personal').disabled = !state.roster && !state.plan;
     $('store-planonly').checked = state.planOnly;
     $('store-planonly').disabled = !state.plan || !state.personalize;
+    if ($('store-chain')) $('store-chain').value = state.chainMode;
   }
   function renderDatalist() {
     var t = table();
@@ -276,6 +282,11 @@
     save(LS.planOnly, state.planOnly);
     renderStore();
   });
+  if ($('store-chain')) $('store-chain').addEventListener('change', function () {
+    state.chainMode = $('store-chain').value === 'path' ? 'path' : 'step';
+    save(LS.chain, state.chainMode);
+    renderStore();
+  });
   $('store-personal').addEventListener('change', function () {
     state.personalize = $('store-personal').checked;
     save(LS.personal, state.personalize);
@@ -335,7 +346,13 @@
     if (c.bought) html += ' Not ranked: this step is behind you.';
     if (c.requires.length) {
       if (c.priceUnknown) html += ' You cannot buy this step alone, and one of the earlier steps has no readable price, so the path cannot be valued.';
-      else html += ' You cannot buy this step alone. The whole path from step ' + c.requires[0].step + ' to ' + c.step + ' costs ' + (c.cumulativePrice != null ? fmtMoney(c.cumulativePrice, r.currency) + ' (' + fmtMoney(c.cumulativePriceUsd, 'USD') + ')' : fmtMoney(c.cumulativePriceUsd, 'USD')) + ' and is worth ' + fmtMoney(r.personalized ? c.cumulativePersonalUsd : c.cumulativeUsd, 'USD') + ' (' + fmtRatio(r.personalized ? c.cumulativePersonalPerDollar : c.cumulativePerDollar) + '), which is what the grade above rates. This step on its own: ' + fmtRatio(r.personalized ? r.personalPerDollar : r.perDollar) + '.';
+      else {
+        var pathText = 'The whole path from step ' + c.requires[0].step + ' to ' + c.step + ' costs ' + (c.cumulativePrice != null ? fmtMoney(c.cumulativePrice, r.currency) + ' (' + fmtMoney(c.cumulativePriceUsd, 'USD') + ')' : fmtMoney(c.cumulativePriceUsd, 'USD')) + ' and is worth ' + fmtMoney(r.personalized ? c.cumulativePersonalUsd : c.cumulativeUsd, 'USD') + ' (' + fmtRatio(r.personalized ? c.cumulativePersonalPerDollar : c.cumulativePerDollar) + ')';
+        var ownText = 'this step on its own is ' + fmtRatio(r.personalized ? r.personalPerDollar : r.perDollar);
+        html += c.mode === 'path'
+          ? ' You cannot buy this step alone. ' + pathText + ', which is what the grade above rates; ' + ownText + '.'
+          : ' The grade above rates this step on its own. You cannot buy it alone: ' + pathText.charAt(0).toLowerCase() + pathText.slice(1) + '. Switch "Chain steps" above the list to rank by the path instead.';
+      }
       if (c.assumedCurrency) html += ' A step is priced in a currency the table does not know, taken as US dollars.';
       html += '<br>' + c.requires.map(function (p) { return 'Step ' + p.step + ' ' + esc(p.name) + ': ' + (p.price != null ? fmtMoney(p.price, p.currency) : 'price unreadable') + ', ' + fmtRatio(r.personalized ? p.personalPerDollar : p.perDollar) + (p.complete ? '' : ' (incomplete' + (p.notes ? ': ' + esc(p.notes) : '') + ')'); }).join('<br>');
     }
@@ -343,13 +360,17 @@
   }
   function summaryBlock(r) {
     var ratio = r.rankRatio;
-    var usd = r.personalized ? r.personalUsd : r.totalUsd;
+    var c = r.chain;
+    var onPath = !!(c && c.mode === 'path' && c.requires.length && !c.priceUnknown);
+    var stepsText = onPath ? ' for steps ' + c.requires[0].step + '–' + c.step : '';
+    var usd = onPath ? (r.personalized ? c.cumulativePersonalUsd : c.cumulativeUsd) : (r.personalized ? r.personalUsd : r.totalUsd);
     var html = '<div class="summary">';
-    html += '<div><div class="label">Value per US$ spent</div><div class="big">' + fmtRatio(ratio) + ' ' + gradeBadge(r.grade) + '</div></div>';
-    html += '<div><div class="label">' + (r.personalized ? 'Value to you' : 'Value') + '</div><div class="big">' + fmtMoney(usd, 'USD') + '</div></div>';
-    if (r.price != null) html += '<div><div class="label">Price</div><div class="big">' + (r.priceVia === 'item' ? fmtNum(r.price, 0) + ' ' + esc(r.currency) : fmtMoney(r.price, r.currency)) + '</div>' + (r.priceUsd != null && r.currency !== 'USD' ? '<div class="muted">' + fmtMoney(r.priceUsd, 'USD') + (r.priceVia === 'item' ? ' at the table\'s value for ' + esc(r.currency) : (r.priceVia === 'assumed' ? ', currency unknown so taken as US$' : ' at the table\'s rate')) + '</div>' : '') + '</div>';
+    html += '<div><div class="label">Value per US$ spent' + stepsText + '</div><div class="big">' + fmtRatio(ratio) + ' ' + gradeBadge(r.grade) + '</div></div>';
+    html += '<div><div class="label">' + (r.personalized ? 'Value to you' : 'Value') + stepsText + '</div><div class="big">' + fmtMoney(usd, 'USD') + '</div>' + (onPath ? '<div class="muted">this step alone ' + fmtMoney(r.personalized ? r.personalUsd : r.totalUsd, 'USD') + '</div>' : '') + '</div>';
+    if (onPath) html += '<div><div class="label">Price' + stepsText + '</div><div class="big">' + (c.cumulativePrice != null ? fmtMoney(c.cumulativePrice, r.currency) : fmtMoney(c.cumulativePriceUsd, 'USD')) + '</div><div class="muted">' + (c.cumulativePrice != null && r.currency !== 'USD' ? fmtMoney(c.cumulativePriceUsd, 'USD') + ' · ' : '') + 'this step alone ' + fmtMoney(r.price, r.currency) + '</div></div>';
+    else if (r.price != null) html += '<div><div class="label">Price</div><div class="big">' + (r.priceVia === 'item' ? fmtNum(r.price, 0) + ' ' + esc(r.currency) : fmtMoney(r.price, r.currency)) + '</div>' + (r.priceUsd != null && r.currency !== 'USD' ? '<div class="muted">' + fmtMoney(r.priceUsd, 'USD') + (r.priceVia === 'item' ? ' at the table\'s value for ' + esc(r.currency) : (r.priceVia === 'assumed' ? ', currency unknown so taken as US$' : ' at the table\'s rate')) + '</div>' : '') + '</div>';
     if (r.personalized && Math.abs(r.personalUsd - r.totalUsd) > 1e-9) {
-      html += '<div><div class="label">Generic value</div><div>' + fmtMoney(r.totalUsd, 'USD') + ' (' + fmtRatio(r.perDollar) + ')</div></div>';
+      html += '<div><div class="label">Generic value' + stepsText + '</div><div>' + (onPath ? fmtMoney(c.cumulativeUsd, 'USD') + ' (' + fmtRatio(c.cumulativePerDollar) + ')' : fmtMoney(r.totalUsd, 'USD') + ' (' + fmtRatio(r.perDollar) + ')') + '</div></div>';
     }
     html += '</div>';
     html += chainBlock(r);
@@ -409,7 +430,15 @@
       var off = r.offer;
       var ratio = r.rankRatio;
       var usd = r.personalized ? r.personalUsd : r.totalUsd;
-      if (r.chain && r.chain.requires.length) usd = r.personalized ? r.chain.cumulativePersonalUsd : r.chain.cumulativeUsd;
+      var onPath = r.chain && r.chain.mode === 'path' && r.chain.requires.length;
+      if (onPath) usd = r.personalized ? r.chain.cumulativePersonalUsd : r.chain.cumulativeUsd;
+      var other = '';
+      if (r.chain && r.chain.requires.length && !r.chain.bought) {
+        var c = r.chain;
+        var pathRatio = r.personalized ? c.cumulativePersonalPerDollar : c.cumulativePerDollar;
+        var ownRatio = r.personalized ? r.personalPerDollar : r.perDollar;
+        other = onPath ? fmtRatio(ownRatio) + ' this step alone' : (c.priceUnknown ? 'path price unknown' : fmtRatio(pathRatio) + ' over steps ' + c.requires[0].step + '–' + c.step);
+      }
       var sub = [];
       if (r.chain) sub.push(chainLabel(r));
       if (off.section) sub.push(off.section);
@@ -425,9 +454,9 @@
       var idx = o.offers.indexOf(off);
       var html = '<tr class="clickable" data-idx="' + idx + '"><td>' + esc(off.name || '(unnamed)') +
         (sub.length ? '<br><span class="muted">' + esc(sub.join(' · ')) + '</span>' : '') + '</td>' +
-        '<td class="num">' + (r.priceVia === 'item' ? fmtNum(r.price, 0) + ' ' + esc(r.currency) : fmtMoney(r.price, r.currency)) + (r.chain && r.chain.requires.length ? '<br><span class="muted">' + (r.chain.priceUnknown ? 'path price unknown' : (r.chain.cumulativePrice != null ? fmtMoney(r.chain.cumulativePrice, r.currency) : fmtMoney(r.chain.cumulativePriceUsd, 'USD')) + ' with steps ' + r.chain.requires[0].step + '–' + r.chain.step) + '</span>' : '') + '</td>' +
+        '<td class="num">' + (r.priceVia === 'item' ? fmtNum(r.price, 0) + ' ' + esc(r.currency) : fmtMoney(r.price, r.currency)) + (r.chain && r.chain.requires.length ? '<br><span class="muted">' + (r.chain.priceUnknown ? 'path price unknown' : (r.chain.cumulativePrice != null ? fmtMoney(r.chain.cumulativePrice, r.currency) : fmtMoney(r.chain.cumulativePriceUsd, 'USD')) + ' for steps ' + r.chain.requires[0].step + '–' + r.chain.step + ' together') + '</span>' : '') + '</td>' +
         '<td class="num">' + fmtMoney(usd, 'USD') + '</td>' +
-        '<td class="num">' + fmtRatio(ratio) + '</td>' +
+        '<td class="num">' + fmtRatio(ratio) + (other ? '<br><span class="muted">' + esc(other) + '</span>' : '') + '</td>' +
         '<td>' + gradeBadge(r.grade) + '</td>' +
         '<td class="warn">' + esc(flags.join(', ')) + '</td></tr>';
       if (state.expanded[idx]) {
@@ -436,7 +465,7 @@
       return html;
     }).join('');
     renderShop(ranked);
-    renderBestBuys(E.rankOffers(o.offers, table(), null, { personalize: false }));
+    renderBestBuys(E.rankOffers(o.offers, table(), null, { personalize: false, chainMode: state.chainMode }));
     list.innerHTML = '<table><thead><tr><th>Offer</th><th class="num">Price</th><th class="num">' + (state.personalize && (state.roster || state.plan) ? 'Value to you' : 'Value') + '</th><th class="num">Value per US$</th><th>Grade</th><th>Flags</th></tr></thead><tbody>' + rows + '</tbody></table>';
   }
   function renderShop(ranked) {
@@ -447,13 +476,15 @@
     if (!ranked || !ranked.length) { box.innerHTML = '<p class="muted">Load your store first.</p>'; return; }
     var bucket = E.SHOP_BUCKETS.find(function (b) { return b.key === state.bucket; }) || E.SHOP_BUCKETS[0];
     var rows = E.shopBy(ranked, table(), bucket.key);
-    if (!rows.length) { box.innerHTML = '<p class="muted">No offer in your store contains ' + esc(bucket.label.toLowerCase()) + ' right now.</p>'; return; }
+    var all = bucket.key === 'all';
+    if (!rows.length) { box.innerHTML = '<p class="muted">' + (all ? 'No offer in your store can be valued right now.' : 'No offer in your store contains ' + esc(bucket.label.toLowerCase()) + ' right now.') + '</p>'; return; }
     var oneItem = rows.every(function (r) { return r.items.length === 1 && r.items[0].key === rows[0].items[0].key; });
     var html = rows.map(function (row) {
       var r = row.result;
       var itemsHtml = row.items.map(function (it) {
         var parts = [esc(it.item) + ' ×' + fmtNum(it.qty, 0)];
         if (it.perUsd != null) parts.push(fmtPerUsd(it.perUsd) + ' per US$');
+        if (it.unitPerUsd != null && row.items.length > 1) parts.push(fmtNum(it.unitPerUsd, 0) + ' ' + esc(row.unitLabel) + ' per US$');
         if (it.vsTypical != null) parts.push(fmtRatio(it.vsTypical) + ' typical');
         if (it.excluded) parts.push('not counted in value');
         if (it.thin) parts.push('thin baseline');
@@ -470,12 +501,13 @@
       var pathNote = row.pathSteps ? '<br><span class="muted">' + (row.pathPrice != null ? fmtMoney(row.pathPrice, r.currency) : fmtMoney(row.pathPriceUsd, 'USD')) + ' for steps ' + row.pathSteps[0] + '–' + row.pathSteps[row.pathSteps.length - 1] + '</span>' : '';
       return '<tr><td>' + esc(r.name) + (sub.length ? '<br><span class="muted">' + esc(sub.join(' · ')) + '</span>' : '') + '</td>' +
         '<td class="num">' + (r.priceVia === 'item' ? fmtNum(r.price, 0) + ' ' + esc(r.currency) : fmtMoney(r.price, r.currency)) + pathNote + '</td>' +
-        '<td><b>' + (row.bucketRatio != null ? fmtRatio(row.bucketRatio) : '–') + '</b>' + (row.bucketValueUsd != null ? ' <span class="muted">' + fmtMoney(row.bucketValueUsd, 'USD') + '</span>' : '') + '<br><span class="muted">' + itemsHtml + '</span></td>' +
+        (all ? '<td><span class="muted">' + itemsHtml + '</span></td>' : '<td><b>' + (row.bucketRatio != null ? fmtRatio(row.bucketRatio) : '–') + '</b>' + (row.bucketValueUsd != null ? ' <span class="muted">' + fmtMoney(row.bucketValueUsd, 'USD') + '</span>' : '') + (row.unitsPerUsd != null ? ' <span class="muted">· ' + fmtNum(row.unitsPerUsd, 0) + ' ' + esc(row.unitLabel) + ' per US$</span>' : '') + '<br><span class="muted">' + itemsHtml + '</span></td>') +
         '<td class="num">' + fmtRatio(row.wholeRatio) + ' ' + gradeBadge(row.grade) + '</td>' +
         '<td class="warn">' + esc(flags.join(', ')) + '</td></tr>';
     }).join('');
-    box.innerHTML = '<p class="muted">' + rows.length + ' offer' + (rows.length === 1 ? '' : 's') + ' contain ' + esc(bucket.label.toLowerCase()) + ', best first. "' + esc(bucket.label) + ' alone" is what that part of the offer is worth divided by the whole price' + (oneItem ? ', with units per US$' : '') + '; "whole offer" is everything in it. A chain step that needs earlier steps is priced and counted over the whole path, and steps already bought are left out.</p>' +
-      '<table><thead><tr><th>Offer</th><th class="num">Price</th><th>' + esc(bucket.label) + ' alone</th><th class="num">Whole offer</th><th>Flags</th></tr></thead><tbody>' + html + '</tbody></table>';
+    var valuedRows = rows.filter(function (x) { return x.bucketRatio != null; }).length;
+    box.innerHTML = '<p class="muted">' + (all ? rows.length + ' offer' + (rows.length === 1 ? '' : 's') + ' with a readable price, ' + valuedRows + ' of them valued, best first with everything in each; unvalued ones sort last. Pick a resource above to see what that part alone is worth. ' : rows.length + ' offer' + (rows.length === 1 ? '' : 's') + ' contain ' + esc(bucket.label.toLowerCase()) + ', best first. "' + esc(bucket.label) + ' alone" is what that part of the offer is worth divided by the whole price' + (oneItem ? ', with units per US$' : '') + '; "whole offer" is everything in it. ') + (state.chainMode === 'path' ? 'A chain step that needs earlier steps is priced and counted over the whole path to it' : 'Each chain step counts its own price and contents') + ', and steps already bought are left out.' + (bucket.unit ? ' Levels are compared in ' + esc(bucket.unit.label) + ' per US$' + (bucket.key === 'training' ? ' (L1 50, L2 200, L3 800, L4 1,600 XP); levels msfwar does not list are priced from L4 by XP' : '') + '.' : '') + '</p>' +
+      '<table><thead><tr><th>Offer</th><th class="num">Price</th><th>' + (all ? 'Contents' : esc(bucket.label) + ' alone') + '</th><th class="num">Whole offer</th><th>Flags</th></tr></thead><tbody>' + html + '</tbody></table>';
   }
   document.addEventListener('click', function (e) {
     var b = e.target.closest('#shop-buckets button[data-bucket]');
@@ -576,6 +608,11 @@
     $('meta-unit').addEventListener('change', function () { setOverride('__meta', { unit: $('meta-unit').value || 'USD' }); renderAll(); });
     $('meta-unitPerUsd').addEventListener('change', function () { setOverride('__meta', { unitPerUsd: Number($('meta-unitPerUsd').value) || 1 }); renderAll(); });
   }
+  function derivedNote(k) {
+    var d = E.deriveItem(table(), k);
+    if (!d || !d.derived) return '';
+    return '<br><span class="muted">' + (d.observed && d.observed.perUsd != null ? fmtNum(d.observed.perUsd, 2) + ' per $1 · ' : '') + esc(d.derived.note) + '</span>';
+  }
   function renderTableRows() {
     var t = table();
     var meta = t.meta;
@@ -598,7 +635,7 @@
         '<td><select data-f="category">' + opts + '</select></td>' +
         '<td><input data-f="character" value="' + esc(it.character || '') + '" placeholder="' + (it.category === 'shard' ? 'character' : '') + '"></td>' +
         '<td><input data-f="per" type="number" min="0" step="any" value="' + esc(it.per == null ? 1 : it.per) + '" style="width:90px"></td>' +
-        '<td><input data-f="value" type="number" step="any" value="' + esc(it.value == null ? '' : it.value) + '" placeholder="none" style="width:110px">' + (it.observed && it.observed.perUsd ? '<br><span class="' + (it.observed.suspect || (it.observed.observations != null && it.observed.observations < ((table().meta.scoring || {}).minObservations == null ? 5 : table().meta.scoring.minObservations)) ? 'warn' : 'muted') + '" title="' + esc(it.observed.suspect || 'msfwar observed average') + '">' + fmtNum(it.observed.perUsd, 2) + ' per $1' + (it.observed.observations != null ? ' · ' + it.observed.observations + ' obs' : '') + (it.observed.suspect ? ' · suspect' : (it.observed.earlyEstimate ? ' · early' : '')) + (it.userValue ? ' · your value' : '') + '</span>' : (it.excludeFromValue ? '<br><span class="muted">not counted</span>' : '')) + '</td>' +
+        '<td><input data-f="value" type="number" step="any" value="' + esc(it.value == null ? '' : it.value) + '" placeholder="none" style="width:110px">' + (it.observed && it.observed.perUsd ? '<br><span class="' + (it.observed.suspect || (it.observed.observations != null && it.observed.observations < ((table().meta.scoring || {}).minObservations == null ? 5 : table().meta.scoring.minObservations)) ? 'warn' : 'muted') + '" title="' + esc(it.observed.suspect || 'msfwar observed average') + '">' + fmtNum(it.observed.perUsd, 2) + ' per $1' + (it.observed.observations != null ? ' · ' + it.observed.observations + ' obs' : '') + (it.observed.suspect ? ' · suspect' : (it.observed.earlyEstimate ? ' · early' : '')) + (it.userValue ? ' · your value' : '') + '</span>' : (it.excludeFromValue ? '<br><span class="muted">not counted</span>' : derivedNote(k))) + '</td>' +
         '<td><input data-f="aliases" value="' + esc((it.aliases || []).join(', ')) + '" placeholder="comma separated"></td>' +
         '<td><button class="ghost small" data-delkey="' + esc(k) + '" title="Remove">✕</button></td></tr>';
     }).join('');
@@ -681,6 +718,11 @@
   });
 
   // ---------- Plan ----------
+  function planStatus(x) {
+    var t = esc(x.status || '');
+    if (x.multiplier != null && !isNaN(Number(x.multiplier))) t += (t ? ', ' : '') + Math.round(Number(x.multiplier) * 100) + '% for you';
+    return t;
+  }
   function renderPlan() {
     var box = $('plan-summary');
     if (!state.plan) { box.innerHTML = '<p class="muted">No build list loaded. Character-bound items count in full until one is.</p>'; syncPlanText(''); return; }
@@ -692,8 +734,9 @@
       '<div class="muted">Build list</div><div>' + names.length + ' characters' + (p.origin === 'file' ? ' (data/personal.js)' : ' (edited here)') + (p.updated ? ', read ' + esc(p.updated) : '') + '</div>' +
       '<div class="muted">Off the list</div><div>shards, awakened materials and promotions for anyone else count ' + Math.round(p.offListMultiplier * 100) + '% for you</div>' +
       '<div class="muted">Surplus</div><div>resources you have enough of count ' + Math.round(p.surplusMultiplier * 100) + '%</div>' +
-      '<div class="muted">Resources</div><div>' + (res.length ? res.map(function (k) { var x = p.resources[k]; return '<code>' + esc(k) + '</code> ' + esc(x.status) + (x.note ? ' <span class="muted">' + esc(x.note) + '</span>' : ''); }).join('<br>') : 'none') + '</div>' +
-      '<div class="muted">Rules</div><div>' + (rules.length ? rules.map(function (r) { return esc(r.category || 'any') + (r.pattern ? ' matching <code>' + esc(r.pattern) + '</code>' : '') + ': ' + esc(r.status) + (r.note ? ' <span class="muted">' + esc(r.note) + '</span>' : ''); }).join('<br>') : 'none') + '</div>' +
+      '<div class="muted">Useless</div><div>resources marked useless count ' + Math.round((p.uselessMultiplier || 0) * 100) + '%; an entry with its own multiplier counts that instead</div>' +
+      '<div class="muted">Resources</div><div>' + (res.length ? res.map(function (k) { var x = p.resources[k]; return '<code>' + esc(k) + '</code> ' + planStatus(x) + (x.note ? ' <span class="muted">' + esc(x.note) + '</span>' : ''); }).join('<br>') : 'none') + '</div>' +
+      '<div class="muted">Rules</div><div>' + (rules.length ? rules.map(function (r) { return esc(r.category || 'any') + (r.pattern ? ' matching <code>' + esc(r.pattern) + '</code>' : '') + ': ' + planStatus(r) + (r.note ? ' <span class="muted">' + esc(r.note) + '</span>' : ''); }).join('<br>') : 'none') + '</div>' +
       (p.sources && p.sources.length ? '<div class="muted">Sources</div><div>' + p.sources.map(esc).join('<br>') + '</div>' : '') +
       '</div>' +
       '<p class="muted" style="margin-top:10px">' + names.map(esc).join(', ') + '</p>';

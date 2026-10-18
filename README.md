@@ -12,7 +12,7 @@ It does two things:
   `data/offers.js` (bookmarklet or a desktop Claude session); the "My store" tab ranks the
   offers best first and, with "Personalize" on, by what each is worth to *your* plan: the
   characters you build and the resources you are short of.
-- **Shop by resource.** Pick gold, training materials, character upgrades, ability materials,
+- **Shop by resource.** Pick All for every offer, or gold, training materials, character upgrades, ability materials,
   event points, ISO-8, gear, orbs or everything else, and see every offer that contains it with
   two numbers: what that resource alone is worth against the whole price, and what the whole
   offer is worth.
@@ -25,7 +25,7 @@ Everything runs in your browser from a folder on your machine. No server, no acc
 | --- | --- |
 | Valuation engine and tests | Done. msfwar-style scoring, currency conversion and point exclusion added 18 October 2026 |
 | Local page: offer entry, store ranking, value table editor, roster | Done |
-| msfwar item values in `data/values.js` | **Loaded 18 October 2026**: 181 of 311 items carry msfwar's observed average; the rest are items msfwar had no baseline for (gear catalysts, most character shards, some orbs) and show as unpriced |
+| msfwar item values in `data/values.js` | **Loaded 18 October 2026**: 181 of 313 items carry msfwar's observed average; L1 to L3 training modules are priced from L4 by XP; the rest are items msfwar had no baseline for (gear catalysts, most character shards, some orbs) and show as unpriced |
 | Live offers in `data/offers.js` | **Loaded 18 October 2026, 19:38 UTC**: 212 offers from every section of the web store, prices in CA$ |
 | Roster in `data/roster.js` | **Loaded 18 October 2026**: all 389 characters (237 unlocked, 28 at 7 stars) from the roster stats table |
 | Plan in `data/personal.js` | **Loaded 18 October 2026**: the 50 characters on the MSF Sheet's "Characters I Will Build" tab, gold and L4 budgets from "Resource Budgeting", ability totals from "T4 Priority", ISO tiers from "ISO Priority", and 351 gear counts from the portal's Inventory page |
@@ -123,11 +123,16 @@ This follows the msfwar Spender's Guide as it described itself on 17 October 202
   strength of a gamble.
 - **Chain offers.** A chain's later steps cannot be bought before the earlier ones. The
   bookmarklet reads every step of each chain (the card's step selector previews them), and each
-  step becomes its own offer with the chain attached. A step beyond the first unbought one is
-  ranked and graded on the whole path to it, steps and prices added together, and the breakdown
-  shows the path and the step on its own. Shop by resource and Best buys price such a step the
-  same way: the path's items against the path's price. Steps already bought are shown but not
-  ranked, and a path with an unreadable price on any step is left unvalued.
+  step becomes its own offer with the chain attached. By default every step is ranked, graded
+  and shopped on its own price and contents ("Chain steps: each step on its own" above the
+  list), and a step that needs earlier steps shows the whole path beside it: steps and prices
+  added together. Switch to "with the steps before it added in" to rank, grade and shop later
+  steps on that path instead; the breakdown always shows both readings. Steps already bought
+  are shown but not ranked, and a path with an unreadable price on any step is left unvalued.
+- **Training modules by XP.** L1, L2, L3 and L4 modules are worth 50, 200, 800 and 1,600 XP.
+  msfwar only lists L4, so the other levels are priced from it by XP (`derivedFrom` in
+  `data/values.js`, which also carries `xp`), inherit its baseline, and the breakdown says so.
+  Shop by resource shows training offers in XP per US$ so levels compare directly.
 - **Per item, "vs typical".** The breakdown also shows each item's own ratio: the units per
   dollar this offer gives divided by that item's msfwar average, counting the whole price. It
   tells you which part of a bundle is the bargain. msfwar's combined category score built from
@@ -162,9 +167,13 @@ This follows the msfwar Spender's Guide as it described itself on 17 October 202
     (default 0);
   - resources your plan marks surplus count `surplusMultiplier` (default 25%): L1 to L3 training
     modules, orange (T4) ISO-8 while no character on the ISO list needs it, and gear below the
-    Crimson tier, of which the inventory holds hundreds to tens of thousands. Gold, L4 modules,
-    every ability material tier, T1 to T3 ISO-8 and Crimson gear are marked short and count in
-    full. Everything without a rule counts in full.
+    Crimson tier, of which the inventory holds hundreds to tens of thousands. Resources marked
+    useless count `uselessMultiplier` (default 0), and an entry or rule may carry its own
+    `multiplier` instead. Ability materials follow what you said on 18 October 2026: T4 is by
+    far the most valuable and counts in full, T3 counts 10%, T2 and T1 count nothing (the MSF
+    Sheet's T4 Priority tab lists all four as needed, so the sheet does not decide this). Gold,
+    L4 modules, T1 to T3 ISO-8 and Crimson gear are marked short and count in full. Everything
+    without a rule counts in full.
   - "Only offers that help my plan" hides offers in which every item the table recognises was
     zeroed by those rules. An offer the table cannot value at all is neither hidden nor flagged.
   The Roster & plan tab shows every rule and lets you replace the character list.

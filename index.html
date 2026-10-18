@@ -127,12 +127,13 @@
       <button class="ghost" id="store-clear">Clear</button>
       <label class="inline"><input type="checkbox" id="store-personal"> Personalize to my roster and plan</label>
       <label class="inline"><input type="checkbox" id="store-planonly"> Only offers that help my plan</label>
+      <label class="inline">Chain steps <select id="store-chain" style="margin-left:6px"><option value="step">each step on its own</option><option value="path">with the steps before it added in</option></select></label>
     </div>
     <div id="store-meta" class="muted" style="margin-top:10px"></div>
   </div>
   <div class="panel">
     <h3 style="margin:0 0 6px">Shop by resource</h3>
-    <p class="muted">Pick what you want to buy. Each offer that contains it is listed best first, with the value of that resource alone and the value of the whole offer.</p>
+    <p class="muted">Pick what you want to buy. Each offer that contains it is listed best first, with the value of that resource alone and the value of the whole offer. All lists every offer with a readable price.</p>
     <div id="shop-buckets" class="chips" style="display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px"></div>
     <div id="shop-list"></div>
   </div>

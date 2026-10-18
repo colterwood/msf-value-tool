@@ -135,9 +135,11 @@ Google Sheets connector, plus the portal's Inventory page.
 2. Read "Resource Budgeting" (current gold and L4 modules, totals needed), "T4 Priority" (the
    Blue / Pink / T4 totals in row 1) and "ISO Priority" (how many characters sit under GREEN,
    BLUE, PURPLE and ORANGE). Write explicit `resources` entries for gold, `training_module:l4`
-   and the four ability tiers with `status: "short"` and the have/need numbers, and
-   `resourceRules` for ISO tiers (surplus when a tier lists no characters), gear (Crimson short,
-   lower tiers surplus) and L1 to L3 training modules (surplus).
+   and the four ability tiers with the have/need numbers, and `resourceRules` for ISO tiers
+   (surplus when a tier lists no characters), gear (Crimson short, lower tiers surplus) and L1
+   to L3 training modules (surplus). Ability tiers keep the user's own weighting, not the
+   sheet's: T4 short, T3 `status: "useless", multiplier: 0.1`, T2 and T1 useless (said on
+   18 Oct 2026); ask before changing it.
 3. Open https://marvelstrikeforce.com/en/inventory, scroll to the bottom until the count of
    "You own" stops growing, and read every `.item` card: the name element and the "You own"
    span, parsing 51.9K-style counts. The page lists gear only. Store the counts under
@@ -145,8 +147,10 @@ Google Sheets connector, plus the portal's Inventory page.
 4. Write `window.MSF_PERSONAL = {...};` with `updated`, `sources`, `characters`,
    `offListMultiplier` (0 unless the user chose otherwise), `surplusMultiplier` (0.25),
    `resources`, `resourceRules` and `inventory`. Keep the comment block.
-5. In `data/values.js`, give awakened ability materials and diamond or red-star promotions a
-   `character` field so the build-list rule covers them, and flag `observed.suspect` on
+5. In `data/values.js`, keep the hand-kept fields when regenerating: `xp` on training modules
+   (L1 50, L2 200, L3 800, L4 1600) and `derivedFrom` on L1 to L3 (priced from L4 by XP), the
+   `character` field on awakened ability materials and diamond or red-star promotions so the
+   build-list rule covers them, and flag `observed.suspect` on
    baselines that cannot be right (shards above 1,000 per dollar, orb fragments above a million
    per dollar).
 

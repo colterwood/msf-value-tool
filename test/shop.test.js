@@ -34,7 +34,8 @@ test('items map to the shopping buckets', () => {
   assert.equal(b('gear:crimson_vial'), 'gear');
   assert.equal(b('orb:premium'), 'orbs');
   assert.equal(b('power_cores'), 'other');
-  assert.deepEqual(E.SHOP_BUCKETS.map((x) => x.key), ['gold', 'training', 'character', 'ability', 'points', 'iso', 'gear', 'orbs', 'other']);
+  assert.deepEqual(E.SHOP_BUCKETS.map((x) => x.key), ['all', 'gold', 'training', 'character', 'ability', 'points', 'iso', 'gear', 'orbs', 'other']);
+  assert.ok(Object.keys(table.items).every((k) => E.shopBucket(table.items[k], k) !== 'all'));   // 'all' is a view, never an item's bucket
 });
 
 test('orbs count a fraction of face value, by default 20%, editable in meta.valueMultipliers', () => {
@@ -76,6 +77,20 @@ test('shopBy lists offers containing the bucket with the bucket value and the wh
   assert.deepEqual(E.shopBy(ranked, table, 'gear'), []);
 });
 
+test("the 'all' bucket lists every offer with everything in it, best whole offer first", () => {
+  const ranked = E.rankOffers([
+    { name: 'Gold', price: 10, contents: [{ item: 'Gold', qty: 20000000 }] },                                   // 2x
+    { name: 'Mixed', price: 10, contents: [{ item: 'Gold', qty: 5000000 }, { item: 'Iron Man shards', qty: 100 }] }, // 1.5x
+    { name: 'Nothing known', price: 10, contents: [{ item: 'Mystery Box', qty: 1 }] },
+    { name: 'Free', contents: [{ item: 'Gold', qty: 1 }] }
+  ], table, null, { personalize: false });
+  const rows = E.shopBy(ranked, table, 'all');
+  assert.deepEqual(rows.map((x) => x.name), ['Gold', 'Mixed']);    // unpriced offers and offers without a known item are left out
+  assert.equal(rows[1].items.length, 2);
+  assert.equal(rows[1].bucketRatio, rows[1].wholeRatio);           // nothing filtered: the bucket is the whole offer
+  assert.equal(rows[0].unitsPerUsd, null);
+});
+
 test('vs typical ignores the category discount; the bucket and whole values keep it', () => {
   const r = E.valueOffer({ price: 10, contents: [{ item: 'Premium Orb Fragments', qty: 5000 }] }, table); // 500 per $ = exactly typical
   assert.equal(r.lines[0].vsTypical, 1);
@@ -92,14 +107,15 @@ test('vs typical ignores the category discount; the bucket and whole values keep
   assert.ok(Math.abs(best.find((b) => b.key === 'orb:premium').share.perUsd - 500) < 1e-6);
 });
 
-test('a chain step beyond the first unbought step is ranked and graded on the whole path', () => {
+test("chainMode 'path': a chain step beyond the first unbought step is ranked and graded on the whole path", () => {
+  const PATH = { chainMode: 'path' };
   const steps = [
     { step: 1, name: 'Starter', price: 5, currency: 'USD', contents: [{ item: 'Iron Man shards', qty: 80 }] },      // $8 for $5: 1.6x
     { step: 2, name: 'Rising', price: 10, currency: 'USD', contents: [{ item: 'Iron Man shards', qty: 130 }] },     // $13 for $10: 1.3x
     { step: 3, name: 'Empowered', price: 10, currency: 'USD', contents: [{ item: 'Iron Man shards', qty: 300 }] }   // $30 for $10: 3x alone
   ];
   const mk = (n, current) => ({ name: steps[n - 1].name, price: steps[n - 1].price, currency: 'USD', contents: steps[n - 1].contents, chain: { name: 'Iron Man', step: n, of: 3, current: current, steps } });
-  const s3 = E.valueOffer(mk(3, 1), table);
+  const s3 = E.valueOffer(mk(3, 1), table, null, PATH);
   assert.equal(s3.perDollar, 3);                       // this step alone
   assert.equal(s3.chain.requires.length, 2);
   assert.equal(s3.chain.cumulativePriceUsd, 25);
@@ -108,19 +124,19 @@ test('a chain step beyond the first unbought step is ranked and graded on the wh
   assert.ok(Math.abs(s3.rankRatio - 2.04) < 1e-9);     // ranked on the path
   assert.equal(s3.grade, 'B');                         // 2.04x is a B, not the A its own 3x would be
   // once steps 1 and 2 are bought (current = 3) the step stands alone
-  const s3now = E.valueOffer(mk(3, 3), table);
+  const s3now = E.valueOffer(mk(3, 3), table, null, PATH);
   assert.deepEqual(s3now.chain.requires, []);
   assert.equal(s3now.rankRatio, 3);
   assert.equal(s3now.grade, 'A');
   // step 1 is buyable now and is just itself
-  const s1 = E.valueOffer(mk(1, 1), table);
+  const s1 = E.valueOffer(mk(1, 1), table, null, PATH);
   assert.equal(s1.rankRatio, 1.6);
   assert.equal(s1.chain.requires.length, 0);
   // ranking order uses the path ratio
-  const ranked = E.rankOffers([mk(3, 1), mk(1, 1), { name: 'Gold', price: 10, contents: [{ item: 'Gold', qty: 25000000 }] }], table, null, { personalize: false });
+  const ranked = E.rankOffers([mk(3, 1), mk(1, 1), { name: 'Gold', price: 10, contents: [{ item: 'Gold', qty: 25000000 }] }], table, null, { personalize: false, chainMode: 'path' });
   assert.deepEqual(ranked.map((r) => r.name), ['Gold', 'Empowered', 'Starter']);
   // shop and best buys price the step over its path, aggregate the path's items, and never list bought steps
-  const shopRows = E.shopBy(E.rankOffers([mk(3, 1), mk(1, 1), mk(2, 1)], table, null, { personalize: false }), table, 'character');
+  const shopRows = E.shopBy(E.rankOffers([mk(3, 1), mk(1, 1), mk(2, 1)], table, null, { personalize: false, chainMode: 'path' }), table, 'character');
   assert.deepEqual(shopRows.map((x) => x.name), ['Empowered', 'Starter', 'Rising']); // paths: 2.04x, 1.6x, 1.4x
   assert.equal(shopRows[0].pathPriceUsd, 25);
   assert.equal(shopRows[0].pathPrice, 25);
@@ -129,18 +145,18 @@ test('a chain step beyond the first unbought step is ranked and graded on the wh
   assert.ok(Math.abs(shopRows[0].items[0].perUsd - 20.4) < 1e-9);
   assert.ok(Math.abs(shopRows[0].bucketRatio - 2.04) < 1e-9);
   assert.ok(Math.abs(shopRows[0].wholeRatio - 2.04) < 1e-9);
-  const bestRows = E.bestPrices(E.rankOffers([mk(3, 1), mk(1, 1)], table, null, { personalize: false }), table);
+  const bestRows = E.bestPrices(E.rankOffers([mk(3, 1), mk(1, 1)], table, null, { personalize: false, chainMode: 'path' }), table);
   assert.equal(bestRows[0].whole.name, 'Empowered');
   assert.ok(Math.abs(bestRows[0].whole.perUsd - 20.4) < 1e-9);
   assert.equal(bestRows[0].whole.priceUsd, 25);
   assert.deepEqual(bestRows[0].whole.steps, [1, 2, 3]);
   // already bought: no grade, ranked last, absent from shop and best buys, still complete
-  const bought = E.valueOffer(mk(1, 3), table);
+  const bought = E.valueOffer(mk(1, 3), table, null, PATH);
   assert.equal(bought.chain.bought, true);
   assert.equal(bought.rankRatio, null);
   assert.equal(bought.grade, null);
   assert.equal(bought.complete, true);
-  const withBought = E.rankOffers([mk(1, 3), mk(3, 3)], table, null, { personalize: false });
+  const withBought = E.rankOffers([mk(1, 3), mk(3, 3)], table, null, { personalize: false, chainMode: 'path' });
   assert.deepEqual(withBought.map((r) => r.name), ['Empowered', 'Starter']);
   assert.deepEqual(E.shopBy(withBought, table, 'character').map((x) => x.name), ['Empowered']);
   assert.equal(E.bestPrices(withBought, table)[0].offers, 1);
@@ -148,7 +164,7 @@ test('a chain step beyond the first unbought step is ranked and graded on the wh
   // an earlier step without a readable price leaves the path unvalued and incomplete
   const noPrice = steps.map((x) => Object.assign({}, x));
   noPrice[0] = Object.assign({}, noPrice[0], { price: null, notes: 'price unreadable' });
-  const s2np = E.valueOffer({ name: 'Rising', price: 10, currency: 'USD', contents: steps[1].contents, chain: { step: 2, of: 3, current: 1, steps: noPrice } }, table);
+  const s2np = E.valueOffer({ name: 'Rising', price: 10, currency: 'USD', contents: steps[1].contents, chain: { step: 2, of: 3, current: 1, steps: noPrice } }, table, null, PATH);
   assert.equal(s2np.chain.priceUnknown, true);
   assert.equal(s2np.rankRatio, null);
   assert.equal(s2np.grade, null);
@@ -158,17 +174,92 @@ test('a chain step beyond the first unbought step is ranked and graded on the wh
   const t = JSON.parse(JSON.stringify(table));
   const broken = steps.map((x) => Object.assign({}, x));
   broken[0] = Object.assign({}, broken[0], { contents: [{ item: 'Mystery', qty: 1 }] });
-  const s2 = E.valueOffer({ name: 'Rising', price: 10, currency: 'USD', contents: steps[1].contents, chain: { step: 2, of: 3, current: 1, steps: broken } }, t);
+  const s2 = E.valueOffer({ name: 'Rising', price: 10, currency: 'USD', contents: steps[1].contents, chain: { step: 2, of: 3, current: 1, steps: broken } }, t, null, PATH);
   assert.equal(s2.complete, false);
   assert.equal(s2.chain.requires[0].complete, false);
   // a note on an earlier step (hidden items) travels with the chain
   const noted = steps.map((x) => Object.assign({}, x));
   noted[0] = Object.assign({}, noted[0], { notes: '2 more item(s) not shown on the card' });
-  const s2n = E.valueOffer({ name: 'Rising', price: 10, currency: 'USD', contents: steps[1].contents, chain: { step: 2, of: 3, current: 1, steps: noted } }, table);
+  const s2n = E.valueOffer({ name: 'Rising', price: 10, currency: 'USD', contents: steps[1].contents, chain: { step: 2, of: 3, current: 1, steps: noted } }, table, null, PATH);
   assert.equal(s2n.complete, false);
   assert.match(s2n.chain.requires[0].notes, /2 more item/);
-  // personal ratios are carried for each required step
-  const plan = { characters: {}, offListMultiplier: 0 };
-  const s3p = E.valueOffer(mk(3, 1), table, null, { plan: Object.assign({}, plan, { characters: { 'Iron Man': {} } }) });
-  assert.equal(s3p.chain.requires[0].personalPerDollar, s3p.chain.requires[0].perDollar);
+  // the plan is carried into the earlier steps, and the path is ranked on the personal figures
+  const onList = { characters: { 'Iron Man': {} }, offListMultiplier: 0 };
+  const s3p = E.valueOffer(mk(3, 1), table, null, { chainMode: 'path', plan: onList });
+  assert.equal(s3p.chain.requires[0].personalPerDollar, 1.6);
+  assert.ok(Math.abs(s3p.rankRatio - 2.04) < 1e-9);
+  const offList = { characters: { 'Thor': {} }, offListMultiplier: 0 };
+  const s3off = E.valueOffer(mk(3, 1), table, null, { chainMode: 'path', plan: offList });
+  assert.equal(s3off.personalized, true);
+  assert.equal(s3off.chain.requires[0].perDollar, 1.6);
+  assert.equal(s3off.chain.requires[0].personalPerDollar, 0);
+  assert.equal(s3off.chain.cumulativePersonalUsd, 0);
+  assert.ok(Math.abs(s3off.chain.cumulativePerDollar - 2.04) < 1e-9);
+  assert.equal(s3off.chain.cumulativePersonalPerDollar, 0);
+  assert.equal(s3off.rankRatio, 0);
+  assert.equal(s3off.grade, 'F');
+  assert.equal(E.valueOffer(mk(3, 1), table, null, { plan: offList }).rankRatio, 0);   // step mode: its own personal ratio
+});
+
+test("chainMode 'step' (the default): every chain step is ranked, graded and shopped on its own, with the path kept for display", () => {
+  const steps = [
+    { step: 1, name: 'Starter', price: 5, currency: 'USD', contents: [{ item: 'Iron Man shards', qty: 80 }] },      // 1.6x
+    { step: 2, name: 'Rising', price: 10, currency: 'USD', contents: [{ item: 'Iron Man shards', qty: 130 }] },     // 1.3x
+    { step: 3, name: 'Empowered', price: 10, currency: 'USD', contents: [{ item: 'Iron Man shards', qty: 300 }] }   // 3x
+  ];
+  const mk = (n, current) => ({ name: steps[n - 1].name, price: steps[n - 1].price, currency: 'USD', contents: steps[n - 1].contents, chain: { name: 'Iron Man', step: n, of: 3, current: current, steps } });
+  const s3 = E.valueOffer(mk(3, 1), table);
+  assert.equal(s3.chain.mode, 'step');
+  assert.equal(s3.rankRatio, 3);                       // its own value, not the path's 2.04x
+  assert.equal(s3.grade, 'A');
+  assert.equal(s3.chain.requires.length, 2);           // the path is still described
+  assert.ok(Math.abs(s3.chain.cumulativePerDollar - 2.04) < 1e-9);
+  assert.equal(s3.chain.cumulativePriceUsd, 25);
+  assert.equal(E.valueOffer(mk(3, 1), table, null, { chainMode: 'step' }).rankRatio, 3);
+  assert.equal(E.valueOffer(mk(3, 1), table, null, { chainMode: 'nonsense' }).chain.mode, 'step');
+  // ranking order uses each step's own ratio
+  const ranked = E.rankOffers([mk(1, 1), mk(2, 1), mk(3, 1), { name: 'Gold', price: 10, contents: [{ item: 'Gold', qty: 25000000 }] }], table, null, { personalize: false });
+  assert.deepEqual(ranked.map((r) => r.name), ['Empowered', 'Gold', 'Starter', 'Rising']);
+  // shop and best buys use the step's own price and items
+  const shopRows = E.shopBy(ranked, table, 'character');
+  assert.deepEqual(shopRows.map((x) => x.name), ['Empowered', 'Starter', 'Rising']);
+  assert.equal(shopRows[0].pathSteps, null);
+  assert.equal(shopRows[0].pathPriceUsd, 10);
+  assert.equal(shopRows[0].items[0].qty, 300);
+  assert.equal(shopRows[0].items[0].perUsd, 30);
+  assert.equal(shopRows[0].bucketRatio, 3);
+  assert.equal(shopRows[0].wholeRatio, 3);
+  const best = E.bestPrices(ranked, table).find((b) => b.key === 'shard:iron man');
+  assert.equal(best.whole.name, 'Empowered');
+  assert.equal(best.whole.perUsd, 30);
+  assert.equal(best.whole.steps, null);
+  const pl = E.pathLines(s3);
+  assert.equal(pl.priceUsd, 10);
+  assert.equal(pl.steps, null);
+  assert.equal(pl.lines.length, 1);
+  // a bought step is still unranked and left out of the shop
+  const bought = E.valueOffer(mk(1, 3), table);
+  assert.equal(bought.chain.bought, true);
+  assert.equal(bought.rankRatio, null);
+  assert.equal(E.pathLines(bought), null);
+  assert.deepEqual(E.shopBy(E.rankOffers([mk(1, 3), mk(3, 3)], table, null, { personalize: false }), table, 'character').map((x) => x.name), ['Empowered']);
+  // trouble on an earlier step is recorded on the path but does not touch this step's own reading
+  const noPrice = steps.map((x) => Object.assign({}, x));
+  noPrice[0] = Object.assign({}, noPrice[0], { price: null, notes: 'price unreadable' });
+  const s2np = E.valueOffer({ name: 'Rising', price: 10, currency: 'USD', contents: steps[1].contents, chain: { step: 2, of: 3, current: 1, steps: noPrice } }, table);
+  assert.equal(s2np.complete, true);
+  assert.equal(s2np.rankRatio, 1.3);
+  assert.equal(s2np.chain.priceUnknown, true);
+  assert.equal(s2np.chain.pathComplete, false);
+  assert.equal(s2np.chain.cumulativePerDollar, null);
+  const noted = steps.map((x) => Object.assign({}, x));
+  noted[0] = Object.assign({}, noted[0], { notes: '2 more item(s) not shown on the card' });
+  const s2n = E.valueOffer({ name: 'Rising', price: 10, currency: 'USD', contents: steps[1].contents, chain: { step: 2, of: 3, current: 1, steps: noted } }, table);
+  assert.equal(s2n.complete, true);
+  assert.equal(s2n.chain.pathComplete, false);
+  assert.equal(s2n.chain.requires[0].complete, false);
+  // its own unreadable price still leaves the step unranked
+  const own = E.valueOffer({ name: 'Rising', price: null, currency: 'USD', contents: steps[1].contents, chain: { step: 2, of: 3, current: 1, steps } }, table);
+  assert.equal(own.rankRatio, null);
+  assert.equal(own.grade, null);
 });

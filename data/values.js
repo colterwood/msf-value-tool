@@ -101,7 +101,8 @@ window.MSF_VALUE_TABLE = {
       "maxedMultiplier": 0,
       "maxStars": 7
     },
-    "gradeNote": "Value per US$: the offer's contents at msfwar's observed averages, divided by its price in US dollars (your plan applied when personalized). 1× means the offer is priced like msfwar's average web-store offer for the same things. Bands were set on 18 October 2026 so that the day's 50 fully valued offers spread 2 / 7 / 11 / 13 / 17 across A to F; adjust them here or on the Value table tab."
+    "gradeNote": "Value per US$: the offer's contents at msfwar's observed averages, divided by its price in US dollars (your plan applied when personalized). 1× means the offer is priced like msfwar's average web-store offer for the same things. Bands were set on 18 October 2026 so that the day's 50 fully valued offers spread 2 / 7 / 11 / 13 / 17 across A to F; adjust them here or on the Value table tab.",
+    "xpNote": "Training modules carry xp (L1 50, L2 200, L3 800, L4 1600, per the player on 2026-10-18). Levels msfwar does not list are priced from L4 by XP through derivedFrom; the shop view shows XP per US$."
   },
   "items": {
     "battle_pass_tokens": {
@@ -1513,6 +1514,40 @@ window.MSF_VALUE_TABLE = {
         "note": "not on msfwar's resource list as of 2026-10-18"
       }
     },
+    "training_module:l1": {
+      "name": "L1 Training Module",
+      "category": "training",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "xp": 50,
+      "derivedFrom": {
+        "key": "training_module:l4",
+        "ratio": 0.03125,
+        "basis": "XP"
+      },
+      "observed": {
+        "perUsd": null,
+        "note": "not on msfwar's resource list as of 2026-10-18; priced from L4 by XP"
+      }
+    },
+    "training_module:l2": {
+      "name": "L2 Training Module",
+      "category": "training",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "xp": 200,
+      "derivedFrom": {
+        "key": "training_module:l4",
+        "ratio": 0.125,
+        "basis": "XP"
+      },
+      "observed": {
+        "perUsd": null,
+        "note": "not on msfwar's resource list as of 2026-10-18; priced from L4 by XP"
+      }
+    },
     "training_module:l3": {
       "name": "L3 Training Module",
       "category": "training",
@@ -1521,7 +1556,13 @@ window.MSF_VALUE_TABLE = {
       "aliases": [],
       "observed": {
         "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "note": "not on msfwar's resource list as of 2026-10-18; priced from L4 by XP"
+      },
+      "xp": 800,
+      "derivedFrom": {
+        "key": "training_module:l4",
+        "ratio": 0.5,
+        "basis": "XP"
       }
     },
     "training_module:l4": {
@@ -1540,7 +1581,8 @@ window.MSF_VALUE_TABLE = {
         "observations": 40,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "xp": 1600
     },
     "ability_material:phantom_rider_basic_awakened": {
       "name": "Phantom Rider's Basic Awakened Ability Material",
