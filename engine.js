@@ -399,6 +399,11 @@
    * can be read as "2.7M gold per US$, 3.1x typical". Event points have no value but do have
    * units per dollar. Rows sort by bucketRatio, then by units per dollar; rows without a valued
    * bucket item sort last. `results` come from rankOffers().
+   * Each row is also read against the best offer in the store for the bucket, the way msfwar's
+   * resource view does: vsBest is the row's ratio divided by the best row's (1 for the best,
+   * 0.5 for half the value per dollar), bestScore is that as a 0-100 score (best 100, half 50)
+   * and pctBelowBest is 1 - vsBest. The 'all' bucket compares whole offers (wholeRatio).
+   * Rows without a ratio (unvalued buckets) read null and never set the best.
    */
   function shopBy(results, table, bucket, options) {
     options = options || {};
@@ -469,6 +474,20 @@
       if (a.bucketRatio != null && a.bucketRatio !== b.bucketRatio) return b.bucketRatio - a.bucketRatio;
       var ap = a.items[0].perUsd || 0, bp = b.items[0].perUsd || 0;
       return bp - ap;
+    });
+    // against the best offer in the store for this bucket: best 100, half the value per dollar 50
+    var ratioOf = function (row) { return bucket === 'all' ? row.wholeRatio : row.bucketRatio; };
+    var best = null;
+    rows.forEach(function (row) {
+      var x = ratioOf(row);
+      if (x != null && !isNaN(x) && (best == null || x > best)) best = x;
+    });
+    rows.forEach(function (row) {
+      var x = ratioOf(row);
+      var vs = x != null && !isNaN(x) && best > 0 ? x / best : null;
+      row.vsBest = vs;
+      row.bestScore = vs == null ? null : Math.round(100 * vs);
+      row.pctBelowBest = vs == null ? null : 1 - vs;
     });
     return rows;
   }

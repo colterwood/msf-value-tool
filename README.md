@@ -15,7 +15,9 @@ It does two things:
 - **Shop by resource.** Pick All for every offer, or gold, training materials, character upgrades, ability materials,
   event points, ISO-8, gear, orbs or everything else, and see every offer that contains it with
   two numbers: what that resource alone is worth against the whole price, and what the whole
-  offer is worth.
+  offer is worth. Each row also says how it compares with the best offer for that resource in
+  your store today (best 100, half the value per US$ 50), the way msfwar's resource view does,
+  while the grade still compares it with msfwar's historical average.
 
 Everything runs in your browser from a folder on your machine. No server, no account, no install.
 

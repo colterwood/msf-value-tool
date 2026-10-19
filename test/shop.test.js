@@ -263,3 +263,41 @@ test("chainMode 'step' (the default): every chain step is ranked, graded and sho
   assert.equal(own.rankRatio, null);
   assert.equal(own.grade, null);
 });
+
+test('vs best in your store: the best offer for the bucket reads 100, half the value per dollar 50, no value no reading', () => {
+  const ranked = E.rankOffers([
+    { name: 'Ten', price: 10, contents: [{ item: 'Power Cores', qty: 100 }] },       // 10 cores per $
+    { name: 'Twenty', price: 10, contents: [{ item: 'Power Cores', qty: 200 }] },    // 20 cores per $: the best
+    { name: 'Five', price: 10, contents: [{ item: 'Power Cores', qty: 50 }] },       // 5 cores per $
+    { name: 'Points', price: 10, contents: [{ item: 'Event Milestone Points', qty: 50000000 }] }
+  ], table, null, { personalize: false });
+  const rows = E.shopBy(ranked, table, 'other');
+  assert.deepEqual(rows.map((x) => x.name), ['Twenty', 'Ten', 'Five']);
+  assert.deepEqual(rows.map((x) => x.items[0].perUsd), [20, 10, 5]);
+  assert.deepEqual(rows.map((x) => x.vsBest), [1, 0.5, 0.25]);
+  assert.deepEqual(rows.map((x) => x.bestScore), [100, 50, 25]);
+  assert.deepEqual(rows.map((x) => x.pctBelowBest), [0, 0.5, 0.75]);
+  // a row without a bucket value has no reading and never sets the best
+  const pts = E.shopBy(ranked, table, 'points');
+  assert.equal(pts[0].bucketRatio, null);
+  assert.equal(pts[0].vsBest, null);
+  assert.equal(pts[0].bestScore, null);
+  assert.equal(pts[0].pctBelowBest, null);
+  // the 'all' bucket compares whole offers: a row is read on its wholeRatio, not its bucketRatio
+  const all = E.shopBy(ranked, table, 'all');
+  assert.deepEqual(all.map((x) => x.name), ['Twenty', 'Ten', 'Five', 'Points']);
+  assert.deepEqual(all.map((x) => x.vsBest), [1, 0.5, 0.25, null]);
+  assert.deepEqual(all.map((x) => x.bestScore), [100, 50, 25, null]);
+  const tilted = ranked.map((r) => Object.assign({}, r, r.name === 'Ten' ? { rankRatio: 0.4 } : {}));   // pretend Ten's whole offer is worth 0.4x
+  const allTilted = E.shopBy(tilted, table, 'all');
+  const by = (name) => allTilted.find((x) => x.name === name);
+  assert.equal(by('Ten').wholeRatio, 0.4);
+  assert.equal(by('Ten').bucketRatio, 0.1);
+  assert.equal(by('Ten').vsBest, 1);                                 // best whole offer
+  assert.equal(by('Twenty').vsBest, 0.5);                            // 0.2x against 0.4x
+  assert.equal(E.shopBy(tilted, table, 'other').find((x) => x.name === 'Twenty').vsBest, 1);   // the resource bucket still reads the bucket value
+  // one offer alone is the best of its kind
+  const one = E.shopBy(E.rankOffers([{ name: 'Only', price: 10, contents: [{ item: 'Power Cores', qty: 100 }] }], table, null, { personalize: false }), table, 'other');
+  assert.equal(one[0].vsBest, 1);
+  assert.equal(one[0].bestScore, 100);
+});
