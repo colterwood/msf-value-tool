@@ -169,6 +169,12 @@
     </div>
   </div>
   <div class="panel vt" id="table-list"></div>
+  <div class="panel">
+    <h3 style="margin:0 0 6px">Price history</h3>
+    <p class="muted">What one US dollar bought of a resource on each day the store was read, best and average across the offers that contained it: counting the whole offer price, and counting only the item's share of a bundle's price by value. Importing pasted offers records a day in this browser; <code>node tools/record-history.js</code> records <code>data/offers.js</code> into <code>data/history.js</code>.</p>
+    <div class="actions"><label class="inline">Resource <select id="history-item" style="margin-left:6px"></select></label></div>
+    <div id="history-list"></div>
+  </div>
 </section>
 
 <section id="tab-roster" hidden>
@@ -202,6 +208,7 @@
 <script src="data/offers.js"></script>
 <script src="data/roster.js"></script>
 <script src="data/personal.js"></script>
+<script src="data/history.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

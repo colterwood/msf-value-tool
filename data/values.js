@@ -156,7 +156,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 4004.0,
+        "perUsd": 4004,
         "days": 2,
         "observations": 2,
         "readAt": "2026-10-18",
@@ -192,7 +192,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Gold"
       },
       "observed": {
-        "perUsd": 884050.0,
+        "perUsd": 884050,
         "days": 5,
         "observations": 55,
         "readAt": "2026-10-18",
@@ -232,14 +232,14 @@ window.MSF_VALUE_TABLE = {
       "name": "Strike Points",
       "category": "currency",
       "per": 100,
-      "value": 1.0,
+      "value": 1,
       "aliases": [],
       "msfwar": {
         "key": "BFYB-CUR",
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 100.0,
+        "perUsd": 100,
         "days": 5,
         "observations": 783,
         "readAt": "2026-10-18",
@@ -259,7 +259,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 10.0,
+        "perUsd": 10,
         "days": 5,
         "observations": 30,
         "readAt": "2026-10-18",
@@ -532,7 +532,7 @@ window.MSF_VALUE_TABLE = {
       },
       "character": "Gilgamesh",
       "observed": {
-        "perUsd": 4.0,
+        "perUsd": 4,
         "days": 1,
         "observations": 1,
         "readAt": "2026-10-18",
@@ -575,7 +575,7 @@ window.MSF_VALUE_TABLE = {
       },
       "character": "Hela",
       "observed": {
-        "perUsd": 10.0,
+        "perUsd": 10,
         "days": 4,
         "observations": 4,
         "readAt": "2026-10-18",
@@ -680,7 +680,7 @@ window.MSF_VALUE_TABLE = {
       },
       "character": "Iron Man (Zombie)",
       "observed": {
-        "perUsd": 10.0,
+        "perUsd": 10,
         "days": 4,
         "observations": 4,
         "readAt": "2026-10-18",
@@ -749,7 +749,7 @@ window.MSF_VALUE_TABLE = {
       },
       "character": "Juggernaut (Zombie)",
       "observed": {
-        "perUsd": 10.0,
+        "perUsd": 10,
         "days": 4,
         "observations": 4,
         "readAt": "2026-10-18",
@@ -768,7 +768,7 @@ window.MSF_VALUE_TABLE = {
       },
       "character": "Kestrel (Zombie)",
       "observed": {
-        "perUsd": 14470.0,
+        "perUsd": 14470,
         "days": 4,
         "observations": 24,
         "readAt": "2026-10-18",
@@ -788,7 +788,7 @@ window.MSF_VALUE_TABLE = {
       },
       "character": "Kingo",
       "observed": {
-        "perUsd": 4000.0,
+        "perUsd": 4000,
         "days": 1,
         "observations": 1,
         "readAt": "2026-10-18",
@@ -1115,7 +1115,7 @@ window.MSF_VALUE_TABLE = {
       },
       "character": "Scarlet Witch (Zombie)",
       "observed": {
-        "perUsd": 10.0,
+        "perUsd": 10,
         "days": 4,
         "observations": 4,
         "readAt": "2026-10-18",
@@ -1335,7 +1335,7 @@ window.MSF_VALUE_TABLE = {
       },
       "character": "Thena",
       "observed": {
-        "perUsd": 4.0,
+        "perUsd": 4,
         "days": 1,
         "observations": 1,
         "readAt": "2026-10-18",
@@ -1576,7 +1576,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Training materials"
       },
       "observed": {
-        "perUsd": 128.0,
+        "perUsd": 128,
         "days": 5,
         "observations": 40,
         "readAt": "2026-10-18",
@@ -1688,7 +1688,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Ability materials"
       },
       "observed": {
-        "perUsd": 328.0,
+        "perUsd": 328,
         "days": 5,
         "observations": 10,
         "readAt": "2026-10-18",
@@ -2005,7 +2005,7 @@ window.MSF_VALUE_TABLE = {
         "category": "ISO-8"
       },
       "observed": {
-        "perUsd": 583690.0,
+        "perUsd": 583690,
         "days": 5,
         "observations": 10,
         "readAt": "2026-10-18",
@@ -2023,7 +2023,7 @@ window.MSF_VALUE_TABLE = {
         "category": "ISO-8"
       },
       "observed": {
-        "perUsd": 583690.0,
+        "perUsd": 583690,
         "days": 5,
         "observations": 10,
         "readAt": "2026-10-18",
@@ -2041,7 +2041,7 @@ window.MSF_VALUE_TABLE = {
         "category": "ISO-8"
       },
       "observed": {
-        "perUsd": 1070000.0,
+        "perUsd": 1070000,
         "days": 5,
         "observations": 10,
         "readAt": "2026-10-18",
@@ -2509,7 +2509,7 @@ window.MSF_VALUE_TABLE = {
         "category": "ISO-8"
       },
       "observed": {
-        "perUsd": 333.0,
+        "perUsd": 333,
         "days": 5,
         "observations": 5,
         "readAt": "2026-10-18",
@@ -2527,7 +2527,7 @@ window.MSF_VALUE_TABLE = {
         "category": "ISO-8"
       },
       "observed": {
-        "perUsd": 404790.0,
+        "perUsd": 404790,
         "days": 5,
         "observations": 40,
         "readAt": "2026-10-18",
@@ -2545,7 +2545,7 @@ window.MSF_VALUE_TABLE = {
         "category": "ISO-8"
       },
       "observed": {
-        "perUsd": 317290.0,
+        "perUsd": 317290,
         "days": 5,
         "observations": 55,
         "readAt": "2026-10-18",
@@ -2563,7 +2563,7 @@ window.MSF_VALUE_TABLE = {
         "category": "ISO-8"
       },
       "observed": {
-        "perUsd": 323190.0,
+        "perUsd": 323190,
         "days": 5,
         "observations": 55,
         "readAt": "2026-10-18",
@@ -3031,7 +3031,7 @@ window.MSF_VALUE_TABLE = {
         "category": "ISO-8"
       },
       "observed": {
-        "perUsd": 8058.0,
+        "perUsd": 8058,
         "days": 5,
         "observations": 7,
         "readAt": "2026-10-18",
@@ -3222,11 +3222,15 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Adaptive Pathogens",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 0.152260305,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 6.5677,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 90 of 375 unpriced units for 79.99 CAD"
       }
     },
     "gear:crimson_arcane_powder": {
@@ -3244,22 +3248,30 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Armor Catalyst Part",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 0.003060153,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 326.7811,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Catalysts: 200 of 3030 unpriced units for 12.99 CAD"
       }
     },
     "gear:crimson_basic_catalyst_part": {
       "name": "Crimson Basic Catalyst Part",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 0.003060153,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 326.7811,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Catalysts: 1750 of 3030 unpriced units for 12.99 CAD"
       }
     },
     "gear:crimson_biopolymers": {
@@ -3277,22 +3289,30 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Chaotic Ribosomes",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 0.152260305,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 6.5677,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 75 of 375 unpriced units for 79.99 CAD"
       }
     },
     "gear:crimson_cytoplasm": {
       "name": "Crimson Cytoplasm",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 0.002810966,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 355.7497,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Origins: 575 of 1775 unpriced units for 6.99 CAD"
       }
     },
     "gear:crimson_damage_catalyst_part": {
@@ -3332,11 +3352,15 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Focus Catalyst Part",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 0.003060153,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 326.7811,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Catalysts: 630 of 3030 unpriced units for 12.99 CAD"
       }
     },
     "gear:crimson_focused_chi": {
@@ -3354,11 +3378,15 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Health Catalyst Part",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 0.003060153,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 326.7811,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Catalysts: 350 of 3030 unpriced units for 12.99 CAD"
       }
     },
     "gear:crimson_hyperphage": {
@@ -3376,11 +3404,15 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Isochronal Compound",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 0.152260305,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 6.5677,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 90 of 375 unpriced units for 79.99 CAD"
       }
     },
     "gear:crimson_liquid_hydrazine": {
@@ -3398,11 +3430,15 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Metabolic Enhancers",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 0.002810966,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 355.7497,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Origins: 500 of 1775 unpriced units for 6.99 CAD"
       }
     },
     "gear:crimson_mythic_geode": {
@@ -3442,11 +3478,15 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Phytonutrients",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 0.152260305,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 6.5677,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 75 of 375 unpriced units for 79.99 CAD"
       }
     },
     "gear:crimson_psionic_essence": {
@@ -3464,22 +3504,30 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Remote Access Codes",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 1.019679821,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 0.9807,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Gear Tier 21: Skill Bundle: 35 of 70 unpriced units for 99.99 CAD"
       }
     },
     "gear:crimson_resistance_catalyst_part": {
       "name": "Crimson Resistance Catalyst Part",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 0.003060153,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 326.7811,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Catalysts: 100 of 3030 unpriced units for 12.99 CAD"
       }
     },
     "gear:crimson_ritual_salts": {
@@ -3497,11 +3545,15 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Security Bypass",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 1.019679821,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 0.9807,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Gear Tier 21: Skill Bundle: 35 of 70 unpriced units for 99.99 CAD"
       }
     },
     "gear:crimson_sigil": {
@@ -3519,11 +3571,15 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Spliced X-Gene",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 0.002810966,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 355.7497,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Origins: 700 of 1775 unpriced units for 6.99 CAD"
       }
     },
     "gear:crimson_tempered_osmium": {
@@ -3541,11 +3597,15 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Uru",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 0.152260305,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 6.5677,
+        "observations": 1,
+        "readAt": "2026-10-18",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 45 of 375 unpriced units for 79.99 CAD"
       }
     },
     "gear:improved_arcane_powder": {
@@ -3662,7 +3722,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 494.0,
+        "perUsd": 494,
         "days": 5,
         "observations": 11,
         "readAt": "2026-10-18",
@@ -3680,7 +3740,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 20.0,
+        "perUsd": 20,
         "days": 5,
         "observations": 5,
         "readAt": "2026-10-18",
@@ -3757,7 +3817,7 @@ window.MSF_VALUE_TABLE = {
         "category": "ISO-8"
       },
       "observed": {
-        "perUsd": 25126.0,
+        "perUsd": 25126,
         "days": 5,
         "observations": 5,
         "readAt": "2026-10-18",
@@ -3775,7 +3835,7 @@ window.MSF_VALUE_TABLE = {
         "category": "ISO-8"
       },
       "observed": {
-        "perUsd": 9522.0,
+        "perUsd": 9522,
         "days": 5,
         "observations": 20,
         "readAt": "2026-10-18",
@@ -3793,7 +3853,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 669.0,
+        "perUsd": 669,
         "days": 5,
         "observations": 5,
         "readAt": "2026-10-18",
@@ -3804,14 +3864,14 @@ window.MSF_VALUE_TABLE = {
       "name": "Diamond Orb Fragments",
       "category": "orb",
       "per": 100,
-      "value": 1.0,
+      "value": 1,
       "aliases": [],
       "msfwar": {
         "key": "GACHA_CRATE_DIAMOND_BASIC_TOKEN_de8786ff",
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 100.0,
+        "perUsd": 100,
         "days": 5,
         "observations": 10,
         "readAt": "2026-10-18",
@@ -3847,7 +3907,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 200.0,
+        "perUsd": 200,
         "days": 5,
         "observations": 5,
         "readAt": "2026-10-18",
@@ -3865,7 +3925,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 451.0,
+        "perUsd": 451,
         "days": 4,
         "observations": 8,
         "readAt": "2026-10-18",
@@ -3883,7 +3943,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 20.0,
+        "perUsd": 20,
         "days": 5,
         "observations": 5,
         "readAt": "2026-10-18",
@@ -3901,7 +3961,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 233.0,
+        "perUsd": 233,
         "days": 5,
         "observations": 15,
         "readAt": "2026-10-18",
@@ -3919,7 +3979,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 457.0,
+        "perUsd": 457,
         "days": 5,
         "observations": 16,
         "readAt": "2026-10-18",
@@ -3937,7 +3997,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 54730000.0,
+        "perUsd": 54730000,
         "days": 5,
         "observations": 35,
         "readAt": "2026-10-18",
@@ -3956,7 +4016,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 20000000.0,
+        "perUsd": 20000000,
         "days": 5,
         "observations": 5,
         "readAt": "2026-10-18",
@@ -3998,7 +4058,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Orange Mega Orb",
       "category": "orb",
       "per": 1,
-      "value": 100.0,
+      "value": 100,
       "aliases": [],
       "msfwar": {
         "key": "GACHA_0bb6fd319dfe9bd2ba800bddac3dff0b7c85739457bcb626f5a927e218eb546d",
@@ -4074,7 +4134,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 20.0,
+        "perUsd": 20,
         "days": 1,
         "observations": 1,
         "readAt": "2026-10-18",
@@ -4096,7 +4156,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Domino — 5 diamond promotion",
       "category": "promotion",
       "per": 1,
-      "value": 100.0,
+      "value": 100,
       "aliases": [],
       "msfwar": {
         "key": "PD_DOMINO_5",
@@ -4115,7 +4175,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Domino — 7 red star promotion",
       "category": "promotion",
       "per": 1,
-      "value": 100.0,
+      "value": 100,
       "aliases": [],
       "msfwar": {
         "key": "RS_DOMINO_7",
@@ -4153,7 +4213,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Gilgamesh — 3 diamond promotion",
       "category": "promotion",
       "per": 1,
-      "value": 50.0,
+      "value": 50,
       "aliases": [],
       "msfwar": {
         "key": "PD_GILGAMESH_3",
@@ -4172,7 +4232,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Gilgamesh — 4 diamond promotion",
       "category": "promotion",
       "per": 1,
-      "value": 100.0,
+      "value": 100,
       "aliases": [],
       "msfwar": {
         "key": "PD_GILGAMESH_4",
@@ -4191,7 +4251,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Gilgamesh — 7 red star promotion",
       "category": "promotion",
       "per": 1,
-      "value": 50.0,
+      "value": 50,
       "aliases": [],
       "msfwar": {
         "key": "RS_GILGAMESH_7",
@@ -4248,7 +4308,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Ikaris — 2 diamond promotion",
       "category": "promotion",
       "per": 1,
-      "value": 50.0,
+      "value": 50,
       "aliases": [],
       "msfwar": {
         "key": "PD_IKARIS_2",
@@ -4404,7 +4464,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 60.0,
+        "perUsd": 60,
         "days": 4,
         "observations": 8,
         "readAt": "2026-10-18",
@@ -4424,7 +4484,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 60.0,
+        "perUsd": 60,
         "days": 4,
         "observations": 8,
         "readAt": "2026-10-18",
@@ -4444,7 +4504,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 30.0,
+        "perUsd": 30,
         "days": 1,
         "observations": 2,
         "readAt": "2026-10-18",
@@ -4464,7 +4524,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 20.0,
+        "perUsd": 20,
         "days": 1,
         "observations": 2,
         "readAt": "2026-10-18",
@@ -4484,7 +4544,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 10.0,
+        "perUsd": 10,
         "days": 1,
         "observations": 1,
         "readAt": "2026-10-18",
@@ -4504,7 +4564,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 20.0,
+        "perUsd": 20,
         "days": 1,
         "observations": 5,
         "readAt": "2026-10-18",
@@ -4517,7 +4577,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Negasonic — 5 diamond promotion",
       "category": "promotion",
       "per": 1,
-      "value": 100.0,
+      "value": 100,
       "aliases": [],
       "msfwar": {
         "key": "PD_NEGASONIC_5",
@@ -4536,7 +4596,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Negasonic — 7 red star promotion",
       "category": "promotion",
       "per": 1,
-      "value": 100.0,
+      "value": 100,
       "aliases": [],
       "msfwar": {
         "key": "RS_NEGASONIC_7",
@@ -4555,7 +4615,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Phantom Rider — 5 diamond promotion",
       "category": "promotion",
       "per": 1,
-      "value": 100.0,
+      "value": 100,
       "aliases": [],
       "msfwar": {
         "key": "PD_PHANTOMRIDER_5",
@@ -4574,7 +4634,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Phantom Rider — 7 red star promotion",
       "category": "promotion",
       "per": 1,
-      "value": 100.0,
+      "value": 100,
       "aliases": [],
       "msfwar": {
         "key": "RS_PHANTOMRIDER_7",
@@ -4593,7 +4653,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Quake — 5 diamond promotion",
       "category": "promotion",
       "per": 1,
-      "value": 100.0,
+      "value": 100,
       "aliases": [],
       "msfwar": {
         "key": "PD_QUAKE_5",
@@ -4612,7 +4672,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Quake — 7 red star promotion",
       "category": "promotion",
       "per": 1,
-      "value": 100.0,
+      "value": 100,
       "aliases": [],
       "msfwar": {
         "key": "RS_QUAKE_7",
@@ -4669,7 +4729,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Sersi — 2 diamond promotion",
       "category": "promotion",
       "per": 1,
-      "value": 50.0,
+      "value": 50,
       "aliases": [],
       "msfwar": {
         "key": "PD_SERSI_2",
@@ -4745,7 +4805,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Thena — 3 diamond promotion",
       "category": "promotion",
       "per": 1,
-      "value": 50.0,
+      "value": 50,
       "aliases": [],
       "msfwar": {
         "key": "PD_THENA_3",
@@ -4764,7 +4824,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Thena — 4 diamond promotion",
       "category": "promotion",
       "per": 1,
-      "value": 100.0,
+      "value": 100,
       "aliases": [],
       "msfwar": {
         "key": "PD_THENA_4",
@@ -4783,7 +4843,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Thena — 7 red star promotion",
       "category": "promotion",
       "per": 1,
-      "value": 50.0,
+      "value": 50,
       "aliases": [],
       "msfwar": {
         "key": "RS_THENA_7",
@@ -4802,7 +4862,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Yo-Yo — 5 diamond promotion",
       "category": "promotion",
       "per": 1,
-      "value": 100.0,
+      "value": 100,
       "aliases": [],
       "msfwar": {
         "key": "PD_YOYO_5",
@@ -4821,7 +4881,7 @@ window.MSF_VALUE_TABLE = {
       "name": "Yo-Yo — 7 red star promotion",
       "category": "promotion",
       "per": 1,
-      "value": 100.0,
+      "value": 100,
       "aliases": [],
       "msfwar": {
         "key": "RS_YOYO_7",
@@ -4867,7 +4927,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 3320000.0,
+        "perUsd": 3320000,
         "days": 5,
         "observations": 221,
         "readAt": "2026-10-18",
@@ -4907,7 +4967,7 @@ window.MSF_VALUE_TABLE = {
         "category": "Other resources"
       },
       "observed": {
-        "perUsd": 601.0,
+        "perUsd": 601,
         "days": 5,
         "observations": 26,
         "readAt": "2026-10-18",

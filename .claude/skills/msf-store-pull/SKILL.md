@@ -93,6 +93,15 @@ https://marvelstrikeforce.com/en/player/stats renders the whole roster (389 rows
    name and `characters: { "Name": { stars, redStars, diamonds, level, power, unlocked } }`
    (`unlocked: false` when level, stars and power are all 0). Tell the user it is the full roster.
 
+## 2b. After every pull
+
+Run `node tools/record-history.js` to add the day to `data/history.js`, and
+`node tools/fill-from-store.js` to price gear and ISO-8 items msfwar has no baseline for from
+the new offers (`--dry-run` first to see the changes). It prices store-sourced items again on
+every run and never touches items with an msfwar number or a `derivedFrom`; values the user
+typed on the Value table tab live only in their browser, win on the page, and are invisible to
+the tool.
+
 ## 3. Item values → `data/values.js`
 
 msfwar does not publish a fixed price list. For each resource it shows an *observed average*,

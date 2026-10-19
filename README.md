@@ -27,9 +27,11 @@ Everything runs in your browser from a folder on your machine. No server, no acc
 | --- | --- |
 | Valuation engine and tests | Done. msfwar-style scoring, currency conversion and point exclusion added 18 October 2026 |
 | Local page: offer entry, store ranking, value table editor, roster | Done |
-| msfwar item values in `data/values.js` | **Loaded 18 October 2026**: 181 of 313 items carry msfwar's observed average; L1 to L3 training modules are priced from L4 by XP; the rest are items msfwar had no baseline for (gear catalysts, most character shards, some orbs) and show as unpriced |
-| Live offers in `data/offers.js` | **Loaded 18 October 2026, 19:38 UTC**: 212 offers from every section of the web store, prices in CA$ |
+| msfwar item values in `data/values.js` | **Loaded 18 October 2026**: 181 of 313 items carry msfwar's observed average; L1 to L3 training modules are priced from L4 by XP; 15 Crimson gear items are priced from the store offers of 18 October by `tools/fill-from-store.js`; the rest are items msfwar had no baseline for (the remaining gear, most character shards, some orbs) and show as unpriced |
+| Live offers in `data/offers.js` | **Loaded 18 October 2026, 22:19 UTC**: 156 offers from every section of the web store, prices in CA$ |
 | Roster in `data/roster.js` | **Loaded 18 October 2026**: all 389 characters (237 unlocked, 28 at 7 stars) from the roster stats table |
+| Price history in `data/history.js` | **Started 18 October 2026** with one day; grows with each `tools/record-history.js` run |
+| In-game core prices (Value table "Cores in game") | **Empty**: the web store never prices resources in cores; type the in-game store prices in |
 | Plan in `data/personal.js` | **Loaded 18 October 2026**: the 50 characters on the MSF Sheet's "Characters I Will Build" tab, gold and L4 budgets from "Resource Budgeting", ability totals from "T4 Priority", ISO tiers from "ISO Priority", and 351 gear counts from the portal's Inventory page |
 | Playbook for pulling store, roster and msfwar values through Chrome | Done and run once; `.claude/skills/msf-store-pull/SKILL.md` records what worked |
 
@@ -131,6 +133,35 @@ This follows the msfwar Spender's Guide as it described itself on 17 October 202
   added together. Switch to "with the steps before it added in" to rank, grade and shop later
   steps on that path instead; the breakdown always shows both readings. Steps already bought
   are shown but not ranked, and a path with an unreadable price on any step is left unvalued.
+- **Cores in game.** Each offer also says how many Power Cores the same contents would cost in
+  the in-game store, from the "Cores in game" column of the Value table tab (Power Cores for
+  `per` units of each item; Power Cores themselves cost one each, points cannot be bought with
+  cores). Items without a core price leave the total marked partial. At `meta.powerCore` (CA$0.15
+  per core, editable on the Value table tab) the total is also shown in dollars and as a
+  multiple of the offer price, so you can see which route is cheaper. The web store never prices
+  resources in cores, so this column stays empty until the in-game prices are typed in.
+- **Gear and ISO-8 groups.** Under the Gear and ISO-8 chips, a second row splits the bucket:
+  Crimson Catalyst, Crimson Unique, Teal Catalyst, Teal Unique and Gear 16 to 21 Mini Unique;
+  T1 to T4 Level 1, 4 and 5 Ions and T2 to T4 Trait Crystals, where a trait is 81 of each of the
+  5 crystals (405) and each row prices that set. Groups are matched by name pattern or by an
+  explicit key list (`meta.shopGroups` in `data/values.js` replaces the defaults). The Mini
+  Unique groups have no items mapped yet: tell the tool which Crimson pieces belong to which
+  gear tier and they fill.
+- **Priced from your store.** Gear and ISO-8 items msfwar has no baseline for are priced from
+  your own offers by `node tools/fill-from-store.js`: the only unpriced item in a money-priced
+  offer takes the price left after the valued items, and several unpriced items of one category
+  split it evenly per unit (`observed.source` "store", with the method and the offers in the
+  note). Such items are valued without the thin-baseline guard and the breakdown says where the
+  number came from. An offer that is the only source of an item's price grades about 1× by
+  construction when its other items are counted at face value (an orb in it, counted at 20%,
+  pulls the grade under 1×); the value is for comparing other offers against it. Re-running
+  the tool after a pull prices those items again from the new offers. Values typed on the
+  Value table tab live in the browser and win on the page, but the tool cannot see them.
+- **Price history.** `node tools/record-history.js` records, for every item the store sells
+  that day, the units one US dollar bought: best and average counting the whole offer price, and
+  counting only the item's share of a bundle by value, into `data/history.js`. Importing pasted
+  offers records the same in the browser. The Value table tab shows each resource's days and how
+  its best rate moved.
 - **Training modules by XP.** L1, L2, L3 and L4 modules are worth 50, 200, 800 and 1,600 XP.
   msfwar only lists L4, so the other levels are priced from it by XP (`derivedFrom` in
   `data/values.js`, which also carries `xp`), inherit its baseline, and the breakdown says so.

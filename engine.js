@@ -179,6 +179,11 @@
     return out;
   }
 
+  function storeNote(obs) {
+    var n = Number(obs.observations);
+    return 'priced from your store' + (n > 0 ? ' (' + n + ' offer' + (n === 1 ? '' : 's') + (obs.method === 'shared' ? ', split evenly with the other unpriced items' : '') + ')' : '') + (obs.readAt ? ', ' + obs.readAt : '');
+  }
+
   /** Every item of the table with derived values filled in. */
   function itemsOf(table) {
     var out = {};
@@ -229,6 +234,7 @@
     var obs = item && item.observed;
     if (!obs || obs.perUsd == null) return null;
     if (item.userValue) return null;  // a value typed on the Value table tab overrides the baseline guard
+    if (obs.source === 'store') return null;  // priced from the player's own store on request: shown with a note, not guarded
     if (obs.suspect) return 'baseline looks wrong' + (typeof obs.suspect === 'string' ? ': ' + obs.suspect : '');
     var min = Number(scoring && scoring.minObservations);
     if (isNaN(min)) min = DEFAULT_SCORING.minObservations;
@@ -337,11 +343,108 @@
 
   var DEFAULT_VALUE_MULTIPLIERS = { orb: 0.2 };
 
+  /** What one Power Core is worth to the player when comparing the in-game core route with cash: meta.powerCore { price, currency }. */
+  var DEFAULT_POWER_CORE = { price: 0.15, currency: 'CAD' };
+
+  /** US dollars per Power Core from meta.powerCore (price in a currency meta.fxToUsd knows), or null. */
+  function powerCoreUsd(meta) {
+    var pc = Object.assign({}, DEFAULT_POWER_CORE, (meta && meta.powerCore) || {});
+    var price = Number(pc.price);
+    if (!(price > 0)) return null;
+    var cur = String(pc.currency || 'USD').toUpperCase();
+    var fx = cur === 'USD' ? 1 : Number(meta && meta.fxToUsd && meta.fxToUsd[cur]);
+    if (!(fx > 0)) return null;
+    return price * fx;
+  }
+
+  /** Power Cores one unit of the item costs in the in-game store (item.cores is per item.per units); Power Cores themselves cost one each. */
+  function coresPerUnit(item, key) {
+    if (!item) return null;
+    if (item.cores != null && item.cores !== '' && !isNaN(Number(item.cores)) && Number(item.cores) >= 0) {
+      var per = Number(item.per || 1);
+      if (!(per > 0)) per = 1;
+      return Number(item.cores) / per;
+    }
+    if (key === 'power_cores' || item.category === 'currency' && /^power cores?$/i.test(String(item.name || ''))) return 1;
+    return null;
+  }
+
   /** Generic discount for an item's category (orbs count a fraction of their face value). */
   function valueMultiplier(item, meta) {
     var m = Object.assign({}, DEFAULT_VALUE_MULTIPLIERS, (meta && meta.valueMultipliers) || {});
     var v = item && item.category != null ? Number(m[item.category]) : NaN;
     return isNaN(v) ? 1 : v;
+  }
+
+  /**
+   * Sub-groups inside a shop bucket, chosen by explicit item keys first (items), then by a regex on
+   * the item name (pattern), first match wins. meta.shopGroups { gear: [...], iso: [...] } in
+   * data/values.js replaces a bucket's list. A group with `set` is bought in sets (a trait of
+   * ISO-8 crystals is 81 of each of the 5 crystals), and the shop view prices the set.
+   */
+  var GEAR_GROUPS = [
+    { key: 'crimson_catalyst', label: 'Crimson Catalyst', pattern: '^Crimson\\b.*Catalyst' },
+    { key: 'crimson_unique', label: 'Crimson Unique', pattern: '^Crimson\\b' },
+    { key: 'teal_catalyst', label: 'Teal Catalyst', pattern: '^Teal\\b.*Catalyst' },
+    { key: 'teal_unique', label: 'Teal Unique', pattern: '^Teal\\b' },
+    { key: 'g21_mini', label: 'Gear 21 Mini Unique', pattern: '\\b(?:G|GT|Gear(?: Tier)?)\\s?21\\b.*Mini|Mini.*\\b21\\b', items: [] },
+    { key: 'g20_mini', label: 'Gear 20 Mini Unique', pattern: '\\b(?:G|GT|Gear(?: Tier)?)\\s?20\\b.*Mini|Mini.*\\b20\\b', items: [] },
+    { key: 'g19_mini', label: 'Gear 19 Mini Unique', pattern: '\\b(?:G|GT|Gear(?: Tier)?)\\s?19\\b.*Mini|Mini.*\\b19\\b', items: [] },
+    { key: 'g18_mini', label: 'Gear 18 Mini Unique', pattern: '\\b(?:G|GT|Gear(?: Tier)?)\\s?18\\b.*Mini|Mini.*\\b18\\b', items: [] },
+    { key: 'g17_mini', label: 'Gear 17 Mini Unique', pattern: '\\b(?:G|GT|Gear(?: Tier)?)\\s?17\\b.*Mini|Mini.*\\b17\\b', items: [] },
+    { key: 'g16_mini', label: 'Gear 16 Mini Unique', pattern: '\\b(?:G|GT|Gear(?: Tier)?)\\s?16\\b.*Mini|Mini.*\\b16\\b', items: [] }
+  ];
+  var ISO_GROUPS = (function () {
+    var out = [];
+    [4, 3, 2, 1].forEach(function (t) {
+      [5, 4, 1].forEach(function (l) {
+        out.push({ key: 't' + t + '_l' + l, label: 'T' + t + ' Level ' + l + ' Ions', pattern: '^T' + t + ' Level ' + l + ' Ions' + (t === 1 && l === 1 ? '|^T1 Ions$' : '') });
+      });
+    });
+    [4, 3, 2].forEach(function (t) {
+      out.push({ key: 't' + t + '_crystals', label: 'T' + t + ' Trait Crystals', pattern: '^T' + t + ' \\w+ (?:Armor|Damage|Focus|Health|Resist) Level 1 Iso-8$', set: 405, setLabel: '81 of each of the 5 crystals' });
+    });
+    return out;
+  })();
+
+  function bucketDef(bucketKey) {
+    return SHOP_BUCKETS.filter(function (b) { return b.key === bucketKey; })[0] || null;
+  }
+
+  /** The groups of a bucket (meta.shopGroups overrides the defaults), each with the table items it covers when a table is given. */
+  function bucketGroups(bucketKey, table) {
+    var def = bucketDef(bucketKey);
+    var meta = (isTable(table) && table.meta) || {};
+    var list = (meta.shopGroups && Array.isArray(meta.shopGroups[bucketKey]) ? meta.shopGroups[bucketKey] : null) || (def && def.groups) || [];
+    list = list.filter(function (g) { return g && g.key; });
+    var groups = list.map(function (g) { return Object.assign({}, g, { keys: [] }); });
+    if (isTable(table)) {
+      Object.keys(table.items).forEach(function (k) {
+        var gk = shopGroup(table.items[k], k, bucketKey, groups);
+        if (!gk) return;
+        var g = groups.filter(function (x) { return x.key === gk; })[0];
+        if (g) g.keys.push(k);
+      });
+    }
+    groups.forEach(function (g) { g.count = g.keys.length; g.empty = isTable(table) ? g.keys.length === 0 : null; });
+    return groups;
+  }
+
+  /** The group key an item falls in within a bucket, or null. */
+  function shopGroup(item, key, bucketKey, groups) {
+    if (!item || shopBucket(item, key) !== bucketKey) return null;
+    var list = groups || bucketGroups(bucketKey, null);
+    for (var i = 0; i < list.length; i++) {
+      if ((list[i].items || []).indexOf(key) !== -1) return list[i].key;
+    }
+    var name = String(item.name || '');
+    for (var j = 0; j < list.length; j++) {
+      if (!list[j].pattern) continue;
+      var re;
+      try { re = new RegExp(list[j].pattern, 'i'); } catch (e) { continue; }
+      if (re.test(name)) return list[j].key;
+    }
+    return null;
   }
 
   var SHOP_BUCKETS = [
@@ -351,8 +454,8 @@
     { key: 'character', label: 'Character upgrades' },
     { key: 'ability', label: 'Ability materials' },
     { key: 'points', label: 'Event points' },
-    { key: 'iso', label: 'ISO-8' },
-    { key: 'gear', label: 'Gear' },
+    { key: 'iso', label: 'ISO-8', groups: ISO_GROUPS },
+    { key: 'gear', label: 'Gear', groups: GEAR_GROUPS },
     { key: 'orbs', label: 'Orbs' },
     { key: 'other', label: 'Everything else' }
   ];
@@ -409,7 +512,13 @@
     options = options || {};
     var meta = (isTable(table) && table.meta) || {};
     var items = itemsOf(table);
-    var def = SHOP_BUCKETS.filter(function (b) { return b.key === bucket; })[0];
+    var parts = String(bucket || 'all').split('/');
+    var bucketKey = parts[0];
+    var groupKey = parts[1] || null;
+    var def = bucketDef(bucketKey);
+    var groups = groupKey ? bucketGroups(bucketKey, table) : null;
+    var group = groups ? groups.filter(function (g) { return g.key === groupKey; })[0] || null : null;
+    if (groupKey && !group) return [];
     var unit = def && def.unit ? def.unit : null;   // a common unit for the bucket (XP for training materials)
     var rows = [];
     (results || []).forEach(function (r) {
@@ -419,13 +528,16 @@
       var order = [];
       var valueUsd = 0, personalUsd = 0, valued = 0;
       var unitQty = 0, unitAll = !!unit;
+      var groupQty = 0;
       path.lines.forEach(function (l) {
         if (!l.key) return;
         var item = items[l.key];
-        if (!item || (bucket !== 'all' && shopBucket(item, l.key) !== bucket)) return;
+        if (!item || (bucketKey !== 'all' && shopBucket(item, l.key) !== bucketKey)) return;
+        if (group && shopGroup(item, l.key, bucketKey, groups) !== group.key) return;
+        if (l.qty > 0) groupQty += l.qty;
         var agg = byKey[l.key];
         if (!agg) {
-          agg = byKey[l.key] = { item: l.item, key: l.key, qty: 0, perUsd: null, typicalPerUsd: item.observed && item.observed.perUsd != null ? Number(item.observed.perUsd) : null, vsTypical: null, valueUsd: null, faceUsd: null, personalValueUsd: null, multiplier: l.multiplier, note: l.note || null, excluded: !!l.excluded, thin: !!l.thin, unitQty: null, unitPerUsd: null };
+          agg = byKey[l.key] = { item: l.item, key: l.key, qty: 0, perUsd: null, typicalPerUsd: item.observed && item.observed.perUsd != null ? Number(item.observed.perUsd) : null, typicalSource: (item.observed && item.observed.source) || (item.derived ? 'derived' : 'msfwar'), vsTypical: null, valueUsd: null, faceUsd: null, personalValueUsd: null, multiplier: l.multiplier, note: l.note || null, excluded: !!l.excluded, thin: !!l.thin, unitQty: null, unitPerUsd: null };
           order.push(l.key);
         }
         agg.qty += l.qty > 0 ? l.qty : 0;
@@ -461,6 +573,11 @@
         items: rowItems,
         unitLabel: unit ? unit.label : null,
         unitsPerUsd: unit && unitAll && unitQty > 0 ? unitQty / path.priceUsd : null,
+        group: group ? group.key : null,
+        groupQty: groupQty,
+        setSize: group && group.set ? group.set : null,
+        setLabel: group && group.set ? group.setLabel || (group.set + ' units') : null,
+        setCostUsd: group && group.set && groupQty > 0 ? group.set * path.priceUsd / groupQty : null,
         bucketValueUsd: valued ? useUsd : null,
         bucketRatio: valued ? useUsd / path.priceUsd : null,
         wholeRatio: r.rankRatio,
@@ -647,6 +764,7 @@
       }
       var pm = personalize ? personalMultiplier(resolved.item, roster, meta.shardRules, plan, resolved.key) : { multiplier: 1, notes: [], note: null };
       if (resolved.item.derived) pm.note = joinNotes(resolved.item.derived.note, pm.note);
+      if (resolved.item.observed && resolved.item.observed.source === 'store' && !resolved.item.userValue) pm.note = joinNotes(storeNote(resolved.item.observed), pm.note);
       planLines += 1;
       if (pm.multiplier > 0) planUseful += 1;
       var uv = unitValue(resolved.item);
@@ -690,6 +808,18 @@
       });
     });
 
+    // The core route: what the same contents cost in Power Cores in the in-game store, for the
+    // lines whose item carries a core price. Points are left out (they cannot be bought with cores).
+    var coreRateUsd = powerCoreUsd(meta);
+    var coreTotal = 0, coreLines = 0, coreMissing = [];
+    var coreApplicable = lines.some(function (l) { return !l.excluded; });   // points cannot be bought with cores
+    lines.forEach(function (l) {
+      if (l.excluded) { l.cores = null; return; }
+      var cpu = l.key ? coresPerUnit(table.items[l.key], l.key) : null;
+      if (cpu != null && l.qty > 0) { l.cores = l.qty * cpu; coreTotal += l.cores; coreLines += 1; }
+      else { l.cores = null; coreMissing.push(l.item); }
+    });
+
     if (offer && offer.notes) complete = false;
 
     var totalUsd = toUsd(totalUnits, meta);
@@ -713,6 +843,8 @@
       var assumedCurrency = priced.via === 'assumed';
       var cumLocal = hasPrice ? price : null;
       var pathComplete = true;
+      var cumCores = coreLines ? coreTotal : 0, cumCoreLines = coreLines, cumCoreMissing = coreMissing.slice();
+      var cumCoresOk = coreLines > 0 && !coreMissing.length && !(offer && offer.notes);
       var path = requires.map(function (st) {
         var sr = valueOffer({ name: st.name, price: st.price, currency: st.currency, contents: st.contents, notes: st.notes }, table, roster, Object.assign({}, options, { index: index }));
         if (!(sr.priceUsd > 0)) priceUnknown = true;
@@ -723,7 +855,11 @@
         cumValued += sr.valuedLines;
         if (cumLocal != null) cumLocal = (sr.price != null && String(st.currency || currency) === String(currency)) ? cumLocal + sr.price : null;
         if (!sr.complete) pathComplete = false;
-        return { step: Number(st.step), name: st.name, price: st.price, currency: st.currency, priceUsd: sr.priceUsd, priceVia: sr.priceVia, totalUsd: sr.totalUsd, personalUsd: sr.personalUsd, perDollar: sr.perDollar, personalPerDollar: sr.personalPerDollar, complete: sr.complete, notes: sr.notes, lines: sr.lines };
+        cumCores += sr.coreCost || 0;
+        cumCoreLines += sr.coreLines || 0;
+        cumCoreMissing = cumCoreMissing.concat(sr.coreMissing || []);
+        if (!sr.coreComplete) cumCoresOk = false;
+        return { step: Number(st.step), name: st.name, price: st.price, currency: st.currency, priceUsd: sr.priceUsd, priceVia: sr.priceVia, totalUsd: sr.totalUsd, personalUsd: sr.personalUsd, perDollar: sr.perDollar, personalPerDollar: sr.personalPerDollar, complete: sr.complete, notes: sr.notes, lines: sr.lines, coreCost: sr.coreCost, coreComplete: sr.coreComplete };
       });
       if (priceUnknown && !bought) pathComplete = false;
       if (chainMode === 'path' && !pathComplete) complete = false;
@@ -737,6 +873,9 @@
         assumedCurrency: assumedCurrency,
         cumulativePriceUsd: priceUnknown ? null : cumPrice,
         cumulativePrice: cumLocal,
+        cumulativeCoreCost: cumCoreLines > 0 ? cumCores : null,
+        cumulativeCoreComplete: cumCoreLines > 0 && cumCoresOk,
+        cumulativeCoreMissing: cumCoreMissing,
         cumulativeUsd: cumUsd, cumulativePersonalUsd: cumPersonal,
         cumulativePerDollar: !priceUnknown && cumPrice > 0 && cumValued ? cumUsd / cumPrice : null,
         cumulativePersonalPerDollar: !priceUnknown && cumPrice > 0 && cumValued ? cumPersonal / cumPrice : null
@@ -781,6 +920,14 @@
       grade: gradeFor(effective, options.grades || meta.grades),
       rankRatio: effective,
       chain: chainInfo,
+      coreCost: coreLines ? coreTotal : null,
+      coreLines: coreLines,
+      coreMissing: coreMissing,
+      coreApplicable: coreApplicable,
+      coreComplete: coreLines > 0 && !coreMissing.length && !(offer && offer.notes),
+      coreRateUsd: coreRateUsd,
+      coreCostUsd: coreLines && coreRateUsd ? coreTotal * coreRateUsd : null,
+      coreVsPrice: coreLines && coreRateUsd && priceUsd > 0 ? (coreTotal * coreRateUsd) / priceUsd : null,
       score: generic.score,
       letter: generic.letter,
       personalScore: personal.score,
@@ -803,6 +950,7 @@
   function rankOffers(offers, table, roster, options) {
     options = options || {};
     var index = options.index || buildIndex(table);
+    if (offers && !Array.isArray(offers) && Array.isArray(offers.offers)) offers = offers.offers;
     var results = (offers || []).map(function (o) {
       var r = valueOffer(o, table, roster, Object.assign({}, options, { index: index }));
       r.offer = o;
@@ -861,6 +1009,7 @@
         var entry = out[key] || (out[key] = {
           key: key, name: item.name || l.item, category: item.category || 'other',
           typicalPerUsd: item.observed && item.observed.perUsd != null ? Number(item.observed.perUsd) : (unitValue(item) ? 1 / toUsd(unitValue(item), meta) : null),
+          typicalSource: (item.observed && item.observed.source) || (item.derived ? 'derived' : (item.userValue ? 'user' : 'msfwar')),
           offers: 0, whole: null, share: null
         });
         entry.offers += 1;
@@ -873,6 +1022,153 @@
       if (a.category !== b.category) return a.category < b.category ? -1 : 1;
       return a.name < b.name ? -1 : 1;
     });
+  }
+
+  /**
+   * Price the items the table cannot value from the player's own store. For each unpriced item
+   * (no value, no derivedFrom, not excluded) in an offer whose other lines are all valued:
+   *   residual: the only unpriced item takes the price left after the valued lines (face value);
+   *   shared:   several unpriced items of the same category split that residual evenly per unit.
+   * Offers with an unknown, thin or unpriced item of another category are skipped, as are
+   * bought chain steps, offers without a readable price and offers whose card hides part of the
+   * contents ("+N More", carried as notes). Only offers priced in money count
+   * unless options.fiatOnly is false (Strike Point prices are not real prices), and
+   * options.categories (array) limits which unpriced items are estimated; an unpriced item
+   * outside it blocks its offer. Returns { key: estimate } with perUsd (units per US$, the mean
+   * over offers), observations, method, offers[] and value (table units for item.per).
+   * Nothing is written: tools/fill-from-store.js does that.
+   */
+  function estimateFromStore(offers, table, options) {
+    options = options || {};
+    if (!isTable(table)) return {};
+    // with refreshStore, items priced from the store earlier are priced again from today's offers
+    if (options.refreshStore) {
+      var work = { meta: table.meta, items: {} };
+      Object.keys(table.items).forEach(function (k) {
+        var it = table.items[k];
+        work.items[k] = it && it.observed && it.observed.source === 'store' && !it.userValue ? Object.assign({}, it, { value: null }) : it;
+      });
+      table = work;
+    }
+    var meta = table.meta || {};
+    var items = itemsOf(table);
+    var cats = Array.isArray(options.categories) && options.categories.length ? options.categories : null;
+    var results = rankOffers(offers, table, null, { personalize: false, chainMode: 'step', index: options.refreshStore ? null : options.index });
+    var acc = {};
+    results.forEach(function (r) {
+      var path = pathLines(r);
+      if (!path || !(path.priceUsd > 0)) return;
+      if (r.notes) return;   // part of the contents is hidden: the price buys more than the listed items
+      if (options.fiatOnly !== false && r.priceVia !== 'fx') return;
+      var valuedUsd = 0, blocked = false;
+      var upByKey = {}, upOrder = [];
+      path.lines.forEach(function (l) {
+        if (l.excluded) return;
+        if (!l.key) { blocked = true; return; }
+        var it = items[l.key];
+        if (l.value != null) { valuedUsd += toUsd(l.faceValue == null ? l.value : l.faceValue, meta); return; }
+        if (l.thin || !it || it.derivedFrom || it.excludeFromValue) { blocked = true; return; }
+        if (cats && cats.indexOf(it.category || 'other') === -1) { blocked = true; return; }
+        if (!(l.qty > 0)) { blocked = true; return; }
+        var u = upByKey[l.key];
+        if (!u) { u = upByKey[l.key] = { key: l.key, qty: 0, category: it.category || 'other', per: Number(it.per || 1) > 0 ? Number(it.per || 1) : 1 }; upOrder.push(l.key); }
+        u.qty += l.qty;   // the same item listed twice (web bonus) is one observation
+      });
+      var unpriced = upOrder.map(function (k) { return upByKey[k]; });
+      if (blocked || !unpriced.length) return;
+      var cat = unpriced[0].category;
+      if (unpriced.some(function (u) { return u.category !== cat; })) return;
+      var residual = path.priceUsd - valuedUsd;
+      if (!(residual > 0)) return;
+      var totalQty = unpriced.reduce(function (a, u) { return a + u.qty; }, 0);
+      var method = unpriced.length === 1 ? 'residual' : 'shared';
+      unpriced.forEach(function (u) {
+        var usdPerUnit = residual / totalQty;       // residual: totalQty is the item's own qty
+        var e = acc[u.key] || (acc[u.key] = { key: u.key, name: items[u.key].name || u.key, per: u.per, estimates: [], offers: [], methods: {} });
+        e.estimates.push(1 / usdPerUnit);
+        e.offers.push({ name: r.name, price: path.price, currency: r.currency, priceUsd: path.priceUsd, qty: u.qty, totalQty: totalQty, items: unpriced.length, residualUsd: residual, method: method, perUsd: 1 / usdPerUnit });
+        e.methods[method] = (e.methods[method] || 0) + 1;
+      });
+    });
+    var out = {};
+    Object.keys(acc).forEach(function (k) {
+      var e = acc[k];
+      var mean = e.estimates.reduce(function (a, b) { return a + b; }, 0) / e.estimates.length;
+      out[k] = {
+        key: k, name: e.name, per: e.per,
+        perUsd: mean, observations: e.estimates.length,
+        method: e.methods.residual && !e.methods.shared ? 'residual' : (e.methods.shared && !e.methods.residual ? 'shared' : 'mixed'),
+        value: (e.per / mean) * (Number(meta.unitPerUsd) > 0 ? Number(meta.unitPerUsd) : 1),
+        offers: e.offers
+      };
+    });
+    return out;
+  }
+
+  /**
+   * One day's price record for every item the store sells: units per US$ counting the whole
+   * price (whole) and the item's share of the price by face value (share, null when the bundle
+   * holds something the table cannot value), best and average over the offers that contain it,
+   * for the trend view. Chain steps count on their own; offers with hidden contents, and offers
+   * not priced in money (unless options.fiatOnly is false), are left out.
+   */
+  function priceSnapshot(offers, table, options) {
+    options = options || {};
+    var meta = (isTable(table) && table.meta) || {};
+    var items = itemsOf(table);
+    var results = rankOffers(offers, table, null, { personalize: false, chainMode: 'step', index: options.index });
+    var acc = {};
+    results.forEach(function (r) {
+      var path = pathLines(r);
+      if (!path || !(path.priceUsd > 0)) return;
+      if (r.notes) return;   // hidden contents would understate what the price buys
+      if (options.fiatOnly !== false && r.priceVia !== 'fx') return;   // Strike Point prices are not dollars
+      var faceTotal = 0, hasUnknown = false;
+      var byKey = {}, order = [];
+      path.lines.forEach(function (l) {
+        if (!l.key && !l.excluded && l.qty > 0) hasUnknown = true;   // an unknown item takes an unknown share of the price
+        if (!l.key || l.excluded || !(l.qty > 0)) return;
+        var a = byKey[l.key] || (byKey[l.key] = { qty: 0, face: 0, valued: true });
+        if (!byKey[l.key].seen) { order.push(l.key); byKey[l.key].seen = true; }
+        a.qty += l.qty;
+        if (l.value != null && !l.thin) { var f = toUsd(l.faceValue == null ? l.value : l.faceValue, meta); a.face += f; faceTotal += f; }
+        else a.valued = false;
+      });
+      var allValued = !hasUnknown && order.every(function (k) { return byKey[k].valued; });
+      order.forEach(function (k) {
+        var a = byKey[k];
+        var e = acc[k] || (acc[k] = { whole: [], share: [], n: 0 });
+        e.n += 1;
+        e.whole.push(a.qty / path.priceUsd);
+        if (allValued && faceTotal > 0 && a.face > 0) e.share.push(a.qty / (path.priceUsd * a.face / faceTotal));
+      });
+    });
+    var day = {};
+    Object.keys(acc).forEach(function (k) {
+      var e = acc[k];
+      var best = function (arr) { return arr.length ? Math.max.apply(null, arr) : null; };
+      var avg = function (arr) { return arr.length ? arr.reduce(function (x, y) { return x + y; }, 0) / arr.length : null; };
+      day[k] = { n: e.n, wb: best(e.whole), wa: avg(e.whole), sb: best(e.share), sa: avg(e.share) };
+    });
+    var date = options.date || (offers && offers.updated ? String(offers.updated).slice(0, 10) : null);
+    if (!isDay(date)) date = null;
+    return { date: date, readAt: (offers && offers.updated) || null, source: (offers && offers.source) || null, account: (offers && offers.account) || null, items: day };
+  }
+
+  /** A calendar day as the history keys it: YYYY-MM-DD. */
+  function isDay(d) { return /^\d{4}-\d{2}-\d{2}$/.test(String(d || '')); }
+
+  /** Add a day's snapshot to a history ({ days: [] }), replacing the same date; days stay sorted. */
+  function mergeHistory(history, snapshot) {
+    var days = ((history && history.days) || []).filter(function (d) { return d && isDay(d.date) && (!snapshot || d.date !== snapshot.date); });
+    if (snapshot && isDay(snapshot.date)) days.push(snapshot);
+    days.sort(function (a, b) { return a.date < b.date ? -1 : (a.date > b.date ? 1 : 0); });
+    return { days: days };
+  }
+
+  /** One item's history: [{ date, n, wb, wa, sb, sa }] oldest first. */
+  function historyFor(history, key) {
+    return ((history && history.days) || []).filter(function (d) { return d.items && d.items[key]; }).map(function (d) { return Object.assign({ date: d.date }, d.items[key]); });
   }
 
   /**
@@ -929,6 +1225,18 @@
     pathLines: pathLines,
     deriveItem: deriveItem,
     itemsOf: itemsOf,
+    DEFAULT_POWER_CORE: DEFAULT_POWER_CORE,
+    powerCoreUsd: powerCoreUsd,
+    coresPerUnit: coresPerUnit,
+    GEAR_GROUPS: GEAR_GROUPS,
+    ISO_GROUPS: ISO_GROUPS,
+    bucketGroups: bucketGroups,
+    shopGroup: shopGroup,
+    estimateFromStore: estimateFromStore,
+    priceSnapshot: priceSnapshot,
+    mergeHistory: mergeHistory,
+    historyFor: historyFor,
+    isDay: isDay,
     DEFAULT_VALUE_MULTIPLIERS: DEFAULT_VALUE_MULTIPLIERS,
     valueMultiplier: valueMultiplier,
     SHOP_BUCKETS: SHOP_BUCKETS,
