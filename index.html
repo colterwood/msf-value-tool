@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MSF Store Value</title>
+<style>
+  :root {
+    --bg: #0f1115; --panel: #181b22; --input: #0b0d12; --line: #2a2f3a;
+    --text: #e6e8ee; --muted: #9aa3b2; --accent: #4f8cff;
+    --excellent: #a371f7; --good: #3fb950; --fair: #d29922; --poor: #f85149;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); }
+  header { padding: 14px 20px; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px 24px; align-items: baseline; }
+  header h1 { margin: 0; font-size: 20px; }
+  #status { color: var(--muted); font-size: 13px; }
+  nav { display: flex; gap: 2px; padding: 6px 20px 0; border-bottom: 1px solid var(--line); overflow-x: auto; }
+  nav button { background: none; border: none; color: var(--muted); padding: 10px 14px; font-size: 15px; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; }
+  nav button.active { color: var(--text); border-bottom-color: var(--accent); }
+  main { padding: 20px; max-width: 1100px; }
+  section[hidden] { display: none; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+  label.inline { display: inline-flex; align-items: center; gap: 6px; margin: 0; color: var(--text); font-size: 14px; }
+  label.inline input { width: auto; }
+  input, select, textarea { background: var(--input); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 8px; font: inherit; width: 100%; }
+  input[type="number"] { font-variant-numeric: tabular-nums; }
+  textarea { min-height: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+  button.primary { background: var(--accent); color: #fff; border: none; border-radius: 6px; padding: 9px 14px; font: inherit; cursor: pointer; }
+  button.ghost { background: none; color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; font: inherit; cursor: pointer; }
+  button.ghost.small { padding: 4px 8px; font-size: 13px; }
+  button:disabled { opacity: .5; cursor: default; }
+  .grid3 { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; }
+  .row { display: grid; grid-template-columns: 1fr 130px 40px; gap: 8px; margin-bottom: 8px; align-items: center; }
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.clickable { cursor: pointer; }
+  tr.detail td { background: var(--input); }
+  .grade { display: inline-block; padding: 2px 9px; border-radius: 999px; font-weight: 600; font-size: 13px; white-space: nowrap; }
+  .grade.Excellent { background: rgba(163,113,247,.18); color: var(--excellent); }
+  .grade.Good { background: rgba(63,185,80,.18); color: var(--good); }
+  .grade.Fair { background: rgba(210,153,34,.18); color: var(--fair); }
+  .grade.Poor { background: rgba(248,81,73,.18); color: var(--poor); }
+  .grade.none { background: rgba(154,163,178,.18); color: var(--muted); }
+  .chip { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font: inherit; font-size: 14px; cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .grade.letter-A { background: rgba(163,113,247,.18); color: var(--excellent); }
+  .grade.letter-B { background: rgba(63,185,80,.18); color: var(--good); }
+  .grade.letter-C { background: rgba(210,153,34,.18); color: var(--fair); }
+  .grade.letter-D { background: rgba(154,163,178,.18); color: var(--muted); }
+  .grade.letter-F { background: rgba(248,81,73,.18); color: var(--poor); }
+  .big { font-size: 30px; font-weight: 700; line-height: 1.1; }
+  .muted { color: var(--muted); }
+  .warn { color: var(--fair); }
+  .bad { color: var(--poor); }
+  .kv { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; font-size: 14px; }
+  .summary { display: flex; gap: 28px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 12px; }
+  .summary .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; }
+  code { background: var(--input); padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+  p { margin: 0 0 10px; }
+  .vt input { padding: 5px 6px; font-size: 13px; }
+  .vt td { padding: 4px 4px; }
+  @media (max-width: 720px) {
+    .grid3 { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 1fr 90px 36px; }
+    main { padding: 12px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>MSF Store Value</h1>
+  <div id="status">Loading…</div>
+</header>
+<nav>
+  <button data-tab="offer" class="active">Value an offer</button>
+  <button data-tab="store">My store</button>
+  <button data-tab="table">Value table</button>
+  <button data-tab="roster">Roster &amp; plan</button>
+</nav>
+<main>
+
+<section id="tab-offer">
+  <div class="panel">
+    <div class="grid3">
+      <div><label for="offer-name">Offer name (optional)</label><input id="offer-name" placeholder="e.g. Weekly Gold Pack"></div>
+      <div><label for="offer-price">Price</label><input id="offer-price" type="number" min="0" step="0.01" placeholder="9.99"></div>
+      <div><label for="offer-currency">Currency</label><input id="offer-currency" value="USD"></div>
+    </div>
+    <label style="margin-top:14px">Contents</label>
+    <div id="offer-rows"></div>
+    <div class="actions">
+      <button class="ghost" id="add-row">+ Add item</button>
+      <button class="ghost" id="paste-toggle">Paste as text</button>
+      <button class="ghost" id="offer-clear">Clear</button>
+      <label class="inline"><input type="checkbox" id="offer-personal"> Personalize to my roster and plan</label>
+    </div>
+    <div id="paste-box" hidden style="margin-top:12px">
+      <textarea id="paste-text" placeholder="One item per line:&#10;500,000 Gold&#10;50x Iron Man shards&#10;Premium Orb x3"></textarea>
+      <div class="actions"><button class="primary" id="paste-apply">Use these items</button></div>
+    </div>
+  </div>
+  <div class="panel" id="offer-result"></div>
+</section>
+
+<section id="tab-store" hidden>
+  <div class="panel">
+    <h3 style="margin:0 0 6px">Refresh from your store</h3>
+    <p class="muted">The page cannot read the store itself: the offers only exist in your signed-in browser. Three clicks do it without a Claude session:</p>
+    <ol class="muted" style="margin:0 0 10px 1.2em;padding:0">
+      <li>Once: drag this link to your bookmarks bar: <a id="grab-bookmarklet" href="#" style="color:var(--accent);font-weight:600">MSF: grab my offers</a></li>
+      <li><a href="https://marvelstrikeforce.com/en/store" target="_blank" rel="noopener" style="color:var(--accent)">Open your store</a> (signed in), then click the bookmark there. It renders every card, which takes a minute or two, and copies the offers.</li>
+      <li>Come back here, paste into the box below and click <b>Import pasted offers</b>. The ranking updates at once; to keep it for next time, also paste it into <code>data/offers.js</code> or ask a Claude session to run <code>/msf-store-pull</code>.</li>
+    </ol>
+    <p class="muted">Offers otherwise load from <code>data/offers.js</code> when the page opens. Click an offer to see its breakdown.</p>
+    <h3 style="margin:14px 0 6px">Scoring chart</h3>
+    <p class="muted"><b>Value per US$</b> is the one number: the offer's contents at msfwar's average web-store prices, divided by its price in US dollars, with your plan applied when Personalize is on. 1× means priced like the average offer for the same things.</p>
+    <div id="store-chart" class="muted" style="line-height:1.9"></div>
+    <textarea id="store-paste" placeholder='Paste the JSON the bookmark copied, or {"updated":"2026-10-18","source":"web-store","offers":[{"name":"Gold Pack","price":9.99,"currency":"USD","contents":[{"item":"Gold","qty":500000}]}]}'></textarea>
+    <div class="actions">
+      <button class="primary" id="store-import">Import pasted offers</button>
+      <button class="ghost" id="store-reload">Reload data/offers.js</button>
+      <button class="ghost" id="store-clear">Clear</button>
+      <label class="inline"><input type="checkbox" id="store-personal"> Personalize to my roster and plan</label>
+      <label class="inline"><input type="checkbox" id="store-planonly"> Only offers that help my plan</label>
+      <label class="inline">Chain steps <select id="store-chain" style="margin-left:6px"><option value="step">each step on its own</option><option value="path">with the steps before it added in</option></select></label>
+    </div>
+    <div id="store-meta" class="muted" style="margin-top:10px"></div>
+  </div>
+  <div class="panel">
+    <h3 style="margin:0 0 6px">Shop by resource</h3>
+    <p class="muted">Pick what you want to buy. Each offer that contains it is listed best first, with the value of that resource alone and the value of the whole offer. All lists every offer with a readable price.</p>
+    <div id="shop-buckets" class="chips" style="display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px"></div>
+    <div id="shop-list"></div>
+  </div>
+  <div class="panel" id="store-list"></div>
+  <div class="panel">
+    <h3 style="margin:0 0 6px">Best buys by resource</h3>
+    <p class="muted">For each resource in your store, the offer that sells it cheapest. "If this is all you want" counts the offer's whole price against that one resource, which is what you actually pay for it. "Inside a bundle" charges each item its share of the price in proportion to its msfwar value, so a bundle's gold can look very cheap when the rest of the bundle carries the value; read it as "the bundle, not the gold, is the deal". Generic prices, not your plan.</p>
+    <div id="best-list"></div>
+  </div>
+</section>
+
+<section id="tab-table" hidden>
+  <div class="panel">
+    <div class="kv" id="table-meta"></div>
+    <div class="actions">
+      <input id="table-filter" placeholder="Filter items" style="max-width:240px">
+      <button class="ghost" id="table-add">+ Add item</button>
+      <button class="ghost" id="table-export">Export JSON</button>
+      <button class="ghost" id="table-import-toggle">Import JSON</button>
+      <button class="ghost" id="table-reset">Reset my edits</button>
+    </div>
+    <div id="table-add-box" hidden style="margin-top:12px">
+      <div class="grid3">
+        <div><label for="new-name">Name as shown in the store</label><input id="new-name" placeholder="Captain America shards"></div>
+        <div><label for="new-category">Category</label><select id="new-category"></select></div>
+        <div><label for="new-per">Value is per how many</label><input id="new-per" type="number" min="1" value="1"></div>
+      </div>
+      <div class="actions"><button class="primary" id="table-add-apply">Add</button></div>
+    </div>
+    <div id="table-import-box" hidden style="margin-top:12px">
+      <textarea id="table-import-text" placeholder='{"meta":{"unit":"USD","unitPerUsd":1},"items":{"gold":{"name":"Gold","category":"currency","per":100000,"value":0.5}}}'></textarea>
+      <div class="actions"><button class="primary" id="table-import">Replace table with this JSON</button></div>
+    </div>
+  </div>
+  <div class="panel vt" id="table-list"></div>
+  <div class="panel">
+    <h3 style="margin:0 0 6px">Price history</h3>
+    <p class="muted">What one US dollar bought of a resource on each day the store was read, best and average across the offers that contained it: counting the whole offer price, and counting only the item's share of a bundle's price by value. Importing pasted offers records a day in this browser; <code>node tools/record-history.js</code> records <code>data/offers.js</code> into <code>data/history.js</code>.</p>
+    <div class="actions"><label class="inline">Resource <select id="history-item" style="margin-left:6px"></select></label></div>
+    <div id="history-list"></div>
+  </div>
+</section>
+
+<section id="tab-roster" hidden>
+  <div class="panel">
+    <p class="muted">Your plan loads from <code>data/personal.js</code>: the characters you build (from the MSF Sheet) and the resources you are short of. Edit the list below, one name per line, and apply; edits are kept in the browser.</p>
+    <div id="plan-summary"></div>
+    <textarea id="plan-text" style="margin-top:12px" placeholder="One character per line"></textarea>
+    <div class="actions">
+      <button class="primary" id="plan-apply">Use this list</button>
+      <button class="ghost" id="plan-reload">Reload data/personal.js</button>
+      <button class="ghost" id="plan-clear">Clear plan</button>
+    </div>
+  </div>
+  <div class="panel">
+    <p class="muted">The roster loads from <code>data/roster.js</code>. Paste roster JSON here to replace it. Only star counts are used today.</p>
+    <textarea id="roster-paste" placeholder='{"updated":"2026-10-18","characters":{"Iron Man":{"stars":7,"redStars":5,"gearTier":17}}}'></textarea>
+    <div class="actions">
+      <button class="primary" id="roster-import">Import</button>
+      <button class="ghost" id="roster-reload">Reload data/roster.js</button>
+      <button class="ghost" id="roster-clear">Clear</button>
+    </div>
+    <div id="roster-summary" style="margin-top:12px"></div>
+  </div>
+</section>
+
+</main>
+<datalist id="item-list"></datalist>
+<script src="engine.js"></script>
+<script src="pull.js"></script>
+<script src="data/values.js"></script>
+<script src="data/offers.js"></script>
+<script src="data/roster.js"></script>
+<script src="data/personal.js"></script>
+<script src="data/history.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
