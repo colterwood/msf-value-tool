@@ -187,7 +187,14 @@ files in `index.html` in place of the tracked ones, and say so. A push from a Cl
 needs the user's GitHub sign-in through Git Credential Manager; if it fails on a stale token,
 run the push in the user's terminal so the browser sign-in can open.
 
-## Gotchas (18 October 2026)
+## Gotchas (18 and 24 October 2026)
+
+- A bookmark dragged before `pull.js` changed keeps running the old code: on 24 October the
+  user's copy predated chain reading and returned only the first step of each chain. The JSON
+  now carries a `bookmarklet` version stamp and the page's Import warns when it does not match
+  `MSFPull.BOOKMARKLET_VERSION`; bump both (in `normalizeExtract` and next to
+  `bookmarkletHref`) whenever the bookmarklet's behaviour changes, and tell the user to drag
+  the link again.
 
 - `javascript_tool` results are cut at about 1,000 characters and anything that looks like a
   query string, cookie or base64 (`a=b&c=d`, `|`-separated fields, long ids, raw HTML) is

@@ -111,6 +111,13 @@ test('chain cards become one offer per step with the chain attached, counters st
   assert.equal(out.offers[1].chain.steps[1].notes, undefined);
 });
 
+test('the JSON carries the bookmarklet version the page checks on import', () => {
+  const out = P.normalizeExtract({ readAt: 't', offers: [], cores: [] });
+  assert.equal(typeof P.BOOKMARKLET_VERSION, 'string');
+  assert.equal(out.bookmarklet, P.BOOKMARKLET_VERSION);
+  assert.match(P.bookmarkletHref(), new RegExp(encodeURIComponent("bookmarklet: '" + P.BOOKMARKLET_VERSION + "'").replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+});
+
 test('bookmarkletHref is a self-contained javascript: URL built from the two functions', () => {
   const href = P.bookmarkletHref();
   assert.ok(href.startsWith('javascript:'));

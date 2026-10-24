@@ -85,7 +85,7 @@
     if (!src) return null;
     var offers = Array.isArray(src) ? src : src.offers;
     if (!Array.isArray(offers) || offers.length === 0) return null;
-    return { updated: src.updated || null, source: src.source || null, account: src.account || null, priceCurrency: src.priceCurrency || null, offers: offers };
+    return { updated: src.updated || null, source: src.source || null, bookmarklet: src.bookmarklet || null, account: src.account || null, priceCurrency: src.priceCurrency || null, offers: offers };
   }
   function normalizeRoster(src) {
     if (!src || typeof src !== 'object' || !src.characters || typeof src.characters !== 'object') return null;
@@ -620,6 +620,10 @@
     renderStatus();
     renderStore();
     renderHistory();
+    var want = window.MSFPull && window.MSFPull.BOOKMARKLET_VERSION;
+    if (want && p.value.source === 'web-store' && p.value.bookmarklet !== want) {
+      alert('This JSON came from an older copy of the bookmark (' + (p.value.bookmarklet || 'no version') + '; current ' + want + '), so chain steps and other fixes may be missing. Drag the "MSF: grab my offers" link to your bookmarks bar again to replace the old one, then re-run it in the store.');
+    }
   });
   $('store-reload').addEventListener('click', function () {
     var n = normalizeOffers(window.MSF_OFFERS);

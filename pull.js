@@ -313,12 +313,16 @@
     return {
       updated: raw.readAt || new Date().toISOString(),
       source: 'web-store',
+      bookmarklet: '2026-10-24',   // the version of this code; the page compares it with BOOKMARKLET_VERSION on import
       account: raw.account || null,
       priceCurrency: priceCurrency,
       note: 'Read from the logged-in web store with the MSF Store Value bookmarklet. Cards that show "+N More" hide part of their contents; those offers carry a notes field and grade as incomplete.',
       offers: offers
     };
   }
+
+  /** Bump together with the `bookmarklet` stamp in normalizeExtract whenever the bookmarklet's behaviour changes. */
+  var BOOKMARKLET_VERSION = '2026-10-24';
 
   function bookmarkletHref() {
     var src = '(' + extractStore.toString() + ')(' + normalizeExtract.toString() + ')';
@@ -328,6 +332,6 @@
   return {
     extractStore: extractStore,
     normalizeExtract: normalizeExtract,
-    bookmarkletHref: bookmarkletHref
+    bookmarkletHref: bookmarkletHref, BOOKMARKLET_VERSION: BOOKMARKLET_VERSION
   };
 });
