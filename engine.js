@@ -450,6 +450,8 @@
   var SHOP_BUCKETS = [
     { key: 'all', label: 'All' },   // every offer, nothing filtered: the bucket value is the whole offer's
     { key: 'gold', label: 'Gold' },
+    { key: 'power_cores', label: 'Power Cores' },
+    { key: 'ultra_cores', label: 'Ultra Cores' },
     { key: 'training', label: 'Training materials', unit: { field: 'xp', label: 'XP' } },
     { key: 'character', label: 'Character upgrades' },
     { key: 'ability', label: 'Ability materials' },
@@ -464,6 +466,8 @@
   function shopBucket(item, key) {
     if (!item) return 'other';
     if (key === 'gold' || normalizeKey(item.name) === 'gold') return 'gold';
+    if (key === 'power_cores' || /^power cores?$/i.test(String(item.name || ''))) return 'power_cores';
+    if (key === 'ultra_cores' || /^ultra cores?$/i.test(String(item.name || ''))) return 'ultra_cores';
     if (item.category === 'shard' || item.category === 'promotion') return 'character';
     if (item.category === 'ability') return item.character ? 'character' : 'ability';
     if (item.category === 'training') return 'training';

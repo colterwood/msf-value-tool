@@ -12,7 +12,7 @@ It does two things:
   `data/offers.js` (bookmarklet or a desktop Claude session); the "My store" tab ranks the
   offers best first and, with "Personalize" on, by what each is worth to *your* plan: the
   characters you build and the resources you are short of.
-- **Shop by resource.** Pick All for every offer, or gold, training materials, character upgrades, ability materials,
+- **Shop by resource.** Pick All for every offer, or gold, Power Cores, Ultra Cores, training materials, character upgrades, ability materials,
   event points, ISO-8, gear, orbs or everything else, and see every offer that contains it with
   two numbers: what that resource alone is worth against the whole price, and what the whole
   offer is worth. Each row also says how it compares with the best offer for that resource in

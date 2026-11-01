@@ -33,8 +33,12 @@ test('items map to the shopping buckets', () => {
   assert.equal(b('iso8:t3 level 5 ions'), 'iso');
   assert.equal(b('gear:crimson_vial'), 'gear');
   assert.equal(b('orb:premium'), 'orbs');
-  assert.equal(b('power_cores'), 'other');
-  assert.deepEqual(E.SHOP_BUCKETS.map((x) => x.key), ['all', 'gold', 'training', 'character', 'ability', 'points', 'iso', 'gear', 'orbs', 'other']);
+  assert.equal(b('power_cores'), 'power_cores');
+  assert.deepEqual(E.SHOP_BUCKETS.map((x) => x.key), ['all', 'gold', 'power_cores', 'ultra_cores', 'training', 'character', 'ability', 'points', 'iso', 'gear', 'orbs', 'other']);
+  assert.equal(E.shopBucket({ name: 'Power Cores', category: 'currency' }, 'power_cores'), 'power_cores');
+  assert.equal(E.shopBucket({ name: 'Ultra Cores', category: 'currency' }, 'ultra_cores'), 'ultra_cores');
+  assert.equal(E.shopBucket({ name: 'Power Cores', category: 'currency' }, 'something_else'), 'power_cores');   // by name too
+  assert.equal(E.shopBucket({ name: 'Elite 7 Credit', category: 'currency' }, 'elite_7_credit'), 'other');
   assert.ok(Object.keys(table.items).every((k) => E.shopBucket(table.items[k], k) !== 'all'));   // 'all' is a view, never an item's bucket
 });
 
@@ -271,7 +275,7 @@ test('vs best in your store: the best offer for the bucket reads 100, half the v
     { name: 'Five', price: 10, contents: [{ item: 'Power Cores', qty: 50 }] },       // 5 cores per $
     { name: 'Points', price: 10, contents: [{ item: 'Event Milestone Points', qty: 50000000 }] }
   ], table, null, { personalize: false });
-  const rows = E.shopBy(ranked, table, 'other');
+  const rows = E.shopBy(ranked, table, 'power_cores');
   assert.deepEqual(rows.map((x) => x.name), ['Twenty', 'Ten', 'Five']);
   assert.deepEqual(rows.map((x) => x.items[0].perUsd), [20, 10, 5]);
   assert.deepEqual(rows.map((x) => x.vsBest), [1, 0.5, 0.25]);
@@ -295,9 +299,9 @@ test('vs best in your store: the best offer for the bucket reads 100, half the v
   assert.equal(by('Ten').bucketRatio, 0.1);
   assert.equal(by('Ten').vsBest, 1);                                 // best whole offer
   assert.equal(by('Twenty').vsBest, 0.5);                            // 0.2x against 0.4x
-  assert.equal(E.shopBy(tilted, table, 'other').find((x) => x.name === 'Twenty').vsBest, 1);   // the resource bucket still reads the bucket value
+  assert.equal(E.shopBy(tilted, table, 'power_cores').find((x) => x.name === 'Twenty').vsBest, 1);   // the resource bucket still reads the bucket value
   // one offer alone is the best of its kind
-  const one = E.shopBy(E.rankOffers([{ name: 'Only', price: 10, contents: [{ item: 'Power Cores', qty: 100 }] }], table, null, { personalize: false }), table, 'other');
+  const one = E.shopBy(E.rankOffers([{ name: 'Only', price: 10, contents: [{ item: 'Power Cores', qty: 100 }] }], table, null, { personalize: false }), table, 'power_cores');
   assert.equal(one[0].vsBest, 1);
   assert.equal(one[0].bestScore, 100);
 });
