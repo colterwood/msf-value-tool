@@ -6,7 +6,7 @@
  *   node tools/fill-from-store.js                        # write gear and ISO-8 prices
  *   node tools/fill-from-store.js --dry-run              # show what would change
  *   node tools/fill-from-store.js --categories gear,iso8,orb   # other categories too
- * Only offers priced in money and without hidden contents are used. Items priced from the store
+ * Only offers priced in money, without hidden contents and with every count readable are used. Items priced from the store
  * on an earlier run are priced again from today's offers; an item with an msfwar baseline or a
  * derivedFrom is left alone. Values typed on the Value table tab live in the browser, not in
  * this file, so the tool cannot see them: they still win on the page. See

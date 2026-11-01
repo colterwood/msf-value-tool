@@ -65,3 +65,16 @@ test('history days merge by date and read back per item', () => {
   assert.deepEqual(E.mergeHistory(h, { date: 'yesterday', items: {} }).days.length, 2);       // a bad date is not recorded
   assert.deepEqual(E.mergeHistory({ days: [{ date: 'nope', items: {} }, d1] }, null).days.map((d) => d.date), ['2026-10-17']);   // and not kept
 });
+
+test('an unreadable count leaves the bundle without shares; an unreadable points count does not', () => {
+  const offers = { updated: '2026-10-18T22:19:33Z', offers: [
+    { name: 'A', price: 10, currency: 'USD', notes: 'qty unreadable for L4 Training Module', contents: [{ item: 'Gold', qty: 20000000 }, { item: 'L4 Training Module', qty: null }] },
+    { name: 'B', price: 10, currency: 'USD', notes: 'qty unreadable for ISO Fest Milestone Points', contents: [{ item: 'Gold', qty: 10000000 }, { item: 'ISO Fest Milestone Points', qty: null }] }
+  ] };
+  const snap = E.priceSnapshot(offers, table);
+  assert.equal(snap.items.gold.n, 2);
+  assert.equal(snap.items.gold.wb, 2000000);
+  assert.equal(snap.items.gold.sb, 1000000);                 // only B has a share: A's training count is unreadable
+  assert.equal(snap.items['training_module:l4'], undefined);
+  assert.equal(snap.items['points:iso_fest'], undefined);    // points are never recorded
+});

@@ -104,3 +104,20 @@ test('points-only offers are not sold for cores, and hidden contents keep a core
   assert.equal(s2.chain.cumulativeCoreCost, 1000);
   assert.equal(s2.chain.cumulativeCoreComplete, false);
 });
+
+test('an unreadable count on an item with a core price is reported as unreadable, not as a missing core price', () => {
+  const r = E.valueOffer({ price: 10, contents: [{ item: 'Gold', qty: null }, { item: 'L4 Training Module', qty: 100 }] }, table);
+  assert.equal(r.coreCost, 200);
+  assert.deepEqual(r.coreMissing, []);
+  assert.deepEqual(r.coreUnreadable, ['Gold']);
+  assert.equal(r.coreComplete, false);
+  const steps = [
+    { step: 1, name: 'A', price: 5, currency: 'USD', contents: [{ item: 'Gold', qty: null }] },
+    { step: 2, name: 'B', price: 5, currency: 'USD', contents: [{ item: 'Gold', qty: 1000000 }] }
+  ];
+  const s2 = E.valueOffer({ name: 'B', price: 5, currency: 'USD', contents: steps[1].contents, chain: { step: 2, of: 2, current: 1, steps } }, table, null, { chainMode: 'path' });
+  assert.equal(s2.chain.cumulativeCoreCost, 500);
+  assert.equal(s2.chain.cumulativeCoreComplete, false);
+  assert.deepEqual(s2.chain.cumulativeCoreUnreadable, ['Gold']);
+  assert.deepEqual(s2.chain.cumulativeCoreMissing, []);
+});

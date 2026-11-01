@@ -150,7 +150,6 @@
     });
     return out;
   }
-  function rosterForUse() { return state.personalize && state.roster ? state.roster : null; }
   function planForUse() { return state.personalize && state.plan ? state.plan : null; }
   function valueOpts(extra) { return Object.assign({ plan: planForUse(), personalize: state.personalize && !!(state.roster || state.plan), chainMode: state.chainMode }, extra || {}); }
   function tableStats(t) {
@@ -328,8 +327,15 @@
         return esc(u) + ' <button class="ghost small" data-addunknown="' + esc(u) + '">add</button>';
       }).join(', ') + '</p>');
     }
-    if (r.unpriced.length) out.push('<p class="warn">In the table but without a value yet: ' + r.unpriced.map(esc).join(', ') + ' (fill them in on the Value table tab).</p>');
-    if (r.notes) out.push('<p class="warn">' + esc(r.notes) + '.</p>');
+    // shards read from a character icon with no row in the table can be added like unknown items; rows wait for a value
+    var generic = r.lines.filter(function (l) { return l.generic && l.key && !l.excluded && l.qty != null && l.value == null && !l.thin; }).map(function (l) { return l.item; });
+    var inTable = r.unpriced.filter(function (n) { return generic.indexOf(n) === -1; });
+    if (inTable.length) out.push('<p class="warn">In the table but without a value yet: ' + inTable.map(esc).join(', ') + ' (fill them in on the Value table tab).</p>');
+    if (generic.length) out.push('<p class="warn">Read as shards from the character icon, no row in the table yet: ' + generic.filter(function (u, i) { return generic.indexOf(u) === i; }).map(function (u) { return esc(u) + ' <button class="ghost small" data-addunknown="' + esc(u) + '">add</button>'; }).join(', ') + '</p>');
+    if (r.promotions && r.promotions.length) out.push('<p class="warn">A character icon without a shard count, a diamond or red star promotion the card does not name: ' + r.promotions.map(esc).join(', ') + ' (not priced).</p>');
+    if (r.unreadable && r.unreadable.length) out.push('<p class="warn">The card shows no count for: ' + r.unreadable.map(esc).join(', ') + ' (counted as nothing).</p>');
+    if (r.priceUnreadable) out.push('<p class="warn">The price could not be read from the card.</p>');
+    if (r.notes) out.push('<p class="' + (r.hidden ? 'warn' : 'muted') + '">' + esc(r.notes) + '.</p>');
     if (r.thin && r.thin.length) out.push('<p class="muted">Shown but not scored, msfwar baseline too thin or suspect: ' + r.thin.map(esc).join(', ') + '.</p>');
     if (r.excluded && r.excluded.length) out.push('<p class="muted">Not counted, as on msfwar: ' + r.excluded.map(esc).join(', ') + '.</p>');
     if (!r.complete) out.push('<p class="muted">Totals below count only the items with values, so the real value is higher than shown.</p>');
@@ -369,8 +375,16 @@
     var missing = onPath ? r.chain.cumulativeCoreMissing || [] : r.coreMissing || [];
     var priceUsd = onPath ? r.chain.cumulativePriceUsd : r.priceUsd;
     var usd = cost != null && r.coreRateUsd ? cost * r.coreRateUsd : null;
-    var hidden = !!(r.notes) || (onPath && r.chain.requires.some(function (p) { return !!p.notes; }));
-    return { cost: cost, complete: !!complete, missing: missing, hidden: hidden, applicable: r.coreApplicable !== false, usd: usd, vsPrice: usd != null && priceUsd > 0 ? usd / priceUsd : null, onPath: onPath };
+    var hidden = !!r.hidden || (onPath && r.chain.requires.some(function (p) { return !!p.hidden; }));
+    var unreadable = onPath ? r.chain.cumulativeCoreUnreadable || [] : r.coreUnreadable || [];
+    return { cost: cost, complete: !!complete, missing: missing, unreadable: unreadable, hidden: hidden, applicable: r.coreApplicable !== false, usd: usd, vsPrice: usd != null && priceUsd > 0 ? usd / priceUsd : null, onPath: onPath };
+  }
+  function coreWhy(c) {   // why a core total is partial or absent
+    var parts = [];
+    if (c.missing.length) parts.push('no in-game core price yet for ' + esc(c.missing.join(', ')));
+    if (c.unreadable.length) parts.push('the card shows no count for ' + esc(c.unreadable.join(', ')));
+    if (c.hidden) parts.push('part of the contents is hidden');
+    return parts;
   }
   function coreRateProblem() {
     var meta = table().meta;
@@ -383,9 +397,9 @@
   function coreCell(r) {
     var c = coreFigures(r);
     if (!c.applicable) return '<span class="muted" title="nothing in this offer is sold for Power Cores">–</span>';
-    if (c.cost == null) return '<span class="muted" title="no in-game core price for anything in this offer yet">–</span>';
+    if (c.cost == null) return '<span class="muted" title="' + (coreWhy(c).join('; ') || 'no in-game core price for anything in this offer yet') + '">–</span>';
     // a partial total is a floor: the ratio can only grow, so only "at least" is said
-    return fmtNum(c.cost, 0) + (c.complete ? '' : '<span class="warn" title="' + (c.hidden ? 'part of the contents is hidden' : 'some items have no in-game core price yet') + '">+</span>') +
+    return fmtNum(c.cost, 0) + (c.complete ? '' : '<span class="warn" title="' + (coreWhy(c).join('; ') || 'partial') + '">+</span>') +
       (c.usd != null ? '<br><span class="muted">' + fmtMoney(c.usd, 'USD') + (c.vsPrice != null ? ' · ' + (c.complete ? '' : 'at least ') + fmtRatio(c.vsPrice) + ' the price' : '') + '</span>' : '');
   }
   function coreLine(r) {
@@ -395,9 +409,9 @@
     var rate = problem ? problem : fmtMoney(pc.price, pc.currency) + ' per core';
     var html = '<p class="muted">';
     if (!c.applicable) html += 'Coring for this in game: nothing in this offer is sold for Power Cores (event and loyalty points).';
-    else if (c.cost == null) html += 'Coring for this in game: no in-game core price yet for ' + esc(c.missing.join(', ')) + '. Fill the "Cores in game" column on the Value table tab.';
+    else if (c.cost == null) html += 'Coring for this in game: ' + coreWhy(c).join('; ') + (c.missing.length ? '. Fill the "Cores in game" column on the Value table tab.' : '.');
     else {
-      var why = c.complete ? '' : (c.missing.length ? ' for the items with a core price; none yet for ' + esc(c.missing.join(', ')) : '') + (c.hidden ? ' (part of the contents is hidden)' : '');
+      var why = c.complete ? '' : ' for the items with a core price and a count (' + coreWhy(c).join('; ') + ')';
       html += 'Coring for this in game' + (c.onPath ? ' (whole path)' : '') + ': ' + fmtNum(c.cost, 0) + ' Power Cores' + why +
         (c.usd != null ? ', worth ' + fmtMoney(c.usd, 'USD') + ' at ' + rate +
           (c.vsPrice != null ? ', ' + (c.complete ? fmtRatio(c.vsPrice) + ' what this offer costs' + (c.vsPrice > 1 ? ': the offer is the cheaper route' : ': coring is cheaper') : 'at least ' + fmtRatio(c.vsPrice) + ' what this offer costs' + (c.vsPrice > 1 ? ': the offer is the cheaper route' : '')) : '')
@@ -434,7 +448,7 @@
       box.innerHTML = '<p class="muted">Add the offer\'s contents above, with the price, to see its value.</p>';
       return;
     }
-    var r = E.valueOffer(offer, table(), rosterForUse(), valueOpts());
+    var r = E.valueOffer(offer, table(), state.roster || null, valueOpts());
     var html = summaryBlock(r);
     if (r.price == null) html += '<p class="muted">Enter the price to get a grade.</p>';
     html += warnings(r);
@@ -469,7 +483,7 @@
     }
     var o = state.offers;
     meta.textContent = o.offers.length + ' offers' + (o.source ? ' from ' + o.source : '') + (o.account ? ' for ' + o.account : '') + (o.updated ? ', read ' + String(o.updated).slice(0, 16).replace('T', ' ') + ' UTC' : '') + (o.origin === 'file' ? ' (data/offers.js)' : ' (pasted)');
-    var ranked = E.rankOffers(o.offers, table(), rosterForUse(), valueOpts());
+    var ranked = E.rankOffers(o.offers, table(), state.roster || null, valueOpts());
     // rankOffers already sorts by the chain-aware ratio, complete first
     if (state.planOnly && state.personalize && state.plan) ranked = ranked.filter(function (r) { return r.helpsPlan !== false; });
     if (state.planOnly && state.personalize && state.plan) meta.textContent += ' · showing ' + ranked.length + ' that help your plan';
@@ -494,10 +508,14 @@
       if (off.expires) sub.push('ends ' + off.expires);
       var flags = [];
       if (r.unknown.length) flags.push(r.unknown.length + ' unknown');
+      if (r.promotions && r.promotions.length) flags.push(r.promotions.length + ' unnamed promotion' + (r.promotions.length === 1 ? '' : 's'));
       if (r.thin && r.thin.length) flags.push(r.thin.length + ' thin');
       if (r.personalized && r.helpsPlan === false) flags.push('nothing for your plan');
       if (r.unpriced.length) flags.push(r.unpriced.length + ' unpriced');
-      if (r.notes) flags.push('hidden items');
+      if (r.unreadable && r.unreadable.length) flags.push(r.unreadable.length + ' count' + (r.unreadable.length === 1 ? '' : 's') + ' unreadable');
+      if (r.hidden) flags.push('hidden items');
+      if (r.priceUnreadable) flags.push('price unreadable');
+      if (r.complete && !r.valuedLines && r.excluded && r.excluded.length) flags.push('points only, not counted');
       if (r.chain && r.chain.bought) flags.push('already bought');
       var idx = o.offers.indexOf(off);
       var html = '<tr class="clickable" data-idx="' + idx + '"><td>' + esc(off.name || '(unnamed)') +
@@ -514,7 +532,7 @@
       return html;
     }).join('');
     renderShop(ranked);
-    renderBestBuys(E.rankOffers(o.offers, table(), null, { personalize: false, chainMode: state.chainMode }));
+    renderBestBuys(E.rankOffers(o.offers, table(), state.roster || null, { personalize: false, chainMode: state.chainMode }));
     list.innerHTML = '<table><thead><tr><th>Offer</th><th class="num">Price</th><th class="num">' + (state.personalize && (state.roster || state.plan) ? 'Value to you' : 'Value') + '</th><th class="num">Value per US$</th><th>Grade</th><th class="num" title="Power Cores the same contents cost in the in-game store, at the core prices on the Value table tab">Cores in game</th><th>Flags</th></tr></thead><tbody>' + rows + '</tbody></table>';
   }
   function renderShop(ranked) {
@@ -540,7 +558,8 @@
     var html = rows.map(function (row) {
       var r = row.result;
       var itemsHtml = row.items.map(function (it) {
-        var parts = [esc(it.item) + ' ×' + fmtNum(it.qty, 0)];
+        var parts = [esc(it.item) + ' ×' + (it.unreadable && !(it.qty > 0) ? '–' : fmtNum(it.qty, 0))];
+        if (it.unreadable) parts.push('count unreadable on the card');
         if (it.perUsd != null) parts.push(fmtPerUsd(it.perUsd) + ' per US$');
         if (it.unitPerUsd != null && row.items.length > 1) parts.push(fmtNum(it.unitPerUsd, 0) + ' ' + esc(row.unitLabel) + ' per US$');
         if (it.vsTypical != null) parts.push(fmtRatio(it.vsTypical) + (it.typicalSource === 'store' ? ' your store price' : ' typical'));
@@ -555,6 +574,7 @@
       if (r.offer.expires) sub.push('ends ' + r.offer.expires);
       var flags = [];
       if (!r.complete) flags.push('incomplete');
+      if (r.unreadable && r.unreadable.length) flags.push(r.unreadable.length + ' count' + (r.unreadable.length === 1 ? '' : 's') + ' unreadable');
       if (r.personalized && r.helpsPlan === false) flags.push('nothing for your plan');
       var pathNote = row.pathSteps ? '<br><span class="muted">' + (row.pathPrice != null ? fmtMoney(row.pathPrice, r.currency) : fmtMoney(row.pathPriceUsd, 'USD')) + ' for steps ' + row.pathSteps[0] + '–' + row.pathSteps[row.pathSteps.length - 1] + '</span>' : '';
       // against the best offer in the store for this bucket, the way msfwar's resource view reads: best 100, half 50

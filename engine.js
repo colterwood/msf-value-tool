@@ -192,6 +192,25 @@
     return out;
   }
 
+  /**
+   * Event milestone points the table does not list: every event brings a new name ("Feast of
+   * Shadows Milestone Points") and they are never counted, as on msfwar, so an offer that
+   * carries them is not incomplete for it. A table row with the same name takes precedence.
+   */
+  function genericPoints(name) {
+    return { name: String(name).trim(), category: 'points', per: 1, value: null, aliases: [], excludeFromValue: true, generic: true, note: 'event milestone points: not counted, as on msfwar' };
+  }
+
+  /**
+   * Shards of a character the table has no row for. The store labels a shard line with the
+   * character portrait and a count ("Dracula x810"), so valueOffer reads a bare roster name
+   * with a count above one as that character's shards: unpriced until the table gets a row.
+   */
+  function genericShards(character) {
+    var c = String(character).trim();
+    return { name: c + ' shards', category: 'shard', character: c, per: 1, value: null, aliases: [], generic: true };
+  }
+
   function resolveItem(table, index, nameOrKey) {
     if (!isTable(table) || nameOrKey == null) return null;
     var raw = String(nameOrKey);
@@ -214,7 +233,20 @@
     if (stripped !== k && Object.prototype.hasOwnProperty.call(index, stripped)) {
       return { key: index[stripped], item: deriveItem(table, index[stripped]) };
     }
+    var pts = /^(.+?) milestone points$/.exec(stripped);   // "50x Feast of Shadows Milestone Points" keys like the plain name
+    if (pts) return { key: 'points:' + pts[1].replace(/\s+/g, '_'), item: genericPoints(raw.trim().replace(/^\d+\s*x\s*/i, '').replace(/\s*x\s*\d+$/i, '')) };
     return null;
+  }
+
+  /**
+   * The parts of an offer's notes that mean the card did not show everything the price buys:
+   * "+N More" or an icon with no name. A count the card did not show ("qty unreadable for X") is
+   * judged line by line in valueOffer instead, so an unreadable count on points that are not
+   * counted anyway does not make the offer incomplete; an unreadable price ("price unreadable")
+   * is a problem with the price, not the contents, and is reported as priceUnreadable.
+   */
+  function hiddenNotes(notes) {
+    return String(notes == null ? '' : notes).split(/;\s*/).filter(function (p) { return p && !/^qty unreadable for /i.test(p) && !/^price unreadable/i.test(p); });
   }
 
   /** Value of one unit of the item, in table units. null when the table has no number yet. */
@@ -535,16 +567,17 @@
       var groupQty = 0;
       path.lines.forEach(function (l) {
         if (!l.key) return;
-        var item = items[l.key];
+        var item = items[l.key] || l.generic;   // generic: points or shards the table has no row for
         if (!item || (bucketKey !== 'all' && shopBucket(item, l.key) !== bucketKey)) return;
         if (group && shopGroup(item, l.key, bucketKey, groups) !== group.key) return;
         if (l.qty > 0) groupQty += l.qty;
         var agg = byKey[l.key];
         if (!agg) {
-          agg = byKey[l.key] = { item: l.item, key: l.key, qty: 0, perUsd: null, typicalPerUsd: item.observed && item.observed.perUsd != null ? Number(item.observed.perUsd) : null, typicalSource: (item.observed && item.observed.source) || (item.derived ? 'derived' : 'msfwar'), vsTypical: null, valueUsd: null, faceUsd: null, personalValueUsd: null, multiplier: l.multiplier, note: l.note || null, excluded: !!l.excluded, thin: !!l.thin, unitQty: null, unitPerUsd: null };
+          agg = byKey[l.key] = { item: l.item, key: l.key, qty: 0, unreadable: false, perUsd: null, typicalPerUsd: item.observed && item.observed.perUsd != null ? Number(item.observed.perUsd) : null, typicalSource: (item.observed && item.observed.source) || (item.derived ? 'derived' : 'msfwar'), vsTypical: null, valueUsd: null, faceUsd: null, personalValueUsd: null, multiplier: l.multiplier, note: l.note || null, excluded: !!l.excluded, thin: !!l.thin, unitQty: null, unitPerUsd: null };
           order.push(l.key);
         }
         agg.qty += l.qty > 0 ? l.qty : 0;
+        if (l.qty == null) agg.unreadable = true;   // the card showed no count for this line
         if (unit && l.qty > 0) {
           var ux = Number(item[unit.field]);
           if (ux > 0) { agg.unitQty = (agg.unitQty || 0) + l.qty * ux; unitQty += l.qty * ux; }
@@ -742,6 +775,8 @@
     var unpriced = [];
     var thin = [];
     var excluded = [];
+    var unreadable = [];
+    var promotions = [];
     var totalUnits = 0;
     var personalTotalUnits = 0;
     var complete = true;
@@ -750,20 +785,42 @@
     var planUseful = 0;     // ...of which it kept at least something
 
     contents.forEach(function (row) {
-      var qty = Number(row && row.qty);
-      if (isNaN(qty)) qty = 0;
+      // a count the card did not show (the bookmarklet leaves qty null) is kept apart from a count of 0
+      var qtyKnown = !!row && row.qty != null && row.qty !== '' && !isNaN(Number(row.qty));
+      var qty = qtyKnown ? Number(row.qty) : null;
       var label = (row && (row.item || row.key)) || '';
       var resolved = resolveItem(table, index, (row && row.key) || label);
+      // the store labels shard lines with the character portrait: a bare character name is read by its count below
+      var bare = !!(resolved && resolved.item.category === 'shard' && resolved.item.character && !/\bshards?\b/i.test(label) && normalizeKey(label) === normalizeKey(resolved.item.character));
+      if (!resolved && findRosterEntry(roster, label)) {
+        // a roster name the table has no row for: "Dracula x810" is 810 Dracula shards
+        resolved = { key: 'shard:' + normalizeKey(label), item: genericShards(label) };
+        bare = true;
+      }
       if (!resolved) {
         unknown.push(label);
         complete = false;
-        lines.push({ item: label, key: null, qty: qty, unitValue: null, multiplier: 1, value: null, personalValue: null, note: 'not in value table' });
+        lines.push({ item: label, key: null, qty: qty, unitValue: null, multiplier: 1, value: null, personalValue: null, note: qtyKnown ? 'not in value table' : 'not in value table; count unreadable on the card' });
         return;
       }
       var name = resolved.item.name || label;
       if (resolved.item.excludeFromValue) {
         excluded.push(name);
-        lines.push({ item: name, key: resolved.key, qty: qty, unitValue: null, multiplier: 1, value: null, personalValue: null, excluded: true, note: 'not counted: event or loyalty points' });
+        lines.push({ item: name, key: resolved.key, qty: qty, unitValue: null, multiplier: 1, value: null, personalValue: null, excluded: true, generic: resolved.item.generic ? resolved.item : undefined, note: joinNotes('not counted: event or loyalty points', qtyKnown ? null : 'count unreadable on the card') });
+        return;
+      }
+      if (bare && qtyKnown && !(qty > 1)) {
+        // a character portrait with a count of one is a diamond or red star promotion the card does not name
+        promotions.push(label);
+        complete = false;
+        lines.push({ item: label, key: null, qty: qty, unitValue: null, multiplier: 1, value: null, personalValue: null, promotion: true, note: 'a character icon without a shard count: a diamond or red star promotion the card does not name' });
+        return;
+      }
+      if (!qtyKnown) {
+        // listed under the name the card showed: for a character portrait that is the bare name
+        unreadable.push(bare ? label : name);
+        complete = false;
+        lines.push({ item: bare ? label : name, key: resolved.key, qty: null, unitValue: unitValue(resolved.item), multiplier: 1, value: null, personalValue: null, generic: resolved.item.generic ? resolved.item : undefined, note: 'count unreadable on the card' + (bare ? '; a character icon with no count may also be a diamond or promotion' : '') });
         return;
       }
       var pm = personalize ? personalMultiplier(resolved.item, roster, meta.shardRules, plan, resolved.key) : { multiplier: 1, notes: [], note: null };
@@ -775,7 +832,7 @@
       if (uv == null) {
         unpriced.push(name);
         complete = false;
-        lines.push({ item: name, key: resolved.key, qty: qty, unitValue: null, multiplier: pm.multiplier, value: null, personalValue: null, resource: pm.resource ? pm.resource.status : null, note: joinNotes('no value in table yet', pm.note) });
+        lines.push({ item: name, key: resolved.key, qty: qty, unitValue: null, multiplier: pm.multiplier, value: null, personalValue: null, resource: pm.resource ? pm.resource.status : null, generic: resolved.item.generic ? resolved.item : undefined, note: joinNotes(resolved.item.generic ? 'read as shards from the character icon; no row in the table yet' : 'no value in table yet', pm.note) });
         return;
       }
       var problem = baselineProblem(resolved.item, meta.scoring);
@@ -815,16 +872,20 @@
     // The core route: what the same contents cost in Power Cores in the in-game store, for the
     // lines whose item carries a core price. Points are left out (they cannot be bought with cores).
     var coreRateUsd = powerCoreUsd(meta);
-    var coreTotal = 0, coreLines = 0, coreMissing = [];
+    var coreTotal = 0, coreLines = 0, coreMissing = [], coreUnreadable = [];
     var coreApplicable = lines.some(function (l) { return !l.excluded; });   // points cannot be bought with cores
     lines.forEach(function (l) {
       if (l.excluded) { l.cores = null; return; }
-      var cpu = l.key ? coresPerUnit(table.items[l.key], l.key) : null;
+      var cpu = l.key ? coresPerUnit(isTable(table) ? table.items[l.key] : null, l.key) : null;
       if (cpu != null && l.qty > 0) { l.cores = l.qty * cpu; coreTotal += l.cores; coreLines += 1; }
+      else if (cpu != null && l.qty == null) { l.cores = null; coreUnreadable.push(l.item); }   // a core price, but the card showed no count
       else { l.cores = null; coreMissing.push(l.item); }
     });
 
-    if (offer && offer.notes) complete = false;
+    var hidden = hiddenNotes(offer && offer.notes);   // "+N More" and the like: the price buys more than the lines show
+    if (hidden.length) complete = false;
+    var priceUnreadable = /(^|;\s*)price unreadable/i.test(String((offer && offer.notes) || ''));
+    if (priceUnreadable) complete = false;
 
     var totalUsd = toUsd(totalUnits, meta);
     var personalUsd = toUsd(personalTotalUnits, meta);
@@ -847,8 +908,8 @@
       var assumedCurrency = priced.via === 'assumed';
       var cumLocal = hasPrice ? price : null;
       var pathComplete = true;
-      var cumCores = coreLines ? coreTotal : 0, cumCoreLines = coreLines, cumCoreMissing = coreMissing.slice();
-      var cumCoresOk = coreLines > 0 && !coreMissing.length && !(offer && offer.notes);
+      var cumCores = coreLines ? coreTotal : 0, cumCoreLines = coreLines, cumCoreMissing = coreMissing.slice(), cumCoreUnreadable = coreUnreadable.slice();
+      var cumCoresOk = coreLines > 0 && !coreMissing.length && !coreUnreadable.length && !hidden.length;
       var path = requires.map(function (st) {
         var sr = valueOffer({ name: st.name, price: st.price, currency: st.currency, contents: st.contents, notes: st.notes }, table, roster, Object.assign({}, options, { index: index }));
         if (!(sr.priceUsd > 0)) priceUnknown = true;
@@ -862,8 +923,9 @@
         cumCores += sr.coreCost || 0;
         cumCoreLines += sr.coreLines || 0;
         cumCoreMissing = cumCoreMissing.concat(sr.coreMissing || []);
+        cumCoreUnreadable = cumCoreUnreadable.concat(sr.coreUnreadable || []);
         if (!sr.coreComplete) cumCoresOk = false;
-        return { step: Number(st.step), name: st.name, price: st.price, currency: st.currency, priceUsd: sr.priceUsd, priceVia: sr.priceVia, totalUsd: sr.totalUsd, personalUsd: sr.personalUsd, perDollar: sr.perDollar, personalPerDollar: sr.personalPerDollar, complete: sr.complete, notes: sr.notes, lines: sr.lines, coreCost: sr.coreCost, coreComplete: sr.coreComplete };
+        return { step: Number(st.step), name: st.name, price: st.price, currency: st.currency, priceUsd: sr.priceUsd, priceVia: sr.priceVia, totalUsd: sr.totalUsd, personalUsd: sr.personalUsd, perDollar: sr.perDollar, personalPerDollar: sr.personalPerDollar, complete: sr.complete, notes: sr.notes, hidden: sr.hidden, unreadable: sr.unreadable, promotions: sr.promotions, priceUnreadable: sr.priceUnreadable, lines: sr.lines, coreCost: sr.coreCost, coreComplete: sr.coreComplete, coreUnreadable: sr.coreUnreadable };
       });
       if (priceUnknown && !bought) pathComplete = false;
       if (chainMode === 'path' && !pathComplete) complete = false;
@@ -880,6 +942,7 @@
         cumulativeCoreCost: cumCoreLines > 0 ? cumCores : null,
         cumulativeCoreComplete: cumCoreLines > 0 && cumCoresOk,
         cumulativeCoreMissing: cumCoreMissing,
+        cumulativeCoreUnreadable: cumCoreUnreadable,
         cumulativeUsd: cumUsd, cumulativePersonalUsd: cumPersonal,
         cumulativePerDollar: !priceUnknown && cumPrice > 0 && cumValued ? cumUsd / cumPrice : null,
         cumulativePersonalPerDollar: !priceUnknown && cumPrice > 0 && cumValued ? cumPersonal / cumPrice : null
@@ -927,8 +990,9 @@
       coreCost: coreLines ? coreTotal : null,
       coreLines: coreLines,
       coreMissing: coreMissing,
+      coreUnreadable: coreUnreadable,
       coreApplicable: coreApplicable,
-      coreComplete: coreLines > 0 && !coreMissing.length && !(offer && offer.notes),
+      coreComplete: coreLines > 0 && !coreMissing.length && !coreUnreadable.length && !hidden.length,
       coreRateUsd: coreRateUsd,
       coreCostUsd: coreLines && coreRateUsd ? coreTotal * coreRateUsd : null,
       coreVsPrice: coreLines && coreRateUsd && priceUsd > 0 ? (coreTotal * coreRateUsd) / priceUsd : null,
@@ -945,12 +1009,16 @@
       unpriced: unpriced,
       thin: thin,
       excluded: excluded,
+      unreadable: unreadable,
+      promotions: promotions,
+      hidden: hidden.length > 0,
+      priceUnreadable: priceUnreadable,
       notes: (offer && offer.notes) || null,
       lines: lines
     };
   }
 
-  /** Value every offer and sort best value per dollar first (a chain step on its own, or by its whole path under chainMode 'path'); incomplete offers sort last. */
+  /** Value every offer and sort best value per dollar first (a chain step on its own, or by its whole path under chainMode 'path'): complete offers, then incomplete ones, and offers with nothing priceable (points only, or nothing the table knows) last. */
   function rankOffers(offers, table, roster, options) {
     options = options || {};
     var index = options.index || buildIndex(table);
@@ -966,10 +1034,9 @@
     results.sort(function (a, b) {
       var av = sortKey(a);
       var bv = sortKey(b);
+      if ((av == null) !== (bv == null)) return av == null ? 1 : -1;   // nothing priceable: last, complete or not
       if (a.complete !== b.complete) return a.complete ? -1 : 1;
-      if (av == null && bv == null) return 0;
-      if (av == null) return 1;
-      if (bv == null) return -1;
+      if (av == null) return 0;
       return bv - av;
     });
     return results;
@@ -1034,8 +1101,8 @@
    *   residual: the only unpriced item takes the price left after the valued lines (face value);
    *   shared:   several unpriced items of the same category split that residual evenly per unit.
    * Offers with an unknown, thin or unpriced item of another category are skipped, as are
-   * bought chain steps, offers without a readable price and offers whose card hides part of the
-   * contents ("+N More", carried as notes). Only offers priced in money count
+   * bought chain steps, offers without a readable price, offers with an unreadable count and
+   * offers whose card hides part of the contents ("+N More", carried as notes). Only offers priced in money count
    * unless options.fiatOnly is false (Strike Point prices are not real prices), and
    * options.categories (array) limits which unpriced items are estimated; an unpriced item
    * outside it blocks its offer. Returns { key: estimate } with perUsd (units per US$, the mean
@@ -1062,7 +1129,7 @@
     results.forEach(function (r) {
       var path = pathLines(r);
       if (!path || !(path.priceUsd > 0)) return;
-      if (r.notes) return;   // part of the contents is hidden: the price buys more than the listed items
+      if (r.hidden) return;   // part of the contents is hidden: the price buys more than the listed items
       if (options.fiatOnly !== false && r.priceVia !== 'fx') return;
       var valuedUsd = 0, blocked = false;
       var upByKey = {}, upOrder = [];
@@ -1125,12 +1192,12 @@
     results.forEach(function (r) {
       var path = pathLines(r);
       if (!path || !(path.priceUsd > 0)) return;
-      if (r.notes) return;   // hidden contents would understate what the price buys
+      if (r.hidden) return;   // hidden contents would understate what the price buys
       if (options.fiatOnly !== false && r.priceVia !== 'fx') return;   // Strike Point prices are not dollars
       var faceTotal = 0, hasUnknown = false;
       var byKey = {}, order = [];
       path.lines.forEach(function (l) {
-        if (!l.key && !l.excluded && l.qty > 0) hasUnknown = true;   // an unknown item takes an unknown share of the price
+        if (!l.excluded && (!l.key || l.qty == null)) hasUnknown = true;   // an unknown item, or an unreadable count, takes an unknown share of the price
         if (!l.key || l.excluded || !(l.qty > 0)) return;
         var a = byKey[l.key] || (byKey[l.key] = { qty: 0, face: 0, valued: true });
         if (!byKey[l.key].seen) { order.push(l.key); byKey[l.key].seen = true; }
@@ -1217,6 +1284,9 @@
     normalizeKey: normalizeKey,
     buildIndex: buildIndex,
     resolveItem: resolveItem,
+    genericPoints: genericPoints,
+    genericShards: genericShards,
+    hiddenNotes: hiddenNotes,
     unitValue: unitValue,
     baselineProblem: baselineProblem,
     resourceRule: resourceRule,

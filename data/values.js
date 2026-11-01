@@ -5078,6 +5078,324 @@ window.MSF_VALUE_TABLE = {
         "perUsd": null,
         "note": "no baseline yet on msfwar"
       }
+    },
+    "gear:crimson_molecular_cloth": {
+      "name": "Crimson Molecular Cloth",
+      "category": "gear",
+      "per": 1,
+      "value": 0.152260305,
+      "aliases": [],
+      "observed": {
+        "perUsd": 6.5677,
+        "observations": 1,
+        "readAt": "2026-10-24",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 45 of 375 unpriced units for 79.99 CAD"
+      }
+    },
+    "gear:crimson_molecular_scan": {
+      "name": "Crimson Molecular Scan",
+      "category": "gear",
+      "per": 1,
+      "value": 0.152260305,
+      "aliases": [],
+      "observed": {
+        "perUsd": 6.5677,
+        "observations": 1,
+        "readAt": "2026-10-24",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 90 of 375 unpriced units for 79.99 CAD"
+      }
+    },
+    "gear:crimson_marrow_extract": {
+      "name": "Crimson Marrow Extract",
+      "category": "gear",
+      "per": 1,
+      "value": 0.152260305,
+      "aliases": [],
+      "observed": {
+        "perUsd": 6.5677,
+        "observations": 1,
+        "readAt": "2026-10-24",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 90 of 375 unpriced units for 79.99 CAD"
+      }
+    },
+    "gear:crimson_mri": {
+      "name": "Crimson MRI",
+      "category": "gear",
+      "per": 1,
+      "value": 0.002771924,
+      "aliases": [],
+      "observed": {
+        "perUsd": 360.7603,
+        "observations": 1,
+        "readAt": "2026-10-24",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Origins: 500 of 1800 unpriced units for 6.99 CAD"
+      }
+    },
+    "gear:crimson_syringe": {
+      "name": "Crimson Syringe",
+      "category": "gear",
+      "per": 1,
+      "value": 0.152260305,
+      "aliases": [],
+      "observed": {
+        "perUsd": 6.5677,
+        "observations": 1,
+        "readAt": "2026-10-24",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 75 of 375 unpriced units for 79.99 CAD"
+      }
+    },
+    "gear:crimson_spectral_analysis": {
+      "name": "Crimson Spectral Analysis",
+      "category": "gear",
+      "per": 1,
+      "value": 0.152260305,
+      "aliases": [],
+      "observed": {
+        "perUsd": 6.5677,
+        "observations": 1,
+        "readAt": "2026-10-24",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 75 of 375 unpriced units for 79.99 CAD"
+      }
+    },
+    "gear:crimson_isomer": {
+      "name": "Crimson Isomer",
+      "category": "gear",
+      "per": 1,
+      "value": 0.002771924,
+      "aliases": [],
+      "observed": {
+        "perUsd": 360.7603,
+        "observations": 1,
+        "readAt": "2026-10-24",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Origins: 700 of 1800 unpriced units for 6.99 CAD"
+      }
+    },
+    "gear:crimson_phosphates": {
+      "name": "Crimson Phosphates",
+      "category": "gear",
+      "per": 1,
+      "value": 0.002771924,
+      "aliases": [],
+      "observed": {
+        "perUsd": 360.7603,
+        "observations": 1,
+        "readAt": "2026-10-24",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Origins: 600 of 1800 unpriced units for 6.99 CAD"
+      }
+    },
+    "shard:dracula": {
+      "name": "Dracula shards",
+      "category": "shard",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Dracula",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for this character"
+      }
+    },
+    "shard:morbius": {
+      "name": "Morbius shards",
+      "category": "shard",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Morbius",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for this character"
+      }
+    },
+    "shard:electro": {
+      "name": "Electro shards",
+      "category": "shard",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Electro",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for this character"
+      }
+    },
+    "shard:mister negative": {
+      "name": "Mister Negative shards",
+      "category": "shard",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Mister Negative",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for this character"
+      }
+    },
+    "shard:bullseye": {
+      "name": "Bullseye shards",
+      "category": "shard",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Bullseye",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for this character"
+      }
+    },
+    "shard:scorpion (breaker)": {
+      "name": "Scorpion (Breaker) shards",
+      "category": "shard",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Scorpion (Breaker)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for this character"
+      }
+    },
+    "shard:blade": {
+      "name": "Blade shards",
+      "category": "shard",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Blade",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for this character"
+      }
+    },
+    "shard:hit monkey": {
+      "name": "Hit-Monkey shards",
+      "category": "shard",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Hit-Monkey",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for this character"
+      }
+    },
+    "shard:lady deathstrike": {
+      "name": "Lady Deathstrike shards",
+      "category": "shard",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Lady Deathstrike",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for this character"
+      }
+    },
+    "shard:gladiator": {
+      "name": "Gladiator shards",
+      "category": "shard",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Gladiator",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for this character"
+      }
+    },
+    "shard:lizard": {
+      "name": "Lizard shards",
+      "category": "shard",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Lizard",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for this character"
+      }
+    },
+    "orb:the_summoners": {
+      "name": "The Summoner's Orb Fragments",
+      "category": "orb",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for it"
+      }
+    },
+    "orb:zombie_mega": {
+      "name": "Zombie Mega Orb Fragments",
+      "category": "orb",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for it"
+      }
+    },
+    "orb:scorpion_(breaker)_mega": {
+      "name": "Scorpion (Breaker) Mega Orb Fragments",
+      "category": "orb",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for it"
+      }
+    },
+    "orb:mega": {
+      "name": "Mega Orb Fragments",
+      "category": "orb",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for it"
+      }
+    },
+    "orb:nightreaver": {
+      "name": "Nightreaver Orb Fragments",
+      "category": "orb",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for it"
+      }
+    },
+    "other:gt21_bio_calendar": {
+      "name": "GT21 Bio Calendar",
+      "category": "other",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for it"
+      }
     }
   }
 };

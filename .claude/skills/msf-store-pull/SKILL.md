@@ -100,7 +100,15 @@ Run `node tools/record-history.js` to add the day to `data/history.js`, and
 the new offers (`--dry-run` first to see the changes). It prices store-sourced items again on
 every run and never touches items with an msfwar number or a `derivedFrom`; values the user
 typed on the Value table tab live only in their browser, win on the page, and are invisible to
-the tool.
+the tool. It prices table rows only, and by default only gear and ISO-8 rows (pass
+`--categories gear,iso8,shard` to price shard rows too; otherwise they wait for an msfwar number
+or a value typed on the Value table tab). An item the store sells that the table lacks shows as
+unknown on the page, or as unpriced generic shards when it is a character icon with a count; the
+tool has no roster and treats both as unknown, so add a row for it first (`data/values.js`,
+value null, the way the Crimson pieces and the featured characters' shards were added on
+1 November 2026), then run the tool. Event milestone points need no row: the engine reads any
+"<event> Milestone Points" name as points that are not counted. Offers whose card hides items
+("+N More") or shows a line without a readable count never price anything.
 
 ## 3. Item values → `data/values.js`
 

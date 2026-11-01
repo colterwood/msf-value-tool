@@ -27,7 +27,7 @@ Everything runs in your browser from a folder on your machine. No server, no acc
 | --- | --- |
 | Valuation engine and tests | Done. msfwar-style scoring, currency conversion and point exclusion added 18 October 2026 |
 | Local page: offer entry, store ranking, value table editor, roster | Done |
-| msfwar item values in `data/values.js` | **Loaded 18 October 2026**: 181 of 313 items carry msfwar's observed average; L1 to L3 training modules are priced from L4 by XP; 15 Crimson gear items are priced from the store offers of 18 October by `tools/fill-from-store.js`; the rest are items msfwar had no baseline for (the remaining gear, most character shards, some orbs) and show as unpriced |
+| msfwar item values in `data/values.js` | **Loaded 18 October 2026**: 181 of 338 items carry msfwar's observed average; L1 to L3 training modules are priced from L4 by XP; 23 Crimson gear items are priced from the store offers of 18 and 24 October by `tools/fill-from-store.js`; the rest are items msfwar had no baseline for (the remaining gear, most character shards, some orbs) and show as unpriced |
 | Live offers in `data/offers.js` | **Loaded 24 October 2026, 21:24 UTC**: 120 offers from every section of the web store, prices in CA$ |
 | Roster in `data/roster.js` | **Loaded 18 October 2026**: all 389 characters (237 unlocked, 28 at 7 stars) from the roster stats table |
 | Price history in `data/history.js` | **Two days** (18 and 24 October 2026); grows with each `tools/record-history.js` run |
@@ -180,9 +180,16 @@ This follows the msfwar Spender's Guide as it described itself on 17 October 202
   Letters: A at 90, B at 80, C at 70, D at 60, F below. msfwar states the A, B and C bands; D, F
   and the clamp are this tool's reading of its description and can be edited in `meta.scoring`.
 - **Not counted.** Milestone points and Strike Points are listed but excluded, as on msfwar.
-  Items msfwar has no baseline for are listed as unpriced and leave the offer marked incomplete.
-  Offers whose card hides part of its contents behind "+N More" carry a note and rank after
-  complete ones.
+  Points of an event the table does not list yet are read as points from their name ("Feast of
+  Shadows Milestone Points"), so a new event does not make every offer incomplete.
+- **Incomplete.** The flag means part of the offer could not be priced, so the value shown is a
+  floor: items msfwar has no baseline for are listed as unpriced, a count the card did not show
+  is listed as unreadable, an item the table does not know at all is listed as unknown, and a
+  card that hides part of its contents behind "+N More" carries a note. Incomplete offers rank
+  after complete ones, and offers with nothing priceable at all (points only) rank last. The
+  store labels shard lines with the character portrait, so a bare roster name with a count
+  ("Dracula ×810") is read as that character's shards; with a count of one it is a diamond or
+  red star promotion the card does not name, listed as an unnamed promotion.
 - **Best buys by resource.** Under the store list, every resource the store sells with the
   offer that sells it cheapest, two ways: "price share" charges each item in a bundle its share
   of the price in proportion to its value, so bundles compare fairly; "whole price" counts the
