@@ -27,10 +27,10 @@ Everything runs in your browser from a folder on your machine. No server, no acc
 | --- | --- |
 | Valuation engine and tests | Done. msfwar-style scoring, currency conversion and point exclusion added 18 October 2026 |
 | Local page: offer entry, store ranking, value table editor, roster | Done |
-| msfwar item values in `data/values.js` | **Loaded 18 October 2026**: 181 of 338 items carry msfwar's observed average; L1 to L3 training modules are priced from L4 by XP; 23 Crimson gear items are priced from the store offers of 18 and 24 October by `tools/fill-from-store.js`; the rest are items msfwar had no baseline for (the remaining gear, most character shards, some orbs) and show as unpriced |
-| Live offers in `data/offers.js` | **Loaded 24 October 2026, 21:24 UTC**: 120 offers from every section of the web store, prices in CA$ |
+| msfwar item values in `data/values.js` | **Loaded 18 October 2026**: 181 of 390 items carry msfwar's observed average; L1 to L3 training modules are priced from L4 by XP; 36 gear items are priced from the store offers of 18 and 24 October and 6 November by `tools/fill-from-store.js`; the rest are items msfwar had no baseline for (the remaining gear, most character shards, some orbs) and show as unpriced |
+| Live offers in `data/offers.js` | **Loaded 6 November 2026, 01:15 UTC**: 167 offers from every section of the web store (chain steps, dual-offer options and core packs each count once), prices in CA$ |
 | Roster in `data/roster.js` | **Loaded 18 October 2026**: all 389 characters (237 unlocked, 28 at 7 stars) from the roster stats table |
-| Price history in `data/history.js` | **Two days** (18 and 24 October 2026); grows with each `tools/record-history.js` run |
+| Price history in `data/history.js` | **Three days** (18 and 24 October and 6 November 2026); grows with each `tools/record-history.js` run |
 | In-game core prices (Value table "Cores in game") | **Empty**: the web store never prices resources in cores; type the in-game store prices in |
 | Plan in `data/personal.js` | **Loaded 18 October 2026**: the 50 characters on the MSF Sheet's "Characters I Will Build" tab, gold and L4 budgets from "Resource Budgeting", ability totals from "T4 Priority", ISO tiers from "ISO Priority", and 351 gear counts from the portal's Inventory page |
 | Playbook for pulling store, roster and msfwar values through Chrome | Done and run once; `.claude/skills/msf-store-pull/SKILL.md` records what worked |

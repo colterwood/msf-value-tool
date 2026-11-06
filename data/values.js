@@ -3493,11 +3493,15 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Psionic Essence",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 1.019679821,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 0.9807,
+        "observations": 1,
+        "readAt": "2026-11-06",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Gear Tier 21: Mystic Bundle: 35 of 70 unpriced units for 99.99 CAD"
       }
     },
     "gear:crimson_remote_access_codes": {
@@ -3534,11 +3538,15 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Ritual Salts",
       "category": "gear",
       "per": 1,
-      "value": null,
+      "value": 1.019679821,
       "aliases": [],
       "observed": {
-        "perUsd": null,
-        "note": "not on msfwar's resource list as of 2026-10-18"
+        "perUsd": 0.9807,
+        "observations": 1,
+        "readAt": "2026-11-06",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Gear Tier 21: Mystic Bundle: 35 of 70 unpriced units for 99.99 CAD"
       }
     },
     "gear:crimson_security_bypass": {
@@ -3597,15 +3605,15 @@ window.MSF_VALUE_TABLE = {
       "name": "Crimson Uru",
       "category": "gear",
       "per": 1,
-      "value": 0.152260305,
+      "value": 0.038315351,
       "aliases": [],
       "observed": {
-        "perUsd": 6.5677,
+        "perUsd": 26.0992,
         "observations": 1,
-        "readAt": "2026-10-18",
+        "readAt": "2026-11-06",
         "source": "store",
         "method": "shared",
-        "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 45 of 375 unpriced units for 79.99 CAD"
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Gear: 9 of 745 unpriced units for 39.99 CAD"
       }
     },
     "gear:improved_arcane_powder": {
@@ -5103,7 +5111,7 @@ window.MSF_VALUE_TABLE = {
       "observed": {
         "perUsd": 6.5677,
         "observations": 1,
-        "readAt": "2026-10-24",
+        "readAt": "2026-11-06",
         "source": "store",
         "method": "shared",
         "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 90 of 375 unpriced units for 79.99 CAD"
@@ -5118,7 +5126,7 @@ window.MSF_VALUE_TABLE = {
       "observed": {
         "perUsd": 6.5677,
         "observations": 1,
-        "readAt": "2026-10-24",
+        "readAt": "2026-11-06",
         "source": "store",
         "method": "shared",
         "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 90 of 375 unpriced units for 79.99 CAD"
@@ -5133,7 +5141,7 @@ window.MSF_VALUE_TABLE = {
       "observed": {
         "perUsd": 360.7603,
         "observations": 1,
-        "readAt": "2026-10-24",
+        "readAt": "2026-11-06",
         "source": "store",
         "method": "shared",
         "note": "priced from the player's own store (shared): Unlock Special: Crimson Origins: 500 of 1800 unpriced units for 6.99 CAD"
@@ -5148,7 +5156,7 @@ window.MSF_VALUE_TABLE = {
       "observed": {
         "perUsd": 6.5677,
         "observations": 1,
-        "readAt": "2026-10-24",
+        "readAt": "2026-11-06",
         "source": "store",
         "method": "shared",
         "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 75 of 375 unpriced units for 79.99 CAD"
@@ -5163,7 +5171,7 @@ window.MSF_VALUE_TABLE = {
       "observed": {
         "perUsd": 6.5677,
         "observations": 1,
-        "readAt": "2026-10-24",
+        "readAt": "2026-11-06",
         "source": "store",
         "method": "shared",
         "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 75 of 375 unpriced units for 79.99 CAD"
@@ -5178,7 +5186,7 @@ window.MSF_VALUE_TABLE = {
       "observed": {
         "perUsd": 360.7603,
         "observations": 1,
-        "readAt": "2026-10-24",
+        "readAt": "2026-11-06",
         "source": "store",
         "method": "shared",
         "note": "priced from the player's own store (shared): Unlock Special: Crimson Origins: 700 of 1800 unpriced units for 6.99 CAD"
@@ -5193,7 +5201,7 @@ window.MSF_VALUE_TABLE = {
       "observed": {
         "perUsd": 360.7603,
         "observations": 1,
-        "readAt": "2026-10-24",
+        "readAt": "2026-11-06",
         "source": "store",
         "method": "shared",
         "note": "priced from the player's own store (shared): Unlock Special: Crimson Origins: 600 of 1800 unpriced units for 6.99 CAD"
@@ -5395,6 +5403,638 @@ window.MSF_VALUE_TABLE = {
       "observed": {
         "perUsd": null,
         "note": "added 2026-11-01 from the store of 24 October; msfwar not checked for it"
+      }
+    },
+    "orb:a.i._avengers_mega": {
+      "name": "A.I. Avengers Mega Orb Fragment",
+      "category": "orb",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "orb:allied_supply_xiii": {
+      "name": "Allied Supply XIII Orb Fragments",
+      "category": "orb",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "orb:armory_19": {
+      "name": "Armory 19 Orb Fragments",
+      "category": "orb",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:augmented_arcane_powder": {
+      "name": "Augmented Arcane Powder",
+      "category": "gear",
+      "per": 1,
+      "value": 0.001850065,
+      "aliases": [],
+      "observed": {
+        "perUsd": 540.5218,
+        "observations": 1,
+        "readAt": "2026-11-06",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Teal Gear: 4500 of 13500 unpriced units for 34.99 CAD"
+      }
+    },
+    "gear:augmented_basic_catalyst_part": {
+      "name": "Augmented Basic Catalyst Part",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:augmented_celestial_lattice": {
+      "name": "Augmented Celestial Lattice",
+      "category": "gear",
+      "per": 1,
+      "value": 0.018479541,
+      "aliases": [],
+      "observed": {
+        "perUsd": 54.1139,
+        "observations": 2,
+        "readAt": "2026-11-06",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Gear: 350 of 745 unpriced units for 39.99 CAD; Unlock Special: Uniquely Teal: 350 of 1465 unpriced units for 24.99 CAD"
+      }
+    },
+    "gear:augmented_damage_catalyst_part": {
+      "name": "Augmented Damage Catalyst Part",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:augmented_esoteric_glyphs": {
+      "name": "Augmented Esoteric Glyphs",
+      "category": "gear",
+      "per": 1,
+      "value": 0.001850065,
+      "aliases": [],
+      "observed": {
+        "perUsd": 540.5218,
+        "observations": 1,
+        "readAt": "2026-11-06",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Teal Gear: 4500 of 13500 unpriced units for 34.99 CAD"
+      }
+    },
+    "gear:augmented_focus_catalyst_part": {
+      "name": "Augmented Focus Catalyst Part",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:augmented_health_catalyst_part": {
+      "name": "Augmented Health Catalyst Part",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:augmented_mythic_geode": {
+      "name": "Augmented Mythic Geode",
+      "category": "gear",
+      "per": 1,
+      "value": 0.012176027,
+      "aliases": [],
+      "observed": {
+        "perUsd": 82.1286,
+        "observations": 1,
+        "readAt": "2026-11-06",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Uniquely Teal: 350 of 1465 unpriced units for 24.99 CAD"
+      }
+    },
+    "gear:augmented_resistance_catalyst_part": {
+      "name": "Augmented Resistance Catalyst Part",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:augmented_shoggoth_ichor": {
+      "name": "Augmented Shoggoth Ichor",
+      "category": "gear",
+      "per": 1,
+      "value": 0.018479541,
+      "aliases": [],
+      "observed": {
+        "perUsd": 54.1139,
+        "observations": 2,
+        "readAt": "2026-11-06",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Gear: 350 of 745 unpriced units for 39.99 CAD; Unlock Special: Uniquely Teal: 350 of 1465 unpriced units for 24.99 CAD"
+      }
+    },
+    "gear:augmented_sigil": {
+      "name": "Augmented Sigil",
+      "category": "gear",
+      "per": 1,
+      "value": 0.012176027,
+      "aliases": [],
+      "observed": {
+        "perUsd": 82.1286,
+        "observations": 1,
+        "readAt": "2026-11-06",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Uniquely Teal: 350 of 1465 unpriced units for 24.99 CAD"
+      }
+    },
+    "gear:augmented_uru": {
+      "name": "Augmented Uru",
+      "category": "gear",
+      "per": 1,
+      "value": 0.012176027,
+      "aliases": [],
+      "observed": {
+        "perUsd": 82.1286,
+        "observations": 1,
+        "readAt": "2026-11-06",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Uniquely Teal: 65 of 1465 unpriced units for 24.99 CAD"
+      }
+    },
+    "gear:augmented_vial": {
+      "name": "Augmented Vial",
+      "category": "gear",
+      "per": 1,
+      "value": 0.001850065,
+      "aliases": [],
+      "observed": {
+        "perUsd": 540.5218,
+        "observations": 1,
+        "readAt": "2026-11-06",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Teal Gear: 4500 of 13500 unpriced units for 34.99 CAD"
+      }
+    },
+    "orb:black_friday_sneak_peaks": {
+      "name": "Black Friday Sneak Peaks Orb Fragments",
+      "category": "orb",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:crimson_celestial_lattice": {
+      "name": "Crimson Celestial Lattice",
+      "category": "gear",
+      "per": 1,
+      "value": 0.038315351,
+      "aliases": [],
+      "observed": {
+        "perUsd": 26.0992,
+        "observations": 1,
+        "readAt": "2026-11-06",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Gear: 18 of 745 unpriced units for 39.99 CAD"
+      }
+    },
+    "gear:crimson_laser_torch": {
+      "name": "Crimson Laser Torch",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:crimson_locked_case": {
+      "name": "Crimson Locked Case",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:crimson_secret_intel": {
+      "name": "Crimson Secret Intel",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:crimson_shoggoth_ichor": {
+      "name": "Crimson Shoggoth Ichor",
+      "category": "gear",
+      "per": 1,
+      "value": 0.038315351,
+      "aliases": [],
+      "observed": {
+        "perUsd": 26.0992,
+        "observations": 1,
+        "readAt": "2026-11-06",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Gear: 18 of 745 unpriced units for 39.99 CAD"
+      }
+    },
+    "gear:crimson_titanium_alloy": {
+      "name": "Crimson Titanium Alloy",
+      "category": "gear",
+      "per": 1,
+      "value": 0.152260305,
+      "aliases": [],
+      "observed": {
+        "perUsd": 6.5677,
+        "observations": 1,
+        "readAt": "2026-11-06",
+        "source": "store",
+        "method": "shared",
+        "note": "priced from the player's own store (shared): Unlock Special: Crimson Uniques: 45 of 375 unpriced units for 79.99 CAD"
+      }
+    },
+    "gear:crimson_unstable_molecules": {
+      "name": "Crimson Unstable Molecules",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:crimson_vial": {
+      "name": "Crimson Vial",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "elite_4_credit": {
+      "name": "Elite 4 Credit",
+      "category": "currency",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "elite_5_credit": {
+      "name": "Elite 5 Credit",
+      "category": "currency",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "orb:hidden_jungle": {
+      "name": "Hidden Jungle Orb Fragments",
+      "category": "orb",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "shard:ka zar": {
+      "name": "Ka-Zar shards",
+      "category": "shard",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Ka-Zar",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "orb:lock_on": {
+      "name": "Lock-On Orb Fragments",
+      "category": "orb",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "orb:mega_lock_on": {
+      "name": "MEGA Lock-On Orb Fragments",
+      "category": "orb",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:magneto_(phoenix_force)_basic_awakened": {
+      "name": "Magneto (Phoenix Force)'s Basic Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Magneto (Phoenix Force)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:magneto_(phoenix_force)_special_awakened": {
+      "name": "Magneto (Phoenix Force)'s Special Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Magneto (Phoenix Force)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:magneto_(phoenix_force)_ultimate_awakened": {
+      "name": "Magneto (Phoenix Force)'s Ultimate Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Magneto (Phoenix Force)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:omega_red_(phoenix_force)_basic_awakened": {
+      "name": "Omega Red (Phoenix Force)'s Basic Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Omega Red (Phoenix Force)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:omega_red_(phoenix_force)_passive_awakened": {
+      "name": "Omega Red (Phoenix Force)'s Passive Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Omega Red (Phoenix Force)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:phoenix_passive_awakened": {
+      "name": "Phoenix's Passive Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Phoenix",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:phoenix_ultimate_awakened": {
+      "name": "Phoenix's Ultimate Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Phoenix",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "strike_tokens": {
+      "name": "S.T.R.I.K.E. Tokens",
+      "category": "currency",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:scorpion_(breaker)_basic_awakened": {
+      "name": "Scorpion (Breaker)'s Basic Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Scorpion (Breaker)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:scorpion_(breaker)_passive_awakened": {
+      "name": "Scorpion (Breaker)'s Passive Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Scorpion (Breaker)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:scorpion_(breaker)_special_awakened": {
+      "name": "Scorpion (Breaker)'s Special Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Scorpion (Breaker)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:scorpion_(breaker)_ultimate_awakened": {
+      "name": "Scorpion (Breaker)'s Ultimate Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Scorpion (Breaker)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:silver_surfer_(breaker)_basic_awakened": {
+      "name": "Silver Surfer (Breaker)'s Basic Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Silver Surfer (Breaker)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:silver_surfer_(breaker)_passive_awakened": {
+      "name": "Silver Surfer (Breaker)'s Passive Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Silver Surfer (Breaker)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:silver_surfer_(breaker)_special_awakened": {
+      "name": "Silver Surfer (Breaker)'s Special Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Silver Surfer (Breaker)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "ability_material:silver_surfer_(breaker)_ultimate_awakened": {
+      "name": "Silver Surfer (Breaker)'s Ultimate Awakened Ability Material",
+      "category": "ability",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "character": "Silver Surfer (Breaker)",
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:superior_arcane_powder": {
+      "name": "Superior Arcane Powder",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:superior_esoteric_glyphs": {
+      "name": "Superior Esoteric Glyphs",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:superior_shoggoth_ichor": {
+      "name": "Superior Shoggoth Ichor",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:superior_sigil": {
+      "name": "Superior Sigil",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
+      }
+    },
+    "gear:superior_vial": {
+      "name": "Superior Vial",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "observed": {
+        "perUsd": null,
+        "note": "added 2026-11-06 from the store card; msfwar not checked for it"
       }
     }
   }

@@ -28,63 +28,32 @@
  *   }
  */
 window.MSF_OFFERS = {
-  "updated": "2026-10-24T21:24:10.380Z",
+  "updated": "2026-11-06T01:15:22.312Z",
   "source": "web-store",
-  "account": "CZARFACE level 105",
+  "bookmarklet": "2026-10-24",
+  "account": "CZARFACE level 107",
   "priceCurrency": "CAD",
   "note": "Read from the logged-in web store with the MSF Store Value bookmarklet. Cards that show \"+N More\" hide part of their contents; those offers carry a notes field and grade as incomplete.",
   "offers": [
     {
-      "name": "Mephisto's Summoning: Orb Special",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 10,
-      "expires": "8d 23h",
-      "section": "Buy Again",
-      "sections": [
-        "Buy Again",
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Mephisto's Summoning Milestone Points",
-          "qty": 100
-        },
-        {
-          "item": "The Summoner's Orb Fragments",
-          "qty": 6000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Open these Orbs to make progress in the Mephisto's Summoning Milestone event, with a chance to earn 5-Diamond Mephisto!"
-    },
-    {
-      "name": "Feast of Shadows: Terrific Training",
+      "name": "Ability Ultimate Stash",
       "price": 24.99,
       "currency": "CAD",
-      "purchaseLimit": 98,
-      "expires": "8d 23h",
+      "purchaseLimit": 2,
+      "expires": "2d 19h",
       "section": "Buy Again",
       "sections": [
         "Buy Again",
-        "Offers / EVENTS"
+        "Offers / RECOMMENDED"
       ],
       "contents": [
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 300000000
+          "item": "T4 Ability Material",
+          "qty": 850
         },
         {
-          "item": "L4 Training Module",
-          "qty": 4620
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 15000000,
+          "item": "T4 Ability Material",
+          "qty": 85,
           "webBonus": true
         },
         {
@@ -93,50 +62,14 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
-      "description": "Pick up a great L4 Training Module bundle to level up characters and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!"
+      "description": "Train hard, fight harder. Boost your team now!"
     },
     {
-      "name": "Golden Boost",
-      "price": 3.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "4d 23h",
-      "section": "Buy Again",
-      "sections": [
-        "Buy Again",
-        "Offers / FOR NEW PLAYERS"
-      ],
-      "contents": [
-        {
-          "item": "Gold",
-          "qty": 2000000
-        },
-        {
-          "item": "T2 Ability Material",
-          "qty": 2000
-        },
-        {
-          "item": "T3 Ability Material",
-          "qty": 1000
-        },
-        {
-          "item": "L3 Training Module",
-          "qty": 500
-        },
-        {
-          "item": "Strike Points",
-          "qty": 300,
-          "webBonus": true
-        }
-      ],
-      "description": "Boost the ability and capability of your roster with this limited time offer!"
-    },
-    {
-      "name": "Supreme Vampiric",
+      "name": "Supreme Snipe",
       "price": 549.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "8d 23h",
+      "expires": "3d 19h",
       "section": "Buy Again",
       "sections": [
         "Buy Again",
@@ -144,35 +77,396 @@ window.MSF_OFFERS = {
       ],
       "contents": [
         {
-          "item": "Dracula",
+          "item": "Hawkeye (Robot)",
           "qty": 810
         },
         {
-          "item": "Dracula",
+          "item": "Hawkeye (Robot)",
           "qty": 1
         },
         {
-          "item": "Dracula",
+          "item": "Hawkeye (Robot)",
           "qty": 1
         },
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
+          "item": "Strike Points",
+          "qty": 40000,
+          "webBonus": true
         }
       ],
-      "description": "Unleash Dracula's true potential with 2 Diamonds and make massive progress in the Feast of Shadows Milestone event!",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points; qty unreadable for Feast of Shadows Milestone Points; 7 more item(s) not shown on the card"
+      "description": "Unlock Hawkeye (Robot)'s full potential with 2 Diamonds and dominate Cosmic Crucible!"
+    },
+    {
+      "name": "Black Friday Sneak Peak",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 3,
+      "expires": "6d 19h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / FEATURED"
+      ],
+      "contents": [
+        {
+          "item": "Black Friday Sneak Peaks Orb Fragments",
+          "qty": 2000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Get a sneak peek at Black Friday! Open the special Orb for a chance to earn up to 5-Diamond promotions for select powerhouse characters!"
+    },
+    {
+      "name": "Cyber Breach: Ultimate Pack",
+      "price": 129.99,
+      "currency": "CAD",
+      "purchaseLimit": 50,
+      "expires": "9d 19h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 1500000
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 75000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 10000,
+          "webBonus": true
+        }
+      ],
+      "description": "Get ahead in the Cyber Breach Leaderboard to secure 3-Diamond for Whiplash, Ulysses Klaue, Iron Monger!"
+    },
+    {
+      "name": "Cyber Breach: Jocasta 2-Diamond",
+      "price": 549.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 4000000
+        },
+        {
+          "item": "Jocasta",
+          "qty": 810
+        },
+        {
+          "item": "Jocasta",
+          "qty": 1
+        },
+        {
+          "item": "Jocasta",
+          "qty": 1
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 200000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 40000,
+          "webBonus": true
+        }
+      ],
+      "description": "Instantly power up Jocasta to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Hawkeye (Robot) 2-Diamond",
+      "price": 549.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 4000000
+        },
+        {
+          "item": "Hawkeye (Robot)",
+          "qty": 810
+        },
+        {
+          "item": "Hawkeye (Robot)",
+          "qty": 1
+        },
+        {
+          "item": "Hawkeye (Robot)",
+          "qty": 1
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 200000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 40000,
+          "webBonus": true
+        }
+      ],
+      "description": "Instantly power up Hawkeye (Robot) to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Human Torch (Jim) 2-Diamond",
+      "price": 549.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 4000000
+        },
+        {
+          "item": "Human Torch (Jim)",
+          "qty": 810
+        },
+        {
+          "item": "Human Torch (Jim)",
+          "qty": 1
+        },
+        {
+          "item": "Human Torch (Jim)",
+          "qty": 1
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 200000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 40000,
+          "webBonus": true
+        }
+      ],
+      "description": "Instantly power up Human Torch (Jim) to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Whiplash 2-Diamond",
+      "price": 549.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 4000000
+        },
+        {
+          "item": "Whiplash",
+          "qty": 810
+        },
+        {
+          "item": "Whiplash",
+          "qty": 1
+        },
+        {
+          "item": "Whiplash",
+          "qty": 1
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 200000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 40000,
+          "webBonus": true
+        }
+      ],
+      "description": "Instantly power up Whiplash to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Ulysses Klaue 2-Diamond",
+      "price": 549.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 4000000
+        },
+        {
+          "item": "Ulysses Klaue",
+          "qty": 810
+        },
+        {
+          "item": "Ulysses Klaue",
+          "qty": 1
+        },
+        {
+          "item": "Ulysses Klaue",
+          "qty": 1
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 200000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 40000,
+          "webBonus": true
+        }
+      ],
+      "description": "Instantly power up Ulysses Klaue to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Iron Monger 2-Diamond",
+      "price": 549.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 4000000
+        },
+        {
+          "item": "Iron Monger",
+          "qty": 810
+        },
+        {
+          "item": "Iron Monger",
+          "qty": 1
+        },
+        {
+          "item": "Iron Monger",
+          "qty": 1
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 200000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 40000,
+          "webBonus": true
+        }
+      ],
+      "description": "Instantly power up Iron Monger to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: A.I. Avengers Mega Orb",
+      "price": 129.99,
+      "currency": "CAD",
+      "purchaseLimit": 99,
+      "expires": "9d 19h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 800000
+        },
+        {
+          "item": "A.I. Avengers Mega Orb Fragment",
+          "qty": 2000
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 40000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 10000,
+          "webBonus": true
+        }
+      ],
+      "description": "Open this Orb for a chance to get 400 Shards for A.I. Avengers, plus a bunch of points toward the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Iron Raiders Mega Orb",
+      "price": 129.99,
+      "currency": "CAD",
+      "purchaseLimit": 99,
+      "expires": "9d 19h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 800000
+        },
+        {
+          "item": "Iron Raiders Mega Orb Fragment",
+          "qty": 2000
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 40000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 10000,
+          "webBonus": true
+        }
+      ],
+      "description": "Open this Orb for a chance to get 500 Shards for Iron Raiders, plus a bunch of points toward the Cyber Breach Milestone!"
     },
     {
       "name": "Raid Warzone: Mega Pack",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "Buy Again",
       "sections": [
         "Buy Again",
@@ -196,159 +490,395 @@ window.MSF_OFFERS = {
       "description": "Get ahead in Raid Warzone Milestone and propel your Alliance to Gold Orb Fragments!"
     },
     {
-      "name": "Feast of Shadows: Zombie Orb",
-      "price": 129.99,
+      "name": "Unlock Special: Training Drill",
+      "price": 39.99,
       "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
+      "purchaseLimit": 5,
+      "expires": "1d 15h",
       "section": "Buy Again",
       "sections": [
         "Buy Again",
-        "Offers / EVENTS"
+        "Offers / UNLOCKED OFFERS"
       ],
       "contents": [
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Zombie Mega Orb Fragments",
-          "qty": 30000
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 100000000,
-          "webBonus": true
+          "item": "L4 Training Module",
+          "qty": 2200
         },
         {
           "item": "Strike Points",
-          "qty": 10000,
+          "qty": 3000,
           "webBonus": true
         }
       ],
-      "description": "Open this Orb for a chance to get 810 Shards, 7 Red Stars, and 3-Diamond for Undying Zombies, plus a bunch of points toward the Feast of Shadows Milestone!",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points"
+      "description": "Pick up this special Training Module offer to level up your new character!"
     },
     {
-      "name": "Feast of Shadows: Scorpion (Breaker)",
-      "price": 129.99,
+      "name": "Unlock Special: Awesome Ability",
+      "price": 69.99,
       "currency": "CAD",
-      "purchaseLimit": 8,
-      "expires": "8d 23h",
+      "purchaseLimit": 2,
+      "expires": "1d 15h",
       "section": "Buy Again",
       "sections": [
         "Buy Again",
-        "Offers / EVENTS"
+        "Offers / UNLOCKED OFFERS"
       ],
       "contents": [
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
+          "item": "T4 Ability Material",
+          "qty": 500
         },
         {
-          "item": "Scorpion (Breaker) Mega Orb Fragments",
+          "item": "T3 Ability Material",
+          "qty": 1000
+        },
+        {
+          "item": "T2 Ability Material",
+          "qty": 300
+        },
+        {
+          "item": "T1 Ability Material",
+          "qty": 100
+        },
+        {
+          "item": "Strike Points",
+          "qty": 5000,
+          "webBonus": true
+        }
+      ],
+      "description": "Grab this bundle to get the abilites of your new roster member up to speed!"
+    },
+    {
+      "name": "Unlock Special: Crimson Gear",
+      "price": 39.99,
+      "currency": "CAD",
+      "purchaseLimit": 2,
+      "expires": "1d 15h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Crimson Uru",
+          "qty": 9
+        },
+        {
+          "item": "Crimson Shoggoth Ichor",
+          "qty": 18
+        },
+        {
+          "item": "Crimson Celestial Lattice",
+          "qty": 18
+        },
+        {
+          "item": "Augmented Shoggoth Ichor",
+          "qty": 350
+        },
+        {
+          "item": "Augmented Celestial Lattice",
+          "qty": 350
+        },
+        {
+          "item": "Strike Points",
+          "qty": 3000,
+          "webBonus": true
+        }
+      ],
+      "description": "Pick up the Crimson Unique and Mini-Unique gear for your new character to help them jump right into the greatest challenges."
+    },
+    {
+      "name": "Unlock Special: Crimson Gear",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 2,
+      "expires": "1d 15h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Crimson Arcane Powder",
+          "qty": 250
+        },
+        {
+          "item": "Crimson Esoteric Glyphs",
+          "qty": 225
+        },
+        {
+          "item": "Crimson Vial",
+          "qty": 200
+        },
+        {
+          "item": "Armory 19 Orb Fragments",
+          "qty": 8000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Grab the Crimson gear needed to power up the latest character added to your roster."
+    },
+    {
+      "name": "Unlock Special: Crimson Catalysts",
+      "price": 69.99,
+      "currency": "CAD",
+      "purchaseLimit": 2,
+      "expires": "1d 15h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Crimson Basic Catalyst Part",
+          "qty": 500
+        },
+        {
+          "item": "Crimson Damage Catalyst Part",
+          "qty": 200
+        },
+        {
+          "item": "Crimson Focus Catalyst Part",
+          "qty": 200
+        },
+        {
+          "item": "Crimson Health Catalyst Part",
+          "qty": 200
+        },
+        {
+          "item": "Crimson Resistance Catalyst Part",
+          "qty": 200
+        }
+      ],
+      "description": "Use these Catalysts to craft your way to Crimson gear greatness for your new roster member.",
+      "notes": "2 more item(s) not shown on the card"
+    },
+    {
+      "name": "Unlock Special: Uniquely Teal",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 4,
+      "expires": "1d 15h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Augmented Uru",
+          "qty": 65
+        },
+        {
+          "item": "Augmented Sigil",
+          "qty": 350
+        },
+        {
+          "item": "Augmented Mythic Geode",
+          "qty": 350
+        },
+        {
+          "item": "Augmented Shoggoth Ichor",
+          "qty": 350
+        },
+        {
+          "item": "Augmented Celestial Lattice",
+          "qty": 350
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Pick up the Unique and Mini-Unique gear for your new character to help them jump right into the greatest challenges."
+    },
+    {
+      "name": "Unlock Special: Teal Gear",
+      "price": 34.99,
+      "currency": "CAD",
+      "purchaseLimit": 4,
+      "expires": "1d 15h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Augmented Arcane Powder",
+          "qty": 4500
+        },
+        {
+          "item": "Augmented Esoteric Glyphs",
+          "qty": 4500
+        },
+        {
+          "item": "Augmented Vial",
+          "qty": 4500
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2500,
+          "webBonus": true
+        }
+      ],
+      "description": "Grab the Teal gear needed to power up the latest character added to your roster."
+    },
+    {
+      "name": "Unlock Special: Teal Catalysts",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 4,
+      "expires": "1d 15h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Augmented Basic Catalyst Part",
+          "qty": 900
+        },
+        {
+          "item": "Augmented Damage Catalyst Part",
+          "qty": 900
+        },
+        {
+          "item": "Augmented Focus Catalyst Part",
+          "qty": 900
+        },
+        {
+          "item": "Augmented Health Catalyst Part",
+          "qty": 900
+        },
+        {
+          "item": "Augmented Resistance Catalyst Part",
+          "qty": 900
+        }
+      ],
+      "description": "Use these Catalysts to craft your way to Teal gear greatness for your new roster member.",
+      "notes": "2 more item(s) not shown on the card"
+    },
+    {
+      "name": "Unlock Special: Gear Tier 15",
+      "price": 19.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "1d 15h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Superior Arcane Powder",
+          "qty": 600
+        },
+        {
+          "item": "Superior Esoteric Glyphs",
+          "qty": 300
+        },
+        {
+          "item": "Superior Vial",
+          "qty": 225
+        },
+        {
+          "item": "Superior Sigil",
+          "qty": 40
+        },
+        {
+          "item": "Superior Shoggoth Ichor",
+          "qty": 90
+        }
+      ],
+      "description": "Bring your newest character to Gear Tier 15 with this massive bundle that has so much gear, you'll have to tap to see all thats included!",
+      "notes": "40 more item(s) not shown on the card"
+    },
+    {
+      "name": "Unlock Special: Diamond Authority",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 5,
+      "expires": "1d 15h",
+      "section": "Buy Again",
+      "sections": [
+        "Buy Again",
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Diamond Orb Fragments",
           "qty": 2000
         },
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
+          "item": "Elite 7 Credit",
+          "qty": 2500
         },
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 150000000,
-          "webBonus": true
+          "item": "Elite 6 Credit",
+          "qty": 5000
         },
         {
           "item": "Strike Points",
-          "qty": 10000,
+          "qty": 1000,
           "webBonus": true
         }
       ],
-      "description": "Open this Orb for a chance to get 810 Shards for Scorpion (Breaker), plus a bunch of points toward the Feast of Shadows Milestone!",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points; qty unreadable for Feast of Shadows Milestone Points"
+      "description": "More Diamonds means MORE POWER! Power up with this Diamond Bundle!"
     },
     {
-      "name": "Feast of Shadows: Orange Mega Orb",
-      "price": 129.99,
+      "name": "Unlock Special: Red Star Rush",
+      "price": 19.99,
       "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
+      "purchaseLimit": 2,
+      "expires": "2d 15h",
       "section": "Buy Again",
       "sections": [
         "Buy Again",
-        "Offers / EVENTS"
+        "Offers / UNLOCKED OFFERS"
       ],
       "contents": [
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
+          "item": "Elite 7 Credit",
+          "qty": 12500
         },
         {
-          "item": "Orange Mega Orb",
-          "qty": 1
+          "item": "Elite 6 Credit",
+          "qty": 20000
         },
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
+          "item": "Elite 5 Credit",
+          "qty": 25000
         },
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 150000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Open this Orb to stock up on T4 Level 1 Ions and T4 Iso-8 Credits, also gain progress in the Feast of Shadows Milestone! This special Orb will automatically open upon purchase.",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points; qty unreadable for Feast of Shadows Milestone Points"
-    },
-    {
-      "name": "Feast of Shadows: Ultimate Pack",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 50,
-      "expires": "8d 23h",
-      "section": "Buy Again",
-      "sections": [
-        "Buy Again",
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 250000000,
-          "webBonus": true
+          "item": "Elite 4 Credit",
+          "qty": 30000
         },
         {
           "item": "Strike Points",
-          "qty": 10000,
+          "qty": 1500,
           "webBonus": true
         }
       ],
-      "description": "Get ahead in the Feast of Shadows Leaderboard to secure 5-Diamond for Dracula, Scorpion (Breaker), Morbius, and Kestrel (Zombie)!",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points; qty unreadable for Feast of Shadows Milestone Points; qty unreadable for Feast of Shadows Milestone Points"
+      "description": "Take advantage of the limited-time increased chance for Red Star promotions for your newest character with this bundle!"
     },
     {
       "name": "Premium Plus Chapter Battle Pass Ticket Pack",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 2,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "battle pass and s.t.r.i.k.e pass offers",
       "sections": [
         "battle pass and s.t.r.i.k.e pass offers"
@@ -371,1076 +901,316 @@ window.MSF_OFFERS = {
       "description": "Get bonus Shop Credits when you purchase 1 Premium Plus Chapter Battle Pass Tickets with this Web Exclusive bundle! Tickets can be redeemed in-game to activate any single Premium Plus Chapter Battle Pass. Valid only for Chapter Battle Passes."
     },
     {
-      "name": "Resource Overdrive (step 1 of 5)",
-      "price": 3.99,
+      "name": "Range Finder (step 1 of 6)",
+      "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "3d 19h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
       ],
       "contents": [
         {
-          "item": "Power Cores",
-          "qty": 1500
+          "item": "Hawkeye (Robot)",
+          "qty": 45
         },
         {
-          "item": "Gold",
-          "qty": 5000000
+          "item": "Hawkeye (Robot)",
+          "qty": 1
+        },
+        {
+          "item": "Mega Gold Orb Fragments",
+          "qty": 2000,
+          "webBonus": true
         },
         {
           "item": "Strike Points",
-          "qty": 300,
+          "qty": 3000,
           "webBonus": true
         }
       ],
       "chain": {
-        "name": "Resource Overdrive",
+        "name": "Range Finder",
         "step": 1,
-        "of": 5,
+        "of": 6,
         "current": 1,
         "steps": [
           {
             "step": 1,
-            "name": "Resource Overdrive",
-            "price": 3.99,
+            "name": "Range Finder",
+            "price": 39.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Power Cores",
-                "qty": 1500
+                "item": "Hawkeye (Robot)",
+                "qty": 45
               },
               {
-                "item": "Gold",
-                "qty": 5000000
+                "item": "Hawkeye (Robot)",
+                "qty": 1
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
               },
               {
                 "item": "Strike Points",
-                "qty": 300,
+                "qty": 3000,
                 "webBonus": true
               }
             ]
           },
           {
             "step": 2,
-            "name": "Resource Overdrive",
-            "price": 3.99,
+            "name": "Range Finder",
+            "price": 39.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "L4 Training Module",
-                "qty": 350
+                "item": "Hawkeye (Robot)",
+                "qty": 55
               },
               {
-                "item": "Gold",
-                "qty": 10000000
+                "item": "Hawkeye (Robot)",
+                "qty": 1
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
               },
               {
                 "item": "Strike Points",
-                "qty": 300,
+                "qty": 3000,
                 "webBonus": true
               }
             ]
           },
           {
             "step": 3,
-            "name": "Resource Overdrive",
-            "price": 6.99,
+            "name": "Range Finder",
+            "price": 49.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "L4 Training Module",
-                "qty": 550
+                "item": "Hawkeye (Robot)",
+                "qty": 80
               },
               {
-                "item": "Gold",
-                "qty": 12000000
+                "item": "Hawkeye (Robot)",
+                "qty": 1
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
               },
               {
                 "item": "Strike Points",
-                "qty": 500,
+                "qty": 4000,
                 "webBonus": true
               }
             ]
           },
           {
             "step": 4,
-            "name": "Resource Overdrive",
-            "price": 12.99,
+            "name": "Range Finder",
+            "price": 69.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "L4 Training Module",
-                "qty": 1100
+                "item": "Hawkeye (Robot)",
+                "qty": 130
               },
               {
-                "item": "Gold",
-                "qty": 30000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 1500
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
               },
               {
                 "item": "Strike Points",
-                "qty": 1000,
+                "qty": 5000,
                 "webBonus": true
               }
             ]
           },
           {
             "step": 5,
-            "name": "Resource Overdrive",
-            "price": 24.99,
+            "name": "Range Finder",
+            "price": 79.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "L4 Training Module",
-                "qty": 2620
+                "item": "Hawkeye (Robot)",
+                "qty": 200
               },
               {
-                "item": "Gold",
-                "qty": 30000000
-              },
-              {
-                "item": "T4 Ability Material",
-                "qty": 840
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
               },
               {
                 "item": "Strike Points",
+                "qty": 6000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Range Finder",
+            "price": 129.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 300
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
                 "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 10000,
                 "webBonus": true
               }
             ]
           }
         ]
       },
-      "description": "Kick off your power-up with a boost of Gold and Power Cores!"
+      "description": "A special launch offer has appeared for you! Recruit Hawkeye (Robot) today!"
     },
     {
-      "name": "Resource Overdrive (step 2 of 5)",
-      "price": 3.99,
+      "name": "Range Finder (step 2 of 6)",
+      "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "5d 23h",
+      "expires": "3d 19h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
       ],
       "contents": [
         {
-          "item": "L4 Training Module",
-          "qty": 350
+          "item": "Hawkeye (Robot)",
+          "qty": 55
         },
         {
-          "item": "Gold",
-          "qty": 10000000
+          "item": "Hawkeye (Robot)",
+          "qty": 1
         },
         {
-          "item": "Strike Points",
-          "qty": 300,
-          "webBonus": true
-        }
-      ],
-      "chain": {
-        "name": "Resource Overdrive",
-        "step": 2,
-        "of": 5,
-        "current": 1,
-        "steps": [
-          {
-            "step": 1,
-            "name": "Resource Overdrive",
-            "price": 3.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Power Cores",
-                "qty": 1500
-              },
-              {
-                "item": "Gold",
-                "qty": 5000000
-              },
-              {
-                "item": "Strike Points",
-                "qty": 300,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 2,
-            "name": "Resource Overdrive",
-            "price": 3.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 350
-              },
-              {
-                "item": "Gold",
-                "qty": 10000000
-              },
-              {
-                "item": "Strike Points",
-                "qty": 300,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 3,
-            "name": "Resource Overdrive",
-            "price": 6.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 550
-              },
-              {
-                "item": "Gold",
-                "qty": 12000000
-              },
-              {
-                "item": "Strike Points",
-                "qty": 500,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 4,
-            "name": "Resource Overdrive",
-            "price": 12.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 1100
-              },
-              {
-                "item": "Gold",
-                "qty": 30000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 1500
-              },
-              {
-                "item": "Strike Points",
-                "qty": 1000,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 5,
-            "name": "Resource Overdrive",
-            "price": 24.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 2620
-              },
-              {
-                "item": "Gold",
-                "qty": 30000000
-              },
-              {
-                "item": "T4 Ability Material",
-                "qty": 840
-              },
-              {
-                "item": "Strike Points",
-                "qty": 2000,
-                "webBonus": true
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "Resource Overdrive (step 3 of 5)",
-      "price": 6.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "5d 23h",
-      "section": "Chain Offers",
-      "sections": [
-        "Chain Offers"
-      ],
-      "contents": [
-        {
-          "item": "L4 Training Module",
-          "qty": 550
-        },
-        {
-          "item": "Gold",
-          "qty": 12000000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 500,
-          "webBonus": true
-        }
-      ],
-      "chain": {
-        "name": "Resource Overdrive",
-        "step": 3,
-        "of": 5,
-        "current": 1,
-        "steps": [
-          {
-            "step": 1,
-            "name": "Resource Overdrive",
-            "price": 3.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Power Cores",
-                "qty": 1500
-              },
-              {
-                "item": "Gold",
-                "qty": 5000000
-              },
-              {
-                "item": "Strike Points",
-                "qty": 300,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 2,
-            "name": "Resource Overdrive",
-            "price": 3.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 350
-              },
-              {
-                "item": "Gold",
-                "qty": 10000000
-              },
-              {
-                "item": "Strike Points",
-                "qty": 300,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 3,
-            "name": "Resource Overdrive",
-            "price": 6.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 550
-              },
-              {
-                "item": "Gold",
-                "qty": 12000000
-              },
-              {
-                "item": "Strike Points",
-                "qty": 500,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 4,
-            "name": "Resource Overdrive",
-            "price": 12.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 1100
-              },
-              {
-                "item": "Gold",
-                "qty": 30000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 1500
-              },
-              {
-                "item": "Strike Points",
-                "qty": 1000,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 5,
-            "name": "Resource Overdrive",
-            "price": 24.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 2620
-              },
-              {
-                "item": "Gold",
-                "qty": 30000000
-              },
-              {
-                "item": "T4 Ability Material",
-                "qty": 840
-              },
-              {
-                "item": "Strike Points",
-                "qty": 2000,
-                "webBonus": true
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "Resource Overdrive (step 4 of 5)",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "5d 23h",
-      "section": "Chain Offers",
-      "sections": [
-        "Chain Offers"
-      ],
-      "contents": [
-        {
-          "item": "L4 Training Module",
-          "qty": 1100
-        },
-        {
-          "item": "Gold",
-          "qty": 30000000
-        },
-        {
-          "item": "Power Cores",
-          "qty": 1500
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "chain": {
-        "name": "Resource Overdrive",
-        "step": 4,
-        "of": 5,
-        "current": 1,
-        "steps": [
-          {
-            "step": 1,
-            "name": "Resource Overdrive",
-            "price": 3.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Power Cores",
-                "qty": 1500
-              },
-              {
-                "item": "Gold",
-                "qty": 5000000
-              },
-              {
-                "item": "Strike Points",
-                "qty": 300,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 2,
-            "name": "Resource Overdrive",
-            "price": 3.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 350
-              },
-              {
-                "item": "Gold",
-                "qty": 10000000
-              },
-              {
-                "item": "Strike Points",
-                "qty": 300,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 3,
-            "name": "Resource Overdrive",
-            "price": 6.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 550
-              },
-              {
-                "item": "Gold",
-                "qty": 12000000
-              },
-              {
-                "item": "Strike Points",
-                "qty": 500,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 4,
-            "name": "Resource Overdrive",
-            "price": 12.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 1100
-              },
-              {
-                "item": "Gold",
-                "qty": 30000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 1500
-              },
-              {
-                "item": "Strike Points",
-                "qty": 1000,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 5,
-            "name": "Resource Overdrive",
-            "price": 24.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 2620
-              },
-              {
-                "item": "Gold",
-                "qty": 30000000
-              },
-              {
-                "item": "T4 Ability Material",
-                "qty": 840
-              },
-              {
-                "item": "Strike Points",
-                "qty": 2000,
-                "webBonus": true
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "Resource Overdrive (step 5 of 5)",
-      "price": 24.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "5d 23h",
-      "section": "Chain Offers",
-      "sections": [
-        "Chain Offers"
-      ],
-      "contents": [
-        {
-          "item": "L4 Training Module",
-          "qty": 2620
-        },
-        {
-          "item": "Gold",
-          "qty": 30000000
-        },
-        {
-          "item": "T4 Ability Material",
-          "qty": 840
-        },
-        {
-          "item": "Strike Points",
+          "item": "Mega Gold Orb Fragments",
           "qty": 2000,
           "webBonus": true
-        }
-      ],
-      "chain": {
-        "name": "Resource Overdrive",
-        "step": 5,
-        "of": 5,
-        "current": 1,
-        "steps": [
-          {
-            "step": 1,
-            "name": "Resource Overdrive",
-            "price": 3.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Power Cores",
-                "qty": 1500
-              },
-              {
-                "item": "Gold",
-                "qty": 5000000
-              },
-              {
-                "item": "Strike Points",
-                "qty": 300,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 2,
-            "name": "Resource Overdrive",
-            "price": 3.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 350
-              },
-              {
-                "item": "Gold",
-                "qty": 10000000
-              },
-              {
-                "item": "Strike Points",
-                "qty": 300,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 3,
-            "name": "Resource Overdrive",
-            "price": 6.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 550
-              },
-              {
-                "item": "Gold",
-                "qty": 12000000
-              },
-              {
-                "item": "Strike Points",
-                "qty": 500,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 4,
-            "name": "Resource Overdrive",
-            "price": 12.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 1100
-              },
-              {
-                "item": "Gold",
-                "qty": 30000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 1500
-              },
-              {
-                "item": "Strike Points",
-                "qty": 1000,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 5,
-            "name": "Resource Overdrive",
-            "price": 24.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "L4 Training Module",
-                "qty": 2620
-              },
-              {
-                "item": "Gold",
-                "qty": 30000000
-              },
-              {
-                "item": "T4 Ability Material",
-                "qty": 840
-              },
-              {
-                "item": "Strike Points",
-                "qty": 2000,
-                "webBonus": true
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "Feast of Shadows: Cores Pack (step 1 of 5)",
-      "price": 6.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "8d 23h",
-      "section": "Chain Offers",
-      "sections": [
-        "Chain Offers"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 50000000
-        },
-        {
-          "item": "Power Cores",
-          "qty": 500
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 2500000,
-          "webBonus": true
         },
         {
           "item": "Strike Points",
-          "qty": 500,
+          "qty": 3000,
           "webBonus": true
         }
       ],
       "chain": {
-        "name": "Feast of Shadows: Cores Pack",
-        "step": 1,
-        "of": 5,
-        "current": 1,
-        "steps": [
-          {
-            "step": 1,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 6.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 50000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 500
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 2500000,
-                "webBonus": true
-              },
-              {
-                "item": "Strike Points",
-                "qty": 500,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 2,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 12.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 100000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 1000
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 5000000,
-                "webBonus": true
-              },
-              {
-                "item": "Strike Points",
-                "qty": 1000,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 3,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 12.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 120000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 1100
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 6000000,
-                "webBonus": true
-              },
-              {
-                "item": "Strike Points",
-                "qty": 1000,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 4,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 24.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 250000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 2300
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 12500000,
-                "webBonus": true
-              },
-              {
-                "item": "Strike Points",
-                "qty": 2000,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 5,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 69.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 700000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 6000
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 35000000,
-                "webBonus": true
-              },
-              {
-                "item": "Strike Points",
-                "qty": 5000,
-                "webBonus": true
-              }
-            ]
-          }
-        ]
-      },
-      "description": "Grab more Power Cores to fuel your upgrades and make progress toward the Feast of Shadows Milestone!"
-    },
-    {
-      "name": "Feast of Shadows: Cores Pack (step 2 of 5)",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "8d 23h",
-      "section": "Chain Offers",
-      "sections": [
-        "Chain Offers"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 100000000
-        },
-        {
-          "item": "Power Cores",
-          "qty": 1000
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 5000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "chain": {
-        "name": "Feast of Shadows: Cores Pack",
+        "name": "Range Finder",
         "step": 2,
-        "of": 5,
+        "of": 6,
         "current": 1,
         "steps": [
           {
             "step": 1,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 6.99,
+            "name": "Range Finder",
+            "price": 39.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 50000000
+                "item": "Hawkeye (Robot)",
+                "qty": 45
               },
               {
-                "item": "Power Cores",
-                "qty": 500
+                "item": "Hawkeye (Robot)",
+                "qty": 1
               },
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 2500000,
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
                 "webBonus": true
               },
               {
                 "item": "Strike Points",
-                "qty": 500,
+                "qty": 3000,
                 "webBonus": true
               }
             ]
           },
           {
             "step": 2,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 12.99,
+            "name": "Range Finder",
+            "price": 39.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 100000000
+                "item": "Hawkeye (Robot)",
+                "qty": 55
               },
               {
-                "item": "Power Cores",
-                "qty": 1000
+                "item": "Hawkeye (Robot)",
+                "qty": 1
               },
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 5000000,
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
                 "webBonus": true
               },
               {
                 "item": "Strike Points",
-                "qty": 1000,
+                "qty": 3000,
                 "webBonus": true
               }
             ]
           },
           {
             "step": 3,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 12.99,
+            "name": "Range Finder",
+            "price": 49.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 120000000
+                "item": "Hawkeye (Robot)",
+                "qty": 80
               },
               {
-                "item": "Power Cores",
-                "qty": 1100
+                "item": "Hawkeye (Robot)",
+                "qty": 1
               },
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 6000000,
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
                 "webBonus": true
               },
               {
                 "item": "Strike Points",
-                "qty": 1000,
+                "qty": 4000,
                 "webBonus": true
               }
             ]
           },
           {
             "step": 4,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 24.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 250000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 2300
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 12500000,
-                "webBonus": true
-              },
-              {
-                "item": "Strike Points",
-                "qty": 2000,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 5,
-            "name": "Feast of Shadows: Cores Pack",
+            "name": "Range Finder",
             "price": 69.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 700000000
+                "item": "Hawkeye (Robot)",
+                "qty": 130
               },
               {
-                "item": "Power Cores",
-                "qty": 6000
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 35000000,
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
                 "webBonus": true
               },
               {
@@ -1449,172 +1219,47 @@ window.MSF_OFFERS = {
                 "webBonus": true
               }
             ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "Feast of Shadows: Cores Pack (step 3 of 5)",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "8d 23h",
-      "section": "Chain Offers",
-      "sections": [
-        "Chain Offers"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 120000000
-        },
-        {
-          "item": "Power Cores",
-          "qty": 1100
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 6000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "chain": {
-        "name": "Feast of Shadows: Cores Pack",
-        "step": 3,
-        "of": 5,
-        "current": 1,
-        "steps": [
-          {
-            "step": 1,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 6.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 50000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 500
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 2500000,
-                "webBonus": true
-              },
-              {
-                "item": "Strike Points",
-                "qty": 500,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 2,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 12.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 100000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 1000
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 5000000,
-                "webBonus": true
-              },
-              {
-                "item": "Strike Points",
-                "qty": 1000,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 3,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 12.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 120000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 1100
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 6000000,
-                "webBonus": true
-              },
-              {
-                "item": "Strike Points",
-                "qty": 1000,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 4,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 24.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 250000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 2300
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 12500000,
-                "webBonus": true
-              },
-              {
-                "item": "Strike Points",
-                "qty": 2000,
-                "webBonus": true
-              }
-            ]
           },
           {
             "step": 5,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 69.99,
+            "name": "Range Finder",
+            "price": 79.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 700000000
+                "item": "Hawkeye (Robot)",
+                "qty": 200
               },
               {
-                "item": "Power Cores",
-                "qty": 6000
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 35000000,
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
                 "webBonus": true
               },
               {
                 "item": "Strike Points",
-                "qty": 5000,
+                "qty": 6000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Range Finder",
+            "price": 129.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 300
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 10000,
                 "webBonus": true
               }
             ]
@@ -1623,162 +1268,132 @@ window.MSF_OFFERS = {
       }
     },
     {
-      "name": "Feast of Shadows: Cores Pack (step 4 of 5)",
-      "price": 24.99,
+      "name": "Range Finder (step 3 of 6)",
+      "price": 49.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "8d 23h",
+      "expires": "3d 19h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
       ],
       "contents": [
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 250000000
+          "item": "Hawkeye (Robot)",
+          "qty": 80
         },
         {
-          "item": "Power Cores",
-          "qty": 2300
+          "item": "Hawkeye (Robot)",
+          "qty": 1
         },
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 12500000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
+          "item": "Mega Gold Orb Fragments",
           "qty": 2000,
           "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 4000,
+          "webBonus": true
         }
       ],
       "chain": {
-        "name": "Feast of Shadows: Cores Pack",
-        "step": 4,
-        "of": 5,
+        "name": "Range Finder",
+        "step": 3,
+        "of": 6,
         "current": 1,
         "steps": [
           {
             "step": 1,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 6.99,
+            "name": "Range Finder",
+            "price": 39.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 50000000
+                "item": "Hawkeye (Robot)",
+                "qty": 45
               },
               {
-                "item": "Power Cores",
-                "qty": 500
+                "item": "Hawkeye (Robot)",
+                "qty": 1
               },
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 2500000,
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
                 "webBonus": true
               },
               {
                 "item": "Strike Points",
-                "qty": 500,
+                "qty": 3000,
                 "webBonus": true
               }
             ]
           },
           {
             "step": 2,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 12.99,
+            "name": "Range Finder",
+            "price": 39.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 100000000
+                "item": "Hawkeye (Robot)",
+                "qty": 55
               },
               {
-                "item": "Power Cores",
-                "qty": 1000
+                "item": "Hawkeye (Robot)",
+                "qty": 1
               },
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 5000000,
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
                 "webBonus": true
               },
               {
                 "item": "Strike Points",
-                "qty": 1000,
+                "qty": 3000,
                 "webBonus": true
               }
             ]
           },
           {
             "step": 3,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 12.99,
+            "name": "Range Finder",
+            "price": 49.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 120000000
+                "item": "Hawkeye (Robot)",
+                "qty": 80
               },
               {
-                "item": "Power Cores",
-                "qty": 1100
+                "item": "Hawkeye (Robot)",
+                "qty": 1
               },
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 6000000,
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
                 "webBonus": true
               },
               {
                 "item": "Strike Points",
-                "qty": 1000,
+                "qty": 4000,
                 "webBonus": true
               }
             ]
           },
           {
             "step": 4,
-            "name": "Feast of Shadows: Cores Pack",
-            "price": 24.99,
-            "currency": "CAD",
-            "contents": [
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 250000000
-              },
-              {
-                "item": "Power Cores",
-                "qty": 2300
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 12500000,
-                "webBonus": true
-              },
-              {
-                "item": "Strike Points",
-                "qty": 2000,
-                "webBonus": true
-              }
-            ]
-          },
-          {
-            "step": 5,
-            "name": "Feast of Shadows: Cores Pack",
+            "name": "Range Finder",
             "price": 69.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 700000000
+                "item": "Hawkeye (Robot)",
+                "qty": 130
               },
               {
-                "item": "Power Cores",
-                "qty": 6000
-              },
-              {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 35000000,
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
                 "webBonus": true
               },
               {
@@ -1787,32 +1402,72 @@ window.MSF_OFFERS = {
                 "webBonus": true
               }
             ]
+          },
+          {
+            "step": 5,
+            "name": "Range Finder",
+            "price": 79.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 200
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 6000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Range Finder",
+            "price": 129.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 300
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 10000,
+                "webBonus": true
+              }
+            ]
           }
         ]
       }
     },
     {
-      "name": "Feast of Shadows: Cores Pack (step 5 of 5)",
+      "name": "Range Finder (step 4 of 6)",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "8d 23h",
+      "expires": "3d 19h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
       ],
       "contents": [
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 700000000
+          "item": "Hawkeye (Robot)",
+          "qty": 130
         },
         {
-          "item": "Power Cores",
-          "qty": 6000
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 35000000,
+          "item": "Mega Gold Orb Fragments",
+          "qty": 2000,
           "webBonus": true
         },
         {
@@ -1822,28 +1477,6338 @@ window.MSF_OFFERS = {
         }
       ],
       "chain": {
-        "name": "Feast of Shadows: Cores Pack",
+        "name": "Range Finder",
+        "step": 4,
+        "of": 6,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Range Finder",
+            "price": 39.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 45
+              },
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 1
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 3000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Range Finder",
+            "price": 39.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 55
+              },
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 1
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 3000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Range Finder",
+            "price": 49.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 80
+              },
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 1
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 4000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Range Finder",
+            "price": 69.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 130
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 5000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Range Finder",
+            "price": 79.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 200
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 6000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Range Finder",
+            "price": 129.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 300
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 10000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Range Finder (step 5 of 6)",
+      "price": 79.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "3d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Hawkeye (Robot)",
+          "qty": 200
+        },
+        {
+          "item": "Mega Gold Orb Fragments",
+          "qty": 2000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 6000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Range Finder",
         "step": 5,
+        "of": 6,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Range Finder",
+            "price": 39.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 45
+              },
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 1
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 3000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Range Finder",
+            "price": 39.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 55
+              },
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 1
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 3000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Range Finder",
+            "price": 49.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 80
+              },
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 1
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 4000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Range Finder",
+            "price": 69.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 130
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 5000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Range Finder",
+            "price": 79.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 200
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 6000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Range Finder",
+            "price": 129.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 300
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 10000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Range Finder (step 6 of 6)",
+      "price": 129.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "3d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Hawkeye (Robot)",
+          "qty": 300
+        },
+        {
+          "item": "Mega Gold Orb Fragments",
+          "qty": 2000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 10000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Range Finder",
+        "step": 6,
+        "of": 6,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Range Finder",
+            "price": 39.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 45
+              },
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 1
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 3000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Range Finder",
+            "price": 39.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 55
+              },
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 1
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 3000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Range Finder",
+            "price": 49.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 80
+              },
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 1
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 4000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Range Finder",
+            "price": 69.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 130
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 5000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Range Finder",
+            "price": 79.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 200
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 6000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Range Finder",
+            "price": 129.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Hawkeye (Robot)",
+                "qty": 300
+              },
+              {
+                "item": "Mega Gold Orb Fragments",
+                "qty": 2000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 10000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Son of the Tiger (step 1 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 60
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 50000
+        },
+        {
+          "item": "Gold",
+          "qty": 1500000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 1,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      },
+      "description": "A special launch offer has appeared for you! Recruit Ka-Zar today!"
+    },
+    {
+      "name": "Son of the Tiger (step 2 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 60
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 40000
+        },
+        {
+          "item": "Gold",
+          "qty": 2000000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 2,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Son of the Tiger (step 3 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 60
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 30000
+        },
+        {
+          "item": "Gold",
+          "qty": 3000000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 3,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Son of the Tiger (step 4 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 60
+        },
+        {
+          "item": "Ka-Zar",
+          "qty": 1
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 30000
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 4,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      },
+      "notes": "2 more item(s) not shown on the card"
+    },
+    {
+      "name": "Son of the Tiger (step 5 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 70
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 30000
+        },
+        {
+          "item": "L4 Training Module",
+          "qty": 250
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 5,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Son of the Tiger (step 6 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 60
+        },
+        {
+          "item": "Ka-Zar",
+          "qty": 1
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 30000
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 6,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      },
+      "notes": "2 more item(s) not shown on the card"
+    },
+    {
+      "name": "Son of the Tiger (step 7 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 60
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 30000
+        },
+        {
+          "item": "Gold",
+          "qty": 4000000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 7,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Son of the Tiger (step 8 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 60
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 30000
+        },
+        {
+          "item": "Gold",
+          "qty": 5000000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 8,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Son of the Tiger (step 9 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 60
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 30000
+        },
+        {
+          "item": "Gold",
+          "qty": 6000000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 9,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Son of the Tiger (step 10 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 60
+        },
+        {
+          "item": "Ka-Zar",
+          "qty": 1
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 30000
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 10,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      },
+      "notes": "2 more item(s) not shown on the card"
+    },
+    {
+      "name": "Son of the Tiger (step 11 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 60
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 30000
+        },
+        {
+          "item": "L4 Training Module",
+          "qty": 400
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 11,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Son of the Tiger (step 12 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 60
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 30000
+        },
+        {
+          "item": "L4 Training Module",
+          "qty": 450
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 12,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Son of the Tiger (step 13 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 80
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 30000
+        },
+        {
+          "item": "L4 Training Module",
+          "qty": 500
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 13,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Son of the Tiger (step 14 of 14)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "11d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Ka-Zar",
+          "qty": 1
+        },
+        {
+          "item": "Ka-Zar",
+          "qty": 1
+        },
+        {
+          "item": "Shop Credits",
+          "qty": 30000
+        }
+      ],
+      "chain": {
+        "name": "Son of the Tiger",
+        "step": 14,
+        "of": 14,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 50000
+              },
+              {
+                "item": "Gold",
+                "qty": 1500000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 40000
+              },
+              {
+                "item": "Gold",
+                "qty": 2000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 3000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 5,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 70
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 250
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 7,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 4000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 5000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 9,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "Gold",
+                "qty": 6000000
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 11,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 400
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 60
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 450
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 13,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 80
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 500
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 14,
+            "name": "Son of the Tiger",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Ka-Zar",
+                "qty": 1
+              },
+              {
+                "item": "Shop Credits",
+                "qty": 30000
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      },
+      "notes": "2 more item(s) not shown on the card"
+    },
+    {
+      "name": "Magnetic Dominion (step 1 of 5)",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Magneto (Phoenix Force)",
+          "qty": 80
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Magnetic Dominion",
+        "step": 1,
+        "of": 5,
+        "current": 2,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Magnetic Dominion",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Magnetic Dominion",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Magnetic Dominion",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 130
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Magnetic Dominion",
+            "price": 34.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 200
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Magnetic Dominion",
+            "price": 39.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 3000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Magnetic Dominion (step 2 of 5)",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Magneto (Phoenix Force)",
+          "qty": 80
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Magnetic Dominion",
+        "step": 2,
+        "of": 5,
+        "current": 2,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Magnetic Dominion",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Magnetic Dominion",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Magnetic Dominion",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 130
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Magnetic Dominion",
+            "price": 34.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 200
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Magnetic Dominion",
+            "price": 39.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 3000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      },
+      "description": "Harness the power of the Phoenix Force and prepare Magneto (Phoenix Force) for battle!"
+    },
+    {
+      "name": "Magnetic Dominion (step 3 of 5)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Magneto (Phoenix Force)",
+          "qty": 130
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Magnetic Dominion",
+        "step": 3,
+        "of": 5,
+        "current": 2,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Magnetic Dominion",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Magnetic Dominion",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Magnetic Dominion",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 130
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Magnetic Dominion",
+            "price": 34.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 200
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Magnetic Dominion",
+            "price": 39.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 3000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Magnetic Dominion (step 4 of 5)",
+      "price": 34.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Magneto (Phoenix Force)",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2500,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Magnetic Dominion",
+        "step": 4,
+        "of": 5,
+        "current": 2,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Magnetic Dominion",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Magnetic Dominion",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Magnetic Dominion",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 130
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Magnetic Dominion",
+            "price": 34.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 200
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Magnetic Dominion",
+            "price": 39.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 3000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Magnetic Dominion (step 5 of 5)",
+      "price": 39.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Magneto (Phoenix Force)",
+          "qty": 300
+        },
+        {
+          "item": "Strike Points",
+          "qty": 3000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Magnetic Dominion",
+        "step": 5,
+        "of": 5,
+        "current": 2,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Magnetic Dominion",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Magnetic Dominion",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 80
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Magnetic Dominion",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 130
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Magnetic Dominion",
+            "price": 34.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 200
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Magnetic Dominion",
+            "price": 39.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Magneto (Phoenix Force)",
+                "qty": 300
+              },
+              {
+                "item": "Strike Points",
+                "qty": 3000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Cyber Breach: Cores Pack (step 1 of 5)",
+      "price": 6.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 15000
+        },
+        {
+          "item": "Power Cores",
+          "qty": 500
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 750,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 500,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Cyber Breach: Cores Pack",
+        "step": 1,
         "of": 5,
         "current": 1,
         "steps": [
           {
             "step": 1,
-            "name": "Feast of Shadows: Cores Pack",
+            "name": "Cyber Breach: Cores Pack",
             "price": 6.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 50000000
+                "item": "Cyber Breach Milestone Points",
+                "qty": 15000
               },
               {
                 "item": "Power Cores",
                 "qty": 500
               },
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 2500000,
+                "item": "Cyber Breach Milestone Points",
+                "qty": 750,
                 "webBonus": true
               },
               {
@@ -1855,21 +7820,21 @@ window.MSF_OFFERS = {
           },
           {
             "step": 2,
-            "name": "Feast of Shadows: Cores Pack",
+            "name": "Cyber Breach: Cores Pack",
             "price": 12.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 100000000
+                "item": "Cyber Breach Milestone Points",
+                "qty": 30000
               },
               {
                 "item": "Power Cores",
                 "qty": 1000
               },
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 5000000,
+                "item": "Cyber Breach Milestone Points",
+                "qty": 1500,
                 "webBonus": true
               },
               {
@@ -1881,21 +7846,21 @@ window.MSF_OFFERS = {
           },
           {
             "step": 3,
-            "name": "Feast of Shadows: Cores Pack",
+            "name": "Cyber Breach: Cores Pack",
             "price": 12.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 120000000
+                "item": "Cyber Breach Milestone Points",
+                "qty": 30000
               },
               {
                 "item": "Power Cores",
                 "qty": 1100
               },
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 6000000,
+                "item": "Cyber Breach Milestone Points",
+                "qty": 1500,
                 "webBonus": true
               },
               {
@@ -1907,21 +7872,21 @@ window.MSF_OFFERS = {
           },
           {
             "step": 4,
-            "name": "Feast of Shadows: Cores Pack",
+            "name": "Cyber Breach: Cores Pack",
             "price": 24.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 250000000
+                "item": "Cyber Breach Milestone Points",
+                "qty": 75000
               },
               {
                 "item": "Power Cores",
                 "qty": 2300
               },
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 12500000,
+                "item": "Cyber Breach Milestone Points",
+                "qty": 3750,
                 "webBonus": true
               },
               {
@@ -1933,21 +7898,191 @@ window.MSF_OFFERS = {
           },
           {
             "step": 5,
-            "name": "Feast of Shadows: Cores Pack",
+            "name": "Cyber Breach: Cores Pack",
             "price": 69.99,
             "currency": "CAD",
             "contents": [
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 700000000
+                "item": "Cyber Breach Milestone Points",
+                "qty": 200000
               },
               {
                 "item": "Power Cores",
                 "qty": 6000
               },
               {
-                "item": "Feast of Shadows Milestone Points",
-                "qty": 35000000,
+                "item": "Cyber Breach Milestone Points",
+                "qty": 10000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 5000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      },
+      "description": "Grab more Power Cores to fuel your upgrades and make progress toward the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Cores Pack (step 2 of 5)",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 30000
+        },
+        {
+          "item": "Power Cores",
+          "qty": 1000
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 1500,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Cyber Breach: Cores Pack",
+        "step": 2,
+        "of": 5,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 6.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 15000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 500
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 750,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 30000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 1000
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 1500,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 30000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 1100
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 1500,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 75000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 2300
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 3750,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 69.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 200000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 6000
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 10000,
                 "webBonus": true
               },
               {
@@ -1961,73 +8096,28 @@ window.MSF_OFFERS = {
       }
     },
     {
-      "name": "Raid Warzone: Supply Special",
-      "price": 6.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "23h 35m",
-      "section": "Second Chance Offers",
-      "sections": [
-        "Second Chance Offers"
-      ],
-      "contents": [
-        {
-          "item": "Raid Warzone Milestone Points",
-          "qty": 4000
-        },
-        {
-          "item": "Allied Supply XII Orb Fragments",
-          "qty": 2000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 500,
-          "webBonus": true
-        }
-      ],
-      "description": "Stock up on Allied Supply XII Orbs for extra progress in the Raid Warzone Milestone!"
-    },
-    {
-      "name": "Feast of Shadows: Hidden Vault",
-      "price": 6.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "23h 35m",
-      "section": "Second Chance Offers",
-      "sections": [
-        "Second Chance Offers"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 100000000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 500,
-          "webBonus": true
-        }
-      ],
-      "description": "You just unlocked a special deal! Seize it to gain more progress in the Feast of Shadows Milestone!"
-    },
-    {
-      "name": "Feast of Shadows: Hidden Treasure",
+      "name": "Cyber Breach: Cores Pack (step 3 of 5)",
       "price": 12.99,
       "currency": "CAD",
-      "purchaseLimit": 2,
-      "expires": "1d 23h",
-      "section": "Second Chance Offers",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Chain Offers",
       "sections": [
-        "Second Chance Offers"
+        "Chain Offers"
       ],
       "contents": [
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 220000000
+          "item": "Cyber Breach Milestone Points",
+          "qty": 30000
         },
         {
-          "item": "Mega Orb Fragments",
-          "qty": 2000
+          "item": "Power Cores",
+          "qty": 1100
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 1500,
+          "webBonus": true
         },
         {
           "item": "Strike Points",
@@ -2035,30 +8125,1042 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
-      "description": "A special deal awaits you! Take advantage of it and boost up your progress in the Feast of Shadows Milestone!"
+      "chain": {
+        "name": "Cyber Breach: Cores Pack",
+        "step": 3,
+        "of": 5,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 6.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 15000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 500
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 750,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 30000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 1000
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 1500,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 30000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 1100
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 1500,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 75000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 2300
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 3750,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 69.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 200000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 6000
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 10000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 5000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
     },
     {
-      "name": "Ultra Sovereign",
+      "name": "Cyber Breach: Cores Pack (step 4 of 5)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 75000
+        },
+        {
+          "item": "Power Cores",
+          "qty": 2300
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 3750,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Cyber Breach: Cores Pack",
+        "step": 4,
+        "of": 5,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 6.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 15000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 500
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 750,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 30000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 1000
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 1500,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 30000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 1100
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 1500,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 75000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 2300
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 3750,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 69.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 200000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 6000
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 10000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 5000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Cyber Breach: Cores Pack (step 5 of 5)",
+      "price": 69.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 200000
+        },
+        {
+          "item": "Power Cores",
+          "qty": 6000
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 10000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 5000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Cyber Breach: Cores Pack",
+        "step": 5,
+        "of": 5,
+        "current": 1,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 6.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 15000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 500
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 750,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 500,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 2,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 30000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 1000
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 1500,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 3,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 12.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 30000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 1100
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 1500,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 1000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 4,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 24.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 75000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 2300
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 3750,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 2000,
+                "webBonus": true
+              }
+            ]
+          },
+          {
+            "step": 5,
+            "name": "Cyber Breach: Cores Pack",
+            "price": 69.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 200000
+              },
+              {
+                "item": "Power Cores",
+                "qty": 6000
+              },
+              {
+                "item": "Cyber Breach Milestone Points",
+                "qty": 10000,
+                "webBonus": true
+              },
+              {
+                "item": "Strike Points",
+                "qty": 5000,
+                "webBonus": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Resource Chain Special (step 1 of 4)",
+      "price": 99.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "3d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Gold",
+          "qty": 129300000
+        },
+        {
+          "item": "L4 Training Module",
+          "qty": 11200
+        },
+        {
+          "item": "Gold",
+          "qty": 12930000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Resource Chain Special",
+        "step": 1,
+        "of": 4,
+        "current": 4,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 2,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 3,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 4,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      },
+      "notes": "2 more item(s) not shown on the card"
+    },
+    {
+      "name": "Resource Chain Special (step 2 of 4)",
+      "price": 99.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "3d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Gold",
+          "qty": 129300000
+        },
+        {
+          "item": "L4 Training Module",
+          "qty": 11200
+        },
+        {
+          "item": "Gold",
+          "qty": 12930000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Resource Chain Special",
+        "step": 2,
+        "of": 4,
+        "current": 4,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 2,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 3,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 4,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      },
+      "notes": "2 more item(s) not shown on the card"
+    },
+    {
+      "name": "Resource Chain Special (step 3 of 4)",
+      "price": 99.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "3d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Gold",
+          "qty": 129300000
+        },
+        {
+          "item": "L4 Training Module",
+          "qty": 11200
+        },
+        {
+          "item": "Gold",
+          "qty": 12930000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Resource Chain Special",
+        "step": 3,
+        "of": 4,
+        "current": 4,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 2,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 3,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 4,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      },
+      "notes": "2 more item(s) not shown on the card"
+    },
+    {
+      "name": "Resource Chain Special (step 4 of 4)",
+      "price": 99.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "3d 19h",
+      "section": "Chain Offers",
+      "sections": [
+        "Chain Offers"
+      ],
+      "contents": [
+        {
+          "item": "Gold",
+          "qty": 129300000
+        },
+        {
+          "item": "L4 Training Module",
+          "qty": 11200
+        },
+        {
+          "item": "Gold",
+          "qty": 12930000,
+          "webBonus": true
+        }
+      ],
+      "chain": {
+        "name": "Resource Chain Special",
+        "step": 4,
+        "of": 4,
+        "current": 4,
+        "steps": [
+          {
+            "step": 1,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 2,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 3,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          },
+          {
+            "step": 4,
+            "name": "Resource Chain Special",
+            "price": 99.99,
+            "currency": "CAD",
+            "contents": [
+              {
+                "item": "Gold",
+                "qty": 129300000
+              },
+              {
+                "item": "L4 Training Module",
+                "qty": 11200
+              },
+              {
+                "item": "Gold",
+                "qty": 12930000,
+                "webBonus": true
+              }
+            ],
+            "notes": "2 more item(s) not shown on the card"
+          }
+        ]
+      },
+      "notes": "2 more item(s) not shown on the card",
+      "description": "Grab this special offer chain today! Gold and Training crafted just for you!"
+    },
+    {
+      "name": "Turn Up the Power (option 1)",
+      "price": 19.99,
+      "currency": "CAD",
+      "purchaseLimit": null,
+      "expires": "1d 19h",
+      "section": "dual offers",
+      "sections": [
+        "dual offers"
+      ],
+      "contents": [
+        {
+          "item": "T4 Ability Material",
+          "qty": 630
+        },
+        {
+          "item": "T4 Level 1 Ions",
+          "qty": 95000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1500,
+          "webBonus": true
+        }
+      ]
+    },
+    {
+      "name": "Turn Up the Power (option 2)",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": null,
+      "expires": "1d 19h",
+      "section": "dual offers",
+      "sections": [
+        "dual offers"
+      ],
+      "contents": [
+        {
+          "item": "T4 Ability Material",
+          "qty": 920
+        },
+        {
+          "item": "T4 Level 1 Ions",
+          "qty": 143000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ]
+    },
+    {
+      "name": "MEGA Lock-On Orb",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "8d 23h",
+      "expires": "3d 19h",
       "section": "Offers / NEW CHARACTERS",
       "sections": [
         "Offers / NEW CHARACTERS"
       ],
       "contents": [
         {
-          "item": "Dracula",
-          "qty": 160
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
+          "item": "MEGA Lock-On Orb Fragments",
+          "qty": 2000
         },
         {
           "item": "Strike Points",
@@ -2066,97 +9168,92 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
-      "description": "Don't miss this chance to power up your Dracula and earn more Feast of Shadows Milestone progress!",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points; qty unreadable for Feast of Shadows Milestone Points"
+      "description": "Open MEGA Lock-On Orb for a guaranteed 4-Yellow-Star Hawkeye (Robot), with a chance up to 7 Yellow Stars!"
     },
     {
-      "name": "Mega Nocturnal",
-      "price": 79.99,
+      "name": "Hidden Jungle Orb",
+      "price": 24.99,
       "currency": "CAD",
-      "purchaseLimit": 11,
-      "expires": "8d 23h",
+      "purchaseLimit": 8,
+      "expires": "11d 19h",
       "section": "Offers / NEW CHARACTERS",
       "sections": [
         "Offers / NEW CHARACTERS"
       ],
       "contents": [
         {
-          "item": "Dracula",
-          "qty": 70
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Strike Points",
-          "qty": 6000,
-          "webBonus": true
-        }
-      ],
-      "description": "Power up Dracula with this shard offer, and grab points toward the Feast of Shadows Milestone event!",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points"
-    },
-    {
-      "name": "Mighty Bloodline",
-      "price": 39.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "8d 23h",
-      "section": "Offers / NEW CHARACTERS",
-      "sections": [
-        "Offers / NEW CHARACTERS"
-      ],
-      "contents": [
-        {
-          "item": "Dracula",
-          "qty": 45
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 750000000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 3000,
-          "webBonus": true
-        }
-      ],
-      "description": "Unlock Dracula now! He inflicts Bleed, Slow, Silence, Disrupted, triggers Bleed damage every turn, and protects allies from Mind Control!"
-    },
-    {
-      "name": "Nightreaver Orb",
-      "price": 6.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / NEW CHARACTERS",
-      "sections": [
-        "Offers / NEW CHARACTERS"
-      ],
-      "contents": [
-        {
-          "item": "Nightreaver Orb Fragments",
+          "item": "Hidden Jungle Orb Fragments",
           "qty": 2000
         },
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 80000000
-        },
-        {
           "item": "Strike Points",
-          "qty": 500,
+          "qty": 2000,
           "webBonus": true
         }
       ],
-      "description": "Don't miss this chance to earn the Nightreaver Orb. This orb contains Dracula shards and his Nightreaver allies!"
+      "description": "Each Hidden Jungle Orb contains up to 250 Ka-Zar shards with 55 shards guaranteed! He flips negatives, grants Safeguard and Defense Up, heals allies, calls ally attacks!"
+    },
+    {
+      "name": "Lock-On Orb",
+      "price": 49.99,
+      "currency": "CAD",
+      "purchaseLimit": 8,
+      "expires": "3d 19h",
+      "section": "Offers / NEW CHARACTERS",
+      "sections": [
+        "Offers / NEW CHARACTERS"
+      ],
+      "contents": [
+        {
+          "item": "Lock-On Orb Fragments",
+          "qty": 2000
+        },
+        {
+          "item": "Mega Gold Orb Fragments",
+          "qty": 2000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 4000,
+          "webBonus": true
+        }
+      ],
+      "description": "Each Lock-On Orb contains up to 410 Hawkeye (Robot) shards with 50 shards guaranteed! He applies Exposed, clears enemy Barrier, and stops Speed Bar manipulation!"
+    },
+    {
+      "name": "Gear Tier 21: Mystic Bundle",
+      "price": 99.99,
+      "currency": "CAD",
+      "purchaseLimit": 3,
+      "expires": "19h 44m",
+      "section": "Offers / WEB EXCLUSIVE",
+      "sections": [
+        "Offers / WEB EXCLUSIVE"
+      ],
+      "contents": [
+        {
+          "item": "Crimson Ritual Salts",
+          "qty": 35
+        },
+        {
+          "item": "Crimson Psionic Essence",
+          "qty": 35
+        },
+        {
+          "item": "Strike Points",
+          "qty": 8000,
+          "webBonus": true
+        }
+      ],
+      "description": "Take your roster to the next level with essential Gear Tier 21. Power up your characters and get ready for Annihilus. Don't wait!"
     },
     {
       "name": "Unlock Special: LV105 Gold Boost",
       "price": 49.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "14m",
+      "expires": "22h 14m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -2179,7 +9276,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "14m",
+      "expires": "22h 14m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -2202,7 +9299,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "14m",
+      "expires": "22h 14m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -2225,7 +9322,7 @@ window.MSF_OFFERS = {
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "14m",
+      "expires": "22h 14m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -2248,7 +9345,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "14m",
+      "expires": "22h 14m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -2283,14 +9380,14 @@ window.MSF_OFFERS = {
       "price": 79.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "14m",
+      "expires": "22h 14m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
       ],
       "contents": [
         {
-          "item": "Crimson Molecular Cloth",
+          "item": "Crimson Titanium Alloy",
           "qty": 45
         },
         {
@@ -2322,7 +9419,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "14m",
+      "expires": "22h 14m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -2353,7 +9450,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "14m",
+      "expires": "22h 14m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -2369,11 +9466,11 @@ window.MSF_OFFERS = {
         },
         {
           "item": "Crimson Damage Catalyst Part",
-          "qty": 350
+          "qty": 630
         },
         {
           "item": "Crimson Focus Catalyst Part",
-          "qty": 630
+          "qty": 350
         },
         {
           "item": "Crimson Health Catalyst Part",
@@ -2384,11 +9481,34 @@ window.MSF_OFFERS = {
       "notes": "2 more item(s) not shown on the card"
     },
     {
+      "name": "Unlock Special: Diamond Authority",
+      "price": 6.99,
+      "currency": "CAD",
+      "purchaseLimit": 5,
+      "expires": "22h 14m",
+      "section": "Offers / UNLOCKED OFFERS",
+      "sections": [
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Diamond Orb Fragments",
+          "qty": 2000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 500,
+          "webBonus": true
+        }
+      ],
+      "description": "More Diamonds means MORE POWER! Power up with this Diamond Bundle!"
+    },
+    {
       "name": "Unlock Special: T3 Ion Max",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "14m",
+      "expires": "22h 14m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -2411,7 +9531,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "14m",
+      "expires": "22h 14m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -2450,7 +9570,7 @@ window.MSF_OFFERS = {
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "14m",
+      "expires": "22h 14m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -2461,7 +9581,7 @@ window.MSF_OFFERS = {
           "qty": 6000000
         },
         {
-          "item": "Crimson Molecular Cloth",
+          "item": "Crimson Titanium Alloy",
           "qty": 20
         },
         {
@@ -2481,24 +9601,42 @@ window.MSF_OFFERS = {
       "notes": "23 more item(s) not shown on the card"
     },
     {
-      "name": "Ability Essentials Cache",
-      "price": 6.99,
+      "name": "Magnetic Might",
+      "price": 12.99,
       "currency": "CAD",
-      "purchaseLimit": 5,
-      "expires": "2d 23h",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
       ],
       "contents": [
         {
-          "item": "T4 Ability Material",
-          "qty": 150
+          "item": "Magneto (Phoenix Force)",
+          "qty": 50
         },
         {
-          "item": "T4 Ability Material",
-          "qty": 15,
+          "item": "Strike Points",
+          "qty": 1000,
           "webBonus": true
+        }
+      ],
+      "description": "Collect character shards for Magneto (Phoenix Force) and make him a formidable force on the battlefield!"
+    },
+    {
+      "name": "Omega's Inferno: Evolved",
+      "price": 6.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Offers / RECOMMENDED",
+      "sections": [
+        "Offers / RECOMMENDED"
+      ],
+      "contents": [
+        {
+          "item": "Omega Red (Phoenix Force)",
+          "qty": 100
         },
         {
           "item": "Strike Points",
@@ -2506,14 +9644,319 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
-      "description": "Running out of Ability materials? No problem, stock back up with this special offer."
+      "description": "Build up Omega Red (Phoenix Force) with character shards and make every attack count!"
     },
     {
-      "name": "Ability Value Cache",
+      "name": "Magneto (Phoenix Force) 3-Diamond",
+      "price": 99.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Offers / RECOMMENDED",
+      "sections": [
+        "Offers / RECOMMENDED"
+      ],
+      "contents": [
+        {
+          "item": "Magneto (Phoenix Force)",
+          "qty": 1
+        },
+        {
+          "item": "Strike Points",
+          "qty": 8000,
+          "webBonus": true
+        }
+      ],
+      "description": "Empower Magneto (Phoenix Force) with a 3-Diamond upgrade and unleash his magnetic might!"
+    },
+    {
+      "name": "Awakened Thermo-Magnetic Force",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Offers / RECOMMENDED",
+      "sections": [
+        "Offers / RECOMMENDED"
+      ],
+      "contents": [
+        {
+          "item": "Magneto (Phoenix Force)'s Basic Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Don't miss your chance to unlock the Basic Awakened Ability for Magneto (Phoenix Force)!"
+    },
+    {
+      "name": "Awakened Magnetized Sentinel",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Offers / RECOMMENDED",
+      "sections": [
+        "Offers / RECOMMENDED"
+      ],
+      "contents": [
+        {
+          "item": "Magneto (Phoenix Force)'s Special Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Unlock the Special Awakened Ability for Magneto (Phoenix Force) while this offer lasts!"
+    },
+    {
+      "name": "Awakened Phoenix Polarity",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Offers / RECOMMENDED",
+      "sections": [
+        "Offers / RECOMMENDED"
+      ],
+      "contents": [
+        {
+          "item": "Magneto (Phoenix Force)'s Ultimate Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Get the Ultimate Awakened Ability for Magneto (Phoenix Force) before it's gone!"
+    },
+    {
+      "name": "Magneto (Phoenix Force) Full Awakening",
+      "price": 69.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Offers / RECOMMENDED",
+      "sections": [
+        "Offers / RECOMMENDED"
+      ],
+      "contents": [
+        {
+          "item": "Magneto (Phoenix Force)'s Basic Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Magneto (Phoenix Force)'s Special Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Magneto (Phoenix Force)'s Ultimate Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 5000,
+          "webBonus": true
+        }
+      ],
+      "description": "Great. Ability. Savings. Fully awaken Magneto (Phoenix Force)'s abilities with this limited-time bundle!"
+    },
+    {
+      "name": "Awakened Carbonadium Fire",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Offers / RECOMMENDED",
+      "sections": [
+        "Offers / RECOMMENDED"
+      ],
+      "contents": [
+        {
+          "item": "Omega Red (Phoenix Force)'s Basic Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "description": "Don't miss your chance to unlock the Basic Awakened Ability for Omega Red (Phoenix Force)!"
+    },
+    {
+      "name": "Awakened Death Incarnate",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Offers / RECOMMENDED",
+      "sections": [
+        "Offers / RECOMMENDED"
+      ],
+      "contents": [
+        {
+          "item": "Omega Red (Phoenix Force)'s Passive Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "description": "Enhance Omega Red (Phoenix Force) with his Passive Awakened Ability before this limited-time offer ends!"
+    },
+    {
+      "name": "Omega Red (Phoenix Force) Full Awakening",
+      "price": 19.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Offers / RECOMMENDED",
+      "sections": [
+        "Offers / RECOMMENDED"
+      ],
+      "contents": [
+        {
+          "item": "Omega Red (Phoenix Force)'s Basic Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Omega Red (Phoenix Force)'s Passive Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1500,
+          "webBonus": true
+        }
+      ],
+      "description": "Great. Ability. Savings. Fully awaken Omega Red (Phoenix Force)'s abilities with this limited-time bundle!"
+    },
+    {
+      "name": "Awakened Phoenix Force",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Offers / RECOMMENDED",
+      "sections": [
+        "Offers / RECOMMENDED"
+      ],
+      "contents": [
+        {
+          "item": "Phoenix's Ultimate Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "description": "Get the Ultimate Awakened Ability for Phoenix before it's gone!"
+    },
+    {
+      "name": "Awakened Phoenix Rising",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Offers / RECOMMENDED",
+      "sections": [
+        "Offers / RECOMMENDED"
+      ],
+      "contents": [
+        {
+          "item": "Phoenix's Passive Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "description": "Enhance Phoenix with his Passive Awakened Ability before this limited-time offer ends!"
+    },
+    {
+      "name": "Phoenix Full Awakening",
+      "price": 19.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "5d 19h",
+      "section": "Offers / RECOMMENDED",
+      "sections": [
+        "Offers / RECOMMENDED"
+      ],
+      "contents": [
+        {
+          "item": "Phoenix's Ultimate Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Phoenix's Passive Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1500,
+          "webBonus": true
+        }
+      ],
+      "description": "Great. Ability. Savings. Fully awaken Phoenix's abilities with this limited-time bundle!"
+    },
+    {
+      "name": "Ability Essentials Stash",
+      "price": 6.99,
+      "currency": "CAD",
+      "purchaseLimit": 5,
+      "expires": "2d 19h",
+      "section": "Offers / RECOMMENDED",
+      "sections": [
+        "Offers / RECOMMENDED"
+      ],
+      "contents": [
+        {
+          "item": "T2 Ability Material",
+          "qty": 450
+        },
+        {
+          "item": "T1 Ability Material",
+          "qty": 450
+        },
+        {
+          "item": "T4 Ability Material",
+          "qty": 135
+        },
+        {
+          "item": "T3 Ability Material",
+          "qty": 450
+        },
+        {
+          "item": "T2 Ability Material",
+          "qty": 45,
+          "webBonus": true
+        }
+      ],
+      "description": "Improve your abilities today for the new level.",
+      "notes": "4 more item(s) not shown on the card"
+    },
+    {
+      "name": "Ability Value Stash",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 23h",
+      "expires": "2d 19h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -2521,7 +9964,7 @@ window.MSF_OFFERS = {
       "contents": [
         {
           "item": "T4 Ability Material",
-          "qty": 360
+          "qty": 390
         },
         {
           "item": "T4 Ability Material",
@@ -2534,27 +9977,57 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
-      "description": "Sharpen your roster with this ability pack."
+      "description": "Stock up Ability Materials to upgrade your roster now!"
     },
     {
-      "name": "Ability Ultimate Cache",
-      "price": 24.99,
+      "name": "Scorpion (Breaker) Awakening Bundle",
+      "price": 79.99,
       "currency": "CAD",
-      "purchaseLimit": 5,
-      "expires": "2d 23h",
-      "section": "Offers / RECOMMENDED",
+      "purchaseLimit": 1,
+      "expires": "1d 19h",
+      "section": "Offers / FEATURED",
       "sections": [
-        "Offers / RECOMMENDED"
+        "Offers / FEATURED"
       ],
       "contents": [
         {
-          "item": "T4 Ability Material",
-          "qty": 840
+          "item": "Scorpion (Breaker)'s Basic Awakened Ability Material",
+          "qty": 200
         },
         {
-          "item": "T4 Ability Material",
-          "qty": 85,
+          "item": "Scorpion (Breaker)'s Special Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Scorpion (Breaker)'s Ultimate Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Scorpion (Breaker)'s Passive Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 6000,
           "webBonus": true
+        }
+      ],
+      "description": "Unlock the full potential of Scorpion (Breaker) with a full set of Awakened Ability upgrades!"
+    },
+    {
+      "name": "Scorpion (Breaker) Basic Awakened",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "1d 19h",
+      "section": "Offers / FEATURED",
+      "sections": [
+        "Offers / FEATURED"
+      ],
+      "contents": [
+        {
+          "item": "Scorpion (Breaker)'s Basic Awakened Ability Material",
+          "qty": 200
         },
         {
           "item": "Strike Points",
@@ -2562,181 +10035,488 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
-      "description": "Improve your abilities today for the new level."
+      "description": "Enhance Scorpion (Breaker) with his Basic Awakened Ability to boost his combat potential!"
     },
     {
-      "name": "Power Up Your Squad",
-      "price": 59.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "23h 35m",
-      "section": "Offers / RECOMMENDED",
-      "sections": [
-        "Offers / RECOMMENDED"
-      ],
-      "contents": [
-        {
-          "item": "Silver Surfer (Breaker)",
-          "qty": null
-        },
-        {
-          "item": "Ebony Maw",
-          "qty": null
-        },
-        {
-          "item": "Cull Obsidian",
-          "qty": null
-        },
-        {
-          "item": "Minn-Erva",
-          "qty": null
-        },
-        {
-          "item": "Ronan the Accuser",
-          "qty": null
-        }
-      ],
-      "description": "Start promoting your roster with a special limited time offer today!",
-      "notes": "qty unreadable for Silver Surfer (Breaker); qty unreadable for Ebony Maw; qty unreadable for Cull Obsidian; qty unreadable for Minn-Erva; qty unreadable for Ronan the Accuser; 2 more item(s) not shown on the card"
-    },
-    {
-      "name": "Shadow Conclave Boost Up",
-      "price": 59.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "23h 35m",
-      "section": "Offers / RECOMMENDED",
-      "sections": [
-        "Offers / RECOMMENDED"
-      ],
-      "contents": [
-        {
-          "item": "Malekith",
-          "qty": null
-        },
-        {
-          "item": "Executioner",
-          "qty": null
-        },
-        {
-          "item": "High Evolutionary",
-          "qty": null
-        },
-        {
-          "item": "Sylvie",
-          "qty": null
-        },
-        {
-          "item": "Thanos",
-          "qty": null
-        }
-      ],
-      "description": "Boost up your Shadow Conclave team's power with this special offer and strengthen your squad!",
-      "notes": "qty unreadable for Malekith; qty unreadable for Executioner; qty unreadable for High Evolutionary; qty unreadable for Sylvie; qty unreadable for Thanos; 2 more item(s) not shown on the card"
-    },
-    {
-      "name": "Shadow Conclave Combo",
-      "price": 39.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "23h 35m",
-      "section": "Offers / RECOMMENDED",
-      "sections": [
-        "Offers / RECOMMENDED"
-      ],
-      "contents": [
-        {
-          "item": "Malekith",
-          "qty": null
-        },
-        {
-          "item": "Executioner",
-          "qty": null
-        },
-        {
-          "item": "High Evolutionary",
-          "qty": null
-        },
-        {
-          "item": "Sylvie",
-          "qty": null
-        },
-        {
-          "item": "Thanos",
-          "qty": null
-        }
-      ],
-      "description": "Don't miss this chance to power up your Shadow Conclave team!",
-      "notes": "qty unreadable for Malekith; qty unreadable for Executioner; qty unreadable for High Evolutionary; qty unreadable for Sylvie; qty unreadable for Thanos; 2 more item(s) not shown on the card"
-    },
-    {
-      "name": "Halloween Haul",
+      "name": "Scorpion (Breaker) Special Awakened",
       "price": 24.99,
       "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
+      "purchaseLimit": 1,
+      "expires": "1d 19h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
       ],
       "contents": [
         {
-          "item": "Halloween Orb Fragments",
+          "item": "Scorpion (Breaker)'s Special Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Empower Scorpion (Breaker) with his Special Awakened Ability to unleash devastating attacks!"
+    },
+    {
+      "name": "Scorpion (Breaker) Ultimate Awakened",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "1d 19h",
+      "section": "Offers / FEATURED",
+      "sections": [
+        "Offers / FEATURED"
+      ],
+      "contents": [
+        {
+          "item": "Scorpion (Breaker)'s Ultimate Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Unleash the full force of Scorpion (Breaker) with materials to upgrade his Ultimate Awakened Ability!"
+    },
+    {
+      "name": "Scorpion (Breaker) Passive Awakened",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "1d 19h",
+      "section": "Offers / FEATURED",
+      "sections": [
+        "Offers / FEATURED"
+      ],
+      "contents": [
+        {
+          "item": "Scorpion (Breaker)'s Passive Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Strengthen Scorpion (Breaker) with his Passive Awakened Ability to take his power even further!"
+    },
+    {
+      "name": "Silver Surfer (Breaker) Basic Awakened",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "1d 19h",
+      "section": "Offers / FEATURED",
+      "sections": [
+        "Offers / FEATURED"
+      ],
+      "contents": [
+        {
+          "item": "Silver Surfer (Breaker)'s Basic Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Enhance Silver Surfer (Breaker) to new heights with his Basic Awakened Ability!"
+    },
+    {
+      "name": "Silver Surfer (Breaker) Special Awakened",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "1d 19h",
+      "section": "Offers / FEATURED",
+      "sections": [
+        "Offers / FEATURED"
+      ],
+      "contents": [
+        {
+          "item": "Silver Surfer (Breaker)'s Special Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Elevate Silver Surfer (Breaker) to greater power with his Special Awakened Ability!"
+    },
+    {
+      "name": "Silver Surfer (Breaker) Ultimate Awakened",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "1d 19h",
+      "section": "Offers / FEATURED",
+      "sections": [
+        "Offers / FEATURED"
+      ],
+      "contents": [
+        {
+          "item": "Silver Surfer (Breaker)'s Ultimate Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Ascend to overwhelming strength with Silver Surfer (Breaker)'s Ultimate Awakened Ability!"
+    },
+    {
+      "name": "Silver Surfer (Breaker) Passive Awakened",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "1d 19h",
+      "section": "Offers / FEATURED",
+      "sections": [
+        "Offers / FEATURED"
+      ],
+      "contents": [
+        {
+          "item": "Silver Surfer (Breaker)'s Passive Awakened Ability Material",
+          "qty": 200
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Take Silver Surfer (Breaker) to new heights with his Passive Awakened Ability!"
+    },
+    {
+      "name": "Whiplash Power Pack",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 3,
+      "expires": "19h 44m",
+      "section": "Offers / FEATURED",
+      "sections": [
+        "Offers / FEATURED"
+      ],
+      "contents": [
+        {
+          "item": "Whiplash",
+          "qty": 20
+        },
+        {
+          "item": "Gold",
+          "qty": 340000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "description": "Upgrade Whiplash to push through Mission 2 of the Breaker Event: Sabretooth!"
+    },
+    {
+      "name": "Morbius Power Pack",
+      "price": 19.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "19h 44m",
+      "section": "Offers / FEATURED",
+      "sections": [
+        "Offers / FEATURED"
+      ],
+      "contents": [
+        {
+          "item": "Morbius",
+          "qty": null
+        },
+        {
+          "item": "Gold",
+          "qty": 520000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1500,
+          "webBonus": true
+        }
+      ],
+      "description": "Upgrade Morbius to push through Mission 5 of the Breaker Event: Sabretooth!",
+      "notes": "qty unreadable for Morbius"
+    },
+    {
+      "name": "Oath Power Pack",
+      "price": 19.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "19h 44m",
+      "section": "Offers / FEATURED",
+      "sections": [
+        "Offers / FEATURED"
+      ],
+      "contents": [
+        {
+          "item": "Oath",
+          "qty": null
+        },
+        {
+          "item": "Gold",
+          "qty": 520000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1500,
+          "webBonus": true
+        }
+      ],
+      "description": "Upgrade Oath to push through Mission 5 of the Breaker Event: Sabretooth!",
+      "notes": "qty unreadable for Oath"
+    },
+    {
+      "name": "Iron Raiders Upgrade Combo",
+      "price": 34.99,
+      "currency": "CAD",
+      "purchaseLimit": 3,
+      "expires": "19h 44m",
+      "section": "Offers / FEATURED",
+      "sections": [
+        "Offers / FEATURED"
+      ],
+      "contents": [
+        {
+          "item": "Iron Monger",
+          "qty": 45
+        },
+        {
+          "item": "Ulysses Klaue",
+          "qty": 45
+        },
+        {
+          "item": "Yellowjacket",
+          "qty": 225
+        },
+        {
+          "item": "Crossbones",
+          "qty": 225
+        },
+        {
+          "item": "Gold",
+          "qty": 860000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2500,
+          "webBonus": true
+        }
+      ],
+      "description": "Upgrade Iron Raiders to push through Missions 2 and 10 of the Breaker Event: Sabretooth!"
+    },
+    {
+      "name": "Cyber Breach: Ultron",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 50000
+        },
+        {
+          "item": "Ultron",
+          "qty": 810
+        },
+        {
+          "item": "Ultron",
+          "qty": 1
+        },
+        {
+          "item": "Ultron",
+          "qty": 1
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 2500,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "description": "Instantly power up Ultron to 1-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Vision",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 50000
+        },
+        {
+          "item": "Vision",
+          "qty": 810
+        },
+        {
+          "item": "Vision",
+          "qty": 1
+        },
+        {
+          "item": "Vision",
+          "qty": 1
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 2500,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "description": "Instantly power up Vision to 1-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Sentient Squad",
+      "price": 49.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 500000
+        },
+        {
+          "item": "Ultron",
+          "qty": 810
+        },
+        {
+          "item": "Vision",
+          "qty": 810
+        },
+        {
+          "item": "Yellowjacket",
+          "qty": 810
+        },
+        {
+          "item": "Crossbones",
+          "qty": 810
+        }
+      ],
+      "description": "Instantly power up Ultron, Vision, Yellowjacket, and Crossbones to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!",
+      "notes": "10 more item(s) not shown on the card"
+    },
+    {
+      "name": "Cyber Breach: Crimson Elite Orb",
+      "price": 3.99,
+      "currency": "CAD",
+      "purchaseLimit": 99,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
           "qty": 10000
         },
         {
-          "item": "Extra-SPOOKY Orb Fragments",
-          "qty": 1600
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2000,
-          "webBonus": true
-        }
-      ],
-      "description": "There's something powerful lurking inside! Seize it and see what treats await!"
-    },
-    {
-      "name": "Trick-or-Orb",
-      "price": 6.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Halloween Orb Fragments",
+          "item": "Crimson Elite Orb Fragments",
           "qty": 2000
         },
         {
-          "item": "Extra-SPOOKY Orb Fragments",
-          "qty": 400
-        },
-        {
           "item": "Strike Points",
-          "qty": 500,
+          "qty": 300,
           "webBonus": true
         }
       ],
-      "description": "It's time to Trick or Treat! Add some extra fright to your roster with Shards, Red Stars, and Diamond upgrades!"
+      "description": "Earn Gear Tier 19 and 20 Mini-Unique, and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
     },
     {
-      "name": "GT21 Bio Calendar",
-      "price": 69.99,
+      "name": "Cyber Breach: Orange Mega Orb",
+      "price": 129.99,
       "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "1d 23h",
-      "section": "Offers / FEATURED",
+      "purchaseLimit": 99,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
       "sections": [
-        "Offers / FEATURED"
+        "Offers / EVENTS"
       ],
       "contents": [
         {
-          "item": "GT21 Bio Calendar",
-          "qty": null
+          "item": "Cyber Breach Milestone Points",
+          "qty": 800000
+        },
+        {
+          "item": "Orange Mega Orb",
+          "qty": 1
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 40000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 10000,
+          "webBonus": true
+        }
+      ],
+      "description": "Open this Orb to stock up on T4 Level 1 Ions and T4 Iso-8 Credits, also gain progress in the Cyber Breach Milestone! This special Orb will automatically open upon purchase."
+    },
+    {
+      "name": "Cyber Breach: Basic Pack",
+      "price": 69.99,
+      "currency": "CAD",
+      "purchaseLimit": 99,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 500000
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 25000,
+          "webBonus": true
         },
         {
           "item": "Strike Points",
@@ -2744,551 +10524,242 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
-      "description": "Login daily to claim a cache of valuable Gear Tier 21 Mini-Unique, Crimson Catalyst Parts and Gold!",
-      "notes": "qty unreadable for GT21 Bio Calendar"
+      "description": "Get ahead in the Cyber Breach Leaderboard to secure 3-Diamond for Whiplash, Ulysses Klaue, Iron Monger!"
     },
     {
-      "name": "Blade 5-Diamond",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "5d 23h",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Blade",
-          "qty": 1
-        },
-        {
-          "item": "Blade",
-          "qty": 1
-        },
-        {
-          "item": "Blade",
-          "qty": null
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Upgrade Blade to 5-Diamond and slice through the competition!",
-      "notes": "qty unreadable for Blade"
-    },
-    {
-      "name": "Nightcrawler 5-Diamond",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "5d 23h",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Nightcrawler",
-          "qty": 1
-        },
-        {
-          "item": "Nightcrawler",
-          "qty": 1
-        },
-        {
-          "item": "Nightcrawler",
-          "qty": null
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Boost Nightcrawler to 5-Diamond and outmaneuver your foes!",
-      "notes": "qty unreadable for Nightcrawler"
-    },
-    {
-      "name": "Hit-Monkey 5-Diamond",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "5d 23h",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Hit-Monkey",
-          "qty": 1
-        },
-        {
-          "item": "Hit-Monkey",
-          "qty": 1
-        },
-        {
-          "item": "Hit-Monkey",
-          "qty": null
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Upgrade Hit-Monkey to 5-Diamond and unleash primate precision!",
-      "notes": "qty unreadable for Hit-Monkey"
-    },
-    {
-      "name": "Lady Deathstrike 5-Diamond",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "5d 23h",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Lady Deathstrike",
-          "qty": 1
-        },
-        {
-          "item": "Lady Deathstrike",
-          "qty": 1
-        },
-        {
-          "item": "Lady Deathstrike",
-          "qty": null
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Turn Lady Deathstrike into an unstoppable force with a 5-Diamond upgrade!",
-      "notes": "qty unreadable for Lady Deathstrike"
-    },
-    {
-      "name": "Gladiator 5-Diamond",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "5d 23h",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Gladiator",
-          "qty": 1
-        },
-        {
-          "item": "Gladiator",
-          "qty": 1
-        },
-        {
-          "item": "Gladiator",
-          "qty": null
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Upgrade Gladiator to 5-Diamond and shield your team with unyielding protection!",
-      "notes": "qty unreadable for Gladiator"
-    },
-    {
-      "name": "Lizard 5-Diamond",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "5d 23h",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Lizard",
-          "qty": 1
-        },
-        {
-          "item": "Lizard",
-          "qty": 1
-        },
-        {
-          "item": "Lizard",
-          "qty": null
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Boost Lizard to 5-Diamond and strike with cold-blooded power!",
-      "notes": "qty unreadable for Lizard"
-    },
-    {
-      "name": "5-Diamond Power Pack",
-      "price": 69.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "5d 23h",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Blade",
-          "qty": 1
-        },
-        {
-          "item": "Nightcrawler",
-          "qty": 1
-        },
-        {
-          "item": "Hit-Monkey",
-          "qty": 1
-        },
-        {
-          "item": "Lady Deathstrike",
-          "qty": 1
-        },
-        {
-          "item": "Vulture",
-          "qty": 1
-        }
-      ],
-      "description": "Empower your roster with 5-Diamond upgrades and dominate the battlefield!",
-      "notes": "17 more item(s) not shown on the card"
-    },
-    {
-      "name": "Thena Power Pack",
+      "name": "Cyber Breach: GT21 Mutant",
       "price": 129.99,
       "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "23h 35m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Crimson Armor Catalyst Part",
-          "qty": 250
-        },
-        {
-          "item": "Crimson Basic Catalyst Part",
-          "qty": 875
-        },
-        {
-          "item": "Crimson Damage Catalyst Part",
-          "qty": 100
-        },
-        {
-          "item": "Crimson Focus Catalyst Part",
-          "qty": 100
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 450
-        }
-      ],
-      "description": "Don't miss this chance to power up your Thena!",
-      "notes": "10 more item(s) not shown on the card"
-    },
-    {
-      "name": "Gilgamesh Power Pack",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "23h 35m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Crimson Armor Catalyst Part",
-          "qty": 100
-        },
-        {
-          "item": "Crimson Basic Catalyst Part",
-          "qty": 875
-        },
-        {
-          "item": "Crimson Damage Catalyst Part",
-          "qty": 250
-        },
-        {
-          "item": "Crimson Focus Catalyst Part",
-          "qty": 100
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 450
-        }
-      ],
-      "description": "Don't miss this chance to power up your Gilgamesh!",
-      "notes": "10 more item(s) not shown on the card"
-    },
-    {
-      "name": "Thena Power Pack",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "23h 35m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Thena",
-          "qty": 400
-        },
-        {
-          "item": "Gold",
-          "qty": 50000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Don't miss this chance to power up your Thena!"
-    },
-    {
-      "name": "Gilgamesh Power Pack",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "23h 35m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Gilgamesh",
-          "qty": 505
-        },
-        {
-          "item": "Gold",
-          "qty": 50000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Don't miss this chance to power up your Gilgamesh!"
-    },
-    {
-      "name": "Age of Fear: Super Pack",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "23h 35m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "L4 Training Module",
-          "qty": 14100
-        },
-        {
-          "item": "T4 Ability Material",
-          "qty": 2660
-        },
-        {
-          "item": "L4 Training Module",
-          "qty": 1400,
-          "webBonus": true
-        },
-        {
-          "item": "T4 Ability Material",
-          "qty": 270,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "One bundle. Endless potential. Step into greatness with resources built for legends who refuse to fall!"
-    },
-    {
-      "name": "Age of Fear: T3 Ions Bundle",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "23h 35m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "T3 Level 5 Ions",
-          "qty": 19800000
-        },
-        {
-          "item": "T3 Level 4 Ions",
-          "qty": 19800000
-        },
-        {
-          "item": "T3 Level 5 Ions",
-          "qty": 2000000,
-          "webBonus": true
-        },
-        {
-          "item": "T3 Level 4 Ions",
-          "qty": 2000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Push your strongest characters beyond their limits with this elite upgrade bundle."
-    },
-    {
-      "name": "Age of Fear: Training Modules",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "23h 35m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "L4 Training Module",
-          "qty": 14400
-        },
-        {
-          "item": "L4 Training Module",
-          "qty": 1400,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Level up fast and leave the competition in the shadows!"
-    },
-    {
-      "name": "Gold Galore",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 3,
-      "expires": "23h 35m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Gold",
-          "qty": 150000000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 10000,
-          "webBonus": true
-        }
-      ],
-      "description": "Limited time savings is HERE! Unbelievable gold value you cannot miss out on!"
-    },
-    {
-      "name": "Gold Galore",
-      "price": 24.99,
-      "currency": "CAD",
-      "purchaseLimit": 3,
-      "expires": "23h 35m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Gold",
-          "qty": 30000000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2000,
-          "webBonus": true
-        }
-      ],
-      "description": "Limited time savings is HERE! Unbelievable gold value you cannot miss out on!"
-    },
-    {
-      "name": "Gold Galore",
-      "price": 99.99,
-      "currency": "CAD",
-      "purchaseLimit": 3,
-      "expires": "23h 35m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Gold",
-          "qty": 112500000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 7500,
-          "webBonus": true
-        }
-      ],
-      "description": "Limited time savings is HERE! Unbelievable gold value you cannot miss out on!"
-    },
-    {
-      "name": "Raid Warzone: Daily Allied Supply",
-      "price": 24.99,
-      "currency": "CAD",
-      "purchaseLimit": 5,
-      "expires": "23h 35m",
+      "purchaseLimit": 99,
+      "expires": "9d 19h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
       ],
       "contents": [
         {
-          "item": "Raid Warzone Milestone Points",
-          "qty": 7000
+          "item": "Cyber Breach Milestone Points",
+          "qty": 800000
         },
         {
-          "item": "Allied Supply XII Orb Fragments",
-          "qty": 12000
+          "item": "Crimson Nucleic Infusion",
+          "qty": 105
+        },
+        {
+          "item": "Crimson Biopolymers",
+          "qty": 105
+        },
+        {
+          "item": "Crimson Spliced X-Gene",
+          "qty": 1650
+        },
+        {
+          "item": "Crimson Cytoplasm",
+          "qty": 1375
+        }
+      ],
+      "description": "Earn Gear Tier 21 Mutant Mini-Unique, and also grab a bunch of points to gain progress in the Cyber Breach Milestone!",
+      "notes": "5 more item(s) not shown on the card"
+    },
+    {
+      "name": "Cyber Breach: GT21 Tech",
+      "price": 129.99,
+      "currency": "CAD",
+      "purchaseLimit": 99,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 800000
+        },
+        {
+          "item": "Crimson Liquid Hydrazine",
+          "qty": 105
+        },
+        {
+          "item": "Crimson Dargonite",
+          "qty": 105
+        },
+        {
+          "item": "Crimson Unstable Molecules",
+          "qty": 1650
+        },
+        {
+          "item": "Crimson Laser Torch",
+          "qty": 1375
+        }
+      ],
+      "description": "Earn Gear Tier 21 Tech Mini-Unique, and also grab a bunch of points to gain progress in the Cyber Breach Milestone!",
+      "notes": "5 more item(s) not shown on the card"
+    },
+    {
+      "name": "Cyber Breach: GT21 Bio",
+      "price": 129.99,
+      "currency": "CAD",
+      "purchaseLimit": 99,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 800000
+        },
+        {
+          "item": "Crimson Nebulizer",
+          "qty": 105
+        },
+        {
+          "item": "Crimson Hyperphage",
+          "qty": 105
+        },
+        {
+          "item": "Crimson Isomer",
+          "qty": 1650
+        },
+        {
+          "item": "Crimson Phosphates",
+          "qty": 1375
+        }
+      ],
+      "description": "Earn Gear Tier 21 Bio Mini-Unique, and also grab a bunch of points to gain progress in the Cyber Breach Milestone!",
+      "notes": "5 more item(s) not shown on the card"
+    },
+    {
+      "name": "Cyber Breach: GT21 Skill",
+      "price": 129.99,
+      "currency": "CAD",
+      "purchaseLimit": 99,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 800000
+        },
+        {
+          "item": "Crimson Security Bypass",
+          "qty": 105
+        },
+        {
+          "item": "Crimson Remote Access Codes",
+          "qty": 105
+        },
+        {
+          "item": "Crimson Secret Intel",
+          "qty": 1650
+        },
+        {
+          "item": "Crimson Locked Case",
+          "qty": 1375
+        }
+      ],
+      "description": "Earn Gear Tier 21 Skill Mini-Unique, and also grab a bunch of points to gain progress in the Cyber Breach Milestone!",
+      "notes": "5 more item(s) not shown on the card"
+    },
+    {
+      "name": "Cyber Breach: GT21 Mystic",
+      "price": 129.99,
+      "currency": "CAD",
+      "purchaseLimit": 99,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 800000
+        },
+        {
+          "item": "Crimson Ritual Salts",
+          "qty": 105
+        },
+        {
+          "item": "Crimson Psionic Essence",
+          "qty": 105
+        },
+        {
+          "item": "Crimson Arcane Powder",
+          "qty": 1650
+        },
+        {
+          "item": "Crimson Esoteric Glyphs",
+          "qty": 1375
+        }
+      ],
+      "description": "Earn Gear Tier 21 Mystic Mini-Unique, and also grab a bunch of points to gain progress in the Cyber Breach Milestone!",
+      "notes": "5 more item(s) not shown on the card"
+    },
+    {
+      "name": "Cyber Breach: Ions Special",
+      "price": 19.99,
+      "currency": "CAD",
+      "purchaseLimit": 99,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 50000
+        },
+        {
+          "item": "T3 Level 4 Ions",
+          "qty": 2700000
+        },
+        {
+          "item": "T3 Level 5 Ions",
+          "qty": 2700000
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 2500,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1500,
+          "webBonus": true
+        }
+      ],
+      "description": "Earn T3 Level 4 and Level 5 Ions, and also gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Ability Power Up",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 99,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 75000
+        },
+        {
+          "item": "T4 Ability Material",
+          "qty": 840
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 3750,
+          "webBonus": true
         },
         {
           "item": "Strike Points",
@@ -3296,14 +10767,366 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
-      "description": "Get Allied Supply XII Orbs for Raid Warzone progress!"
+      "description": "Strengthen your roster with T4 Ability Materials and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Terrific Training",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 99,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 75000
+        },
+        {
+          "item": "L4 Training Module",
+          "qty": 4620
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 3750,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Pick up a great L4 Training Module bundle to level up characters and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Whiplash",
+      "price": 34.99,
+      "currency": "CAD",
+      "purchaseLimit": 9,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 125000
+        },
+        {
+          "item": "Whiplash",
+          "qty": 100
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 6250,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2500,
+          "webBonus": true
+        }
+      ],
+      "description": "Strengthen your roster with Whiplash shards and earn points toward the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Ulysses Klaue",
+      "price": 34.99,
+      "currency": "CAD",
+      "purchaseLimit": 9,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 125000
+        },
+        {
+          "item": "Ulysses Klaue",
+          "qty": 100
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 6250,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2500,
+          "webBonus": true
+        }
+      ],
+      "description": "Power up your roster with Ulysses Klaue shards and make progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Iron Monger",
+      "price": 34.99,
+      "currency": "CAD",
+      "purchaseLimit": 9,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 125000
+        },
+        {
+          "item": "Iron Monger",
+          "qty": 100
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 6250,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2500,
+          "webBonus": true
+        }
+      ],
+      "description": "Boost your roster with Iron Monger shards and claim progress toward the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Jocasta",
+      "price": 69.99,
+      "currency": "CAD",
+      "purchaseLimit": 9,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 300000
+        },
+        {
+          "item": "Jocasta",
+          "qty": 100
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 15000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 5000,
+          "webBonus": true
+        }
+      ],
+      "description": "Grab Jocasta shards and score points to push further in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Hawkeye (Robot)",
+      "price": 69.99,
+      "currency": "CAD",
+      "purchaseLimit": 9,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 300000
+        },
+        {
+          "item": "Hawkeye (Robot)",
+          "qty": 100
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 15000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 5000,
+          "webBonus": true
+        }
+      ],
+      "description": "Gear up with Hawkeye (Robot) shards and rack up points in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Human Torch (Jim)",
+      "price": 69.99,
+      "currency": "CAD",
+      "purchaseLimit": 9,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 300000
+        },
+        {
+          "item": "Human Torch (Jim)",
+          "qty": 100
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 15000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 5000,
+          "webBonus": true
+        }
+      ],
+      "description": "Gather Human Torch (Jim) shards and unlock more rewards as you advance in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Jocasta 3-Diamond",
+      "price": 129.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 800000
+        },
+        {
+          "item": "Jocasta",
+          "qty": 1
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 40000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 10000,
+          "webBonus": true
+        }
+      ],
+      "description": "Upgrade Jocasta to 3-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Hawkeye (Robot) 3-Diamond",
+      "price": 129.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 800000
+        },
+        {
+          "item": "Hawkeye (Robot)",
+          "qty": 1
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 40000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 10000,
+          "webBonus": true
+        }
+      ],
+      "description": "Empower Hawkeye (Robot) with a 3-Diamond upgrade and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Human Torch (Jim) 3-Diamond",
+      "price": 129.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "9d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 800000
+        },
+        {
+          "item": "Human Torch (Jim)",
+          "qty": 1
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 40000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 10000,
+          "webBonus": true
+        }
+      ],
+      "description": "Boost Human Torch (Jim) to 3-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+    },
+    {
+      "name": "Cyber Breach: Ka-Zar",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 1,
+      "expires": "1d 19h",
+      "section": "Offers / EVENTS",
+      "sections": [
+        "Offers / EVENTS"
+      ],
+      "contents": [
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 100000
+        },
+        {
+          "item": "Ka-Zar",
+          "qty": 60
+        },
+        {
+          "item": "Cyber Breach Milestone Points",
+          "qty": 5000,
+          "webBonus": true
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Strengthen your roster with Ka-Zar shards and earn points toward the Cyber Breach Milestone!"
     },
     {
       "name": "Raid Warzone: Daily Allied Supply",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -3314,7 +11137,7 @@ window.MSF_OFFERS = {
           "qty": 3500
         },
         {
-          "item": "Allied Supply XII Orb Fragments",
+          "item": "Allied Supply XIII Orb Fragments",
           "qty": 4000
         },
         {
@@ -3323,14 +11146,14 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
-      "description": "Get Allied Supply XII Orbs for Raid Warzone progress!"
+      "description": "Get Allied Supply XIII Orbs for Raid Warzone progress!"
     },
     {
       "name": "Raid Warzone: Special Bundle",
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 4,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -3361,7 +11184,7 @@ window.MSF_OFFERS = {
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -3388,36 +11211,23 @@ window.MSF_OFFERS = {
       "description": "Stock up on Raid Supplies and get ahead in the Raid Warzone Milestone!"
     },
     {
-      "name": "Feast of Shadows: Morbius",
+      "name": "Raid Warzone: Daily Allied Supply",
       "price": 24.99,
       "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "8d 23h",
+      "purchaseLimit": 5,
+      "expires": "19h 44m",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
       ],
       "contents": [
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 500000000
+          "item": "Raid Warzone Milestone Points",
+          "qty": 7000
         },
         {
-          "item": "Morbius",
-          "qty": 810
-        },
-        {
-          "item": "Morbius",
-          "qty": 1
-        },
-        {
-          "item": "Morbius",
-          "qty": 1
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 25000000,
-          "webBonus": true
+          "item": "Allied Supply XIII Orb Fragments",
+          "qty": 8000
         },
         {
           "item": "Strike Points",
@@ -3425,31 +11235,22 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
-      "description": "Instantly power up Morbius to 2-Diamond and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!"
+      "description": "Get Allied Supply XIII Orbs for Raid Warzone progress!"
     },
     {
-      "name": "Feast of Shadows: Zombie Orb",
+      "name": "Short on Wasp (Janet) Shards?",
       "price": 24.99,
       "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
+      "purchaseLimit": 8,
+      "expires": "17d 19h",
+      "section": "Offers / GENERAL",
       "sections": [
-        "Offers / EVENTS"
+        "Offers / GENERAL"
       ],
       "contents": [
         {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Zombie Mega Orb Fragments",
-          "qty": 4000
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
+          "item": "Wasp (Janet)",
+          "qty": 100
         },
         {
           "item": "Strike Points",
@@ -3457,622 +11258,14 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
-      "description": "Open this Orb for a chance to get 810 Shards, 7 Red Stars, and 3-Diamond for Undying Zombies, plus a bunch of points toward the Feast of Shadows Milestone!"
-    },
-    {
-      "name": "Feast of Shadows: Zombie Orb",
-      "price": 69.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 900000000
-        },
-        {
-          "item": "Zombie Mega Orb Fragments",
-          "qty": 12000
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 45000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 5000,
-          "webBonus": true
-        }
-      ],
-      "description": "Open this Orb for a chance to get 810 Shards, 7 Red Stars, and 3-Diamond for Undying Zombies, plus a bunch of points toward the Feast of Shadows Milestone!"
-    },
-    {
-      "name": "Feast of Shadows: Scorpion (Breaker)",
-      "price": 34.99,
-      "currency": "CAD",
-      "purchaseLimit": 16,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 600000000
-        },
-        {
-          "item": "Scorpion (Breaker)",
-          "qty": 50
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 30000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2500,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Scorpion (Breaker) Shards to power up this hero and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!"
-    },
-    {
-      "name": "Feast of Shadows: Rhino",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Rhino",
-          "qty": 810
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Rhino Shards to power up this hero and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!"
-    },
-    {
-      "name": "Feast of Shadows: Electro",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Electro",
-          "qty": 810
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Electro Shards to power up this hero and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!"
-    },
-    {
-      "name": "Feast of Shadows: Mister Negative",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Mister Negative",
-          "qty": 810
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Mister Negative Shards to power up this hero and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!"
-    },
-    {
-      "name": "Feast of Shadows: Bullseye",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "Bullseye",
-          "qty": 810
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get Bullseye Shards to power up this hero and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!"
-    },
-    {
-      "name": "Feast of Shadows: Dread",
-      "price": 34.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Rhino",
-          "qty": 810
-        },
-        {
-          "item": "Electro",
-          "qty": 810
-        },
-        {
-          "item": "Mister Negative",
-          "qty": 810
-        },
-        {
-          "item": "Bullseye",
-          "qty": 810
-        }
-      ],
-      "description": "Instantly power up Dread team to 1-Diamond and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points; 10 more item(s) not shown on the card"
-    },
-    {
-      "name": "Feast of Shadows: Crimson Elite Orb",
-      "price": 3.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 30000000
-        },
-        {
-          "item": "Crimson Elite Orb Fragments",
-          "qty": 2000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 300,
-          "webBonus": true
-        }
-      ],
-      "description": "Earn Gear Tier 19 and 20 Mini-Unique, and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!"
-    },
-    {
-      "name": "Feast of Shadows: Basic Pack",
-      "price": 69.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 100000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 5000,
-          "webBonus": true
-        }
-      ],
-      "description": "Get ahead in the Feast of Shadows Leaderboard to secure 5-Diamond for Dracula, Scorpion (Breaker), Morbius, and Kestrel (Zombie)!",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points"
-    },
-    {
-      "name": "Feast of Shadows: GT21 Mutant",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Crimson Nucleic Infusion",
-          "qty": 105
-        },
-        {
-          "item": "Crimson Biopolymers",
-          "qty": 105
-        },
-        {
-          "item": "Gold",
-          "qty": 10000000
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 1200
-        }
-      ],
-      "description": "Earn Gear Tier 21 Mutant Mini-Unique, and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points; 6 more item(s) not shown on the card"
-    },
-    {
-      "name": "Feast of Shadows: GT21 Tech",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Crimson Liquid Hydrazine",
-          "qty": 105
-        },
-        {
-          "item": "Crimson Dargonite",
-          "qty": 105
-        },
-        {
-          "item": "Gold",
-          "qty": 10000000
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 1200
-        }
-      ],
-      "description": "Earn Gear Tier 21 Tech Mini-Unique, and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points; 6 more item(s) not shown on the card"
-    },
-    {
-      "name": "Feast of Shadows: GT21 Bio",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Crimson Hyperphage",
-          "qty": 105
-        },
-        {
-          "item": "Crimson Nebulizer",
-          "qty": 105
-        },
-        {
-          "item": "Gold",
-          "qty": 10000000
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 1200
-        }
-      ],
-      "description": "Earn Gear Tier 21 Bio Mini-Unique, and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points; 6 more item(s) not shown on the card"
-    },
-    {
-      "name": "Feast of Shadows: GT21 Skill",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Crimson Remote Access Codes",
-          "qty": 105
-        },
-        {
-          "item": "Crimson Security Bypass",
-          "qty": 105
-        },
-        {
-          "item": "Gold",
-          "qty": 10000000
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 1200
-        }
-      ],
-      "description": "Earn Gear Tier 21 Skill Mini-Unique, and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points; 6 more item(s) not shown on the card"
-    },
-    {
-      "name": "Feast of Shadows: GT21 Mystic",
-      "price": 129.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": null
-        },
-        {
-          "item": "Crimson Psionic Essence",
-          "qty": 105
-        },
-        {
-          "item": "Crimson Ritual Salts",
-          "qty": 105
-        },
-        {
-          "item": "Gold",
-          "qty": 10000000
-        },
-        {
-          "item": "Crimson Health Catalyst Part",
-          "qty": 1200
-        }
-      ],
-      "description": "Earn Gear Tier 21 Mystic Mini-Unique, and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!",
-      "notes": "qty unreadable for Feast of Shadows Milestone Points; 6 more item(s) not shown on the card"
-    },
-    {
-      "name": "Feast of Shadows: Ions Special",
-      "price": 19.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 200000000
-        },
-        {
-          "item": "T3 Level 4 Ions",
-          "qty": 2700000
-        },
-        {
-          "item": "T3 Level 5 Ions",
-          "qty": 2700000
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 10000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 1500,
-          "webBonus": true
-        }
-      ],
-      "description": "Earn T3 Level 4 and Level 5 Ions, and also gain progress in the Feast of Shadows Milestone!"
-    },
-    {
-      "name": "Feast of Shadows: Ability Power Up",
-      "price": 24.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 300000000
-        },
-        {
-          "item": "T4 Ability Material",
-          "qty": 840
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 15000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2000,
-          "webBonus": true
-        }
-      ],
-      "description": "Strengthen your roster with T4 Ability Materials and also grab a bunch of points to gain progress in the Feast of Shadows Milestone!"
-    },
-    {
-      "name": "Feast of Shadows: Power Core Bundle",
-      "price": 34.99,
-      "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 400000000
-        },
-        {
-          "item": "Power Cores",
-          "qty": 2500
-        },
-        {
-          "item": "Feast of Shadows Milestone Points",
-          "qty": 20000000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2500,
-          "webBonus": true
-        }
-      ],
-      "description": "Grab this deal to seize 2500 Power Cores and also gain progress in the Feast of Shadows Milestone!"
-    },
-    {
-      "name": "Mephisto's Summoning: Basic Pack",
-      "price": 6.99,
-      "currency": "CAD",
-      "purchaseLimit": 24,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Mephisto's Summoning Milestone Points",
-          "qty": 200
-        },
-        {
-          "item": "The Summoner's Orb Fragments",
-          "qty": 2000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 500,
-          "webBonus": true
-        }
-      ],
-      "description": "Get ahead in the Mephisto's Summoning Milestone event and start making your way toward 5-Diamond for Mephisto!"
-    },
-    {
-      "name": "Mephisto's Summoning: Points Surge",
-      "price": 24.99,
-      "currency": "CAD",
-      "purchaseLimit": 6,
-      "expires": "8d 23h",
-      "section": "Offers / EVENTS",
-      "sections": [
-        "Offers / EVENTS"
-      ],
-      "contents": [
-        {
-          "item": "Mephisto's Summoning Milestone Points",
-          "qty": 2000
-        },
-        {
-          "item": "Strike Points",
-          "qty": 2000,
-          "webBonus": true
-        }
-      ],
-      "description": "Progress through the Mephisto's Summoning Milestone to secure 5-Diamond for Mephisto!"
+      "description": "Didn't finish the Chapter Battle Pass? Grab your missing shards before this offer ends!"
     },
     {
       "name": "Battle Pass Catch-Up!",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "8d 23h",
+      "expires": "10d 19h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4091,46 +11284,92 @@ window.MSF_OFFERS = {
       "description": "Get 15 Level Tokens to catch up on Battle Pass progress!"
     },
     {
-      "name": "X-Men Team Offer",
-      "price": 69.99,
+      "name": "Short on West Coast Avenger Shards?",
+      "price": 19.99,
       "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "4d 23h",
+      "purchaseLimit": 8,
+      "expires": "17d 19h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
       ],
       "contents": [
         {
-          "item": "Gambit",
+          "item": "War Machine",
           "qty": 100
         },
         {
-          "item": "Beast",
+          "item": "Tigra",
           "qty": 100
         },
         {
-          "item": "Colossus",
+          "item": "Mockingbird",
           "qty": 100
         },
         {
-          "item": "Cyclops",
+          "item": "Hawkeye",
           "qty": 100
         },
         {
-          "item": "Iceman",
-          "qty": 100
+          "item": "Strike Points",
+          "qty": 1500,
+          "webBonus": true
         }
       ],
-      "description": "Limited-time for new players: Unlock a 3-Star X-Men team!",
-      "notes": "2 more item(s) not shown on the card"
+      "description": "Grab your missing West Coast Avenger shards before this offer ends!"
+    },
+    {
+      "name": "Armory 19 Orb Special",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 3,
+      "expires": "19h 44m",
+      "section": "Offers / GENERAL",
+      "sections": [
+        "Offers / GENERAL"
+      ],
+      "contents": [
+        {
+          "item": "Armory 19 Orb Fragments",
+          "qty": 30000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "description": "Take advantage of this great deal on Armory 19 Orb Fragments!"
+    },
+    {
+      "name": "S.T.R.I.K.E Pass Catch-Up!",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 5,
+      "expires": "3d 19h",
+      "section": "Offers / GENERAL",
+      "sections": [
+        "Offers / GENERAL"
+      ],
+      "contents": [
+        {
+          "item": "S.T.R.I.K.E. Tokens",
+          "qty": 20
+        },
+        {
+          "item": "Strike Points",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "description": "Get 20 S.T.R.I.K.E. Levels to catch up on S.T.R.I.K.E pass progress!"
     },
     {
       "name": "T4 Ions",
       "price": 99.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "4d 23h",
+      "expires": "6d 19h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4153,7 +11392,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "4d 23h",
+      "expires": "6d 19h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4192,7 +11431,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "4d 23h",
+      "expires": "6d 19h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4231,7 +11470,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "4d 23h",
+      "expires": "6d 19h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4270,7 +11509,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "4d 23h",
+      "expires": "6d 19h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4309,7 +11548,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "4d 23h",
+      "expires": "6d 19h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4348,7 +11587,7 @@ window.MSF_OFFERS = {
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4375,7 +11614,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 25,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4394,11 +11633,46 @@ window.MSF_OFFERS = {
       "description": "Harness the power of Diamonds! Earn 20 Silver Diamond Credits and a guaranteed Diamond Promotion with each orb!"
     },
     {
+      "name": "Elite 4 Star Orb Offer",
+      "price": 6.99,
+      "currency": "CAD",
+      "purchaseLimit": 3,
+      "expires": "19h 44m",
+      "section": "Offers / GENERAL",
+      "sections": [
+        "Offers / GENERAL"
+      ],
+      "contents": [
+        {
+          "item": "Elite 4 Credit",
+          "qty": 125000
+        },
+        {
+          "item": "Elite 4 Credit",
+          "qty": 125000
+        },
+        {
+          "item": "Elite 4 Credit",
+          "qty": 125000
+        },
+        {
+          "item": "Elite 4 Credit",
+          "qty": 25000
+        },
+        {
+          "item": "Strike Points",
+          "qty": 500,
+          "webBonus": true
+        }
+      ],
+      "description": "Take advantage of this exclusive offer and buy now! This orb will guarantee you a 4-Red Star or higher Promotion!"
+    },
+    {
       "name": "XP Overload",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4421,7 +11695,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4444,7 +11718,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -4463,30 +11737,11 @@ window.MSF_OFFERS = {
       "description": "Max level here you come! Get progress with this special XP pack!"
     },
     {
-      "name": "Epic Essence Bundle",
-      "price": 500,
-      "currency": "Strike Points",
-      "purchaseLimit": 5,
-      "expires": "1d 23h",
-      "section": "STRIKE STORE",
-      "sections": [
-        "STRIKE STORE"
-      ],
-      "contents": [
-        {
-          "item": "Epic Essence",
-          "qty": 20000
-        }
-      ],
-      "paidWith": "Strike Points",
-      "description": "Upgrade your Chapter Boosts with this Epic Essence bundle!"
-    },
-    {
       "name": "Strike Store Exclusive!",
       "price": 6000,
       "currency": "Strike Points",
       "purchaseLimit": 5,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -4505,7 +11760,7 @@ window.MSF_OFFERS = {
       "price": 5000,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -4524,7 +11779,7 @@ window.MSF_OFFERS = {
       "price": 2500,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -4543,7 +11798,7 @@ window.MSF_OFFERS = {
       "price": 1000,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -4570,7 +11825,7 @@ window.MSF_OFFERS = {
       "price": 500,
       "currency": "Strike Points",
       "purchaseLimit": 30,
-      "expires": "15d 23h",
+      "expires": "3d 19h",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -4589,7 +11844,7 @@ window.MSF_OFFERS = {
       "price": 500,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "23h 35m",
+      "expires": "19h 44m",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -4845,6 +12100,5 @@ window.MSF_OFFERS = {
         }
       ]
     }
-  ],
-  "bookmarklet": "2026-10-24"
+  ]
 };
