@@ -178,7 +178,8 @@ window.MSF_VALUE_TABLE = {
         "days": 5,
         "observations": 5,
         "readAt": "2026-10-18",
-        "earlyEstimate": true
+        "earlyEstimate": true,
+        "suspect": "msfwar's 75 per US$ rests on 5 bundle observations where the credits were a minor part of the price; this store sells 876 per US$ in Unlock Special: Red Star Rush, so the average does not price credits sold on their own"
       }
     },
     "gold": {
@@ -1740,7 +1741,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_blaster_damage_level_1_iso-8": {
       "name": "T2 Blaster Damage Level 1 Iso-8",
@@ -1758,7 +1761,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_blaster_focus_level_1_iso-8": {
       "name": "T2 Blaster Focus Level 1 Iso-8",
@@ -1776,7 +1781,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_blaster_health_level_1_iso-8": {
       "name": "T2 Blaster Health Level 1 Iso-8",
@@ -1794,7 +1801,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_blaster_resist_level_1_iso-8": {
       "name": "T2 Blaster Resist Level 1 Iso-8",
@@ -1812,7 +1821,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_brawler_armor_level_1_iso-8": {
       "name": "T2 Brawler Armor Level 1 Iso-8",
@@ -1830,7 +1841,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_brawler_damage_level_1_iso-8": {
       "name": "T2 Brawler Damage Level 1 Iso-8",
@@ -1848,7 +1861,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_brawler_focus_level_1_iso-8": {
       "name": "T2 Brawler Focus Level 1 Iso-8",
@@ -1866,7 +1881,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_brawler_health_level_1_iso-8": {
       "name": "T2 Brawler Health Level 1 Iso-8",
@@ -1884,7 +1901,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_brawler_resist_level_1_iso-8": {
       "name": "T2 Brawler Resist Level 1 Iso-8",
@@ -1902,7 +1921,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_controller_armor_level_1_iso-8": {
       "name": "T2 Controller Armor Level 1 Iso-8",
@@ -1920,7 +1941,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_controller_damage_level_1_iso-8": {
       "name": "T2 Controller Damage Level 1 Iso-8",
@@ -1938,7 +1961,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_controller_focus_level_1_iso-8": {
       "name": "T2 Controller Focus Level 1 Iso-8",
@@ -1956,7 +1981,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_controller_health_level_1_iso-8": {
       "name": "T2 Controller Health Level 1 Iso-8",
@@ -1974,7 +2001,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_controller_resist_level_1_iso-8": {
       "name": "T2 Controller Resist Level 1 Iso-8",
@@ -1992,7 +2021,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_level_1_ions": {
       "name": "T2 Level 1 Ions",
@@ -2064,7 +2095,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_protector_damage_level_1_iso-8": {
       "name": "T2 Protector Damage Level 1 Iso-8",
@@ -2082,7 +2115,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_protector_focus_level_1_iso-8": {
       "name": "T2 Protector Focus Level 1 Iso-8",
@@ -2100,7 +2135,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_protector_health_level_1_iso-8": {
       "name": "T2 Protector Health Level 1 Iso-8",
@@ -2118,7 +2155,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_protector_resist_level_1_iso-8": {
       "name": "T2 Protector Resist Level 1 Iso-8",
@@ -2136,7 +2175,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_support_armor_level_1_iso-8": {
       "name": "T2 Support Armor Level 1 Iso-8",
@@ -2154,7 +2195,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_support_damage_level_1_iso-8": {
       "name": "T2 Support Damage Level 1 Iso-8",
@@ -2172,7 +2215,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_support_focus_level_1_iso-8": {
       "name": "T2 Support Focus Level 1 Iso-8",
@@ -2190,7 +2235,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_support_health_level_1_iso-8": {
       "name": "T2 Support Health Level 1 Iso-8",
@@ -2208,7 +2255,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t2_support_resist_level_1_iso-8": {
       "name": "T2 Support Resist Level 1 Iso-8",
@@ -2226,7 +2275,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 15,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_blaster_armor_level_1_iso-8": {
       "name": "T3 Blaster Armor Level 1 Iso-8",
@@ -2244,7 +2295,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_blaster_damage_level_1_iso-8": {
       "name": "T3 Blaster Damage Level 1 Iso-8",
@@ -2262,7 +2315,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_blaster_focus_level_1_iso-8": {
       "name": "T3 Blaster Focus Level 1 Iso-8",
@@ -2280,7 +2335,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_blaster_health_level_1_iso-8": {
       "name": "T3 Blaster Health Level 1 Iso-8",
@@ -2298,7 +2355,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_blaster_resist_level_1_iso-8": {
       "name": "T3 Blaster Resist Level 1 Iso-8",
@@ -2316,7 +2375,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_brawler_armor_level_1_iso-8": {
       "name": "T3 Brawler Armor Level 1 Iso-8",
@@ -2334,7 +2395,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_brawler_damage_level_1_iso-8": {
       "name": "T3 Brawler Damage Level 1 Iso-8",
@@ -2352,7 +2415,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_brawler_focus_level_1_iso-8": {
       "name": "T3 Brawler Focus Level 1 Iso-8",
@@ -2370,7 +2435,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_brawler_health_level_1_iso-8": {
       "name": "T3 Brawler Health Level 1 Iso-8",
@@ -2388,7 +2455,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_brawler_resist_level_1_iso-8": {
       "name": "T3 Brawler Resist Level 1 Iso-8",
@@ -2406,7 +2475,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_controller_armor_level_1_iso-8": {
       "name": "T3 Controller Armor Level 1 Iso-8",
@@ -2424,7 +2495,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_controller_damage_level_1_iso-8": {
       "name": "T3 Controller Damage Level 1 Iso-8",
@@ -2442,7 +2515,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_controller_focus_level_1_iso-8": {
       "name": "T3 Controller Focus Level 1 Iso-8",
@@ -2460,7 +2535,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_controller_health_level_1_iso-8": {
       "name": "T3 Controller Health Level 1 Iso-8",
@@ -2478,7 +2555,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_controller_resist_level_1_iso-8": {
       "name": "T3 Controller Resist Level 1 Iso-8",
@@ -2496,7 +2575,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_iso-8_credits": {
       "name": "T3 Iso-8 Credits",
@@ -2550,7 +2631,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 55,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 2,
+      "note": "msfwar only saw it in offers that also carry T3 Level 5 Ions (same 55 observations): its average prices both, so this type counts half"
     },
     "iso8:t3_level_5_ions": {
       "name": "T3 Level 5 Ions",
@@ -2568,7 +2651,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 55,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 2,
+      "note": "msfwar only saw it in offers that also carry T3 Level 4 Ions (same 55 observations): its average prices both, so this type counts half"
     },
     "iso8:t3_protector_armor_level_1_iso-8": {
       "name": "T3 Protector Armor Level 1 Iso-8",
@@ -2586,7 +2671,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_protector_damage_level_1_iso-8": {
       "name": "T3 Protector Damage Level 1 Iso-8",
@@ -2604,7 +2691,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_protector_focus_level_1_iso-8": {
       "name": "T3 Protector Focus Level 1 Iso-8",
@@ -2622,7 +2711,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_protector_health_level_1_iso-8": {
       "name": "T3 Protector Health Level 1 Iso-8",
@@ -2640,7 +2731,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_protector_resist_level_1_iso-8": {
       "name": "T3 Protector Resist Level 1 Iso-8",
@@ -2658,7 +2751,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_support_armor_level_1_iso-8": {
       "name": "T3 Support Armor Level 1 Iso-8",
@@ -2676,7 +2771,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_support_damage_level_1_iso-8": {
       "name": "T3 Support Damage Level 1 Iso-8",
@@ -2694,7 +2791,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_support_focus_level_1_iso-8": {
       "name": "T3 Support Focus Level 1 Iso-8",
@@ -2712,7 +2811,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_support_health_level_1_iso-8": {
       "name": "T3 Support Health Level 1 Iso-8",
@@ -2730,7 +2831,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t3_support_resist_level_1_iso-8": {
       "name": "T3 Support Resist Level 1 Iso-8",
@@ -2748,7 +2851,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 20,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_blaster_armor_level_1_iso-8": {
       "name": "T4 Blaster Armor Level 1 Iso-8",
@@ -2766,7 +2871,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_blaster_damage_level_1_iso-8": {
       "name": "T4 Blaster Damage Level 1 Iso-8",
@@ -2784,7 +2891,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_blaster_focus_level_1_iso-8": {
       "name": "T4 Blaster Focus Level 1 Iso-8",
@@ -2802,7 +2911,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_blaster_health_level_1_iso-8": {
       "name": "T4 Blaster Health Level 1 Iso-8",
@@ -2820,7 +2931,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_blaster_resist_level_1_iso-8": {
       "name": "T4 Blaster Resist Level 1 Iso-8",
@@ -2838,7 +2951,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_brawler_armor_level_1_iso-8": {
       "name": "T4 Brawler Armor Level 1 Iso-8",
@@ -2856,7 +2971,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_brawler_damage_level_1_iso-8": {
       "name": "T4 Brawler Damage Level 1 Iso-8",
@@ -2874,7 +2991,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_brawler_focus_level_1_iso-8": {
       "name": "T4 Brawler Focus Level 1 Iso-8",
@@ -2892,7 +3011,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_brawler_health_level_1_iso-8": {
       "name": "T4 Brawler Health Level 1 Iso-8",
@@ -2910,7 +3031,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_brawler_resist_level_1_iso-8": {
       "name": "T4 Brawler Resist Level 1 Iso-8",
@@ -2928,7 +3051,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_controller_armor_level_1_iso-8": {
       "name": "T4 Controller Armor Level 1 Iso-8",
@@ -2946,7 +3071,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_controller_damage_level_1_iso-8": {
       "name": "T4 Controller Damage Level 1 Iso-8",
@@ -2964,7 +3091,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_controller_focus_level_1_iso-8": {
       "name": "T4 Controller Focus Level 1 Iso-8",
@@ -2982,7 +3111,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_controller_health_level_1_iso-8": {
       "name": "T4 Controller Health Level 1 Iso-8",
@@ -3000,7 +3131,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_controller_resist_level_1_iso-8": {
       "name": "T4 Controller Resist Level 1 Iso-8",
@@ -3018,7 +3151,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_level_1_ions": {
       "name": "T4 Level 1 Ions",
@@ -3054,7 +3189,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_protector_damage_level_1_iso-8": {
       "name": "T4 Protector Damage Level 1 Iso-8",
@@ -3072,7 +3209,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_protector_focus_level_1_iso-8": {
       "name": "T4 Protector Focus Level 1 Iso-8",
@@ -3090,7 +3229,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_protector_health_level_1_iso-8": {
       "name": "T4 Protector Health Level 1 Iso-8",
@@ -3108,7 +3249,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_protector_resist_level_1_iso-8": {
       "name": "T4 Protector Resist Level 1 Iso-8",
@@ -3126,7 +3269,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_support_armor_level_1_iso-8": {
       "name": "T4 Support Armor Level 1 Iso-8",
@@ -3144,7 +3289,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 7,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_support_damage_level_1_iso-8": {
       "name": "T4 Support Damage Level 1 Iso-8",
@@ -3162,7 +3309,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 7,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_support_focus_level_1_iso-8": {
       "name": "T4 Support Focus Level 1 Iso-8",
@@ -3180,7 +3329,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 7,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_support_health_level_1_iso-8": {
       "name": "T4 Support Health Level 1 Iso-8",
@@ -3198,7 +3349,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 7,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "iso8:t4_support_resist_level_1_iso-8": {
       "name": "T4 Support Resist Level 1 Iso-8",
@@ -3216,7 +3369,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 7,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 5,
+      "note": "one of the five stat crystals of its class and tier, only sold together: msfwar's average prices the whole set, so this type counts a fifth"
     },
     "gear:crimson_adaptive_pathogens": {
       "name": "Crimson Adaptive Pathogens",
@@ -5052,7 +5207,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 2,
+      "note": "only sold together with Raid Health Pack (Raid Warzone: Raid Boost): msfwar's average is that offer's whole price, so this type counts half"
     },
     "other:raid_health_pack": {
       "name": "Raid Health Pack",
@@ -5070,7 +5227,9 @@ window.MSF_VALUE_TABLE = {
         "observations": 5,
         "readAt": "2026-10-18",
         "earlyEstimate": true
-      }
+      },
+      "setOf": 2,
+      "note": "only sold together with Raid Energy Refill (Raid Warzone: Raid Boost): msfwar's average is that offer's whole price, so this type counts half"
     },
     "other:strike_store_exclusive": {
       "name": "Strike Store Exclusive",

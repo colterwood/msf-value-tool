@@ -129,8 +129,15 @@ https://www.msfwar.com/spenders-guide/:
    `window.msfwarAvg` and send through the console as in step 1.5. 195 resources took five calls.
 3. Build `data/values.js` with Python: `value = per / perUsd` in USD, `observed` carrying
    perUsd, days, observations and `earlyEstimate` when days < 7; `excludeFromValue: true` on
-   milestone points and Strike Points; add every item name the store sells that msfwar has no
-   row for with `value: null`. Key conventions: `shard:<character lower-case>` with
+   milestone points and Strike Points; `setOf: N` on rows msfwar only ever sees sold together
+   as a complete set (the five stat crystals of a class and tier, T3 Level 4 and 5 Ions, Raid
+   Health Pack with Raid Energy Refill: identical observation counts and no offer selling one
+   alone; qty / perUsd often equals the US price of the one offer that carries them), so the
+   engine counts each type one share of its msfwar face; a typed or store-priced value on such
+   a row is not divided, so `setOf` belongs only on rows with an msfwar number. Do not put it on
+   items sold in varying combinations (T1/T2 ability materials, shard combos, awakened
+   materials). Add every item name the store sells that msfwar has no row for with
+   `value: null`. Key conventions: `shard:<character lower-case>` with
    `character`, `orb:<name>`, `gear:<name>`, `training_module:<tier>`,
    `ability_material:<tier>`, `iso8:<name>`, `points:<event>`, `promotion:<...>`.
 4. Set `meta.source`, `meta.sourceUrl`, `meta.updated`, `meta.fxToUsd` (look up the current

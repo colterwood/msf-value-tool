@@ -327,3 +327,72 @@ test('shop rows say when a count was unreadable, and offers with nothing priceab
   assert.equal(ranked[2].complete, true);
   assert.equal(ranked[2].valuedLines, 0);
 });
+
+test('items sold as a set count one share of their whole-price msfwar value', () => {
+  const t = { meta: { unit: 'USD', unitPerUsd: 1, valueMultipliers: { orb: 1 } }, items: {
+    'iso8:a': { name: 'T3 Controller Armor Level 1 Iso-8', category: 'iso8', per: 1, value: 0.1, setOf: 2, observed: { perUsd: 10, observations: 20 } },
+    'iso8:d': { name: 'T3 Controller Damage Level 1 Iso-8', category: 'iso8', per: 1, value: 0.1, setOf: 2, observed: { perUsd: 10, observations: 20 } }
+  } };   // a two-type set, for the arithmetic
+  const offer = { name: 'Set', price: 10, contents: [{ item: 'T3 Controller Armor Level 1 Iso-8', qty: 50 }, { item: 'T3 Controller Damage Level 1 Iso-8', qty: 50 }] };
+  const r = E.valueOffer(offer, t);
+  assert.equal(r.lines[0].faceValue, 5);          // msfwar basis: 50 crystals at 10 per US$
+  assert.equal(r.lines[0].vsTypical, 0.5);        // this offer gives 5 per US$ against 10 typical
+  assert.equal(r.lines[0].value, 2.5);            // one of two types: half of the face
+  assert.equal(r.lines[0].setOf, 2);
+  assert.match(r.lines[0].note, /sold as a set/);
+  assert.equal(r.totalUsd, 5);
+  assert.equal(r.perDollar, 0.5);
+  // without setOf the two lines would add up to 1x although each is half of typical
+  const t2 = JSON.parse(JSON.stringify(t)); delete t2.items['iso8:a'].setOf; delete t2.items['iso8:d'].setOf;
+  assert.equal(E.valueOffer(offer, t2).perDollar, 1);
+  assert.equal(E.valueOffer(offer, t2).lines[0].setOf, 1);
+  // shop by resource: the ISO bucket value follows the set share, the per-item typical reading does not
+  const rows = E.shopBy(E.rankOffers([offer], t), t, 'iso');
+  assert.equal(rows[0].bucketRatio, 0.5);
+  assert.equal(rows[0].items[0].vsTypical, 0.5);
+  // the msfwar-style score reads each item on msfwar's basis: half of typical scores 50
+  assert.equal(r.lines[0].ratio, 0.5);
+  assert.equal(r.score, 50);
+  // the history snapshot and best buys charge a set member the whole set's share: the same as the whole price
+  const tUsd = Object.assign({}, t, { meta: Object.assign({ fxToUsd: { USD: 1 } }, t.meta) });
+  const snap = E.priceSnapshot({ updated: '2026-11-06T01:00:00Z', offers: [Object.assign({ currency: 'USD' }, offer)] }, tUsd);
+  assert.equal(snap.items['iso8:a'].sb, 5);
+  assert.equal(snap.items['iso8:a'].wb, 5);
+  const best = E.bestPrices(E.rankOffers([offer], t), t);
+  assert.equal(best.find((b) => b.key === 'iso8:a').share.perUsd, best.find((b) => b.key === 'iso8:a').whole.perUsd);
+  // a set beside gold: each takes its counted share of the price, so every item reads the offer's own ratio
+  const t3 = JSON.parse(JSON.stringify(t));
+  t3.items.gold = { name: 'Gold', category: 'currency', per: 1, value: 0.000001, observed: { perUsd: 1000000, observations: 50 } };
+  const mixed = { name: 'Mixed', price: 20, contents: offer.contents.concat([{ item: 'Gold', qty: 10000000 }]) };   // $2.5 + $2.5 + $10 of value: 0.75x
+  const mr = E.valueOffer(mixed, t3);
+  assert.equal(mr.perDollar, 0.75);
+  const mb = E.bestPrices(E.rankOffers([mixed], t3), t3);
+  assert.ok(Math.abs(mb.find((b) => b.key === 'gold').share.perUsd - 750000) < 1);          // gold: $13.33 of the price, 0.75x typical
+  assert.ok(Math.abs(mb.find((b) => b.key === 'iso8:a').share.perUsd - 7.5) < 1e-9);        // a crystal: the set's $6.67 share, 0.75x typical
+  // the store pricing tool subtracts a set once: $5 of crystals leaves $5 for five unpriced pieces
+  const t4 = JSON.parse(JSON.stringify(t));
+  t4.items['gear:teal'] = { name: 'Teal piece', category: 'gear', per: 1, value: null };
+  const est = E.estimateFromStore([{ name: 'Set+gear', price: 10, currency: 'USD', contents: offer.contents.concat([{ item: 'Teal piece', qty: 5 }]) }], t4, { fiatOnly: false });
+  assert.equal(est['gear:teal'].perUsd, 1);
+  // a set only partly present is never charged more than the price
+  const t6 = JSON.parse(JSON.stringify(t)); t6.items['iso8:a'].setOf = 5; t6.items['iso8:d'].setOf = 5;
+  const partial = E.bestPrices(E.rankOffers([offer], t6), t6).find((b) => b.key === 'iso8:a');
+  assert.equal(partial.share.perUsd, partial.whole.perUsd);
+  // a typed value or a store price is the type's own value: not divided
+  const t5 = JSON.parse(JSON.stringify(t));
+  t5.items['iso8:a'].userValue = true;
+  t5.items['iso8:d'].observed = { perUsd: 10, observations: 1, source: 'store' };
+  const r5 = E.valueOffer(offer, t5);
+  assert.equal(r5.lines[0].setOf, 1);
+  assert.equal(r5.lines[0].value, 5);
+  assert.equal(r5.lines[1].setOf, 1);
+  assert.equal(r5.lines[1].value, 5);
+  // a pair sold together at exactly msfwar's whole price reads 1x, not 2x
+  const pair = { meta: { unit: 'USD', unitPerUsd: 1, valueMultipliers: { orb: 1 } }, items: {
+    'other:hp': { name: 'Raid Health Pack', category: 'other', per: 1, value: 1 / 60, setOf: 2, observed: { perUsd: 60, observations: 5 } },
+    'other:er': { name: 'Raid Energy Refill', category: 'other', per: 1, value: 1 / 80, setOf: 2, observed: { perUsd: 80, observations: 5 } }
+  } };
+  const pr = E.valueOffer({ price: 5, contents: [{ item: 'Raid Health Pack', qty: 300 }, { item: 'Raid Energy Refill', qty: 400 }] }, pair);
+  assert.ok(Math.abs(pr.perDollar - 1) < 1e-9);
+  assert.ok(Math.abs(pr.lines[0].vsTypical - 1) < 1e-9);
+});

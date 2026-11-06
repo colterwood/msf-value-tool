@@ -843,13 +843,21 @@
         return;
       }
       var cm = valueMultiplier(resolved.item, meta);
+      // msfwar's average for an item that is only sold as part of a set (the five stat crystals of a
+      // class and tier) counts the whole price of the set offers, so each type counts one share of
+      // its face value: the set is rated once, not once per type. The face and "vs typical" keep
+      // msfwar's own basis.
+      // Only msfwar's averages carry that basis: a value typed on the Value table tab, or priced from
+      // the store (already the type's share of a price), is the type's own value and counts in full.
+      var setOf = Number(resolved.item.setOf) > 1 && !resolved.item.userValue && !(resolved.item.observed && resolved.item.observed.source === 'store') ? Number(resolved.item.setOf) : 1;
       var face = uv * qty;
-      var value = face * cm;
+      var value = face * cm / setOf;
       var personalValue = value * pm.multiplier;
       totalUnits += value;
       personalTotalUnits += personalValue;
       valuedLines += 1;
       if (cm !== 1) pm.note = joinNotes(pm.note, resolved.item.category + ' items count ' + Math.round(cm * 100) + '% of face value');
+      if (setOf > 1) pm.note = joinNotes(pm.note, 'one of ' + setOf + ' types sold as a set: counts 1/' + setOf + ' of its msfwar face value, which prices the whole set');
       lines.push({
         item: name,
         key: resolved.key,
@@ -864,6 +872,7 @@
         earlyEstimate: !!(resolved.item.observed && resolved.item.observed.earlyEstimate),
         resource: pm.resource ? pm.resource.status : null,
         categoryMultiplier: cm,
+        setOf: setOf,
         bucket: shopBucket(resolved.item, resolved.key),
         note: pm.note
       });
@@ -958,8 +967,9 @@
     // msfwar-style score works on dollar-valued lines; convert line values when the table is in cores.
     var usdLines = lines.map(function (l) {
       var c = Object.assign({}, l);
-      if (c.value != null) c.value = toUsd(c.value, meta);
-      if (c.personalValue != null) c.personalValue = toUsd(c.personalValue, meta);
+      var k = setSize(l);   // the msfwar-style score compares each item with its own average, on msfwar's basis
+      if (c.value != null) c.value = toUsd(c.value * k, meta);
+      if (c.personalValue != null) c.personalValue = toUsd(c.personalValue * k, meta);
       return c;
     });
     var generic = scoreLines(usdLines, priceUsd, meta.scoring, 'value');
@@ -1051,6 +1061,18 @@
    * Returns [{ key, name, category, typicalPerUsd, offers, whole: {name, perUsd, price, currency, qty}, share: {...} }],
    * sorted by category then name. perUsd is units per US dollar.
    */
+  /** How many types a line's item is sold with as a set (1 when the line counts in full). */
+  function setSize(l) { return l && Number(l.setOf) > 1 ? Number(l.setOf) : 1; }
+
+  /**
+   * A line's weight when a bundle's price is shared out by value: its msfwar face, or for a set
+   * member the set's face divided by the set size (its counted share). The member is then
+   * charged the whole set's share of the price, the basis its typical was measured on.
+   */
+  function shareFace(l, meta) {
+    return toUsd(l.faceValue == null ? l.value : l.faceValue, meta) / setSize(l);
+  }
+
   function bestPrices(results, table) {
     var meta = (isTable(table) && table.meta) || {};
     var items = itemsOf(table);
@@ -1060,20 +1082,20 @@
       if (!path) return;
       // shares are allocated by face value (before any category discount), as the table's averages price things
       var faceTotal = 0;
-      path.lines.forEach(function (l) { if (l.value != null && !l.excluded && !l.thin) faceTotal += toUsd(l.faceValue == null ? l.value : l.faceValue, meta); });
+      path.lines.forEach(function (l) { if (l.value != null && !l.excluded && !l.thin) faceTotal += shareFace(l, meta); });
       if (!(faceTotal > 0)) return;
       // the same item can appear in several lines of a path (every step of a shard chain): total it first
       var byKey = {}, order = [];
       path.lines.forEach(function (l) {
         if (l.value == null || l.excluded || l.thin || !l.key || !(l.qty > 0)) return;
         var agg = byKey[l.key];
-        if (!agg) { agg = byKey[l.key] = { item: l.item, qty: 0, faceUsd: 0 }; order.push(l.key); }
+        if (!agg) { agg = byKey[l.key] = { item: l.item, qty: 0, faceUsd: 0, setOf: setSize(l) }; order.push(l.key); }
         agg.qty += l.qty;
-        agg.faceUsd += toUsd(l.faceValue == null ? l.value : l.faceValue, meta);
+        agg.faceUsd += shareFace(l, meta);
       });
       order.forEach(function (key) {
         var l = byKey[key];
-        var sharePrice = path.priceUsd * (l.faceUsd / faceTotal);
+        var sharePrice = Math.min(path.priceUsd, path.priceUsd * (l.faceUsd / faceTotal) * l.setOf);   // a set member pays the whole set's share, never more than the price
         var whole = l.qty / path.priceUsd;
         var share = sharePrice > 0 ? l.qty / sharePrice : null;
         var item = items[key] || {};
@@ -1137,7 +1159,7 @@
         if (l.excluded) return;
         if (!l.key) { blocked = true; return; }
         var it = items[l.key];
-        if (l.value != null) { valuedUsd += toUsd(l.faceValue == null ? l.value : l.faceValue, meta); return; }
+        if (l.value != null) { valuedUsd += shareFace(l, meta); return; }   // a set is subtracted once, not once per type
         if (l.thin || !it || it.derivedFrom || it.excludeFromValue) { blocked = true; return; }
         if (cats && cats.indexOf(it.category || 'other') === -1) { blocked = true; return; }
         if (!(l.qty > 0)) { blocked = true; return; }
@@ -1199,10 +1221,10 @@
       path.lines.forEach(function (l) {
         if (!l.excluded && (!l.key || l.qty == null)) hasUnknown = true;   // an unknown item, or an unreadable count, takes an unknown share of the price
         if (!l.key || l.excluded || !(l.qty > 0)) return;
-        var a = byKey[l.key] || (byKey[l.key] = { qty: 0, face: 0, valued: true });
+        var a = byKey[l.key] || (byKey[l.key] = { qty: 0, face: 0, valued: true, setOf: setSize(l) });
         if (!byKey[l.key].seen) { order.push(l.key); byKey[l.key].seen = true; }
         a.qty += l.qty;
-        if (l.value != null && !l.thin) { var f = toUsd(l.faceValue == null ? l.value : l.faceValue, meta); a.face += f; faceTotal += f; }
+        if (l.value != null && !l.thin) { var f = shareFace(l, meta); a.face += f; faceTotal += f; }
         else a.valued = false;
       });
       var allValued = !hasUnknown && order.every(function (k) { return byKey[k].valued; });
@@ -1211,7 +1233,7 @@
         var e = acc[k] || (acc[k] = { whole: [], share: [], n: 0 });
         e.n += 1;
         e.whole.push(a.qty / path.priceUsd);
-        if (allValued && faceTotal > 0 && a.face > 0) e.share.push(a.qty / (path.priceUsd * a.face / faceTotal));
+        if (allValued && faceTotal > 0 && a.face > 0) e.share.push(a.qty / Math.min(path.priceUsd, path.priceUsd * (a.face / faceTotal) * a.setOf));   // a set member pays the whole set's share, never more than the price
       });
     });
     var day = {};

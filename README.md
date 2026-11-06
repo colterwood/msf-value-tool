@@ -182,6 +182,19 @@ This follows the msfwar Spender's Guide as it described itself on 17 October 202
 - **Not counted.** Milestone points and Strike Points are listed but excluded, as on msfwar.
   Points of an event the table does not list yet are read as points from their name ("Feast of
   Shadows Milestone Points"), so a new event does not make every offer incomplete.
+- **Sets.** Some items are only ever sold together, so msfwar's average for each one counts the
+  price of the whole set: the five stat crystals of a class and tier (Armor, Damage, Focus,
+  Health, Resist), T3 Level 4 and Level 5 Ions, Raid Health Packs and Raid Energy Refills. The
+  sign is identical msfwar signatures (the same observation count, often the same per-dollar
+  figure) and no offer that sells one without the others. Those rows carry `setOf` (5 or 2) and
+  each counts one share of its msfwar face value, so a set offer is rated once rather than once
+  per type; the per-item "vs typical" column and the msfwar-style score keep msfwar's own basis,
+  and the price-share figures in Best buys and the price history charge a set member the whole
+  set's share. A value typed on a set row, or priced from your store, is that type's own value and
+  counts in full. Unlock Special: T3 Crystal Max reads 0.37× this way, where adding the five faces
+  said 1.83×; Raid Warzone: Raid Boost reads 1.0× rather than 2.0×. Items msfwar saw together
+  but that the store also sells apart or in varying combinations (T1 and T2 Ability Material,
+  shard combos, a character's awakened materials) keep `setOf` 1 and still add their faces.
 - **Incomplete.** The flag means part of the offer could not be priced, so the value shown is a
   floor: items msfwar has no baseline for are listed as unpriced, a count the card did not show
   is listed as unreadable, an item the table does not know at all is listed as unknown, and a
