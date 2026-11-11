@@ -1,0 +1,11 @@
+{
+  "name": "msf-value-tool",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local Marvel Strike Force store offer valuation tool",
+  "scripts": {
+    "test": "node --test",
+    "serve": "npx --yes serve -l 8765 ."
+  },
+  "license": "MIT"
+}
