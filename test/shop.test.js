@@ -4,7 +4,7 @@ const assert = require('node:assert/strict');
 const E = require('../engine.js');
 
 const table = {
-  meta: { unit: 'USD', unitPerUsd: 1, fxToUsd: { USD: 1 },
+  meta: { unit: 'USD', unitPerUsd: 1, fxToUsd: { USD: 1 }, valueMultipliers: { orb: 0.2 },   // this fixture discounts orbs; the engine itself discounts nothing
     grades: [{ min: 2.5, label: 'A' }, { min: 1.75, label: 'B' }, { min: 1.25, label: 'C' }, { min: 1, label: 'D' }, { min: 0, label: 'F' }] },
   items: {
     'gold': { name: 'Gold', category: 'currency', per: 1000000, value: 1, observed: { perUsd: 1000000, observations: 50 } },
@@ -42,7 +42,7 @@ test('items map to the shopping buckets', () => {
   assert.ok(Object.keys(table.items).every((k) => E.shopBucket(table.items[k], k) !== 'all'));   // 'all' is a view, never an item's bucket
 });
 
-test('orbs count a fraction of face value, by default 20%, editable in meta.valueMultipliers', () => {
+test('a category counts a fraction of face value only when meta.valueMultipliers says so', () => {
   const r = E.valueOffer({ price: 10, contents: [{ item: 'Premium Orb Fragments', qty: 10000 }] }, table);  // face $20
   assert.equal(r.totalUsd, 4);
   assert.equal(r.lines[0].categoryMultiplier, 0.2);
@@ -52,6 +52,13 @@ test('orbs count a fraction of face value, by default 20%, editable in meta.valu
   const full = JSON.parse(JSON.stringify(table)); full.meta.valueMultipliers = { orb: 1 };
   assert.equal(E.valueOffer({ price: 10, contents: [{ item: 'Premium Orb Fragments', qty: 10000 }] }, full).totalUsd, 20);
   assert.equal(E.valueMultiplier(table.items['gold'], table.meta), 1);
+  // with no multipliers in the table nothing is discounted: an orb counts what it usually costs
+  const plain = JSON.parse(JSON.stringify(table)); delete plain.meta.valueMultipliers;
+  const pr = E.valueOffer({ price: 10, contents: [{ item: 'Premium Orb Fragments', qty: 10000 }] }, plain);
+  assert.equal(pr.totalUsd, 20);
+  assert.equal(pr.lines[0].categoryMultiplier, 1);
+  assert.equal(pr.lines[0].note, null);
+  assert.deepEqual(E.DEFAULT_VALUE_MULTIPLIERS, {});
 });
 
 test('shopBy lists offers containing the bucket with the bucket value and the whole-offer value', () => {

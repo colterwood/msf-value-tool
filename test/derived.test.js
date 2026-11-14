@@ -9,7 +9,7 @@ const table = {
   items: {
     'gold': { name: 'Gold', category: 'currency', per: 1000000, value: 1, observed: { perUsd: 1000000, observations: 50 } },
     'training_module:l4': { name: 'L4 Training Module', category: 'training', per: 100, value: 1, xp: 1600, observed: { perUsd: 100, observations: 40 } },
-    'training_module:l3': { name: 'L3 Training Module', category: 'training', per: 1, value: null, xp: 800, derivedFrom: { key: 'training_module:l4', ratio: 0.5, basis: 'XP' }, observed: { perUsd: null, note: 'not on msfwar' } },
+    'training_module:l3': { name: 'L3 Training Module', category: 'training', per: 1, value: null, xp: 800, derivedFrom: { key: 'training_module:l4', ratio: 0.5, basis: 'XP' }, observed: { perUsd: null, note: 'no offers of its own' } },
     'training_module:l1': { name: 'L1 Training Module', category: 'training', per: 1, value: null, xp: 50, derivedFrom: { key: 'training_module:l4', ratio: 0.03125, basis: 'XP' }, observed: { perUsd: null } },
     'training_module:l2': { name: 'L2 Training Module', category: 'training', per: 1, value: 0.001, xp: 200, derivedFrom: { key: 'training_module:l4', ratio: 0.125, basis: 'XP' }, observed: { perUsd: 1000, observations: 9 } },
     'training_module:lx': { name: 'LX Training Module', category: 'training', per: 10, value: null, derivedFrom: { key: 'training_module:l4', ratio: 0.125 }, observed: { perUsd: null } },

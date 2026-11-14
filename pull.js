@@ -1,17 +1,36 @@
 /*
  * Grab the live offers from the logged-in web store without a Claude session.
  *
- * extractStore(normalize) runs on https://marvelstrikeforce.com/en/store as a bookmarklet: it
- * scrolls every lazily rendered offer card into view, reads each card, hands the raw result to
- * `normalize`, copies the JSON to the clipboard and shows it in a box on the page. The My store
- * tab's "Import pasted offers" button takes that JSON.
+ * extractStore(normalize) runs on https://marvelstrikeforce.com/en/store as a bookmarklet. The
+ * page keeps every offer, with its complete contents and the store's resource ids, in its own
+ * state (a Vuex store), so that is read first: at once, with nothing scrolled or clicked. If the
+ * state is not there, it falls back to the cards: it scrolls every lazily rendered offer card
+ * into view and reads each card (which shows five items and "+N More"). Either way the raw
+ * result goes to `normalize`, the JSON is copied to the clipboard and shown in a box on the
+ * page. The My store tab's "Import pasted offers" button takes that JSON.
  *
- * normalizeExtract(raw) is pure and turns what the store page shows (card text, "x3.6M" counts,
- * "CA$6.99" prices) into the data/offers.js shape. It is also what the playbook's Python did
- * on the first pull, ported here so the page and the bookmarklet share one definition.
+ * normalizeExtract(raw) is pure and turns either raw result (the packed state, `source: 'state'`;
+ * or what the cards show: card text, "x3.6M" counts, "CA$6.99" prices) into the data/offers.js
+ * shape. It is also what the playbook's Python did on the first pull, ported here so the page
+ * and the bookmarklet share one definition.
  *
  * bookmarkletHref() builds the javascript: URL from the two functions above, which is why both
- * must be self-contained: they may use only their own parameters and the browser.
+ * must be self-contained: they may use only their own parameters and the browser. Their comments
+ * travel in that URL too, so the longer notes live up here.
+ *
+ * The raw state extract (what extractStore packs from the page's Vuex state `offers` module and
+ * normalizeExtract reads when `source` is 'state'):
+ *   { readAt, account, source: 'state', offers: [offer], chains: { <chain id>: [offer] } }
+ *   offer  { id, name, description, locations: ['web_standard', ...], category: 'ID_OCAT_EVENTS',
+ *            expiration: <epoch seconds>, remainingPurchases, previouslyPurchased,
+ *            chain: { id, index } (chain steps only), choices: [choice] }
+ *   choice { id, rewards: [line], webRewards: [line], webRealCostRewards: [line],
+ *            realCost: { amount: '129.99', currency: 'CAD' } | null,
+ *            itemCost: { id: 'UC' | 'BFYB-CUR' | ..., name, quantity: '1,000' } | null,
+ *            unread: ['rewards.oneOf'] (only when the page gives rewards outside `allOf`) }
+ *   line   { id: 'SHARD_WASPJANET', name: 'Wasp (Janet)', quantity: '7.5M' }
+ * Names and quantities are the page's own strings (a name may be null); `chains` holds, per
+ * chain, the steps still to buy in order, and the same steps also sit in `offers`, as on the page.
  *
  * Loaded by the page as window.MSFPull and by Node tests via module.exports.
  */
@@ -32,13 +51,115 @@
     var all = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
     var busy = function () { return all('.offer-card[aria-busy="true"]'); };
 
+    // The state route: the page's Vuex state holds every offer with all of its contents, where a
+    // card shows five items and "+N More". Only read and packed here (ids, names, counts and
+    // prices; no icons or art): nothing is scrolled, clicked or typed. Null when it is not there.
+    function readState() {
+      var app = document.querySelector('#app');
+      var vm = app && app.__vue__;
+      var st = vm && vm.$store && vm.$store.state && vm.$store.state.offers;
+      if (!st || !Array.isArray(st.offers) || !st.offers.length) return null;
+      var str = function (v) { return v == null ? null : String(v); };
+      var num = function (v) { return v == null || v === '' || isNaN(Number(v)) ? null : Number(v); };
+      var lines = function (group) {
+        return (group && Array.isArray(group.allOf) ? group.allOf : []).filter(function (r) { return r && r.item && (r.item.id != null || r.item.name != null); }).map(function (r) {
+          return { id: str(r.item.id), name: str(r.item.name), quantity: str(r.quantity) };
+        });
+      };
+      var packChoice = function (c) {
+        c = c || {};
+        var out = { id: c.id == null ? null : c.id, rewards: lines(c.rewards), webRewards: lines(c.webRewards), webRealCostRewards: lines(c.webRealCostRewards), realCost: null, itemCost: null };
+        if (c.realCost && c.realCost.amount != null) out.realCost = { amount: String(c.realCost.amount), currency: str(c.realCost.currency) };
+        if (c.itemCost && c.itemCost.item) out.itemCost = { id: str(c.itemCost.item.id), name: str(c.itemCost.item.name), quantity: str(c.itemCost.quantity) };
+        // rewards given any other way than "all of these" (a pick-one group, a bare list, an entry
+        // that is itself a group) are not read: say so
+        var unread = [];
+        ['rewards', 'webRewards', 'webRealCostRewards'].forEach(function (k) {
+          var group = c[k];
+          if (Array.isArray(group)) { if (group.length) unread.push(k + ' (a list)'); return; }
+          if (!group || typeof group !== 'object') return;
+          Object.keys(group).forEach(function (g) { if (g !== 'allOf' && Array.isArray(group[g]) && group[g].length) unread.push(k + '.' + g); });
+          (Array.isArray(group.allOf) ? group.allOf : []).forEach(function (r) { if (!r || !r.item || (r.item.id == null && r.item.name == null)) unread.push(k + ' (an entry with no item)'); });
+        });
+        if (unread.length) out.unread = unread;
+        return out;
+      };
+      var packOffer = function (o) {
+        o = o || {};
+        var out = {
+          id: str(o.id), name: str(o.name), description: typeof o.description === 'string' ? o.description : null,
+          locations: Array.isArray(o.locations) ? o.locations.map(String) : [],
+          category: o.heading && o.heading.category != null ? String(o.heading.category) : null,
+          expiration: num(o.expiration), remainingPurchases: num(o.remainingPurchases), previouslyPurchased: !!o.previouslyPurchased,
+          choices: (Array.isArray(o.choices) ? o.choices : []).map(packChoice)
+        };
+        if (o.chain && o.chain.id != null) out.chain = { id: String(o.chain.id), index: num(o.chain.index) };
+        return out;
+      };
+      var chains = {};
+      var daisy = st.daisychainOffers;
+      if (daisy && typeof daisy === 'object') {
+        Object.keys(daisy).forEach(function (id) {
+          var steps = daisy[id] && Array.isArray(daisy[id].offers) ? daisy[id].offers : [];
+          if (steps.length) chains[id] = steps.map(packOffer);
+        });
+      }
+      return {
+        readAt: new Date().toISOString(),
+        account: txt(document.querySelector('a[href*="player/info"]')),
+        source: 'state',
+        offers: st.offers.map(packOffer),
+        chains: chains
+      };
+    }
+    var stateData = null;
+    try {
+      var packed = readState();
+      if (packed) stateData = normalize(packed);
+      // a state that yields no offer with anything in it is not a store read: fall back to the cards
+      if (!stateData || !stateData.offers || !stateData.offers.some(function (o) { return o.contents && o.contents.length; })) stateData = null;
+    } catch (e) { stateData = null; }   // anything unexpected in the state: read the cards instead
+
     var box = document.createElement('div');
     box.style.cssText = 'position:fixed;top:12px;right:12px;z-index:2147483647;background:#14161c;color:#fff;padding:12px 16px;font:14px/1.4 system-ui,sans-serif;border-radius:8px;max-width:420px;box-shadow:0 4px 24px rgba(0,0,0,.5)';
     var line = document.createElement('div');
-    line.textContent = 'MSF Store Value: rendering offer cards, this takes a minute or two.';
+    line.textContent = 'MSF Store Value: the page\'s own offer data was not found, so the offer cards are being read instead. This takes a minute or two, scrolls the page, and previews each chain step by clicking its step number. Nothing is bought.';
     box.appendChild(line);
     document.body.appendChild(box);
 
+    // Show what was read: the count line, the JSON in a text box with Copy and Close, and a
+    // clipboard write where the browser allows one. `how` is appended to the count.
+    function show(data, how) {
+      var json = JSON.stringify(data, null, 1);
+      line.textContent = 'MSF Store Value: ' + data.offers.length + ' offers read' + how + '. Copy the box below, then paste it on the My store tab and click Import.';
+      var ta = document.createElement('textarea');
+      ta.value = json;
+      ta.style.cssText = 'display:block;width:100%;height:160px;margin-top:10px;font:12px monospace;color:#000;background:#fff';
+      var bar = document.createElement('div');
+      bar.style.cssText = 'margin-top:8px;display:flex;gap:8px';
+      var copy = document.createElement('button');
+      copy.textContent = 'Copy';
+      copy.style.cssText = 'padding:6px 12px;font:14px system-ui';
+      copy.onclick = function () { ta.select(); try { document.execCommand('copy'); } catch (e) { /* nothing */ } copy.textContent = 'Copied'; };
+      var close = document.createElement('button');
+      close.textContent = 'Close';
+      close.style.cssText = 'padding:6px 12px;font:14px system-ui';
+      close.onclick = function () { box.remove(); };
+      bar.appendChild(copy);
+      bar.appendChild(close);
+      box.appendChild(ta);
+      box.appendChild(bar);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(json).then(function () { copy.textContent = 'Copied'; }, function () { /* the box is still there */ });
+      }
+    }
+
+    if (stateData) {
+      var noted = stateData.offers.filter(function (o) { return !!o.notes && !/^free claim$/.test(o.notes); }).length;
+      return show(stateData, ' from the page\'s own offer data' + (noted ? '; ' + noted + ' of them could not be read completely and say so in their notes' : ', every item included'));
+    }
+
+    // The card route, when the state is not there.
     // The store renders a card only while it sits in the viewport, so bring each unrendered card
     // into view (instantly, not smoothly, so the pause lands with the card in place), pause, and
     // repeat the pass while the count of unrendered cards keeps falling.
@@ -160,30 +281,8 @@
     }
 
     return render().then(readChains).then(function () {
-      var raw = readCards();
-      var data = normalize(raw);
-      var json = JSON.stringify(data, null, 1);
-      line.textContent = 'MSF Store Value: ' + data.offers.length + ' offers read' + (busy().length ? ' (' + busy().length + ' cards never rendered)' : '') + '. Copy the box below, then paste it on the My store tab and click Import.';
-      var ta = document.createElement('textarea');
-      ta.value = json;
-      ta.style.cssText = 'display:block;width:100%;height:160px;margin-top:10px;font:12px monospace;color:#000;background:#fff';
-      var bar = document.createElement('div');
-      bar.style.cssText = 'margin-top:8px;display:flex;gap:8px';
-      var copy = document.createElement('button');
-      copy.textContent = 'Copy';
-      copy.style.cssText = 'padding:6px 12px;font:14px system-ui';
-      copy.onclick = function () { ta.select(); try { document.execCommand('copy'); } catch (e) { /* nothing */ } copy.textContent = 'Copied'; };
-      var close = document.createElement('button');
-      close.textContent = 'Close';
-      close.style.cssText = 'padding:6px 12px;font:14px system-ui';
-      close.onclick = function () { box.remove(); };
-      bar.appendChild(copy);
-      bar.appendChild(close);
-      box.appendChild(ta);
-      box.appendChild(bar);
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        return navigator.clipboard.writeText(json).then(function () { copy.textContent = 'Copied'; }, function () { /* the box is still there */ });
-      }
+      var data = normalize(readCards());
+      return show(data, busy().length ? ' (' + busy().length + ' cards never rendered)' : '');
     });
   }
 
@@ -235,7 +334,205 @@
       });
       return contents;
     };
-    (raw.offers || []).forEach(function (o) {
+
+    // The state route: raw.offers and raw.chains were packed by extractStore from the page's own
+    // offer data (the shape is at the top of pull.js), so every line of every offer is there.
+    var fromState = !!raw && raw.source === 'state';
+    var stateOffers = function () {
+      var clean = function (s) { return s == null ? '' : String(s).replace(/\s+/g, ' ').trim(); };   // \s takes non-breaking spaces too
+      var parseQty = function (s) {
+        var m = String(s == null ? '' : s).replace(/\s+/g, '').match(/^x?(\d[\d,]*\.?\d*|\.\d+)([KMB]?)$/i);
+        if (!m) return null;
+        var v = parseFloat(m[1].replace(/,/g, '')) * { '': 1, K: 1e3, M: 1e6, B: 1e9 }[m[2].toUpperCase()];
+        return Math.abs(v - Math.round(v)) < 1e-6 ? Math.round(v) : v;
+      };
+      // "15d 4h", "4h 12m", "12m 30s", as the cards show it: the time from the read to the expiry.
+      var readAt = Date.parse(raw.readAt);
+      var timeLeft = function (expiration) {
+        var end = Number(expiration);
+        if (expiration == null || !(end > 0) || isNaN(readAt)) return null;
+        if (end > 1e11) end = end / 1000;                       // milliseconds rather than seconds
+        var s = Math.floor(end - readAt / 1000);
+        if (s <= 0) return null;
+        var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
+        return d ? d + 'd ' + h + 'h' : h ? h + 'h ' + m + 'm' : m + 'm ' + (s % 60) + 's';
+      };
+      // The store names a shard or a promotion line with the character alone; the id says which.
+      var lineName = function (r) {
+        var id = r.id == null ? '' : String(r.id);
+        var nm = clean(r.name);
+        var m;
+        if (!nm) return id;
+        if (/^SHARD_/.test(id)) return /\bshards?$/i.test(nm) ? nm : nm + ' shards';
+        if ((m = id.match(/^RS_.+_(\d+)$/))) return nm + ' \u2014 ' + m[1] + ' red star promotion';
+        if ((m = id.match(/^PD_.+_(\d+)$/))) return nm + ' \u2014 ' + m[1] + ' diamond promotion';
+        return nm;
+      };
+      var readLines = function (list, webBonus, contents, notes) {
+        (list || []).forEach(function (r) {
+          r = r || {};
+          var item = lineName(r);
+          if (!item) {
+            if (r.quantity != null) notes.push('item with no name (qty ' + r.quantity + ')');
+            return;
+          }
+          var qty = parseQty(r.quantity);
+          var row = { item: item, id: r.id == null ? null : String(r.id), qty: qty };
+          if (webBonus) row.webBonus = true;
+          if (qty == null) notes.push('qty unreadable for ' + item);
+          contents.push(row);
+        });
+      };
+      // One choice of an offer: everything it gives and what it costs. Money first; an offer sold
+      // only for an item (Strike Points in the Strike Store) is priced in that item; the Ultra
+      // Core price beside a money price is only recorded.
+      var readChoice = function (c) {
+        c = c || {};
+        var notes = [];
+        var contents = [];
+        readLines(c.rewards, false, contents, notes);
+        readLines(c.webRewards, true, contents, notes);
+        readLines(c.webRealCostRewards, true, contents, notes);
+        if (c.unread && c.unread.length) notes.push('rewards not read: ' + c.unread.join(', '));
+        var out = { price: null, currency: null, paidWith: null, ultraCores: null, contents: contents, notes: notes, empty: false };
+        var amount = c.realCost && c.realCost.amount != null ? String(c.realCost.amount).replace(/,/g, '').trim() : '';
+        var money = amount === '' ? null : Number(amount);
+        var cost = c.itemCost && (c.itemCost.id != null || c.itemCost.name != null) ? c.itemCost : null;
+        var costQty = cost ? parseQty(cost.quantity) : null;
+        if (cost && cost.id === 'UC' && costQty > 0) out.ultraCores = costQty;
+        if (money != null && isNaN(money)) notes.push('price unreadable: ' + c.realCost.amount);
+        else if (money > 0) { out.price = money; out.currency = c.realCost.currency || null; }
+        else if (cost && costQty !== 0) {
+          out.price = costQty;
+          out.currency = out.paidWith = cost.id === 'BFYB-CUR' ? 'Strike Points' : cost.id === 'UC' ? 'Ultra Cores' : clean(cost.name) || String(cost.id);
+          if (costQty == null) notes.push('price unreadable: ' + cost.quantity);
+        } else {
+          out.empty = !contents.length && !notes.length;   // no price and nothing in it: not an offer
+          notes.push('free claim');
+        }
+        return out;
+      };
+      var sectionOf = function (o) {
+        var locations = (o.locations || []).map(String);
+        var at = function (prefix) { return locations.some(function (l) { return l.indexOf(prefix) === 0; }); };
+        if (at('power_cores')) return 'Power Cores';
+        if (at('ultra_cores')) return 'Ultra Cores';
+        if (at('bfyb')) return 'STRIKE STORE';
+        if (at('web_battlepass')) return 'battle pass and s.t.r.i.k.e pass offers';
+        if (at('web_timeheist')) return 'Time Heist';
+        var category = String(o.category || '').replace(/^ID_OCAT_/, '').replace(/_/g, ' ').trim();
+        if (category === 'CHARACTER UNLOCK') category = 'UNLOCKED OFFERS';   // the heading the page shows
+        return category ? 'Offers / ' + category : 'Offers';
+      };
+      var entryOf = function (o, name, section, ch, chain) {
+        var left = o.remainingPurchases == null || o.remainingPurchases === '' ? NaN : Number(o.remainingPurchases);
+        var entry = {
+          name: name, price: ch.price, currency: ch.currency,
+          purchaseLimit: isNaN(left) ? null : left, expires: timeLeft(o.expiration),
+          section: section, sections: [section], contents: ch.contents
+        };
+        if (o.previouslyPurchased) entry.boughtBefore = true;
+        if (chain) entry.chain = chain;
+        if (ch.paidWith) entry.paidWith = ch.paidWith;
+        if (ch.ultraCores != null) entry.ultraCores = ch.ultraCores;
+        if (clean(o.description)) entry.description = clean(o.description);
+        if (ch.notes.length) entry.notes = ch.notes.join('; ');
+        return entry;
+      };
+      var plain = function (o) {
+        var choices = o.choices || [];
+        var title = clean(o.name);
+        var section = choices.length > 1 ? 'dual offers' : sectionOf(o);
+        if (!choices.length) {
+          var bare = entryOf(o, title || '(untitled)', section, { price: null, currency: null, contents: [], notes: ['no purchase option could be read for this offer'] });
+          offers.push(bare);
+          return;
+        }
+        choices.forEach(function (c, ci) {
+          var ch = readChoice(c);
+          if (ch.empty) return;
+          var sig = [title, ch.price, ch.currency, JSON.stringify(ch.contents.map(function (x) { return [x.id, x.item, x.qty]; }))].join('|');
+          var entry = entryOf(o, (title || '(untitled)') + (choices.length > 1 ? ' (option ' + (ci + 1) + ')' : ''), section, ch);
+          if (seen[sig]) { seen[sig].sections = seen[sig].sections.concat(entry.sections); if (entry.boughtBefore) seen[sig].boughtBefore = true; return; }
+          seen[sig] = entry;
+          offers.push(entry);
+        });
+      };
+
+      // Chains. raw.chains lists the steps of each chain that are still to buy, in order; the same
+      // steps sit in raw.offers too, where they are skipped. A step's number and the chain's
+      // length come from the counter in its name: "(1/7) Savage Leader", "Cores Pack (2/5)".
+      var counter = function (name) {
+        var m = String(name || '').match(/^\s*\((\d+)\s*\/\s*(\d+)\)/) || String(name || '').match(/\((\d+)\s*\/\s*(\d+)\)\s*$/);
+        return m ? { step: parseInt(m[1], 10), of: parseInt(m[2], 10) } : null;
+      };
+      var groups = {};    // '#' + chain id -> { steps: [{ offer, listed }], has: {}, done }
+      var owner = {};     // '#' + offer id -> chain id, for the steps raw.chains lists
+      var join = function (chainId, o, listed) {
+        var g = groups['#' + chainId] || (groups['#' + chainId] = { steps: [], has: {}, done: false });
+        var key = o.id != null ? 'id:' + o.id : 'name:' + o.name;
+        if (g.has[key]) return;
+        g.has[key] = true;
+        g.steps.push({ offer: o, listed: listed });
+        if (listed && o.id != null) owner['#' + o.id] = chainId;
+      };
+      var chainOf = function (o) {
+        if (o.id != null && owner['#' + o.id] != null) return owner['#' + o.id];
+        return o.chain && o.chain.id != null ? String(o.chain.id) : null;
+      };
+      var emitChain = function (chainId) {
+        var g = groups['#' + chainId];
+        if (!g || g.done) return;
+        g.done = true;
+        var used = {};
+        var last = 0;
+        var total = 0;
+        var steps = g.steps.map(function (s) {
+          var o = s.offer;
+          var c = counter(o.name);
+          var index = o.chain ? Number(o.chain.index) : NaN;
+          var n = c ? c.step : (index >= 1 && !used[index] ? index : last + 1);
+          used[n] = true;
+          last = n;
+          total = Math.max(total, n, c ? c.of : 0);
+          var ch = readChoice((o.choices || [])[0]);
+          if ((o.choices || []).length > 1) ch.notes.push((o.choices.length - 1) + ' more option(s) on this step not read');
+          return { offer: o, listed: s.listed, step: n, title: stripCounter(clean(o.name)), choice: ch };
+        });
+        steps.sort(function (a, b) { return a.step - b.step; });
+        // the first step the store still lists is the current one: the first not bought yet
+        var lead = steps.filter(function (s) { return s.listed; })[0] || steps[0];
+        var leadIndex = lead.offer.chain ? Number(lead.offer.chain.index) : NaN;
+        var current = leadIndex >= 1 ? leadIndex : lead.step;
+        var baseName = lead.title || 'Chain';
+        steps.forEach(function (s) { s.name = s.title || (baseName + ' step ' + s.step); });
+        var packed = steps.map(function (s) {
+          var y = { step: s.step, name: s.name, price: s.choice.price, currency: s.choice.currency, contents: s.choice.contents };
+          if (s.choice.ultraCores != null) y.ultraCores = s.choice.ultraCores;   // the same step paid in Ultra Cores
+          if (s.choice.notes.length) y.notes = s.choice.notes.join('; ');
+          return y;
+        });
+        steps.forEach(function (s) {
+          offers.push(entryOf(s.offer, s.name + ' (step ' + s.step + ' of ' + total + ')', 'Chain Offers', s.choice, { name: baseName, step: s.step, of: total, current: current, steps: packed }));
+        });
+      };
+      var chains = raw.chains || {};
+      Object.keys(chains).forEach(function (chainId) {
+        (Array.isArray(chains[chainId]) ? chains[chainId] : []).forEach(function (o) { if (o) join(chainId, o, true); });
+      });
+      var list = (raw.offers || []).filter(Boolean);
+      list.forEach(function (o) { var chainId = chainOf(o); if (chainId != null) join(chainId, o, false); });
+      list.forEach(function (o) {
+        var chainId = chainOf(o);
+        if (chainId != null) emitChain(chainId);
+        else plain(o);
+      });
+      Object.keys(chains).forEach(emitChain);   // a chain the offer list does not repeat
+    };
+    if (fromState) stateOffers();
+
+    // The card route (skipped for a state read).
+    (fromState ? [] : raw.offers || []).forEach(function (o) {
       if (o.section === 'Power Cores' || o.section === 'Ultra Cores') return;
       var section = o.section + (o.sub ? ' / ' + o.sub : '');
       if (o.chainSteps && o.chainSteps.length > 1) {
@@ -295,7 +592,7 @@
         offers.push(entry);
       });
     });
-    (raw.cores || []).forEach(function (c) {
+    (fromState ? [] : raw.cores || []).forEach(function (c) {
       var pp = parsePrice({ text: c.price, costCurrency: 'fiat' });
       var item = c.name.indexOf(' of ') !== -1 ? c.name.split(' of ').pop() : c.name;
       var contents = [{ item: item, qty: parseCount(c.count) }];
@@ -313,25 +610,45 @@
     return {
       updated: raw.readAt || new Date().toISOString(),
       source: 'web-store',
-      bookmarklet: '2026-10-24',   // the version of this code; the page compares it with BOOKMARKLET_VERSION on import
+      bookmarklet: '2026-11-14',   // the version of this code; the page compares it with BOOKMARKLET_VERSION on import
       account: raw.account || null,
       priceCurrency: priceCurrency,
-      note: 'Read from the logged-in web store with the MSF Store Value bookmarklet. Cards that show "+N More" hide part of their contents; those offers carry a notes field and grade as incomplete.',
+      note: fromState
+        ? 'Read from the logged-in web store with the MSF Store Value bookmarklet, from the page\'s own offer data: every offer lists all of its contents (nothing is hidden behind "+N More"), and each line carries the store\'s resource id.'
+        : 'Read from the logged-in web store with the MSF Store Value bookmarklet. Cards that show "+N More" hide part of their contents; those offers carry a notes field and grade as incomplete.',
       offers: offers
     };
   }
 
   /** Bump together with the `bookmarklet` stamp in normalizeExtract whenever the bookmarklet's behaviour changes. */
-  var BOOKMARKLET_VERSION = '2026-10-24';
+  var BOOKMARKLET_VERSION = '2026-11-14';
 
   function bookmarkletHref() {
     var src = '(' + extractStore.toString() + ')(' + normalizeExtract.toString() + ')';
     return 'javascript:' + encodeURIComponent(src);
   }
 
+  /**
+   * For a Claude session driving Chrome: the state-reading part of extractStore on its own, as a
+   * short snippet to run on the store page. It only reads: the packed raw extract is left on
+   * window.__msfRaw as JSON (move it out through the console in chunks, then give it to
+   * normalizeExtract or tools/save-store.js) and a small summary is returned, null when the page
+   * state is not there. Cut from extractStore's own source so the two cannot drift apart.
+   */
+  function stateSnippet() {
+    var src = extractStore.toString();
+    var a = src.indexOf('function readState()');
+    var b = src.indexOf('var stateData = null;');
+    if (a === -1 || b === -1 || b < a) throw new Error('readState was not found in extractStore');
+    return '(function () { var txt = function (el) { return el ? el.textContent.replace(/\\s+/g, " ").trim() : ""; }; ' + src.slice(a, b) +
+      ' var raw = readState(); window.__msfRaw = raw ? JSON.stringify(raw) : null;' +
+      ' return raw ? { offers: raw.offers.length, chains: Object.keys(raw.chains).length, chars: window.__msfRaw.length, readAt: raw.readAt } : null; })()';
+  }
+
   return {
     extractStore: extractStore,
     normalizeExtract: normalizeExtract,
+    stateSnippet: stateSnippet,
     bookmarkletHref: bookmarkletHref, BOOKMARKLET_VERSION: BOOKMARKLET_VERSION
   };
 });

@@ -1,252 +1,178 @@
 # MSF Store Value
 
-A local tool for valuing Marvel Strike Force store offers, in the spirit of the
-[msfwar Spenders Guide](https://www.msfwar.com/spenders-guide/) but run against your own store
-and your own roster.
+A local tool that values the offers in one player's Marvel Strike Force web store: account
+CZARFACE, Canadian store, prices in CA$. It is a static page (`index.html` and `app.js` over
+`engine.js`) plus a few Node tools. Every price comes from the player's own reads of that store,
+kept in `data/reads.json`. There is no outside source, and no tool touches the network.
 
-It does two things:
-
-- **Value an offer you type in.** Enter the price and the contents; it returns the value per US
-  dollar with a grade, an msfwar-style letter, and a per-item breakdown.
-- **Rank the offers live in your store.** Your logged-in web store is read into
-  `data/offers.js` (bookmarklet or a desktop Claude session); the "My store" tab ranks the
-  offers best first and, with "Personalize" on, by what each is worth to *your* plan: the
-  characters you build and the resources you are short of.
-- **Shop by resource.** Pick All for every offer, or gold, Power Cores, Ultra Cores, training materials, character upgrades, ability materials,
-  event points, ISO-8, gear, orbs or everything else, and see every offer that contains it with
-  two numbers: what that resource alone is worth against the whole price, and what the whole
-  offer is worth. Each row also says how it compares with the best offer for that resource in
-  your store today (best 100, half the value per US$ 50), the way msfwar's resource view does,
-  while the grade still compares it with msfwar's historical average.
-
-Everything runs in your browser from a folder on your machine. No server, no account, no install.
+It answers two questions: which offers are the best value, judged by what each item in them has
+cost before, and what is the best way to buy a given item. For every offer it gives the value of
+the offer as a whole and of each item in it, against the price in CA$ or in Ultra Cores.
 
 ## Status
 
-| Part | State |
+| Part | State on 14 November 2026 |
 | --- | --- |
-| Valuation engine and tests | Done. msfwar-style scoring, currency conversion and point exclusion added 18 October 2026 |
-| Local page: offer entry, store ranking, value table editor, roster | Done |
-| msfwar item values in `data/values.js` | **Loaded 18 October 2026**: 181 of 390 items carry msfwar's observed average; L1 to L3 training modules are priced from L4 by XP; 36 gear items are priced from the store offers of 18 and 24 October and 6 November by `tools/fill-from-store.js`; the rest are items msfwar had no baseline for (the remaining gear, most character shards, some orbs) and show as unpriced |
-| Live offers in `data/offers.js` | **Loaded 6 November 2026, 01:15 UTC**: 167 offers from every section of the web store (chain steps, dual-offer options and core packs each count once), prices in CA$ |
-| Roster in `data/roster.js` | **Loaded 18 October 2026**: all 389 characters (237 unlocked, 28 at 7 stars) from the roster stats table |
-| Price history in `data/history.js` | **Three days** (18 and 24 October and 6 November 2026); grows with each `tools/record-history.js` run |
-| In-game core prices (Value table "Cores in game") | **Empty**: the web store never prices resources in cores; type the in-game store prices in |
-| Plan in `data/personal.js` | **Loaded 18 October 2026**: the 50 characters on the MSF Sheet's "Characters I Will Build" tab, gold and L4 budgets from "Resource Budgeting", ability totals from "T4 Priority", ISO tiers from "ISO Priority", and 351 gear counts from the portal's Inventory page |
-| Playbook for pulling store, roster and msfwar values through Chrome | Done and run once; `.claude/skills/msf-store-pull/SKILL.md` records what worked |
+| Store reads | Four: 18 October, 24 October and 6 November (read from the offer cards) and 14 November (read from the page's own data) |
+| Latest read, `data/offers.js` | 14 November, 16:45 UTC: 155 offers with 688 lines, every line with the store's id. 148 offers are priced in CA$ and 7 in Strike Points |
+| Archive, `data/reads.json` | 405 offers: the money offers that were read completely, which is 131 of the 212 offers of the first read, then 89 of 120, 109 of 167 and 143 of 155. An offer on sale in several reads is kept once (40 were), so the four counts add up to more |
+| Value table, `data/values.js` | 406 rows. 248 have a usual price: 158 sold on their own and 90 only sold together. 247 of the 248 also have one in Ultra Cores, and 46 were first seen on 14 November. 145 rows have no price, 10 are points and 3 are training modules priced from L4 (the page counts the modules and leaves the points out: 251 of 396 items with prices) |
+| Ratings of the latest read | Per CA$: 143 offers rated, 5 A, 2 B, 7 C, 73 D and 56 F. Per Ultra Core: 138 rated, 5 A, 2 B, 6 C, 75 D and 50 F |
+| Price history, `data/history.js` | Four days, in both currencies |
 
-## Quick start
+What is thin:
 
-1. Clone or download this repository.
-2. Open `index.html` in Chrome (double-click it, or `npm run serve` and open http://localhost:8765).
-3. **My store** ranks the offers that were in your store at the last pull. Click a row for the
-   breakdown: which items counted, which were unknown or unpriced, which were left out.
-4. **Value an offer**: enter a price and the contents. Items the table does not know are flagged
-   with an "add" button; items without a value yet are flagged too.
-5. **Value table**: every item, its value and msfwar's observed average. Type in values as you
-   learn them. Edits are kept in the browser; "Export JSON" writes the merged table so you can
-   paste it into `data/values.js` as the new baseline.
+- Only four reads. Three days stand behind today's usual prices, and 117 of the 202 items priced
+  from those days were on sale on only one of them.
+- The 46 first-seen items rate about 1×, because the read being rated also set their price. 36 of
+  the 155 offers hold only such items, and 27 of those read exactly 1.00×.
+- 34 of the 155 offers hold something with no price of its own (or a pass tier), so their value
+  is a floor and they are marked incomplete.
+- The 7 Strike Store offers have no money price. They get a value per 1,000 Strike Points instead
+  of a rating, except one that holds nothing with a price.
 
-## Refreshing your store yourself
+## Using it
 
-The page cannot read the store on its own: offers exist only in your signed-in browser. The My
-store tab has a three-click refresh that needs no Claude session:
+Open `index.html` in a browser; double-clicking it is enough. No server, no account, nothing to
+install. The tools need Node.js. The page shows the latest read, and values an offer you type in
+yourself the same way:
 
-1. Once, and again whenever this tool is updated, drag the "MSF: grab my offers" link from the
-   My store tab to your bookmarks bar, replacing the old copy (an old copy reads less; the page
-   warns on import when the JSON came from one). It is a
-   bookmarklet built from `pull.js`.
-2. Open https://marvelstrikeforce.com/en/store signed in and click the bookmark. It scrolls every
-   offer card into view (the store renders them lazily, so this takes about two minutes for 150
-   cards; keep the tab in front, cards only render while visible), reads them, and copies the
-   offers as JSON, also showing them in a box on the page with a Copy button.
-3. Back on the My store tab, paste into the box and click "Import pasted offers". The ranking
-   updates at once and the browser remembers it. To keep it in the repo, paste the same JSON into
-   `data/offers.js`, or let a Claude session run `/msf-store-pull`.
+- The offers, best value first, each with its price, its value, value ÷ price and a grade.
+- Inside an offer, every line: the quantity, what it is worth at its usual price, and what the
+  offer is worth for that item alone.
+- A switch between CA$ and Ultra Cores, which rates everything again on the other price.
+- For one kind of item, every offer that carries it, best first. For every item, the offer that
+  sells it cheapest today, next to its usual price and the most an earlier read gave for the
+  money. Chain steps that need earlier steps first are left out there: they cannot be bought on
+  their own.
+- For every item, its price on each read day: the numbers its usual price is the middle of.
 
-The bookmarklet only reads the page. It never clicks Buy or touches a payment form.
+## Keeping it current
 
-## Pulling your store through Chrome
+Nothing updates by itself: a read starts in your signed-in browser.
 
-The pull needs a Claude Code session running on your computer with the Chrome integration,
-because the web store only shows offers to a logged-in browser and there is no public API.
-Claude opens its own tabs in your Chrome and shares your login state, so it sees what you see.
-Steps from the Claude Code docs (https://code.claude.com/docs/en/chrome):
+1. Once: drag the "MSF: grab my offers" link from the page to your bookmarks bar. Drag it again
+   whenever `pull.js` changes, because an old bookmark keeps running old code.
+2. Open https://marvelstrikeforce.com/en/store signed in and click the bookmark. It only reads: it
+   takes the page's own offer data at once (every offer, every item, the CA$ price and the Ultra
+   Core price) and copies it. If the page ever stops exposing that data, it falls back to reading
+   the offer cards, which is slow and misses the items a card hides behind "+N More".
+3. Double-click `update.cmd`, then reload `index.html`.
 
-1. Install the Claude in Chrome extension from the Chrome Web Store and sign it in to the same
-   claude.ai account as Claude Code. Needs a Pro, Max, Team or Enterprise plan. Not supported
-   inside WSL.
-2. Sign in to https://marvelstrikeforce.com in Chrome.
-3. Open this folder in the Claude Desktop app with Claude in Chrome connected, or in a terminal
-   in this folder run `claude --chrome` and confirm with `/chrome` that the extension is
-   detected (restart Chrome and run `/chrome` again if it is not).
-4. Ask it to run `/msf-store-pull`. The skill reads the store and the roster stats table,
-   refreshes msfwar's observed averages, writes the three data files, checks `index.html`,
-   runs the tests and commits. Approve the "Claude in Chrome wants to" prompts; allowing the
-   site for the session saves clicks.
-5. Reload `index.html`. The header shows how many items have values, how many offers loaded and
-   how many roster characters.
+`update.cmd` runs two commands, which also work by hand:
 
-The skill never clicks Buy or touches a payment form. It records what the store shows and flags
-anything it could not read rather than guessing.
+```
+node tools/save-store.js --clipboard --if-newer
+node tools/refresh.js
+```
 
-## How value is computed
+The first saves the copied read to `data/offers.js`, and keeps the file when the clipboard holds
+no newer read. The second adds that read to `data/reads.json`, creates rows for new resource ids,
+prices everything in both currencies, and rewrites `data/values.js` and `data/history.js`.
 
-This follows the msfwar Spender's Guide as it described itself on 17 October 2026.
+More reads make the yardstick better: each new read becomes the one being rated, and the one
+before it joins the days that usual prices come from. A Claude Code session on this computer with
+Claude in Chrome can do the read for you: ask it to run `/msf-store-pull`.
 
-- **Item values.** For each resource msfwar publishes an *observed average*: how many units one
-  US dollar bought across recent paid offers, for example 884,050 gold or 128 L4 Training
-  Modules per dollar. `data/values.js` stores that as `value` dollars for `per` units
-  (`value = per / observed.perUsd`) and keeps the observed number, the days and the count of
-  offer observations under `observed`. Fewer than seven observed days is marked `earlyEstimate`,
-  as on msfwar.
-- **Price in US dollars.** msfwar's averages are US prices before tax. This store shows CA$, so
-  `meta.fxToUsd` converts the price first (CAD 0.7138 on 18 September 2026, Federal Reserve H.10
-  via YCharts; edit it on the Value table tab when the rate moves).
-- **Price in in-game currency.** Strike Store offers are priced in Strike Points; such a price
-  converts through the value table's own entry for that currency (Strike Points at msfwar's
-  average, 100 per dollar) rather than being mistaken for dollars.
-- **Value per dollar is the score.** Offer value is the sum of counted items' dollar values at
-  the observed averages; divided by the US-dollar price it gives the value per dollar. 1× means
-  the offer is priced like msfwar's average web-store offer for the same things. With
-  Personalize on, items are first multiplied by what they are worth to your plan. This is what
-  the My store tab sorts by, and what "Best buys" is built on.
+## How an item is priced
 
-  Scoring chart (`meta.grades`, editable on the Value table tab):
+The rules are in `tools/market.js`. The evidence is `data/reads.json`: every offer of every read
+that was priced in CA$ and read completely.
 
-  | Grade | Value per US$ | Meaning |
-  | --- | --- | --- |
-  | A | 2.5× and up | the deals of the day |
-  | B | 1.75× to 2.5× | clearly better than the usual price |
-  | C | 1.25× to 1.75× | a bit better than usual |
-  | D | 1× to 1.25× | about the usual price |
-  | F | below 1× | worse than usual; wait |
+- **Sold on its own.** An item with offers of its own is priced by those alone. A read day's price
+  is the cheapest of them: the best way to buy it that day.
+- **Only sold together.** An offer in which nothing has ever been sold on its own, up to that day,
+  splits its price evenly, line by line: T3 Level 4 and Level 5 Ions, the pieces of a gear pack.
+- **Usual price.** The middle of the day prices over the read days before the read being rated.
+  Today's offers never set their own yardstick, so a sale reads as a sale.
+- **First seen.** An item with no earlier day price is priced by the rated read itself, the same
+  two ways, so it rates about 1× until there is a second read.
+- **No price of its own.** An item that only ever comes beside things sold on their own has no
+  price and is never guessed at: T1 to T3 ability materials next to T4, a promotion next to
+  shards. The offer is rated on the rest and marked incomplete.
+- **Priced together.** The stat crystals of a tier are one thing for pricing, whatever their
+  class and stat. L1 to L3 training modules are priced from L4 by XP.
+- **Not evidence.** A chain step that cannot be bought yet, and an offer holding a pass tier or a
+  Time Heist level, which the store does not itemize. Event points and Strike Points are never
+  counted.
 
-  The bands were set on 18 October 2026 so that the day's 50 fully valued offers spread
-  2 / 7 / 11 / 13 / 17 across A to F.
-- **Orbs are lottery tickets.** Orb and orb-fragment items count 20% of their face value at
-  msfwar's averages (`meta.valueMultipliers`, editable), so a bundle cannot look good on the
-  strength of a gamble.
-- **Chain offers.** A chain's later steps cannot be bought before the earlier ones. The
-  bookmarklet reads every step of each chain (the card's step selector previews them), and each
-  step becomes its own offer with the chain attached. By default every step is ranked, graded
-  and shopped on its own price and contents ("Chain steps: each step on its own" above the
-  list), and a step that needs earlier steps shows the whole path beside it: steps and prices
-  added together. Switch to "with the steps before it added in" to rank, grade and shop later
-  steps on that path instead; the breakdown always shows both readings. Steps already bought
-  are shown but not ranked, and a path with an unreadable price on any step is left unvalued.
-- **Cores in game.** Each offer also says how many Power Cores the same contents would cost in
-  the in-game store, from the "Cores in game" column of the Value table tab (Power Cores for
-  `per` units of each item; Power Cores themselves cost one each, points cannot be bought with
-  cores). Items without a core price leave the total marked partial. At `meta.powerCore` (CA$0.15
-  per core, editable on the Value table tab) the total is also shown in dollars and as a
-  multiple of the offer price, so you can see which route is cheaper. The web store never prices
-  resources in cores, so this column stays empty until the in-game prices are typed in.
-- **Gear and ISO-8 groups.** Under the Gear and ISO-8 chips, a second row splits the bucket:
-  Crimson Catalyst, Crimson Unique, Teal Catalyst, Teal Unique and Gear 16 to 21 Mini Unique;
-  T1 to T4 Level 1, 4 and 5 Ions and T2 to T4 Trait Crystals, where a trait is 81 of each of the
-  5 crystals (405) and each row prices that set. Groups are matched by name pattern or by an
-  explicit key list (`meta.shopGroups` in `data/values.js` replaces the defaults). The Mini
-  Unique groups have no items mapped yet: tell the tool which Crimson pieces belong to which
-  gear tier and they fill.
-- **Priced from your store.** Gear and ISO-8 items msfwar has no baseline for are priced from
-  your own offers by `node tools/fill-from-store.js`: the only unpriced item in a money-priced
-  offer takes the price left after the valued items, and several unpriced items of one category
-  split it evenly per unit (`observed.source` "store", with the method and the offers in the
-  note). Such items are valued without the thin-baseline guard and the breakdown says where the
-  number came from. An offer that is the only source of an item's price grades about 1× by
-  construction when its other items are counted at face value (an orb in it, counted at 20%,
-  pulls the grade under 1×); the value is for comparing other offers against it. Re-running
-  the tool after a pull prices those items again from the new offers. Values typed on the
-  Value table tab live in the browser and win on the page, but the tool cannot see them.
-- **Price history.** `node tools/record-history.js` records, for every item the store sells
-  that day, the units one US dollar bought: best and average counting the whole offer price, and
-  counting only the item's share of a bundle by value, into `data/history.js`. Importing pasted
-  offers records the same in the browser. The Value table tab shows each resource's days and how
-  its best rate moved.
-- **Training modules by XP.** L1, L2, L3 and L4 modules are worth 50, 200, 800 and 1,600 XP.
-  msfwar only lists L4, so the other levels are priced from it by XP (`derivedFrom` in
-  `data/values.js`, which also carries `xp`), inherit its baseline, and the breakdown says so.
-  Shop by resource shows training offers in XP per US$ so levels compare directly.
-- **Per item, "vs typical".** The breakdown also shows each item's own ratio: the units per
-  dollar this offer gives divided by that item's msfwar average, counting the whole price. It
-  tells you which part of a bundle is the bargain. msfwar's combined category score built from
-  those ratios (typical 70, capped at 100) is no longer shown: it judged every item as if it
-  were the whole offer, so a five-item bundle worth 1.8× its price scored an F while a plain
-  gold pack scored an A. The engine still computes it for anyone who wants it.
-- **Score per offer.** Items average within their category and categories combine by weight:
-  gold 30, training materials 30, orange (T4) ISO-8 20, character shards 15, everything else 5.
-  Only the categories present share the weighting, so extra item types cannot inflate a grade.
-  Letters: A at 90, B at 80, C at 70, D at 60, F below. msfwar states the A, B and C bands; D, F
-  and the clamp are this tool's reading of its description and can be edited in `meta.scoring`.
-- **Not counted.** Milestone points and Strike Points are listed but excluded, as on msfwar.
-  Points of an event the table does not list yet are read as points from their name ("Feast of
-  Shadows Milestone Points"), so a new event does not make every offer incomplete.
-- **Sets.** Some items are only ever sold together, so msfwar's average for each one counts the
-  price of the whole set: the five stat crystals of a class and tier (Armor, Damage, Focus,
-  Health, Resist), T3 Level 4 and Level 5 Ions, Raid Health Packs and Raid Energy Refills. The
-  sign is identical msfwar signatures (the same observation count, often the same per-dollar
-  figure) and no offer that sells one without the others. Those rows carry `setOf` (5 or 2) and
-  each counts one share of its msfwar face value, so a set offer is rated once rather than once
-  per type; the per-item "vs typical" column and the msfwar-style score keep msfwar's own basis,
-  and the price-share figures in Best buys and the price history charge a set member the whole
-  set's share. A value typed on a set row, or priced from your store, is that type's own value and
-  counts in full. Unlock Special: T3 Crystal Max reads 0.37× this way, where adding the five faces
-  said 1.83×; Raid Warzone: Raid Boost reads 1.0× rather than 2.0×. Items msfwar saw together
-  but that the store also sells apart or in varying combinations (T1 and T2 Ability Material,
-  shard combos, a character's awakened materials) keep `setOf` 1 and still add their faces.
-- **Incomplete.** The flag means part of the offer could not be priced, so the value shown is a
-  floor: items msfwar has no baseline for are listed as unpriced, a count the card did not show
-  is listed as unreadable, an item the table does not know at all is listed as unknown, and a
-  card that hides part of its contents behind "+N More" carries a note. Incomplete offers rank
-  after complete ones, and offers with nothing priceable at all (points only) rank last. The
-  store labels shard lines with the character portrait, so a bare roster name with a count
-  ("Dracula ×810") is read as that character's shards; with a count of one it is a diamond or
-  red star promotion the card does not name, listed as an unnamed promotion.
-- **Best buys by resource.** Under the store list, every resource the store sells with the
-  offer that sells it cheapest, two ways: "price share" charges each item in a bundle its share
-  of the price in proportion to its value, so bundles compare fairly; "whole price" counts the
-  full price against that one resource. Both are shown as units per US dollar next to msfwar's
-  typical figure, in generic terms (your plan does not change what gold costs).
-- **Thin baselines.** An item whose msfwar average rests on fewer than
-  `meta.scoring.minObservations` offer observations (5), or that the table flags as suspect
-  (for example shards at thousands per dollar, which means msfwar counted a free claim), is
-  shown but left out of the score, the way msfwar leaves ungraded resources out, and the offer is
-  marked incomplete. A value you type on the Value table tab overrides that guard.
-- **Personalization.** With "Personalize" on, the personal score replaces each item's value with
-  what it is worth to you, and the generic msfwar number stays visible beside it:
-  - shards of a character already at 7 stars on your roster count
-    `meta.shardRules.maxedMultiplier` (default 0);
-  - shards, awakened ability materials and diamond or red-star promotions for a character who is
-    not on your build list (`data/personal.js`, from the MSF Sheet) count `offListMultiplier`
-    (default 0);
-  - resources your plan marks surplus count `surplusMultiplier` (default 25%): L1 to L3 training
-    modules, orange (T4) ISO-8 while no character on the ISO list needs it, and gear below the
-    Crimson tier, of which the inventory holds hundreds to tens of thousands. Resources marked
-    useless count `uselessMultiplier` (default 0), and an entry or rule may carry its own
-    `multiplier` instead. Ability materials follow what you said on 18 October 2026: T4 is by
-    far the most valuable and counts in full, T3 counts 10%, T2 and T1 count nothing (the MSF
-    Sheet's T4 Priority tab lists all four as needed, so the sheet does not decide this). Gold,
-    L4 modules, T1 to T3 ISO-8 and Crimson gear are marked short and count in full. Everything
-    without a rule counts in full.
-  - "Only offers that help my plan" hides offers in which every item the table recognises was
-    zeroed by those rules. An offer the table cannot value at all is neither hidden nor flagged.
-  The Roster & plan tab shows every rule and lets you replace the character list.
+Everything is kept twice: per CA$ and per Ultra Core. Every money offer but the Ultra Core packs
+also has an Ultra Core price, and a read from the page data carries it. A card read does not, but
+every money offer pays a web bonus of 10 Strike Points per Ultra Core of its price, so its core
+price is that bonus divided by ten. Without a bonus line it gets the core price of its CA$ tier
+(CA$12.99 is 100 cores) when the reads show only one for that tier: CA$49.99 is both the 350 and
+the 400 core tier.
 
-## Data files
+## How an offer is valued
 
-| File | Contents | Written by |
+- The value of an offer is the sum of quantity × usual price over its counted lines. Value per CA$
+  is that value ÷ the CA$ price, and value per Ultra Core is the value in cores ÷ the core price.
+  1× means the offer charges what its contents usually cost you.
+- Each line also shows its own value ÷ the offer's price: what the offer is worth for that item
+  alone. The lines add up to the offer. In the list of offers they are rounded so that they add
+  up exactly as shown, which can move one of them by a cent; where offers are compared with each
+  other (shop by resource, best buys) the figures are the exact ones, rounded only for display.
+- Nothing is adjusted for the player: no plan, no roster rule, no discount on orbs or anything
+  else (`meta.valueMultipliers` is not set).
+- A chain step is rated on its own price and contents, or with the steps before it added in.
+
+The grade comes from the number as shown, to two decimals, in either currency (`meta.grades`):
+
+| Grade | Value ÷ price | Meaning |
 | --- | --- | --- |
-| `data/values.js` | Item value table, exchange rates and scoring rules | The playbook from msfwar, or you |
-| `data/offers.js` | Offers in your store at the last pull | The playbook, or paste on the "My store" tab |
-| `data/roster.js` | Your characters' stars, red stars, diamonds, level and power | The playbook, or paste on the "Roster" tab |
-| `data/personal.js` | Your build list, resource shortages, surplus rules and gear inventory | The playbook from the MSF Sheet and the Inventory page, or edit on the "Roster & plan" tab |
+| A | 2.5× and up | the deals of the day |
+| B | 1.75× to 2.5× | clearly better than the usual price |
+| C | 1.25× to 1.75× | a bit better than usual |
+| D | 1× to 1.25× | about the usual price |
+| F | below 1× | worse than usual: wait |
 
-Schemas are documented at the top of each file. Files named `data/*.local.js` are ignored by git
-if you want to keep personal snapshots out of commits.
+**A worked example** from the 14 November read. Turn Up the Power (option 1) costs CA$6.99 or 50
+Ultra Cores. T4 Ability Material ×210 is worth CA$5.61 at its usual price, which is 0.80× of the
+price. T4 Level 1 Ions ×31,000 are worth CA$5.17, or 0.74×. The offer is worth CA$10.78, or 1.54×:
+grade C (its 500 Strike Points are not counted). In Ultra Cores the lines read 0.90× and 0.72×,
+and the offer 1.62×. The currencies differ because the tiers do not charge the same CA$ per core:
+CA$6.99 is 50 cores, CA$12.99 is 100.
+
+**Why a sale reads as a sale.** T3 stat crystals usually cost about 10 per CA$: 405 for CA$39.99
+on each of the three earlier reads. On 14 November the ISO Fest packs (T3 L5 Ions Blaster, Brawler
+and Controller Pack) sell 405 of them plus 9.3 million ions for CA$12.99. They read 5.64×, and the
+ISO Fest: T3 Level 5 Ions Trove reads 11.04× (5.56× and 10.85× in Ultra Cores).
+
+## Limits
+
+- Items tied to one character (shards, promotions, awakened ability materials) are priced for
+  that character alone, so a new character's offers are first seen.
+- The even split inside sets is a convention, not knowledge.
+- 145 rows have no price: no complete money offer has carried them, or they only come beside
+  things sold on their own, or only in chain steps that could not be bought yet.
+- A read is filed under its UTC date, and a later read of the same day replaces the earlier one.
+- In-game Power Core prices (the `cores` field of a row, "Cores in game") are still empty. Power
+  Cores are a different currency from Ultra Cores.
+- A CA$ value typed into the page's value table stays in the browser and wins over the file there;
+  the page's header names the rows. Values typed in an older version of the page were in US$ on
+  another table's units: the page drops them once and says so.
+- The time an offer has left is counted down from the read, so it is only as right as the store's
+  own "15d 4h" was.
+
+## Files
+
+| File | Holds | Written by |
+| --- | --- | --- |
+| `data/offers.js` | The latest read: every offer with its contents, its CA$ price and its Ultra Core price | `tools/save-store.js` |
+| `data/reads.json` | The archive: every complete money offer of every read, with its CA$ and Ultra Core price on each read day | `tools/refresh.js` |
+| `data/values.js` | The value table. Per item: `value` (CA$ for `per` units), `coreValue` (Ultra Cores for `per` units) and `observed` (`basis`, `perCash`, `perCore`, `days`, `firstSeen`, `byDay` with its price on each read day, `best`). Also the grade bands and `meta.baseline` | `tools/refresh.js` |
+| `data/history.js` | Per item and read day, in both currencies: how many offers carried it, the best and the average amount one unit of price bought, and the offer behind the best. The stat crystals of a tier are one record | `tools/refresh.js` |
+| `data/roster.js` | The roster as read on 18 October 2026. Still loaded, only so that old card reads can recognise a bare character name | nothing now |
+| `data/personal.js` | The old plan. The page no longer uses it | nothing now |
 
 ## Development
 
-- `engine.js` holds all valuation logic as pure functions, loaded by the page and by the tests.
-- `app.js` is the page logic; `index.html` the markup and styles. No build step, no dependencies.
-- `npm test` runs the engine tests with Node's built-in runner (Node 18 or newer).
+- `engine.js` values offers with pure functions; the page (`app.js`, `index.html`) and the tests
+  both load it. `tools/market.js` holds the pricing rules, `tools/refresh.js` and
+  `tools/save-store.js` are the commands `update.cmd` runs, and `pull.js` is the reader behind the
+  bookmark. No build step, no dependencies. `node tools/refresh.js --dry-run` reports without
+  writing.
+- `npm test` runs the tests with Node's built-in runner (Node 18 or newer). One test rebuilds the
+  prices from `data/reads.json` and compares them with `data/values.js`, so commit the data
+  files together. The worked example above is checked too, for as long as the 14 November read
+  is the one in `data/offers.js`.

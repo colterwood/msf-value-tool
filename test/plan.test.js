@@ -52,8 +52,7 @@ test('character-bound items for someone off the build list count offListMultipli
   const r2 = E.valueOffer({ price: 1, contents: [{ item: "Thor's Ultimate Awakened Ability Material", qty: 20 }] }, table, null, { plan });
   assert.equal(r2.personalUsd, 0);
   assert.equal(r2.helpsPlan, false);
-  assert.equal(r2.personalScore, 30);  // ratio 0 for you
-  assert.equal(r2.score, 70);          // typical for everyone else
+  assert.equal(r2.perDollar, 1);       // typical for everyone else
 });
 
 test('a custom offListMultiplier and an empty list behave sensibly', () => {
@@ -91,14 +90,14 @@ test('thin and suspect baselines are listed but not scored', () => {
   const r = E.valueOffer(offer, table, null, { plan: Object.assign({}, plan, { characters: {} }) });
   assert.deepEqual(r.thin, ['Loki shards', 'Hela shards']);
   assert.equal(r.totalUsd, 10);
-  assert.equal(r.score, 70);
   assert.equal(r.complete, false);   // like unpriced items: the real value is higher than shown
-  assert.match(r.lines[1].note, /too thin: 4 msfwar observations/);
+  assert.match(r.lines[1].note, /too thin: 4 offer observations/);
   assert.match(r.lines[2].note, /looks wrong: looks wrong/);
   assert.equal(r.lines[1].rawValue, 10);
-  // an offer made only of thin items gets no score and ranks after scored ones
+  // an offer made only of thin items has no value per dollar and ranks after the valued ones
   const only = E.valueOffer({ price: 10, contents: [{ item: 'Loki shards', qty: 100 }] }, table);
-  assert.equal(only.score, null);
+  assert.equal(only.perDollar, null);
+  assert.equal(only.grade, null);
   const ranked = E.rankOffers([{ name: 'thin', price: 10, contents: [{ item: 'Loki shards', qty: 100 }] }, { name: 'gold', price: 10, contents: [{ item: 'Gold', qty: 10000000 }] }], table).map((x) => x.name);
   assert.deepEqual(ranked, ['gold', 'thin']);
   // the threshold is editable
@@ -153,7 +152,6 @@ test('a value typed by the user overrides a thin or suspect baseline', () => {
   const r = E.valueOffer({ price: 10, contents: [{ item: 'Hela shards', qty: 100 }] }, t);
   assert.deepEqual(r.thin, []);
   assert.equal(r.totalUsd, 20);
-  assert.equal(r.score, 100);
   assert.equal(E.baselineProblem(t.items['shard:hela'], t.meta.scoring), null);
   assert.match(E.baselineProblem(table.items['shard:hela'], table.meta.scoring), /looks wrong/);
 });

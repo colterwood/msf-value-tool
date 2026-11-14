@@ -7,31 +7,33 @@
  * Value table shape (see data/values.js):
  *   {
  *     meta: {
- *       source: "msfwar.com Spender's Guide",
- *       unit: "USD" | "cores",       // what item values are expressed in
- *       unitPerUsd: 1,                // how many units one US dollar buys (1 for USD)
- *       fxToUsd: { USD: 1, CAD: 0.71 }, // US dollars per unit of each price currency
- *       grades: [{ min: 1.5, label: "Excellent" }, ...], // by value-per-dollar, descending
- *       valueMultipliers: { orb: 0.2 },  // generic discount by item category: orbs are lottery tickets
- *       scoring: {                    // msfwar-style 0-100 score (optional)
- *         typicalScore: 70, scorePerRatio: 40, maxScore: 100, minScore: 0,
- *         minObservations: 5,         // baselines with fewer msfwar observations are not scored
- *         weights: { gold: 30, training: 30, orangeIso: 20, shard: 15, other: 5 },
- *         letters: [{ min: 90, label: "A" }, ...]
- *       },
+ *       currency: "CAD",              // the money every value is in: the store's own currency
+ *       fxToUsd: { CAD: 1 },          // other price currencies, in units of meta.currency (the name is historical)
+ *       grades: [{ min: 1.5, label: "Excellent" }, ...], // by value per unit of price, descending
+ *       valueMultipliers: {},         // optional discount by item category, e.g. { orb: 0.2 }; none by default
  *       shardRules: { maxedMultiplier: 0 }
  *     },
  *     items: {
- *       "gold": { name: "Gold", category: "currency", per: 1000000, value: 1.13, aliases: [] },
- *       "shard:iron man": { name: "Iron Man shards", category: "shard", character: "Iron Man", per: 1, value: 0.2,
- *                           observed: { perUsd: 5, days: 5, observations: 12, suspect: false } },
+ *       "gold": { name: "Gold", category: "currency", per: 1000000, value: 0.83, coreValue: 6.4, aliases: [], id: "SC",
+ *                 observed: { perCash: 1200480, perCore: 150000, basis: "own", days: ["2026-10-18", "2026-10-24"], firstSeen: false } },
+ *                       // value: money for `per` units at the item's usual price; coreValue: Ultra Cores for `per` units.
+ *                       // observed.perCash / perCore: usual units per CA$ / per Ultra Core, from the player's own
+ *                       // store reads before the one being rated (tools/market.js). basis: "own" (sold on its own)
+ *                       // or "set" (only sold together with other things, the price split evenly). An item that
+ *                       // only comes beside things sold on their own has no value at all. days: the read days the
+ *                       // usual price is the middle of. firstSeen: no earlier read carried it.
+ *                       // id (and ids: [...]) is the store's own resource id: an offer line that carries one resolves by it.
+ *       "shard:iron man": { name: "Iron Man shards", category: "shard", character: "Iron Man", per: 1, value: 0.2 },
  *       "points:iron_vengeance": { name: "...", category: "points", excludeFromValue: true }
  *     }
  *   }
+ *   Names with "Usd" in this file (priceUsd, totalUsd, perDollar) are historical: the amounts are in
+ *   meta.currency, or in Ultra Cores when an offer is valued with options.mode "cores".
  *
  * Offer shape (see data/offers.js and README):
- *   { name, price, currency, purchaseLimit, expires, source, notes,
- *     contents: [{ item: "Gold", qty: 500000 }, { key: "shard:iron man", qty: 50 }],
+ *   { name, price, currency, ultraCores, purchaseLimit, expires, source, notes,
+ *     // ultraCores: what the same offer costs in Ultra Cores, when the store gives that price
+ *     contents: [{ item: "Gold", qty: 500000 }, { key: "shard:iron man", qty: 50 }, { item: "Gold", id: "SC", qty: 1 }],
  *     chain: {                        // optional: one step of a chain offer
  *       name: "Kestrel", step: 3, of: 4, current: 1,   // current = first step still unbought
  *       steps: [{ step: 1, name, price, currency, contents }, ...]  // every step of the chain
@@ -82,26 +84,8 @@
     surplusMultiplier: 0.25
   };
 
-  // msfwar's published scoring rules: typical historical value earns 70 (C); a resource giving
-  // 25% more for the price earns 80 (B), 50% more earns 90 (A). Categories combine by weight and
-  // only the categories present share the weighting. Letters below C, the clamp and the
-  // minimum-observation guard are this tool's reading, so they live in the value table's
-  // meta.scoring where they can be edited.
-  var DEFAULT_SCORING = {
-    typicalScore: 70,
-    scorePerRatio: 40,
-    maxScore: 100,
-    minScore: 0,
-    minObservations: 5,
-    weights: { gold: 30, training: 30, orangeIso: 20, shard: 15, other: 5 },
-    letters: [
-      { min: 90, label: 'A' },
-      { min: 80, label: 'B' },
-      { min: 70, label: 'C' },
-      { min: 60, label: 'D' },
-      { min: 0, label: 'F' }
-    ]
-  };
+  /** A baseline that the table flags with a count of observations below this is shown but not counted. */
+  var DEFAULT_MIN_OBSERVATIONS = 5;
 
   function normalizeKey(s) {
     return String(s == null ? '' : s)
@@ -119,7 +103,30 @@
     return !!(table && typeof table === 'object' && table.items && typeof table.items === 'object');
   }
 
-  /** alias (normalized) -> item key. Keys, names and aliases all resolve. */
+  /** Every store resource id a row answers to: item.id and item.ids. */
+  function itemIds(item) {
+    var out = [];
+    if (!item) return out;
+    var add = function (x) { if (x != null && x !== '' && out.indexOf(String(x)) === -1) out.push(String(x)); };
+    add(item.id);
+    (Array.isArray(item.ids) ? item.ids : []).forEach(add);
+    return out;
+  }
+
+  /** Event milestone points and Strike Points by the store's resource id: never counted. */
+  function isPointsId(id) {
+    return /^BFYB-CUR$/.test(String(id)) || /^EVTA_/.test(String(id));
+  }
+
+  /**
+   * Pass tiers, pass upgrades, Time Heist levels and trial unlocks: the store gives them an id but
+   * no contents. Nothing to price.
+   */
+  function isOpaqueId(id) {
+    return /^(BPEPASS|BPETIER|BPPASS|BPTIER|TIMEHEIST_LEVEL|UT_)/.test(String(id));
+  }
+
+  /** alias (normalized) -> item key. Keys, names and aliases all resolve; a store resource id resolves as '#' + id. */
   function buildIndex(table) {
     var index = {};
     if (!isTable(table)) return index;
@@ -135,6 +142,9 @@
         var k = normalizeKey(n);
         if (k && !(k in index)) index[k] = key;
       });
+      itemIds(item).forEach(function (id) {
+        if (!(('#' + id) in index)) index['#' + id] = key;
+      });
     });
     return index;
   }
@@ -144,7 +154,7 @@
    * Returns { key, item } or null when nothing matches.
    */
   /**
-   * An item priced from another by a fixed ratio, for levels msfwar does not list:
+   * An item priced from another by a fixed ratio, for levels with no price of their own:
    *   derivedFrom: { key: 'training_module:l4', ratio: 0.5, basis: 'XP' }
    * says an L3 Training Module is worth half an L4 (800 of 1,600 XP). The base's observed
    * baseline carries over, so the derived item is scored whenever the base is, and the line is
@@ -154,7 +164,7 @@
     var item = isTable(table) ? table.items[key] : null;
     if (!item) return null;
     var d = item.derivedFrom;
-    if (!d || !d.key || unitValue(item) != null) return item;
+    if (!d || !d.key || unitValue(item) != null || coreUnitValue(item) != null) return item;
     var base = table.items[d.key];
     var ratio = Number(d.ratio);
     if (!base || base === item || !(ratio > 0)) return item;
@@ -167,9 +177,15 @@
       ? ' by XP (' + item.xp + ' vs ' + base.xp + ')'
       : ' at ' + ratio + ' of its value' + (basis ? ' by ' + basis : ''));
     var out = Object.assign({}, item);
+    var bcv = coreUnitValue(base);
+    var baseCash = usualPer(base, 'cash'), baseCore = usualPer(base, 'cores');
     out.value = buv == null ? null : buv * ratio * per;
+    out.coreValue = bcv == null ? null : bcv * ratio * per;
     out.observed = Object.assign({}, item.observed || {}, {
       perUsd: bo.perUsd != null && !isNaN(Number(bo.perUsd)) ? Number(bo.perUsd) / ratio : null,
+      perCash: baseCash != null ? baseCash / ratio : null,
+      perCore: baseCore != null ? baseCore / ratio : null,
+      basis: bo.basis, firstSeen: bo.firstSeen,
       observations: bo.observations, days: bo.days, readAt: bo.readAt,
       earlyEstimate: bo.earlyEstimate, suspect: bo.suspect,
       note: note
@@ -177,11 +193,6 @@
     if (base.userValue) out.userValue = true;   // a value typed for the base is trusted for the levels priced from it too
     out.derived = { from: d.key, fromName: base.name || d.key, ratio: ratio, basis: basis, note: note };
     return out;
-  }
-
-  function storeNote(obs) {
-    var n = Number(obs.observations);
-    return 'priced from your store' + (n > 0 ? ' (' + n + ' offer' + (n === 1 ? '' : 's') + (obs.method === 'shared' ? ', split evenly with the other unpriced items' : '') + ')' : '') + (obs.readAt ? ', ' + obs.readAt : '');
   }
 
   /** Every item of the table with derived values filled in. */
@@ -194,11 +205,11 @@
 
   /**
    * Event milestone points the table does not list: every event brings a new name ("Feast of
-   * Shadows Milestone Points") and they are never counted, as on msfwar, so an offer that
+   * Shadows Milestone Points") and they are never counted, so an offer that
    * carries them is not incomplete for it. A table row with the same name takes precedence.
    */
   function genericPoints(name) {
-    return { name: String(name).trim(), category: 'points', per: 1, value: null, aliases: [], excludeFromValue: true, generic: true, note: 'event milestone points: not counted, as on msfwar' };
+    return { name: String(name).trim(), category: 'points', per: 1, value: null, aliases: [], excludeFromValue: true, generic: true, note: 'event milestone points: not counted' };
   }
 
   /**
@@ -239,14 +250,49 @@
   }
 
   /**
+   * Resolve one offer line. A line read from the store page's own data carries the store's
+   * resource id, which names the item exactly: the row with that id wins, then the name. An id
+   * the table has no row for still says what kind of thing it is: points are never counted and
+   * SHARD_ ids are that character's shards.
+   */
+  function resolveLine(table, index, row) {
+    var id = row && row.id != null && row.id !== '' ? String(row.id) : '';
+    var label = (row && (row.key || row.item)) || '';
+    if (id && isTable(table)) {
+      index = index || buildIndex(table);
+      var k = index['#' + id];
+      if (k != null && Object.prototype.hasOwnProperty.call(table.items, k)) return { key: k, item: deriveItem(table, k) };
+    }
+    var byName = resolveItem(table, index, label);
+    if (!id) return byName;
+    // an id the table has no row for still says what kind of thing it is: a row found by the
+    // name only counts when it is that kind (a promotion named after a character is not her shards)
+    var kind = isOpaqueId(id) ? 'opaque' : isPointsId(id) ? 'points' : /^SHARD_/.test(id) ? 'shard' : /^(RS|PD)_.+_\d+$/.test(id) ? 'promotion' : null;
+    if (byName && kind) {
+      var it = byName.item || {};
+      var fits = kind === 'points' ? !!it.excludeFromValue : kind === 'shard' ? it.category === 'shard' : kind === 'promotion' ? it.category === 'promotion' : false;
+      if (!fits) byName = null;
+    }
+    if (byName) return byName;
+    var shown = String(label || id).trim();
+    if (kind === 'points') return { key: 'points:' + normalizeKey(shown).replace(/ milestone points$/, '').replace(/\s+/g, '_'), item: genericPoints(shown) };
+    if (kind === 'shard' && label) {
+      var who = String(label).trim().replace(/\s+shards?$/i, '');
+      return { key: 'shard:' + normalizeKey(who), item: genericShards(who) };
+    }
+    return null;
+  }
+
+  /**
    * The parts of an offer's notes that mean the card did not show everything the price buys:
    * "+N More" or an icon with no name. A count the card did not show ("qty unreadable for X") is
    * judged line by line in valueOffer instead, so an unreadable count on points that are not
    * counted anyway does not make the offer incomplete; an unreadable price ("price unreadable")
-   * is a problem with the price, not the contents, and is reported as priceUnreadable.
+   * is a problem with the price, not the contents, and is reported as priceUnreadable. "free claim"
+   * (an offer with no price at all) hides nothing.
    */
   function hiddenNotes(notes) {
-    return String(notes == null ? '' : notes).split(/;\s*/).filter(function (p) { return p && !/^qty unreadable for /i.test(p) && !/^price unreadable/i.test(p); });
+    return String(notes == null ? '' : notes).split(/;\s*/).filter(function (p) { return p && !/^qty unreadable for /i.test(p) && !/^price unreadable/i.test(p) && !/^free claim$/i.test(p); });
   }
 
   /** Value of one unit of the item, in table units. null when the table has no number yet. */
@@ -257,21 +303,49 @@
     return Number(item.value) / per;
   }
 
+  /** What one unit of the item usually costs in Ultra Cores (item.coreValue is for item.per units). null when unknown. */
+  function coreUnitValue(item) {
+    if (!item || item.coreValue == null || isNaN(Number(item.coreValue))) return null;
+    var per = Number(item.per || 1);
+    if (!(per > 0)) per = 1;
+    return Number(item.coreValue) / per;
+  }
+
+  /** The unit value for a pricing mode: 'cores' reads the Ultra Core price, anything else the money price. */
+  function modeUnitValue(item, mode) {
+    return mode === 'cores' ? coreUnitValue(item) : unitValue(item);
+  }
+
   /**
-   * Why an item's msfwar baseline should not be scored, or null when it is fine.
-   * A baseline is thin when msfwar saw it in fewer than minObservations offers, and suspect when
+   * The item's usual units per unit of price, from the table: per CA$ ('cash') or per Ultra Core
+   * ('cores'). observed.perCash / perCore when the table carries them, else worked out from the
+   * value; observed.perUsd is read for tables written before the two were split.
+   */
+  function usualPer(item, mode) {
+    if (!item) return null;
+    var o = item.observed || {};
+    var given = mode === 'cores' ? o.perCore : (o.perCash != null ? o.perCash : o.perUsd);
+    if (given != null && !isNaN(Number(given)) && Number(given) > 0) return Number(given);
+    var uv = modeUnitValue(item, mode);
+    return uv > 0 ? 1 / uv : null;
+  }
+
+  /**
+   * Why an item's baseline should not be scored, or null when it is fine.
+   * A baseline is thin when fewer than minObservations dated offers carried it, and suspect when
    * the table flags it (observed.suspect), for example shards at thousands per dollar.
    */
   function baselineProblem(item, scoring) {
     var obs = item && item.observed;
-    if (!obs || obs.perUsd == null) return null;
+    if (!obs || usualPer(item, 'cash') == null) return null;
     if (item.userValue) return null;  // a value typed on the Value table tab overrides the baseline guard
     if (obs.source === 'store') return null;  // priced from the player's own store on request: shown with a note, not guarded
     if (obs.suspect) return 'baseline looks wrong' + (typeof obs.suspect === 'string' ? ': ' + obs.suspect : '');
-    var min = Number(scoring && scoring.minObservations);
-    if (isNaN(min)) min = DEFAULT_SCORING.minObservations;
+    // meta.minObservations, or { minObservations } itself (meta.scoring.minObservations in older tables)
+    var min = Number(scoring && (scoring.minObservations != null ? scoring.minObservations : (scoring.scoring || {}).minObservations));
+    if (isNaN(min)) min = DEFAULT_MIN_OBSERVATIONS;
     if (obs.observations != null && Number(obs.observations) < min) {
-      return 'baseline too thin: ' + obs.observations + ' msfwar observation' + (Number(obs.observations) === 1 ? '' : 's') + ', fewer than ' + min;
+      return 'baseline too thin: ' + obs.observations + ' offer observation' + (Number(obs.observations) === 1 ? '' : 's') + ', fewer than ' + min;
     }
     return null;
   }
@@ -373,7 +447,7 @@
     return { multiplier: multiplier, notes: notes, note: notes.length ? notes.join('; ') : null, resource: rr };
   }
 
-  var DEFAULT_VALUE_MULTIPLIERS = { orb: 0.2 };
+  var DEFAULT_VALUE_MULTIPLIERS = {};   // no discount unless the table's meta.valueMultipliers sets one
 
   /** What one Power Core is worth to the player when comparing the in-game core route with cash: meta.powerCore { price, currency }. */
   var DEFAULT_POWER_CORE = { price: 0.15, currency: 'CAD' };
@@ -534,12 +608,11 @@
    *   bucketRatio  what the bucket's items in the offer are worth divided by the whole price
    *                (the value you get for that resource alone, as if you bought the offer for it)
    *   wholeRatio   the whole offer's value per US dollar (r.perDollar, personal when personalized)
-   * Each bucket item also carries units per US dollar and its ratio to msfwar's typical, so gold
+   * Each bucket item also carries units per unit of price and its ratio to the item's usual price, so gold
    * can be read as "2.7M gold per US$, 3.1x typical". Event points have no value but do have
    * units per dollar. Rows sort by bucketRatio, then by units per dollar; rows without a valued
    * bucket item sort last. `results` come from rankOffers().
-   * Each row is also read against the best offer in the store for the bucket, the way msfwar's
-   * resource view does: vsBest is the row's ratio divided by the best row's (1 for the best,
+   * Each row is also read against the best offer in the store for the bucket: vsBest is the row's ratio divided by the best row's (1 for the best,
    * 0.5 for half the value per dollar), bestScore is that as a 0-100 score (best 100, half 50)
    * and pctBelowBest is 1 - vsBest. The 'all' bucket compares whole offers (wholeRatio).
    * Rows without a ratio (unvalued buckets) read null and never set the best.
@@ -569,11 +642,12 @@
         if (!l.key) return;
         var item = items[l.key] || l.generic;   // generic: points or shards the table has no row for
         if (!item || (bucketKey !== 'all' && shopBucket(item, l.key) !== bucketKey)) return;
+        if (bucketKey === 'other' && item.excludeFromValue) return;   // never counted and on every offer: a Strike Points bonus makes no offer an "everything else" offer
         if (group && shopGroup(item, l.key, bucketKey, groups) !== group.key) return;
         if (l.qty > 0) groupQty += l.qty;
         var agg = byKey[l.key];
         if (!agg) {
-          agg = byKey[l.key] = { item: l.item, key: l.key, qty: 0, unreadable: false, perUsd: null, typicalPerUsd: item.observed && item.observed.perUsd != null ? Number(item.observed.perUsd) : null, typicalSource: (item.observed && item.observed.source) || (item.derived ? 'derived' : 'msfwar'), vsTypical: null, valueUsd: null, faceUsd: null, personalValueUsd: null, multiplier: l.multiplier, note: l.note || null, excluded: !!l.excluded, thin: !!l.thin, unitQty: null, unitPerUsd: null };
+          agg = byKey[l.key] = { item: l.item, key: l.key, qty: 0, unreadable: false, perUsd: null, typicalPerUsd: usualPer(item, r.mode), basis: (item.observed && item.observed.basis) || null, firstSeen: !!(item.observed && item.observed.firstSeen), typicalSource: (item.observed && item.observed.source) || (item.derived ? 'derived' : 'history'), vsTypical: null, valueUsd: null, faceUsd: null, personalValueUsd: null, multiplier: l.multiplier, note: l.note || null, excluded: !!l.excluded, thin: !!l.thin, unitQty: null, unitPerUsd: null };
           order.push(l.key);
         }
         agg.qty += l.qty > 0 ? l.qty : 0;
@@ -598,7 +672,7 @@
         var a = byKey[k];
         a.perUsd = a.qty > 0 ? a.qty / path.priceUsd : null;
         a.unitPerUsd = a.unitQty > 0 ? a.unitQty / path.priceUsd : null;
-        // ratio to msfwar's typical, undiscounted: units per dollar against the observed average
+        // ratio to the item's usual price, undiscounted: what the offer is worth for this item alone
         a.vsTypical = a.faceUsd != null ? a.faceUsd / path.priceUsd : (a.perUsd != null && a.typicalPerUsd ? a.perUsd / a.typicalPerUsd : null);
         return a;
       });
@@ -655,8 +729,10 @@
       return b.min - a.min;
     });
     if (perDollar == null || isNaN(perDollar)) return null;
+    // graded on the number the page shows (two decimals), so 0.9998 reads "1.00x" and grades as 1.00x
+    var shown = Math.round(Number(perDollar) * 100) / 100;
     for (var i = 0; i < list.length; i++) {
-      if (perDollar >= list[i].min) return list[i].label;
+      if (shown >= list[i].min) return list[i].label;
     }
     return list[list.length - 1].label;
   }
@@ -668,22 +744,63 @@
   }
 
   /**
-   * Convert an offer price to US dollars: through meta.fxToUsd for money, or through the value
-   * table when the price is in an in-game currency the table knows (Strike Points, Power Cores).
-   * Returns { usd, via } where via is 'fx', 'item' or 'assumed' (unknown currency taken at 1).
+   * What an offer costs in Ultra Cores: { cores, inferred }. A read from the page's own data says
+   * so (offer.ultraCores). A card read does not, but the store's price tiers each carry one core
+   * price (meta.coreTiers: [[price, cores], ...], CA$12.99 is 100 cores), so a price in the table's
+   * currency that sits exactly on a tier gets that tier's. cores is null when neither applies.
+   */
+  function coresFor(offer, meta) {
+    var given = Number(offer && offer.ultraCores);
+    if (given > 0) return { cores: given, inferred: false, via: 'given' };
+    // A read from the page's own data names every item by id and gives the core price wherever
+    // there is one, so an offer without it there has none. Ultra Cores are never sold for cores.
+    var contents = (offer && offer.contents) || [];
+    var fromPage = contents.some(function (c) { return c && c.id != null && c.id !== ''; });
+    var sellsCores = contents.some(function (c) { return c && (c.id === 'UC' || /^ultra cores$/i.test(String(c.item || '').trim())); });
+    if (fromPage || sellsCores) return { cores: null, inferred: false };
+    // A card read shows no core price, but every money offer pays a web bonus of 10 Strike Points
+    // per Ultra Core of its price: the bonus line says what it costs in cores.
+    var points = 0;
+    contents.forEach(function (c) { if (c && /^strike points$/i.test(String(c.item || '').trim()) && Number(c.qty) > 0) points += Number(c.qty); });
+    var money = !!(meta && meta.currency) && String((offer && offer.currency) || meta.currency).toUpperCase() === String(meta.currency).toUpperCase();
+    if (points > 0 && money && Number(offer && offer.price) > 0) return { cores: Math.round(points) / 10, inferred: true, via: 'bonus' };
+    var price = Number(offer && offer.price);
+    var tiers = meta && Array.isArray(meta.coreTiers) ? meta.coreTiers : [];
+    var cur = String((offer && offer.currency) || (meta && meta.currency) || '').toUpperCase();
+    if (!(price > 0) || !meta || !meta.currency || cur !== String(meta.currency).toUpperCase()) return { cores: null, inferred: false };
+    for (var i = 0; i < tiers.length; i++) {
+      if (tiers[i] && Math.abs(Number(tiers[i][0]) - price) < 0.005 && Number(tiers[i][1]) > 0) return { cores: Number(tiers[i][1]), inferred: true, via: 'tier' };
+    }
+    return { cores: null, inferred: false };
+  }
+
+  /** A price in money (the table's currency, or one it has a rate for), as opposed to Strike Points or cores. */
+  function isMoneyVia(via) {
+    return via === 'fx';
+  }
+
+  /**
+   * Convert an offer price to the table's currency (meta.currency): 1 for that currency itself,
+   * meta.fxToUsd for another the table has a rate for, or through the value table when the price
+   * is in an in-game currency the table values (Power Cores).
+   * Returns { usd, via }: via 'fx' for money, 'item' for a valued in-game currency, 'unpriced' (usd
+   * null) for an in-game currency the table knows but has no value for (Strike Points), and
+   * 'assumed' for a currency it has never heard of, taken at 1.
    */
   function priceToUsdDetail(price, currency, table, index) {
     var p = Number(price);
     if (isNaN(p)) return { usd: null, via: null };
-    var meta = (isTable(table) && table.meta) || (table && table.fxToUsd ? table : {});
+    var meta = (isTable(table) && table.meta) || (table && (table.fxToUsd || table.currency) ? table : {});
     var fx = meta.fxToUsd || {};
-    var cur = String(currency || 'USD');
+    var cur = String(currency || meta.currency || 'USD');
+    if (meta.currency && cur.toUpperCase() === String(meta.currency).toUpperCase()) return { usd: p, via: 'fx' };
     var rate = Number(fx[cur.toUpperCase()]);
     if (rate > 0) return { usd: p * rate, via: 'fx' };
     if (isTable(table)) {
       var resolved = resolveItem(table, index, cur);
       var uv = resolved ? unitValue(resolved.item) : null;
       if (uv != null) return { usd: toUsd(p * uv, meta), via: 'item' };
+      if (resolved && Object.prototype.hasOwnProperty.call(table.items, resolved.key)) return { usd: null, via: 'unpriced' };
     }
     return { usd: p, via: 'assumed' };
   }
@@ -691,71 +808,15 @@
     return priceToUsdDetail(price, currency, isTable(meta) ? meta : { meta: meta, items: {} }).usd;
   }
 
-  /** Which msfwar weighting bucket an item belongs to. */
-  function scoringCategory(item, key) {
-    if (!item) return 'other';
-    if (key === 'gold' || normalizeKey(item.name) === 'gold') return 'gold';
-    if (item.category === 'training') return 'training';
-    if (item.category === 'shard') return 'shard';
-    if (item.category === 'iso8' && /\b(t4|orange)\b/i.test(String(item.name) + ' ' + String(key))) return 'orangeIso';
-    return 'other';
-  }
-
-  function letterFor(score, letters) {
-    var list = (letters && letters.length ? letters : DEFAULT_SCORING.letters).slice().sort(function (a, b) {
-      return b.min - a.min;
-    });
-    if (score == null || isNaN(score)) return null;
-    for (var i = 0; i < list.length; i++) {
-      if (score >= list[i].min) return list[i].label;
-    }
-    return list[list.length - 1].label;
-  }
-
-  /**
-   * msfwar-style score for a set of valued lines against a US-dollar price.
-   * Each line's ratio is (what its quantity is worth at the observed average) / (the offer price):
-   * the units per dollar this offer gives, relative to the units per dollar seen historically.
-   * ratio 1 scores typicalScore; every +1.0 of ratio adds scorePerRatio, clamped to the range.
-   * Lines average within their category, categories combine by weight.
-   * Returns { score, letter, categories: [...] } or { score: null } when nothing can be scored.
-   */
-  function scoreLines(lines, priceUsd, scoring, useKey) {
-    var rules = Object.assign({}, DEFAULT_SCORING, scoring || {});
-    var weights = Object.assign({}, DEFAULT_SCORING.weights, rules.weights || {});
-    if (!(priceUsd > 0)) return { score: null, letter: null, categories: [] };
-    var byCat = {};
-    lines.forEach(function (l) {
-      if (l.excluded || l.unitValue == null) return;
-      var v = useKey === 'personalValue' ? l.personalValue : l.value;
-      if (v == null) return;
-      var ratio = v / priceUsd;
-      var s = rules.typicalScore + (ratio - 1) * rules.scorePerRatio;
-      s = Math.max(rules.minScore, Math.min(rules.maxScore, s));
-      if (useKey === 'personalValue') { l.personalRatio = ratio; l.personalScore = s; } else { l.ratio = ratio; l.score = s; }
-      var cat = l.scoringCategory || 'other';
-      (byCat[cat] = byCat[cat] || []).push(s);
-    });
-    var cats = Object.keys(byCat);
-    if (!cats.length) return { score: null, letter: null, categories: [] };
-    var totalWeight = 0, acc = 0, breakdown = [];
-    cats.forEach(function (c) {
-      var w = Number(weights[c]);
-      if (!(w > 0)) w = Number(weights.other) || 1;
-      var avg = byCat[c].reduce(function (a, b) { return a + b; }, 0) / byCat[c].length;
-      totalWeight += w;
-      acc += w * avg;
-      breakdown.push({ category: c, weight: w, score: avg, items: byCat[c].length });
-    });
-    var score = acc / totalWeight;
-    return { score: score, letter: letterFor(score, rules.letters), categories: breakdown };
-  }
-
   /**
    * Value a single offer.
    *
    * options: { index, personalize (default true when roster or plan given), grades, plan,
-   *            chainMode ('step' rates a chain step on its own, the default; 'path' rates it on the whole path) }
+   *            chainMode ('step' rates a chain step on its own, the default; 'path' rates it on the whole path),
+   *            mode ('cash', the default: the offer's money price against each item's usual money price;
+   *                  'cores': its Ultra Core price, offer.ultraCores, against each item's usual price in cores) }
+   * Every valued line carries vsTypical: its value over the offer's price, what the offer is worth
+   * for that item alone. The lines add up to perDollar, the whole offer.
    */
   function valueOffer(offer, table, roster, options) {
     options = options || {};
@@ -763,12 +824,17 @@
     var plan = options.plan || null;
     var index = options.index || buildIndex(table);
     var personalize = options.personalize == null ? !!(roster || plan) : !!options.personalize;
-    var price = Number(offer && offer.price);
+    var mode = options.mode === 'cores' ? 'cores' : 'cash';
+    var corePrice = coresFor(offer, meta);   // the read's own core price, else the one its price tier always carries
+    var price = Number(mode === 'cores' ? corePrice.cores : (offer && offer.price));
     var hasPrice = !isNaN(price) && price > 0;
-    var currency = (offer && offer.currency) || meta.currency || 'USD';
-    var priced = hasPrice ? priceToUsdDetail(price, currency, table, index) : { usd: null, via: null };
+    var currency = mode === 'cores' ? 'Ultra Cores' : ((offer && offer.currency) || meta.currency || 'USD');
+    var priced = !hasPrice ? { usd: null, via: null } : (mode === 'cores' ? { usd: price, via: 'cores' } : priceToUsdDetail(price, currency, table, index));
     var priceUsd = priced.usd;
     var contents = (offer && offer.contents) || [];
+    // the offer's own price when it is in something with no money value (Strike Store offers)
+    var ownPrice = Number(offer && offer.price);
+    var foreignPrice = ownPrice > 0 && priceToUsdDetail(ownPrice, (offer && offer.currency) || meta.currency || 'USD', table, index).via === 'unpriced' ? ownPrice : null;
 
     var lines = [];
     var unknown = [];
@@ -777,6 +843,9 @@
     var excluded = [];
     var unreadable = [];
     var promotions = [];
+    var opaque = [];
+    var fresh = [];          // valued items with no price before this read: they rate about 1x by construction
+    var freshUnits = 0;
     var totalUnits = 0;
     var personalTotalUnits = 0;
     var complete = true;
@@ -789,13 +858,21 @@
       var qtyKnown = !!row && row.qty != null && row.qty !== '' && !isNaN(Number(row.qty));
       var qty = qtyKnown ? Number(row.qty) : null;
       var label = (row && (row.item || row.key)) || '';
-      var resolved = resolveItem(table, index, (row && row.key) || label);
-      // the store labels shard lines with the character portrait: a bare character name is read by its count below
-      var bare = !!(resolved && resolved.item.category === 'shard' && resolved.item.character && !/\bshards?\b/i.test(label) && normalizeKey(label) === normalizeKey(resolved.item.character));
-      if (!resolved && findRosterEntry(roster, label)) {
+      var hasId = !!(row && row.id != null && row.id !== '');   // read from the page's own data: the id names the item exactly
+      var resolved = resolveLine(table, index, row);
+      // a card labels shard lines with the character portrait: a bare character name is read by its count below
+      var bare = !hasId && !!(resolved && resolved.item.category === 'shard' && resolved.item.character && !/\bshards?\b/i.test(label) && normalizeKey(label) === normalizeKey(resolved.item.character));
+      if (!resolved && !hasId && findRosterEntry(roster, label)) {
         // a roster name the table has no row for: "Dracula x810" is 810 Dracula shards
         resolved = { key: 'shard:' + normalizeKey(label), item: genericShards(label) };
         bare = true;
+      }
+      if (!resolved && hasId && isOpaqueId(row.id)) {
+        // a pass tier, level or unlock: the store does not say what it holds, so it cannot be priced or added to the table
+        opaque.push(label);
+        complete = false;
+        lines.push({ item: label, key: null, qty: qty, unitValue: null, multiplier: 1, value: null, personalValue: null, opaque: true, note: 'a pass tier, level or unlock the store does not itemize: not priced' });
+        return;
       }
       if (!resolved) {
         unknown.push(label);
@@ -820,22 +897,22 @@
         // listed under the name the card showed: for a character portrait that is the bare name
         unreadable.push(bare ? label : name);
         complete = false;
-        lines.push({ item: bare ? label : name, key: resolved.key, qty: null, unitValue: unitValue(resolved.item), multiplier: 1, value: null, personalValue: null, generic: resolved.item.generic ? resolved.item : undefined, note: 'count unreadable on the card' + (bare ? '; a character icon with no count may also be a diamond or promotion' : '') });
+        lines.push({ item: bare ? label : name, key: resolved.key, qty: null, unitValue: modeUnitValue(resolved.item, mode), multiplier: 1, value: null, personalValue: null, generic: resolved.item.generic ? resolved.item : undefined, note: 'count unreadable on the card' + (bare ? '; a character icon with no count may also be a diamond or promotion' : '') });
         return;
       }
       var pm = personalize ? personalMultiplier(resolved.item, roster, meta.shardRules, plan, resolved.key) : { multiplier: 1, notes: [], note: null };
       if (resolved.item.derived) pm.note = joinNotes(resolved.item.derived.note, pm.note);
-      if (resolved.item.observed && resolved.item.observed.source === 'store' && !resolved.item.userValue) pm.note = joinNotes(storeNote(resolved.item.observed), pm.note);
       planLines += 1;
       if (pm.multiplier > 0) planUseful += 1;
-      var uv = unitValue(resolved.item);
+      var uv = modeUnitValue(resolved.item, mode);
+      var ob = resolved.item.observed || {};
       if (uv == null) {
         unpriced.push(name);
         complete = false;
         lines.push({ item: name, key: resolved.key, qty: qty, unitValue: null, multiplier: pm.multiplier, value: null, personalValue: null, resource: pm.resource ? pm.resource.status : null, generic: resolved.item.generic ? resolved.item : undefined, note: joinNotes(resolved.item.generic ? 'read as shards from the character icon; no row in the table yet' : 'no value in table yet', pm.note) });
         return;
       }
-      var problem = baselineProblem(resolved.item, meta.scoring);
+      var problem = baselineProblem(resolved.item, meta);
       if (problem) {
         thin.push(name);
         complete = false;
@@ -843,21 +920,17 @@
         return;
       }
       var cm = valueMultiplier(resolved.item, meta);
-      // msfwar's average for an item that is only sold as part of a set (the five stat crystals of a
-      // class and tier) counts the whole price of the set offers, so each type counts one share of
-      // its face value: the set is rated once, not once per type. The face and "vs typical" keep
-      // msfwar's own basis.
-      // Only msfwar's averages carry that basis: a value typed on the Value table tab, or priced from
-      // the store (already the type's share of a price), is the type's own value and counts in full.
-      var setOf = Number(resolved.item.setOf) > 1 && !resolved.item.userValue && !(resolved.item.observed && resolved.item.observed.source === 'store') ? Number(resolved.item.setOf) : 1;
+      // The table's values are what each item usually costs in the player's own earlier store reads
+      // (tools/market.js), so the lines of an offer simply add up to what the whole offer is worth.
       var face = uv * qty;
-      var value = face * cm / setOf;
+      var value = face * cm;
       var personalValue = value * pm.multiplier;
       totalUnits += value;
       personalTotalUnits += personalValue;
       valuedLines += 1;
+      var isFresh = !!ob.firstSeen && !resolved.item.userValue;
+      if (isFresh) { freshUnits += value; if (fresh.indexOf(name) === -1) fresh.push(name); }
       if (cm !== 1) pm.note = joinNotes(pm.note, resolved.item.category + ' items count ' + Math.round(cm * 100) + '% of face value');
-      if (setOf > 1) pm.note = joinNotes(pm.note, 'one of ' + setOf + ' types sold as a set: counts 1/' + setOf + ' of its msfwar face value, which prices the whole set');
       lines.push({
         item: name,
         key: resolved.key,
@@ -868,11 +941,12 @@
         faceValue: face,
         vsTypical: priceUsd ? toUsd(face, meta) / priceUsd : null,
         personalValue: personalValue,
-        scoringCategory: scoringCategory(resolved.item, resolved.key),
+        basis: ob.basis || null,
+        firstSeen: isFresh,
+        usualPer: usualPer(resolved.item, mode),
         earlyEstimate: !!(resolved.item.observed && resolved.item.observed.earlyEstimate),
         resource: pm.resource ? pm.resource.status : null,
         categoryMultiplier: cm,
-        setOf: setOf,
         bucket: shopBucket(resolved.item, resolved.key),
         note: pm.note
       });
@@ -920,21 +994,21 @@
       var cumCores = coreLines ? coreTotal : 0, cumCoreLines = coreLines, cumCoreMissing = coreMissing.slice(), cumCoreUnreadable = coreUnreadable.slice();
       var cumCoresOk = coreLines > 0 && !coreMissing.length && !coreUnreadable.length && !hidden.length;
       var path = requires.map(function (st) {
-        var sr = valueOffer({ name: st.name, price: st.price, currency: st.currency, contents: st.contents, notes: st.notes }, table, roster, Object.assign({}, options, { index: index }));
+        var sr = valueOffer({ name: st.name, price: st.price, currency: st.currency, ultraCores: st.ultraCores, contents: st.contents, notes: st.notes }, table, roster, Object.assign({}, options, { index: index }));
         if (!(sr.priceUsd > 0)) priceUnknown = true;
         if (sr.priceVia === 'assumed') assumedCurrency = true;
         cumPrice += sr.priceUsd || 0;
         cumUsd += sr.totalUsd;
         cumPersonal += sr.personalUsd;
         cumValued += sr.valuedLines;
-        if (cumLocal != null) cumLocal = (sr.price != null && String(st.currency || currency) === String(currency)) ? cumLocal + sr.price : null;
+        if (cumLocal != null) cumLocal = (sr.price != null && (mode === 'cores' || String(st.currency || currency) === String(currency))) ? cumLocal + sr.price : null;
         if (!sr.complete) pathComplete = false;
         cumCores += sr.coreCost || 0;
         cumCoreLines += sr.coreLines || 0;
         cumCoreMissing = cumCoreMissing.concat(sr.coreMissing || []);
         cumCoreUnreadable = cumCoreUnreadable.concat(sr.coreUnreadable || []);
         if (!sr.coreComplete) cumCoresOk = false;
-        return { step: Number(st.step), name: st.name, price: st.price, currency: st.currency, priceUsd: sr.priceUsd, priceVia: sr.priceVia, totalUsd: sr.totalUsd, personalUsd: sr.personalUsd, perDollar: sr.perDollar, personalPerDollar: sr.personalPerDollar, complete: sr.complete, notes: sr.notes, hidden: sr.hidden, unreadable: sr.unreadable, promotions: sr.promotions, priceUnreadable: sr.priceUnreadable, lines: sr.lines, coreCost: sr.coreCost, coreComplete: sr.coreComplete, coreUnreadable: sr.coreUnreadable };
+        return { step: Number(st.step), name: st.name, price: st.price, currency: st.currency, priceUsd: sr.priceUsd, priceVia: sr.priceVia, totalUsd: sr.totalUsd, personalUsd: sr.personalUsd, perDollar: sr.perDollar, personalPerDollar: sr.personalPerDollar, complete: sr.complete, notes: sr.notes, hidden: sr.hidden, unreadable: sr.unreadable, promotions: sr.promotions, opaque: sr.opaque, priceUnreadable: sr.priceUnreadable, lines: sr.lines, coreCost: sr.coreCost, coreComplete: sr.coreComplete, coreUnreadable: sr.coreUnreadable };
       });
       if (priceUnknown && !bought) pathComplete = false;
       if (chainMode === 'path' && !pathComplete) complete = false;
@@ -964,30 +1038,20 @@
     var helpsPlan = null;
     if (personalize && planLines > 0) helpsPlan = planUseful > 0;
 
-    // msfwar-style score works on dollar-valued lines; convert line values when the table is in cores.
-    var usdLines = lines.map(function (l) {
-      var c = Object.assign({}, l);
-      var k = setSize(l);   // the msfwar-style score compares each item with its own average, on msfwar's basis
-      if (c.value != null) c.value = toUsd(c.value * k, meta);
-      if (c.personalValue != null) c.personalValue = toUsd(c.personalValue * k, meta);
-      return c;
-    });
-    var generic = scoreLines(usdLines, priceUsd, meta.scoring, 'value');
-    var personal = personalize ? scoreLines(usdLines, priceUsd, meta.scoring, 'personalValue') : generic;
-    usdLines.forEach(function (c, i) {
-      lines[i].ratio = c.ratio;
-      lines[i].score = c.score;
-      lines[i].personalRatio = personalize ? c.personalRatio : c.ratio;
-      lines[i].personalScore = personalize ? c.personalScore : c.score;
-    });
-
     return {
       name: (offer && offer.name) || '',
       price: hasPrice ? price : null,
       currency: currency,
       priceUsd: priceUsd,
       priceVia: priced.via,
-      unit: meta.unit || 'USD',
+      mode: mode,
+      ultraCores: corePrice.cores,
+      coresInferred: corePrice.inferred,
+      coresVia: corePrice.via || null,   // how a core price the read did not state was found: 'bonus' (its Strike Points line) or 'tier'
+      unit: mode === 'cores' ? 'Ultra Cores' : (meta.currency || meta.unit || 'USD'),
+      // a price in something the table cannot turn into money or cores (Strike Points): the value,
+      // in the mode's unit, that one unit of that price buys
+      perPriceUnit: foreignPrice != null && valuedLines ? totalUsd / foreignPrice : null,
       totalUnits: totalUnits,
       personalTotalUnits: personalTotalUnits,
       totalUsd: totalUsd,
@@ -1005,12 +1069,7 @@
       coreComplete: coreLines > 0 && !coreMissing.length && !coreUnreadable.length && !hidden.length,
       coreRateUsd: coreRateUsd,
       coreCostUsd: coreLines && coreRateUsd ? coreTotal * coreRateUsd : null,
-      coreVsPrice: coreLines && coreRateUsd && priceUsd > 0 ? (coreTotal * coreRateUsd) / priceUsd : null,
-      score: generic.score,
-      letter: generic.letter,
-      personalScore: personal.score,
-      personalLetter: personal.letter,
-      scoring: personalize ? personal.categories : generic.categories,
+      coreVsPrice: mode === 'cash' && coreLines && coreRateUsd && priceUsd > 0 ? (coreTotal * coreRateUsd) / priceUsd : null,
       personalized: personalize,
       helpsPlan: helpsPlan,
       valuedLines: valuedLines,
@@ -1021,6 +1080,9 @@
       excluded: excluded,
       unreadable: unreadable,
       promotions: promotions,
+      opaque: opaque,
+      fresh: fresh,
+      freshShare: totalUnits > 0 ? freshUnits / totalUnits : 0,
       hidden: hidden.length > 0,
       priceUnreadable: priceUnreadable,
       notes: (offer && offer.notes) || null,
@@ -1058,19 +1120,25 @@
    * (what you pay if you only wanted it); `share` charges each item its share of the price in
    * proportion to its value at the table's averages, so bundles are compared fairly.
    * Only generic values are used: the best price for gold does not depend on your plan.
-   * Returns [{ key, name, category, typicalPerUsd, offers, whole: {name, perUsd, price, currency, qty}, share: {...} }],
-   * sorted by category then name. perUsd is units per US dollar.
+   * Items that share one price (the stat crystals of a tier, observed.family) are one resource:
+   * what an offer holds of them is added up, as the store list does.
+   * Returns [{ key, itemKey, family, name, category, typicalPerUsd, offers, whole: {name, perUsd, price, currency, qty}, share: {...} }],
+   * sorted by category then name. key is the table key, or the family's; itemKey is a table row
+   * of it. perUsd is units per unit of price (CA$, or Ultra Cores in mode "cores").
    */
-  /** How many types a line's item is sold with as a set (1 when the line counts in full). */
-  function setSize(l) { return l && Number(l.setOf) > 1 ? Number(l.setOf) : 1; }
-
-  /**
-   * A line's weight when a bundle's price is shared out by value: its msfwar face, or for a set
-   * member the set's face divided by the set size (its counted share). The member is then
-   * charged the whole set's share of the price, the basis its typical was measured on.
-   */
+  /** A line's weight when a bundle's price is shared out by value: its face value at the table's typical price. */
   function shareFace(l, meta) {
-    return toUsd(l.faceValue == null ? l.value : l.faceValue, meta) / setSize(l);
+    return toUsd(l.faceValue == null ? l.value : l.faceValue, meta);
+  }
+  /** What a table row is priced as: itself, or the family it shares one price with (observed.family). */
+  function priceKey(items, key) {
+    var it = items && items[key];
+    return it && it.observed && it.observed.family ? String(it.observed.family) : key;
+  }
+  /** A family's name: "T3 stat crystals". */
+  function familyLabel(fam) {
+    var m = /^family:(t\d+)_crystals$/i.exec(String(fam));
+    return m ? m[1].toUpperCase() + ' stat crystals' : String(fam).replace(/^family:/, '').replace(/_/g, ' ');
   }
 
   function bestPrices(results, table) {
@@ -1088,25 +1156,29 @@
       var byKey = {}, order = [];
       path.lines.forEach(function (l) {
         if (l.value == null || l.excluded || l.thin || !l.key || !(l.qty > 0)) return;
-        var agg = byKey[l.key];
-        if (!agg) { agg = byKey[l.key] = { item: l.item, qty: 0, faceUsd: 0, setOf: setSize(l) }; order.push(l.key); }
+        var gk = priceKey(items, l.key);
+        var agg = byKey[gk];
+        if (!agg) { agg = byKey[gk] = { item: l.item, first: l.key, qty: 0, faceUsd: 0 }; order.push(gk); }
         agg.qty += l.qty;
         agg.faceUsd += shareFace(l, meta);
       });
       order.forEach(function (key) {
         var l = byKey[key];
-        var sharePrice = Math.min(path.priceUsd, path.priceUsd * (l.faceUsd / faceTotal) * l.setOf);   // a set member pays the whole set's share, never more than the price
+        var sharePrice = path.priceUsd * (l.faceUsd / faceTotal);
         var whole = l.qty / path.priceUsd;
         var share = sharePrice > 0 ? l.qty / sharePrice : null;
-        var item = items[key] || {};
+        var item = items[l.first] || {};
+        var family = key !== l.first ? key : null;
         var entry = out[key] || (out[key] = {
-          key: key, name: item.name || l.item, category: item.category || 'other',
-          typicalPerUsd: item.observed && item.observed.perUsd != null ? Number(item.observed.perUsd) : (unitValue(item) ? 1 / toUsd(unitValue(item), meta) : null),
-          typicalSource: (item.observed && item.observed.source) || (item.derived ? 'derived' : (item.userValue ? 'user' : 'msfwar')),
+          key: key, itemKey: l.first, family: family, name: family ? familyLabel(family) : (item.name || l.item), category: item.category || 'other',
+          typicalPerUsd: usualPer(item, r.mode),
+          basis: (item.observed && item.observed.basis) || null,
+          firstSeen: !!(item.observed && item.observed.firstSeen),
+          typicalSource: (item.observed && item.observed.source) || (item.derived ? 'derived' : (item.userValue ? 'user' : 'history')),
           offers: 0, whole: null, share: null
         });
         entry.offers += 1;
-        var ref = { name: r.name, price: path.price, currency: r.currency, priceUsd: path.priceUsd, qty: l.qty, steps: path.steps };
+        var ref = { name: r.name, price: path.price, currency: r.currency, priceUsd: path.priceUsd, qty: l.qty, steps: path.steps, result: r };
         if (!entry.whole || whole > entry.whole.perUsd) entry.whole = Object.assign({ perUsd: whole }, ref);
         if (share != null && (!entry.share || share > entry.share.perUsd)) entry.share = Object.assign({ perUsd: share, sharePrice: sharePrice }, ref);
       });
@@ -1118,111 +1190,33 @@
   }
 
   /**
-   * Price the items the table cannot value from the player's own store. For each unpriced item
-   * (no value, no derivedFrom, not excluded) in an offer whose other lines are all valued:
-   *   residual: the only unpriced item takes the price left after the valued lines (face value);
-   *   shared:   several unpriced items of the same category split that residual evenly per unit.
-   * Offers with an unknown, thin or unpriced item of another category are skipped, as are
-   * bought chain steps, offers without a readable price, offers with an unreadable count and
-   * offers whose card hides part of the contents ("+N More", carried as notes). Only offers priced in money count
-   * unless options.fiatOnly is false (Strike Point prices are not real prices), and
-   * options.categories (array) limits which unpriced items are estimated; an unpriced item
-   * outside it blocks its offer. Returns { key: estimate } with perUsd (units per US$, the mean
-   * over offers), observations, method, offers[] and value (table units for item.per).
-   * Nothing is written: tools/fill-from-store.js does that.
-   */
-  function estimateFromStore(offers, table, options) {
-    options = options || {};
-    if (!isTable(table)) return {};
-    // with refreshStore, items priced from the store earlier are priced again from today's offers
-    if (options.refreshStore) {
-      var work = { meta: table.meta, items: {} };
-      Object.keys(table.items).forEach(function (k) {
-        var it = table.items[k];
-        work.items[k] = it && it.observed && it.observed.source === 'store' && !it.userValue ? Object.assign({}, it, { value: null }) : it;
-      });
-      table = work;
-    }
-    var meta = table.meta || {};
-    var items = itemsOf(table);
-    var cats = Array.isArray(options.categories) && options.categories.length ? options.categories : null;
-    var results = rankOffers(offers, table, null, { personalize: false, chainMode: 'step', index: options.refreshStore ? null : options.index });
-    var acc = {};
-    results.forEach(function (r) {
-      var path = pathLines(r);
-      if (!path || !(path.priceUsd > 0)) return;
-      if (r.hidden) return;   // part of the contents is hidden: the price buys more than the listed items
-      if (options.fiatOnly !== false && r.priceVia !== 'fx') return;
-      var valuedUsd = 0, blocked = false;
-      var upByKey = {}, upOrder = [];
-      path.lines.forEach(function (l) {
-        if (l.excluded) return;
-        if (!l.key) { blocked = true; return; }
-        var it = items[l.key];
-        if (l.value != null) { valuedUsd += shareFace(l, meta); return; }   // a set is subtracted once, not once per type
-        if (l.thin || !it || it.derivedFrom || it.excludeFromValue) { blocked = true; return; }
-        if (cats && cats.indexOf(it.category || 'other') === -1) { blocked = true; return; }
-        if (!(l.qty > 0)) { blocked = true; return; }
-        var u = upByKey[l.key];
-        if (!u) { u = upByKey[l.key] = { key: l.key, qty: 0, category: it.category || 'other', per: Number(it.per || 1) > 0 ? Number(it.per || 1) : 1 }; upOrder.push(l.key); }
-        u.qty += l.qty;   // the same item listed twice (web bonus) is one observation
-      });
-      var unpriced = upOrder.map(function (k) { return upByKey[k]; });
-      if (blocked || !unpriced.length) return;
-      var cat = unpriced[0].category;
-      if (unpriced.some(function (u) { return u.category !== cat; })) return;
-      var residual = path.priceUsd - valuedUsd;
-      if (!(residual > 0)) return;
-      var totalQty = unpriced.reduce(function (a, u) { return a + u.qty; }, 0);
-      var method = unpriced.length === 1 ? 'residual' : 'shared';
-      unpriced.forEach(function (u) {
-        var usdPerUnit = residual / totalQty;       // residual: totalQty is the item's own qty
-        var e = acc[u.key] || (acc[u.key] = { key: u.key, name: items[u.key].name || u.key, per: u.per, estimates: [], offers: [], methods: {} });
-        e.estimates.push(1 / usdPerUnit);
-        e.offers.push({ name: r.name, price: path.price, currency: r.currency, priceUsd: path.priceUsd, qty: u.qty, totalQty: totalQty, items: unpriced.length, residualUsd: residual, method: method, perUsd: 1 / usdPerUnit });
-        e.methods[method] = (e.methods[method] || 0) + 1;
-      });
-    });
-    var out = {};
-    Object.keys(acc).forEach(function (k) {
-      var e = acc[k];
-      var mean = e.estimates.reduce(function (a, b) { return a + b; }, 0) / e.estimates.length;
-      out[k] = {
-        key: k, name: e.name, per: e.per,
-        perUsd: mean, observations: e.estimates.length,
-        method: e.methods.residual && !e.methods.shared ? 'residual' : (e.methods.shared && !e.methods.residual ? 'shared' : 'mixed'),
-        value: (e.per / mean) * (Number(meta.unitPerUsd) > 0 ? Number(meta.unitPerUsd) : 1),
-        offers: e.offers
-      };
-    });
-    return out;
-  }
-
-  /**
-   * One day's price record for every item the store sells: units per US$ counting the whole
-   * price (whole) and the item's share of the price by face value (share, null when the bundle
-   * holds something the table cannot value), best and average over the offers that contain it,
-   * for the trend view. Chain steps count on their own; offers with hidden contents, and offers
-   * not priced in money (unless options.fiatOnly is false), are left out.
+   * One day's price record for every item the store sells: units per unit of price counting the
+   * whole price (whole) and the item's share of the price by face value (share, null when the
+   * bundle holds something the table cannot value), best and average over the offers that contain
+   * it: { n, wb, wa, sb, sa, wo } with wo the offer behind wb. Items that share one price (a
+   * family, see bestPrices) are one record under the family's key. Chain steps count on their own;
+   * offers with hidden contents, and offers not priced in money (unless options.fiatOnly is
+   * false), are left out.
    */
   function priceSnapshot(offers, table, options) {
     options = options || {};
     var meta = (isTable(table) && table.meta) || {};
     var items = itemsOf(table);
-    var results = rankOffers(offers, table, null, { personalize: false, chainMode: 'step', index: options.index });
+    var results = rankOffers(offers, table, null, { personalize: false, chainMode: 'step', index: options.index, mode: options.mode });
     var acc = {};
     results.forEach(function (r) {
       var path = pathLines(r);
       if (!path || !(path.priceUsd > 0)) return;
       if (r.hidden) return;   // hidden contents would understate what the price buys
-      if (options.fiatOnly !== false && r.priceVia !== 'fx') return;   // Strike Point prices are not dollars
+      if (options.fiatOnly !== false && !isMoneyVia(r.priceVia) && r.priceVia !== 'cores') return;   // Strike Point prices are not money
       var faceTotal = 0, hasUnknown = false;
       var byKey = {}, order = [];
       path.lines.forEach(function (l) {
         if (!l.excluded && (!l.key || l.qty == null)) hasUnknown = true;   // an unknown item, or an unreadable count, takes an unknown share of the price
         if (!l.key || l.excluded || !(l.qty > 0)) return;
-        var a = byKey[l.key] || (byKey[l.key] = { qty: 0, face: 0, valued: true, setOf: setSize(l) });
-        if (!byKey[l.key].seen) { order.push(l.key); byKey[l.key].seen = true; }
+        var gk = priceKey(items, l.key);
+        var a = byKey[gk] || (byKey[gk] = { qty: 0, face: 0, valued: true });
+        if (!a.seen) { order.push(gk); a.seen = true; }
         a.qty += l.qty;
         if (l.value != null && !l.thin) { var f = shareFace(l, meta); a.face += f; faceTotal += f; }
         else a.valued = false;
@@ -1230,10 +1224,12 @@
       var allValued = !hasUnknown && order.every(function (k) { return byKey[k].valued; });
       order.forEach(function (k) {
         var a = byKey[k];
-        var e = acc[k] || (acc[k] = { whole: [], share: [], n: 0 });
+        var e = acc[k] || (acc[k] = { whole: [], share: [], n: 0, top: 0, wo: null });
         e.n += 1;
-        e.whole.push(a.qty / path.priceUsd);
-        if (allValued && faceTotal > 0 && a.face > 0) e.share.push(a.qty / Math.min(path.priceUsd, path.priceUsd * (a.face / faceTotal) * a.setOf));   // a set member pays the whole set's share, never more than the price
+        var w = a.qty / path.priceUsd;
+        e.whole.push(w);
+        if (w > e.top) { e.top = w; e.wo = r.name || null; }
+        if (allValued && faceTotal > 0 && a.face > 0) e.share.push(a.qty / (path.priceUsd * (a.face / faceTotal)));
       });
     });
     var day = {};
@@ -1242,6 +1238,7 @@
       var best = function (arr) { return arr.length ? Math.max.apply(null, arr) : null; };
       var avg = function (arr) { return arr.length ? arr.reduce(function (x, y) { return x + y; }, 0) / arr.length : null; };
       day[k] = { n: e.n, wb: best(e.whole), wa: avg(e.whole), sb: best(e.share), sa: avg(e.share) };
+      if (e.wo) day[k].wo = e.wo;
     });
     var date = options.date || (offers && offers.updated ? String(offers.updated).slice(0, 10) : null);
     if (!isDay(date)) date = null;
@@ -1259,9 +1256,10 @@
     return { days: days };
   }
 
-  /** One item's history: [{ date, n, wb, wa, sb, sa }] oldest first. */
-  function historyFor(history, key) {
-    return ((history && history.days) || []).filter(function (d) { return d.items && d.items[key]; }).map(function (d) { return Object.assign({ date: d.date }, d.items[key]); });
+  /** One item's history: [{ date, n, wb, wa, sb, sa, wo }] oldest first. key is a table key, or a family's. */
+  function historyFor(history, key, mode) {
+    var field = mode === 'cores' ? 'coreItems' : 'items';   // a day holds one record per item and currency
+    return ((history && history.days) || []).filter(function (d) { return d[field] && d[field][key]; }).map(function (d) { return Object.assign({ date: d.date }, d[field][key]); });
   }
 
   /**
@@ -1302,22 +1300,32 @@
     DEFAULT_GRADES: DEFAULT_GRADES,
     DEFAULT_SHARD_RULES: DEFAULT_SHARD_RULES,
     DEFAULT_PLAN_RULES: DEFAULT_PLAN_RULES,
-    DEFAULT_SCORING: DEFAULT_SCORING,
+    DEFAULT_MIN_OBSERVATIONS: DEFAULT_MIN_OBSERVATIONS,
     normalizeKey: normalizeKey,
     buildIndex: buildIndex,
+    itemIds: itemIds,
+    isPointsId: isPointsId,
+    isOpaqueId: isOpaqueId,
     resolveItem: resolveItem,
+    resolveLine: resolveLine,
+    isMoneyVia: isMoneyVia,
     genericPoints: genericPoints,
     genericShards: genericShards,
     hiddenNotes: hiddenNotes,
     unitValue: unitValue,
+    coreUnitValue: coreUnitValue,
+    coresFor: coresFor,
+    modeUnitValue: modeUnitValue,
+    usualPer: usualPer,
     baselineProblem: baselineProblem,
     resourceRule: resourceRule,
     personalMultiplier: personalMultiplier,
     gradeFor: gradeFor,
-    letterFor: letterFor,
     priceToUsd: priceToUsd,
     priceToUsdDetail: priceToUsdDetail,
     bestPrices: bestPrices,
+    priceKey: priceKey,
+    familyLabel: familyLabel,
     pathLines: pathLines,
     deriveItem: deriveItem,
     itemsOf: itemsOf,
@@ -1328,7 +1336,6 @@
     ISO_GROUPS: ISO_GROUPS,
     bucketGroups: bucketGroups,
     shopGroup: shopGroup,
-    estimateFromStore: estimateFromStore,
     priceSnapshot: priceSnapshot,
     mergeHistory: mergeHistory,
     historyFor: historyFor,
@@ -1338,8 +1345,6 @@
     SHOP_BUCKETS: SHOP_BUCKETS,
     shopBucket: shopBucket,
     shopBy: shopBy,
-    scoringCategory: scoringCategory,
-    scoreLines: scoreLines,
     valueOffer: valueOffer,
     rankOffers: rankOffers,
     parseContentsText: parseContentsText,
