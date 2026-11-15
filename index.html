@@ -139,8 +139,9 @@
     <ol class="muted" style="margin:0 0 10px 1.2em;padding:0">
       <li>Once, and again whenever this tool is updated (an old copy reads less): drag this link to your bookmarks bar, replacing the old one: <a id="grab-bookmarklet" href="#" style="color:var(--accent);font-weight:600">MSF: grab my offers</a></li>
       <li><a href="https://marvelstrikeforce.com/en/store" target="_blank" rel="noopener" style="color:var(--accent)">Open your store</a> (signed in) and click the bookmark there. It reads the page's own offer data at once, every item of every offer, so nothing scrolls: a panel at the top right says how many offers and items it read, and that they are copied.</li>
-      <li>Then either double-click <code>update.cmd</code> in the tool folder and reload this page: it saves the read from the clipboard and rebuilds the values and the price history. Or paste into the box below and click <b>Import pasted offers</b>: the offers are ranked at once, but items new to the store have no price until <code>update.cmd</code> has run.</li>
+      <li>Double-click <code>update.cmd</code> in the tool folder and reload this page. It takes the read from the clipboard, so copy nothing else in between; it saves the read and rebuilds the values and the price history.</li>
     </ol>
+    <p class="muted" style="margin:0 0 6px">For a quick look without saving, paste the copied read into this box instead. The page then says that the read is not saved; <code>update.cmd</code> is what saves it.</p>
     <textarea id="store-paste" placeholder='Paste the JSON the bookmark copied, or {"updated":"2026-11-14T16:45:00Z","source":"web-store","offers":[{"name":"Gold Pack","price":12.99,"currency":"CAD","ultraCores":100,"contents":[{"item":"Gold","qty":5000000}]}]}'></textarea>
     <div class="actions">
       <button class="primary" id="store-import">Import pasted offers</button>

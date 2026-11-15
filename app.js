@@ -344,11 +344,31 @@
     else if (!b) out.push('This value table is from an older version of the tool: run <code>node tools/refresh.js</code> in the tool folder to rebuild it from your own store reads.');
     var read = state.offers && state.offers.updated ? String(state.offers.updated) : null;
     if (b && state.offers) {
-      var pasted = state.offers.origin !== 'file' && !(window.MSF_OFFERS && read && String(window.MSF_OFFERS.updated) === read);   // the very read the file holds is no other read
-      if (pasted || !read || read.slice(0, 10) !== String(b.ratedDay)) {
-        out.push((pasted ? 'The store read on this page was pasted in' + (read ? ' (read ' + esc(timeText(read)) + ')' : '') + ', and the values were built for the saved read of ' + esc(dayText(b.ratedDay)) + ' instead'
-          : 'data/offers.js holds the store read of ' + (read ? esc(dayText(read)) : 'an unknown day') + ', but the values were built for the read of ' + esc(dayText(b.ratedDay))) +
-          ', so items new to the store have no price yet: with the read on the clipboard, double-click <code>update.cmd</code> in the tool folder, or run <code>node tools/save-store.js --clipboard</code> then <code>node tools/refresh.js</code>, and reload this page.');
+      var saved = window.MSF_OFFERS && window.MSF_OFFERS.updated ? String(window.MSF_OFFERS.updated) : null;   // the read data/offers.js holds
+      var pasted = state.offers.origin !== 'file' && !(saved && read && saved === read);   // the very read the file holds is no other read
+      if (pasted) {
+        // A read pasted into the page lives in this browser only. Say which read the files hold, what
+        // that means for the figures shown, and how to save the pasted one.
+        var shown = 'This page shows a read you pasted in' + (read ? ', taken ' + esc(timeText(read)) : '') + '. It is not saved: the tool\'s files hold the read of ' +
+          esc(saved ? timeText(saved) : dayText(b.ratedDay)) + ', and the values were built for that one. ';
+        var older = !!read && !!saved && Date.parse(read) < Date.parse(saved);
+        if (older) {
+          out.push(shown + 'The pasted read is the older of the two, so these values were built for a later read than it. Reload the page to go back to the saved read.');
+        } else {
+          var unknown = [];
+          E.rankOffers(state.offers.offers, t, state.roster || null, { personalize: false, mode: 'cash', chainMode: 'step' }).forEach(function (r) { (r.unknown || []).forEach(function (n) { if (unknown.indexOf(n) === -1) unknown.push(n); }); });
+          var sameDay = !!read && read.slice(0, 10) === String(b.ratedDay);
+          var effect = unknown.length
+            ? unknown.length + ' item' + (unknown.length === 1 ? '' : 's') + ' in it ' + (unknown.length === 1 ? 'is' : 'are') + ' not in the value table yet and count' + (unknown.length === 1 ? 's' : '') + ' as nothing (' + esc(someText(unknown, 4)) + ')'
+            : 'Everything in it is in the value table';
+          effect += sameDay ? (unknown.length ? '; the usual prices are the same for both reads' : ' and the usual prices are the same for both reads, so the figures here are right')
+            : '. The values were built before it, so the read of ' + esc(dayText(b.ratedDay)) + ' does not count as an earlier day yet';
+          out.push(shown + effect + '. To save it, it has to be on the clipboard when <code>update.cmd</code> runs: <button type="button" class="ghost small" id="copy-read">Copy this read</button> ' +
+            '(or click the bookmark on the store page again), double-click <code>update.cmd</code> in the tool folder, then reload this page.');
+        }
+      } else if (!read || read.slice(0, 10) !== String(b.ratedDay)) {
+        out.push('data/offers.js holds the store read of ' + (read ? esc(dayText(read)) : 'an unknown day') + ', but the values were built for the read of ' + esc(dayText(b.ratedDay)) +
+          ', so items new to the store have no price yet: double-click <code>update.cmd</code> in the tool folder, or run <code>node tools/refresh.js</code> there, and reload this page.');
       }
     }
     var readAge = read ? daysSince(read) : null;
@@ -391,6 +411,28 @@
     if (!e.target.closest('#notice-ok')) return;
     save(LS.notice, null);
     renderStatus();
+  });
+  // Put the read the page is showing back on the clipboard, as the bookmark left it, for update.cmd to save.
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('#copy-read');
+    if (!btn || !state.offers) return;
+    var read = {};
+    Object.keys(state.offers).forEach(function (k) { if (k !== 'origin') read[k] = state.offers[k]; });
+    var json = JSON.stringify(read, null, 1);
+    var done = function (ok) { btn.textContent = ok ? 'Copied: now double-click update.cmd' : 'Could not copy: click the bookmark on the store page again'; };
+    var byHand = function () {
+      var ta = document.createElement('textarea');
+      ta.value = json;
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = !!document.execCommand('copy'); } catch (err) { ok = false; }
+      ta.remove();
+      done(ok);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(json).then(function () { done(true); }, byHand);
+    else byHand();
   });
   document.addEventListener('click', function (e) {
     var b = e.target.closest('.mode-switch button[data-mode]');
