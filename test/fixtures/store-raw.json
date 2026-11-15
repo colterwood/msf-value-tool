@@ -1,0 +1,1408 @@
+{
+ "readAt": "2026-10-18T19:38:24.883Z",
+ "account": "CZARFACE level 105",
+ "currencyToggle": "",
+ "offers": [
+  {
+   "section": "Buy Again",
+   "sub": "",
+   "title": "Extra Energy Rush",
+   "description": "Boost your power with extra energy and stack up gold to dominate the campaign!",
+   "timer": "3d 1h",
+   "labels": [],
+   "limit": "3 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$3.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Campaign Energy",
+       "count": "x200",
+       "webBonus": false
+      },
+      {
+       "name": "Premium Orb Fragments",
+       "count": "x4,000",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x300",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Buy Again",
+   "sub": "",
+   "title": "ISO Fest: T3 Level 1 Ions",
+   "description": "Get a supply of T3 Level 1 Ions, also gain progress in the ISO Fest Milestone!",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "92 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$3.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "ISO Fest Milestone Points",
+       "count": "x6M",
+       "webBonus": false
+      },
+      {
+       "name": "T3 Level 1 Ions",
+       "count": "x3M",
+       "webBonus": false
+      },
+      {
+       "name": "Basic T3 Iso-8 Orb Fragments",
+       "count": "x30K",
+       "webBonus": true
+      },
+      {
+       "name": "Strike Points",
+       "count": "x300",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Buy Again",
+   "sub": "",
+   "title": "Golden Boost",
+   "description": "Boost the ability and capability of your roster with this limited time offer!",
+   "timer": "4d",
+   "labels": [],
+   "limit": "1 purchase left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$3.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Gold",
+       "count": "x2M",
+       "webBonus": false
+      },
+      {
+       "name": "T2 Ability Material",
+       "count": "x2,000",
+       "webBonus": false
+      },
+      {
+       "name": "T3 Ability Material",
+       "count": "x1,000",
+       "webBonus": false
+      },
+      {
+       "name": "L3 Training Module",
+       "count": "x500",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x300",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Buy Again",
+   "sub": "",
+   "title": "Override Orb",
+   "description": "Each Override Orb contains up to 410 Jocasta shards with 50 shards guaranteed! She sustains team with Repair, heals Tech allies, and calls coordinated attacks!",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "8 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$49.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button "
+     },
+     "items": [
+      {
+       "name": "Override Orb Fragments",
+       "count": "x2,000",
+       "webBonus": false
+      },
+      {
+       "name": "Iron Vengeance Milestone Points",
+       "count": "x111M",
+       "webBonus": false
+      },
+      {
+       "name": "Mega Gold Orb Fragments",
+       "count": "x2,000",
+       "webBonus": true
+      },
+      {
+       "name": "Strike Points",
+       "count": "x4,000",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Buy Again",
+   "sub": "",
+   "title": "Raid Warzone: Mega Pack",
+   "description": "Get ahead in Raid Warzone Milestone and propel your Alliance to Gold Orb Fragments!",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "1 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$129.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button "
+     },
+     "items": [
+      {
+       "name": "Raid Warzone Milestone Points",
+       "count": "x120K",
+       "webBonus": false
+      },
+      {
+       "name": "Gold Orb Fragments",
+       "count": "x20K",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x10K",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Buy Again",
+   "sub": "",
+   "title": "Golden Boost",
+   "description": "Boost the ability and capability of your roster with this limited time offer!",
+   "timer": "4d",
+   "labels": [],
+   "limit": "1 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$3.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button "
+     },
+     "items": [
+      {
+       "name": "Gold",
+       "count": "x2M",
+       "webBonus": false
+      },
+      {
+       "name": "T2 Ability Material",
+       "count": "x2,000",
+       "webBonus": false
+      },
+      {
+       "name": "T3 Ability Material",
+       "count": "x1,000",
+       "webBonus": false
+      },
+      {
+       "name": "L3 Training Module",
+       "count": "x500",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x300",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Buy Again",
+   "sub": "",
+   "title": "Iron Vengeance: Iron Raiders",
+   "description": "Open this Orb for a chance to get 810 Shards for Iron Raiders, plus a bunch of points toward the Iron Vengeance Milestone!",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "2 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$129.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button "
+     },
+     "items": [
+      {
+       "name": "Iron Vengeance Milestone Points",
+       "count": "x300M",
+       "webBonus": false
+      },
+      {
+       "name": "Iron Raiders Mega Orb Fragments",
+       "count": "x2,000",
+       "webBonus": false
+      },
+      {
+       "name": "Iron Vengeance Milestone Points",
+       "count": "x15M",
+       "webBonus": true
+      },
+      {
+       "name": "Strike Points",
+       "count": "x10K",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Buy Again",
+   "sub": "",
+   "title": "Iron Vengeance: Amazing Avengers",
+   "description": "Open this Orb for a chance to get 810 Shards for Amazing Avengers, plus a bunch of points toward the Iron Vengeance Milestone!",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "2 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$129.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button "
+     },
+     "items": [
+      {
+       "name": "Iron Vengeance Milestone Points",
+       "count": "x300M",
+       "webBonus": false
+      },
+      {
+       "name": "Amazing Avengers Mega Orb Fragments",
+       "count": "x2,000",
+       "webBonus": false
+      },
+      {
+       "name": "Iron Vengeance Milestone Points",
+       "count": "x15M",
+       "webBonus": true
+      },
+      {
+       "name": "Strike Points",
+       "count": "x10K",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Buy Again",
+   "sub": "",
+   "title": "Iron Vengeance: Ultimate Pack",
+   "description": "Get ahead in the Iron Vengeance Leaderboard to secure 5-Diamond for Spider-Woman (Julia), Rachel Cole-Alves, and Blade (Mighty)!",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "50 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$129.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button "
+     },
+     "items": [
+      {
+       "name": "Iron Vengeance Milestone Points",
+       "count": "x450M",
+       "webBonus": false
+      },
+      {
+       "name": "Iron Vengeance Milestone Points",
+       "count": "x22.5M",
+       "webBonus": true
+      },
+      {
+       "name": "Strike Points",
+       "count": "x10K",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "battle pass and s.t.r.i.k.e pass offers",
+   "sub": "",
+   "title": "Premium Plus Chapter Battle Pass Ticket Pack",
+   "description": "Get bonus Shop Credits when you purchase 1 Premium Plus Chapter Battle Pass Tickets with this Web Exclusive bundle! Tickets can be redeemed in-game to activate any single Premium Plus Chapter Battle Pass. Valid only for Chapter Battle Passes.",
+   "timer": "1h 21m",
+   "labels": [
+    "Premium Plus x1 You receive"
+   ],
+   "limit": "2 purchases left",
+   "flags": [
+    "pass-prepurchase-offer"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$69.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Premium Plus Battle Pass Ticket",
+       "count": "x1",
+       "webBonus": false
+      },
+      {
+       "name": "Shop Credits",
+       "count": "x500K",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x5,000",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Chain Offers",
+   "sub": "",
+   "title": "(1/6) Boot Sequence",
+   "description": "A special launch offer has appeared for you! Recruit Jocasta, and grab points toward the Iron Vengeance Milestone event!",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "1 purchases left",
+   "flags": [
+    "daisy-chain",
+    "is-centered",
+    "has-sibling-chain-offer"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$39.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button "
+     },
+     "items": [
+      {
+       "name": "Jocasta",
+       "count": "x45",
+       "webBonus": false
+      },
+      {
+       "name": "Iron Vengeance Milestone Points",
+       "count": "x76M",
+       "webBonus": false
+      },
+      {
+       "name": "Mega Gold Orb Fragments",
+       "count": "x2,000",
+       "webBonus": true
+      },
+      {
+       "name": "Strike Points",
+       "count": "x3,000",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Chain Offers",
+   "sub": "",
+   "title": "Kestrel Starter",
+   "description": "Fuel Kestrel (Zombie)'s power and let your Undying overwhelm every opponent in their path!",
+   "timer": "3d 1h",
+   "labels": [],
+   "limit": "1 purchases left",
+   "flags": [
+    "daisy-chain",
+    "is-centered",
+    "has-sibling-chain-offer"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$6.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button "
+     },
+     "items": [
+      {
+       "name": "Kestrel (Zombie)",
+       "count": "x80",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x500",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Chain Offers",
+   "sub": "",
+   "title": "Training Overdrive (1/5)",
+   "description": "Ready to train your roster? Start here!",
+   "timer": "3d 1h",
+   "labels": [],
+   "limit": "1 purchases left",
+   "flags": [
+    "daisy-chain",
+    "is-centered",
+    "has-sibling-chain-offer"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$6.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button "
+     },
+     "items": [
+      {
+       "name": "L4 Training Module",
+       "count": "x900",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x500",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "dual offers",
+   "sub": "",
+   "title": "Amazing Avengers Surge",
+   "description": "",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$69.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button "
+     },
+     "items": [
+      {
+       "name": "Gold",
+       "count": "x200M",
+       "webBonus": false
+      },
+      {
+       "name": "Spider-Woman (Julia)",
+       "count": "x200",
+       "webBonus": false
+      },
+      {
+       "name": "Rachel Cole-Alves",
+       "count": "x200",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x5,000",
+       "webBonus": true
+      }
+     ]
+    },
+    {
+     "price": {
+      "text": "CA$19.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button "
+     },
+     "items": [
+      {
+       "name": "Gold",
+       "count": "x50M",
+       "webBonus": false
+      },
+      {
+       "name": "Spider-Woman (Julia)",
+       "count": "x50",
+       "webBonus": false
+      },
+      {
+       "name": "Rachel Cole-Alves",
+       "count": "x50",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x1,500",
+       "webBonus": true
+      }
+     ]
+    },
+    {
+     "price": null,
+     "items": []
+    }
+   ]
+  },
+  {
+   "section": "Offers",
+   "sub": "FOR NEW PLAYERS",
+   "title": "Golden Boost",
+   "description": "Boost the ability and capability of your roster with this limited time offer!",
+   "timer": "4d",
+   "labels": [],
+   "limit": "1 purchase left",
+   "flags": [
+    "defer-offscreen-rendering"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$3.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Gold",
+       "count": "x2M",
+       "webBonus": false
+      },
+      {
+       "name": "T2 Ability Material",
+       "count": "x2,000",
+       "webBonus": false
+      },
+      {
+       "name": "T3 Ability Material",
+       "count": "x1,000",
+       "webBonus": false
+      },
+      {
+       "name": "L3 Training Module",
+       "count": "x500",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x300",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Offers",
+   "sub": "WEB EXCLUSIVE",
+   "title": "Secret Warrior Diamond",
+   "description": "Empower your Secret Warriors with 5-Diamond power and unleash their full potential!",
+   "timer": "3d 1h",
+   "labels": [],
+   "limit": "1 purchase left",
+   "flags": [
+    "defer-offscreen-rendering"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$179.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Phantom Rider",
+       "count": "x1",
+       "webBonus": false
+      },
+      {
+       "name": "Yo-Yo",
+       "count": "x1",
+       "webBonus": false
+      },
+      {
+       "name": "Domino",
+       "count": "x1",
+       "webBonus": false
+      },
+      {
+       "name": "Quake",
+       "count": "x1",
+       "webBonus": false
+      },
+      {
+       "name": "Negasonic",
+       "count": "x1",
+       "webBonus": false
+      },
+      {
+       "name": "+6 More",
+       "count": "+6More",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Offers",
+   "sub": "RECOMMENDED",
+   "title": "Phantom Rider Awakening",
+   "description": "Unlock the full potential of Phantom Rider with materials to upgrade all three Awakened Abilities!",
+   "timer": "3d 1h",
+   "labels": [],
+   "limit": "1 purchase left",
+   "flags": [
+    "defer-offscreen-rendering"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$12.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Phantom Rider's Basic Awakened Ability Material",
+       "count": "x200",
+       "webBonus": false
+      },
+      {
+       "name": "Phantom Rider's Special Awakened Ability Material",
+       "count": "x200",
+       "webBonus": false
+      },
+      {
+       "name": "Phantom Rider's Ultimate Awakened Ability Material",
+       "count": "x200",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x1,000",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Offers",
+   "sub": "RECOMMENDED",
+   "title": "Phantom Rider Awakening",
+   "description": "Enhance Phantom Rider with materials to upgrade his Basic Awakened Ability!",
+   "timer": "3d 1h",
+   "labels": [],
+   "limit": "1 purchase left",
+   "flags": [
+    "defer-offscreen-rendering"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$6.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Phantom Rider's Basic Awakened Ability Material",
+       "count": "x200",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x500",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Offers",
+   "sub": "RECOMMENDED",
+   "title": "Phantom Rider Awakening",
+   "description": "Empower Phantom Rider with materials to upgrade his Special Awakened Ability!",
+   "timer": "3d 1h",
+   "labels": [],
+   "limit": "1 purchase left",
+   "flags": [
+    "defer-offscreen-rendering"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$6.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Phantom Rider's Special Awakened Ability Material",
+       "count": "x200",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x500",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Offers",
+   "sub": "RECOMMENDED",
+   "title": "Phantom Rider Awakening",
+   "description": "Unleash the full force of Phantom Rider with materials to upgrade his Ultimate Awakened Ability!",
+   "timer": "3d 1h",
+   "labels": [],
+   "limit": "1 purchase left",
+   "flags": [
+    "defer-offscreen-rendering"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$6.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Phantom Rider's Ultimate Awakened Ability Material",
+       "count": "x200",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x500",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Offers",
+   "sub": "RECOMMENDED",
+   "title": "Ability Essentials Bundle",
+   "description": "Stock up Ability Materials to upgrade your roster now!",
+   "timer": "3d 1h",
+   "labels": [],
+   "limit": "5 purchases left",
+   "flags": [
+    "defer-offscreen-rendering"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$6.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "T2 Ability Material",
+       "count": "x200",
+       "webBonus": false
+      },
+      {
+       "name": "T1 Ability Material",
+       "count": "x200",
+       "webBonus": false
+      },
+      {
+       "name": "T4 Ability Material",
+       "count": "x140",
+       "webBonus": false
+      },
+      {
+       "name": "T3 Ability Material",
+       "count": "x300",
+       "webBonus": false
+      },
+      {
+       "name": "T2 Ability Material",
+       "count": "x20",
+       "webBonus": true
+      },
+      {
+       "name": "+4 More",
+       "count": "+4More",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Offers",
+   "sub": "RECOMMENDED",
+   "title": "Power Up Your Squad",
+   "description": "Start promoting your roster with a special limited time offer today!",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "1 purchase left",
+   "flags": [
+    "defer-offscreen-rendering"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$59.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Silver Surfer (Breaker)",
+       "count": "",
+       "webBonus": false
+      },
+      {
+       "name": "Ebony Maw",
+       "count": "",
+       "webBonus": false
+      },
+      {
+       "name": "Cull Obsidian",
+       "count": "",
+       "webBonus": false
+      },
+      {
+       "name": "Minn-Erva",
+       "count": "",
+       "webBonus": false
+      },
+      {
+       "name": "Ronan the Accuser",
+       "count": "",
+       "webBonus": false
+      },
+      {
+       "name": "+2 More",
+       "count": "+2More",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Offers",
+   "sub": "EVENTS",
+   "title": "ISO Fest: T3 Level 1 Ions",
+   "description": "Get a supply of T3 Level 1 Ions, also gain progress in the ISO Fest Milestone!",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "92 purchases left",
+   "flags": [
+    "defer-offscreen-rendering"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$3.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "ISO Fest Milestone Points",
+       "count": "x6M",
+       "webBonus": false
+      },
+      {
+       "name": "T3 Level 1 Ions",
+       "count": "x3M",
+       "webBonus": false
+      },
+      {
+       "name": "Basic T3 Iso-8 Orb Fragments",
+       "count": "x30K",
+       "webBonus": true
+      },
+      {
+       "name": "Strike Points",
+       "count": "x300",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Offers",
+   "sub": "GENERAL",
+   "title": "Extra Energy Rush",
+   "description": "Boost your power with extra energy and stack up gold to dominate the campaign!",
+   "timer": "3d 1h",
+   "labels": [],
+   "limit": "3 purchases left",
+   "flags": [
+    "defer-offscreen-rendering"
+   ],
+   "variants": [
+    {
+     "price": {
+      "text": "CA$3.99",
+      "costCurrency": "fiat",
+      "buttonClass": "button real-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Campaign Energy",
+       "count": "x200",
+       "webBonus": false
+      },
+      {
+       "name": "Premium Orb Fragments",
+       "count": "x4,000",
+       "webBonus": false
+      },
+      {
+       "name": "Strike Points",
+       "count": "x300",
+       "webBonus": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "STRIKE STORE",
+   "sub": "",
+   "title": "Mutant GT21 Premium Orb",
+   "description": "GT21 Strike Store Special Event: For a limited time, use Strike Points to earn guaranteed Mutant GT21 Mini-Uniques!",
+   "timer": "4d 1h",
+   "labels": [],
+   "limit": "1 purchase left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "25K",
+      "costCurrency": "Strike Points",
+      "buttonClass": "button item-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Mutant GT21 Premium Orb",
+       "count": "x1",
+       "webBonus": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "STRIKE STORE",
+   "sub": "",
+   "title": "Mutant GT21 Standard Orb",
+   "description": "GT21 Strike Store Special Event: Earn guaranteed Mutant GT21 Mini-Uniques by spending Strike Points during this limited-time event!",
+   "timer": "4d 1h",
+   "labels": [],
+   "limit": "1 purchase left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "6,000",
+      "costCurrency": "Strike Points",
+      "buttonClass": "button item-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Mutant GT21 Standard Orb",
+       "count": "x1",
+       "webBonus": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "STRIKE STORE",
+   "sub": "",
+   "title": "Epic Essence Bundle",
+   "description": "Upgrade your Chapter Boosts with this Epic Essence bundle!",
+   "timer": "8d 1h",
+   "labels": [],
+   "limit": "5 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "500",
+      "costCurrency": "Strike Points",
+      "buttonClass": "button item-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Epic Essence",
+       "count": "x20K",
+       "webBonus": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "STRIKE STORE",
+   "sub": "",
+   "title": "Strike Store Exclusive!",
+   "description": "Open this Strike Store exclusive orb for a chance at 3-Diamond promotions for recent characters! Characters from Fantastic Four (MCU), Hellfire Club, and Insidious Six.",
+   "timer": "1d 1h",
+   "labels": [],
+   "limit": "5 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "6,000",
+      "costCurrency": "Strike Points",
+      "buttonClass": "button item-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Strike Store Exclusive",
+       "count": "x1",
+       "webBonus": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "STRIKE STORE",
+   "sub": "",
+   "title": "Maximum Ability",
+   "description": "Get the edge on your opponents with T4 Ability Materials bundle!",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "100 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "5,000",
+      "costCurrency": "Strike Points",
+      "buttonClass": "button item-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "T4 Ability Material",
+       "count": "x50",
+       "webBonus": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "STRIKE STORE",
+   "sub": "",
+   "title": "Training Bootcamp",
+   "description": "Level up your top characters with this Training Module bundle!",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "100 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "2,500",
+      "costCurrency": "Strike Points",
+      "buttonClass": "button item-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "L4 Training Module",
+       "count": "x150",
+       "webBonus": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "STRIKE STORE",
+   "sub": "",
+   "title": "Augmented Energy",
+   "description": "Conquer enemies and Campaigns with Armory Orbs and Campaign Energy!",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "100 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "1,000",
+      "costCurrency": "Strike Points",
+      "buttonClass": "button item-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Armory 17 Orb Fragments",
+       "count": "x340K",
+       "webBonus": false
+      },
+      {
+       "name": "Teal Catalyst Pack",
+       "count": "x3",
+       "webBonus": false
+      },
+      {
+       "name": "Campaign Energy",
+       "count": "x130",
+       "webBonus": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "STRIKE STORE",
+   "sub": "",
+   "title": "Gold Standard",
+   "description": "Boost your roster power with this Gold bundle!",
+   "timer": "22d 1h",
+   "labels": [],
+   "limit": "30 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "500",
+      "costCurrency": "Strike Points",
+      "buttonClass": "button item-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "Gold",
+       "count": "x250K",
+       "webBonus": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "section": "STRIKE STORE",
+   "sub": "",
+   "title": "Training Bootcamp",
+   "description": "Level up your top characters with this Training Module bundle!",
+   "timer": "1h 21m",
+   "labels": [],
+   "limit": "100 purchases left",
+   "flags": [],
+   "variants": [
+    {
+     "price": {
+      "text": "500",
+      "costCurrency": "Strike Points",
+      "buttonClass": "button item-cost-button is-small"
+     },
+     "items": [
+      {
+       "name": "L4 Training Module",
+       "count": "x20",
+       "webBonus": false
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "cores": [
+  {
+   "section": "Power Cores",
+   "name": "Power Cores",
+   "count": "x150",
+   "price": "CA$2.99",
+   "bonus": [
+    {
+     "name": "Strike Points",
+     "count": "x200"
+    }
+   ]
+  },
+  {
+   "section": "Power Cores",
+   "name": "Cluster of Power Cores",
+   "count": "x375",
+   "price": "CA$6.99",
+   "bonus": [
+    {
+     "name": "Strike Points",
+     "count": "x500"
+    }
+   ]
+  },
+  {
+   "section": "Power Cores",
+   "name": "Bundle of Power Cores",
+   "count": "x750",
+   "price": "CA$12.99",
+   "bonus": [
+    {
+     "name": "Strike Points",
+     "count": "x1,000"
+    }
+   ]
+  },
+  {
+   "section": "Power Cores",
+   "name": "Case of Power Cores",
+   "count": "x1,580",
+   "price": "CA$24.99",
+   "bonus": [
+    {
+     "name": "Strike Points",
+     "count": "x2,000"
+    }
+   ]
+  },
+  {
+   "section": "Power Cores",
+   "name": "Crate of Power Cores",
+   "count": "x4,130",
+   "price": "CA$69.99",
+   "bonus": [
+    {
+     "name": "Strike Points",
+     "count": "x5,000"
+    }
+   ]
+  },
+  {
+   "section": "Power Cores",
+   "name": "Shipment of Power Cores",
+   "count": "x8,630",
+   "price": "CA$129.99",
+   "bonus": [
+    {
+     "name": "Strike Points",
+     "count": "x10K"
+    }
+   ]
+  },
+  {
+   "section": "Ultra Cores",
+   "name": "Ultra Cores",
+   "count": "x100",
+   "price": "CA$12.99",
+   "bonus": [
+    {
+     "name": "Strike Points",
+     "count": "x1,000"
+    }
+   ]
+  },
+  {
+   "section": "Ultra Cores",
+   "name": "Cluster of Ultra Cores",
+   "count": "x200",
+   "price": "CA$24.99",
+   "bonus": [
+    {
+     "name": "Strike Points",
+     "count": "x2,000"
+    }
+   ]
+  },
+  {
+   "section": "Ultra Cores",
+   "name": "Bundle of Ultra Cores",
+   "count": "x350",
+   "price": "CA$49.99",
+   "bonus": [
+    {
+     "name": "Strike Points",
+     "count": "x3,500"
+    }
+   ]
+  },
+  {
+   "section": "Ultra Cores",
+   "name": "Case of Ultra Cores",
+   "count": "x500",
+   "price": "CA$69.99",
+   "bonus": [
+    {
+     "name": "Strike Points",
+     "count": "x5,000"
+    }
+   ]
+  },
+  {
+   "section": "Ultra Cores",
+   "name": "Crate of Ultra Cores",
+   "count": "x1,000",
+   "price": "CA$129.99",
+   "bonus": [
+    {
+     "name": "Strike Points",
+     "count": "x10K"
+    }
+   ]
+  }
+ ]
+}

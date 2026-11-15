@@ -1,0 +1,923 @@
+{
+ "about": "A slice of the store page's own offer data (its Vuex state) read 14 November 2026, in the raw shape extractStore packs for normalizeExtract. Ids like dump-109 stand in for offer ids the dump did not keep; chain step ids are the real ones.",
+ "readAt": "2026-11-14T16:45:48.102Z",
+ "account": "CZARFACE level 109",
+ "source": "state",
+ "offers": [
+  {
+   "id": "dump-000",
+   "name": "Catch up on Wasp (Janet)'s Milestones",
+   "description": "Behind on the two milestones? Here is an special catch-up offer for those still hoping to finish up the milestones.",
+   "locations": ["web_standard"],
+   "category": "ID_OCAT_RECOMMENDED",
+   "expiration": 1795467600,
+   "remainingPurchases": 2,
+   "previouslyPurchased": true,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "EVTA_META_SEP_O", "name": "Designed to Sting Milestone Points", "quantity": "1" },
+      { "id": "EVTA_META_SEP_N", "name": "Founding Force Milestone Points", "quantity": "2" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "1,000" }
+     ],
+     "realCost": { "amount": "12.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "100" }
+    }
+   ]
+  },
+  {
+   "id": "6af628f902c8a7d0cfd5a08a",
+   "name": "(1/7) Savage Leader",
+   "description": null,
+   "locations": ["web_standard", "web_special"],
+   "category": "ID_OCAT_NEW_CHARACTERS",
+   "expiration": 1795381200,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "SHARD_CYCLOPSMIGHTY", "name": "Cyclops (Mighty)", "quantity": "45" },
+      { "id": "RS_CYCLOPSMIGHTY_4", "name": "Cyclops (Mighty)", "quantity": "1" },
+      { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "20K" },
+      { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "10K" },
+      { "id": "SC", "name": "Gold", "quantity": "5M" },
+      { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "200" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "3,000" }
+     ],
+     "realCost": { "amount": "39.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "300" }
+    }
+   ],
+   "chain": { "id": "webchainstreak2", "index": 1 }
+  },
+  {
+   "id": "6af628f902c8a7d0cfd5a093",
+   "name": "(2/7) Savage Leader",
+   "description": null,
+   "locations": ["web_standard", "web_special"],
+   "category": "ID_OCAT_NEW_CHARACTERS",
+   "expiration": 1795381200,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "SHARD_CYCLOPSMIGHTY", "name": "Cyclops (Mighty)", "quantity": "55" },
+      { "id": "RS_CYCLOPSMIGHTY_5", "name": "Cyclops (Mighty)", "quantity": "1" },
+      { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "30K" },
+      { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "10K" },
+      { "id": "SC", "name": "Gold", "quantity": "5M" },
+      { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "200" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "3,000" }
+     ],
+     "realCost": { "amount": "39.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "300" }
+    }
+   ],
+   "chain": { "id": "webchainstreak2", "index": 2 }
+  },
+  {
+   "id": "6af628f902c8a7d0cfd5a098",
+   "name": "(3/7) Savage Leader",
+   "description": null,
+   "locations": ["web_standard", "web_special"],
+   "category": "ID_OCAT_NEW_CHARACTERS",
+   "expiration": 1795381200,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "SHARD_CYCLOPSMIGHTY", "name": "Cyclops (Mighty)", "quantity": "80" },
+      { "id": "RS_CYCLOPSMIGHTY_6", "name": "Cyclops (Mighty)", "quantity": "1" },
+      { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "40K" },
+      { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "12K" },
+      { "id": "SC", "name": "Gold", "quantity": "5M" },
+      { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "400" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "4,000" }
+     ],
+     "realCost": { "amount": "49.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "400" }
+    }
+   ],
+   "chain": { "id": "webchainstreak2", "index": 3 }
+  },
+  {
+   "id": "6af628f902c8a7d0cfd5a0a0",
+   "name": "(4/7) Savage Leader",
+   "description": null,
+   "locations": ["web_standard", "web_special"],
+   "category": "ID_OCAT_NEW_CHARACTERS",
+   "expiration": 1795381200,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "SHARD_CYCLOPSMIGHTY", "name": "Cyclops (Mighty)", "quantity": "130" },
+      { "id": "RS_CYCLOPSMIGHTY_7", "name": "Cyclops (Mighty)", "quantity": "1" },
+      { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "50K" },
+      { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "14K" },
+      { "id": "SC", "name": "Gold", "quantity": "5M" },
+      { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "500" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "5,000" }
+     ],
+     "realCost": { "amount": "69.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "500" }
+    }
+   ],
+   "chain": { "id": "webchainstreak2", "index": 4 }
+  },
+  {
+   "id": "6af628f902c8a7d0cfd5a0a6",
+   "name": "(5/7) Savage Leader",
+   "description": null,
+   "locations": ["web_standard", "web_special"],
+   "category": "ID_OCAT_NEW_CHARACTERS",
+   "expiration": 1795381200,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "SHARD_CYCLOPSMIGHTY", "name": "Cyclops (Mighty)", "quantity": "200" },
+      { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "60K" },
+      { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "16K" },
+      { "id": "SC", "name": "Gold", "quantity": "10M" },
+      { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "800" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "6,000" }
+     ],
+     "realCost": { "amount": "79.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "600" }
+    }
+   ],
+   "chain": { "id": "webchainstreak2", "index": 5 }
+  },
+  {
+   "id": "6af628f902c8a7d0cfd5a0aa",
+   "name": "(6/7) Savage Leader",
+   "description": null,
+   "locations": ["web_standard", "web_special"],
+   "category": "ID_OCAT_NEW_CHARACTERS",
+   "expiration": 1795381200,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "SHARD_CYCLOPSMIGHTY", "name": "Cyclops (Mighty)", "quantity": "300" },
+      { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "80K" },
+      { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "18K" },
+      { "id": "SC", "name": "Gold", "quantity": "15M" },
+      { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "1,000" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "10K" }
+     ],
+     "realCost": { "amount": "129.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "1,000" }
+    }
+   ],
+   "chain": { "id": "webchainstreak2", "index": 6 }
+  },
+  {
+   "id": "6af628f902c8a7d0cfd5a0b0",
+   "name": "(7/7) Savage Leader",
+   "description": null,
+   "locations": ["web_standard", "web_special"],
+   "category": "ID_OCAT_NEW_CHARACTERS",
+   "expiration": 1795381200,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "PD_CYCLOPSMIGHTY_1", "name": "Cyclops (Mighty)", "quantity": "1" },
+      { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "100K" },
+      { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "20K" },
+      { "id": "SC", "name": "Gold", "quantity": "20M" },
+      { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "1,500" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "10K" }
+     ],
+     "realCost": { "amount": "129.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "1,000" }
+    }
+   ],
+   "chain": { "id": "webchainstreak2", "index": 7 }
+  },
+  {
+   "id": "6aecef4302c8a7d0cf209f8c",
+   "name": "Cyber Breach: Cores Pack (2/5)",
+   "description": null,
+   "locations": ["web_standard"],
+   "category": "ID_OCAT_EVENTS",
+   "expiration": 1794776400,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "30K" },
+      { "id": "HC", "name": "Power Cores", "quantity": "1,000" }
+     ],
+     "webRewards": [
+      { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "1,500" }
+     ],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "1,000" }
+     ],
+     "realCost": { "amount": "12.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "100" }
+    }
+   ],
+   "chain": { "id": "nov26e1cyberbreach", "index": 2 }
+  },
+  {
+   "id": "6aecef4302c8a7d0cf209f99",
+   "name": "Cyber Breach: Cores Pack (3/5)",
+   "description": null,
+   "locations": ["web_standard"],
+   "category": "ID_OCAT_EVENTS",
+   "expiration": 1794776400,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "30K" },
+      { "id": "HC", "name": "Power Cores", "quantity": "1,100" }
+     ],
+     "webRewards": [
+      { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "1,500" }
+     ],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "1,000" }
+     ],
+     "realCost": { "amount": "12.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "100" }
+    }
+   ],
+   "chain": { "id": "nov26e1cyberbreach", "index": 3 }
+  },
+  {
+   "id": "6aecef4302c8a7d0cf209fa2",
+   "name": "Cyber Breach: Cores Pack (4/5)",
+   "description": null,
+   "locations": ["web_standard"],
+   "category": "ID_OCAT_EVENTS",
+   "expiration": 1794776400,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "75K" },
+      { "id": "HC", "name": "Power Cores", "quantity": "2,300" }
+     ],
+     "webRewards": [
+      { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "3,750" }
+     ],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "2,000" }
+     ],
+     "realCost": { "amount": "24.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "200" }
+    }
+   ],
+   "chain": { "id": "nov26e1cyberbreach", "index": 4 }
+  },
+  {
+   "id": "6aecef4302c8a7d0cf209fab",
+   "name": "Cyber Breach: Cores Pack (5/5)",
+   "description": null,
+   "locations": ["web_standard"],
+   "category": "ID_OCAT_EVENTS",
+   "expiration": 1794776400,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "200K" },
+      { "id": "HC", "name": "Power Cores", "quantity": "6,000" }
+     ],
+     "webRewards": [
+      { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "10K" }
+     ],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "5,000" }
+     ],
+     "realCost": { "amount": "69.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "500" }
+    }
+   ],
+   "chain": { "id": "nov26e1cyberbreach", "index": 5 }
+  },
+  {
+   "id": "dump-100",
+   "name": "Turn Up the Power",
+   "description": null,
+   "locations": ["web_standard"],
+   "category": "ID_OCAT_FEATURED",
+   "expiration": 1794690000,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT", "name": "T4 Ability Material", "quantity": "210" },
+      { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "31K" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "500" }
+     ],
+     "realCost": { "amount": "6.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "50" }
+    },
+    {
+     "id": 2,
+     "rewards": [
+      { "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT", "name": "T4 Ability Material", "quantity": "460" },
+      { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "69.3K" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "1,000" }
+     ],
+     "realCost": { "amount": "12.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "100" }
+    }
+   ]
+  },
+  {
+   "id": "dump-109",
+   "name": "ISO Fest: T3 Level 5 Ions Trove",
+   "description": "Seize the T3 Level 5 Ions and boost 5 characters of each role trait to T3 Level 5 Iso-8, also grab a bunch of points to gain progress in this Milestone event!",
+   "locations": ["web_standard"],
+   "category": "ID_OCAT_EVENTS",
+   "expiration": 1795986000,
+   "remainingPurchases": 3,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "EVTA_META_NOV_H", "name": "ISO Fest Milestone Points", "quantity": "225M" },
+      { "id": "ISO8-TIER-2-C-CURRENCY", "name": "T3 Level 5 Ions", "quantity": "40M" },
+      { "id": "ISO8-TIER-2-B-CURRENCY", "name": "T3 Level 4 Ions", "quantity": "40M" },
+      { "id": "ISO8-TIER-2-A-CURRENCY", "name": "T3 Level 1 Ions", "quantity": "7.5M" },
+      { "id": "ISO8-TIER-2-A-CURRENCY", "name": "T3 Level 1 Ions", "quantity": "7.5M" },
+      { "id": "ISO8-TIER-2-A-CURRENCY", "name": "T3 Level 1 Ions", "quantity": "7.5M" },
+      { "id": "ISO8-TIER-2-A-CURRENCY", "name": "T3 Level 1 Ions", "quantity": "7.5M" },
+      { "id": "ISO8-TIER-2-A-CURRENCY", "name": "T3 Level 1 Ions", "quantity": "7.5M" },
+      { "id": "ISO8-TIER-2-A-CURRENCY", "name": "T3 Level 1 Ions", "quantity": "2.5M" },
+      { "id": "ISOITEM_PURPLE_BRAWLER_ARMOR_11", "name": "T3 Brawler Armor Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_BRAWLER_RESIST_11", "name": "T3 Brawler Resist Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_BRAWLER_HEALTH_11", "name": "T3 Brawler Health Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_BRAWLER_FOCUS_11", "name": "T3 Brawler Focus Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_BRAWLER_DAMAGE_11", "name": "T3 Brawler Damage Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_BLASTER_ARMOR_11", "name": "T3 Blaster Armor Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_BLASTER_RESIST_11", "name": "T3 Blaster Resist Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_BLASTER_HEALTH_11", "name": "T3 Blaster Health Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_BLASTER_FOCUS_11", "name": "T3 Blaster Focus Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_BLASTER_DAMAGE_11", "name": "T3 Blaster Damage Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_CONTROLLER_ARMOR_11", "name": "T3 Controller Armor Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_CONTROLLER_RESIST_11", "name": "T3 Controller Resist Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_CONTROLLER_HEALTH_11", "name": "T3 Controller Health Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_CONTROLLER_FOCUS_11", "name": "T3 Controller Focus Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_CONTROLLER_DAMAGE_11", "name": "T3 Controller Damage Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_PROTECTOR_ARMOR_11", "name": "T3 Protector Armor Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_PROTECTOR_RESIST_11", "name": "T3 Protector Resist Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_PROTECTOR_HEALTH_11", "name": "T3 Protector Health Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_PROTECTOR_FOCUS_11", "name": "T3 Protector Focus Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_PROTECTOR_DAMAGE_11", "name": "T3 Protector Damage Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_SUPPORT_ARMOR_11", "name": "T3 Support Armor Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_SUPPORT_RESIST_11", "name": "T3 Support Resist Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_SUPPORT_HEALTH_11", "name": "T3 Support Health Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_SUPPORT_FOCUS_11", "name": "T3 Support Focus Level\u00a01 Iso-8", "quantity": "405" },
+      { "id": "ISOITEM_PURPLE_SUPPORT_DAMAGE_11", "name": "T3 Support Damage Level\u00a01 Iso-8", "quantity": "405" }
+     ],
+     "webRewards": [
+      { "id": "EVTA_META_NOV_H", "name": "ISO Fest Milestone Points", "quantity": "10M" },
+      { "id": "ISO8-TIER-2-C-CURRENCY", "name": "T3 Level 5 Ions", "quantity": "1.5M" }
+     ],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "10K" }
+     ],
+     "realCost": { "amount": "129.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "1,000" }
+    }
+   ]
+  },
+  {
+   "id": "dump-126",
+   "name": "Awakened Protector of the Universe",
+   "description": "Unlock Quasar's Ultimate Awakened Ability with this limited time offer and unleash his Quantum Constructs Battlefield Effect!",
+   "locations": ["web_standard"],
+   "category": "ID_OCAT_CHARACTER_UNLOCK",
+   "expiration": 1794838578,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "ABILITY_MATERIAL_UNIQUE_ABILITY_MAT_QUASAR_ULTIMATE", "name": "Quasar's Ultimate Awakened Ability Material", "quantity": "200" },
+      { "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT", "name": "T4 Ability Material", "quantity": "200" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "3,500" }
+     ],
+     "realCost": { "amount": "49.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "350" }
+    }
+   ]
+  },
+  {
+   "id": "dump-134",
+   "name": "Premium Plus Chapter Battle Pass Ticket Pack",
+   "description": "Get bonus Shop Credits when you purchase 1 Premium Plus Chapter Battle Pass Tickets with this Web Exclusive bundle! Tickets can be redeemed in-game to activate any single Premium Plus Chapter Battle Pass. Valid only for Chapter Battle Passes.",
+   "locations": ["web_standard", "web_featured", "web_battlepass", "web_bp_prepurchase_resource", "web_special"],
+   "category": "ID_OCAT_WEB_EXCLUSIVE",
+   "expiration": 1794690000,
+   "remainingPurchases": 2,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "BP_PREMIUM_PLUS_CUR", "name": "Premium Plus Battle Pass Ticket", "quantity": "1" },
+      { "id": "LC", "name": "Shop Credits", "quantity": "500K" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "5,000" }
+     ],
+     "realCost": { "amount": "69.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "500" }
+    }
+   ]
+  },
+  {
+   "id": "dump-135",
+   "name": null,
+   "description": null,
+   "locations": ["web_timeheist"],
+   "category": "ID_OCAT_GENERAL",
+   "expiration": 1795208400,
+   "remainingPurchases": 1,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "TIMEHEIST_LEVEL_45", "name": null, "quantity": "1" },
+      { "id": "SC", "name": "Gold", "quantity": "3M" },
+      { "id": "CONSUMABLE_XPLVL60", "name": "L3 Training Module", "quantity": "600" },
+      { "id": "PROMOTION_CUR", "name": "Silver Promotion Credit", "quantity": "500" },
+      { "id": "ELITE_4_CUR", "name": "Elite 4 Credit", "quantity": "25K" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "2,500" }
+     ],
+     "realCost": { "amount": "34.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "250" }
+    }
+   ]
+  },
+  {
+   "id": "dump-137",
+   "name": "Maximum Ability",
+   "description": "Get the edge on your opponents with T4 Ability Materials bundle!",
+   "locations": ["bfyb"],
+   "category": "ID_OCAT_GENERAL",
+   "expiration": 1794690000,
+   "remainingPurchases": 100,
+   "previouslyPurchased": true,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT", "name": "T4 Ability Material", "quantity": "50" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [],
+     "realCost": null,
+     "itemCost": { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "5,000" }
+    }
+   ]
+  },
+  {
+   "id": "dump-148",
+   "name": "Shipment of Power Cores",
+   "description": null,
+   "locations": ["power_cores", "power_cores_web"],
+   "category": null,
+   "expiration": null,
+   "remainingPurchases": null,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "HC", "name": "Power Cores", "quantity": "8,630" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "10K" }
+     ],
+     "realCost": { "amount": "129.99", "currency": "CAD" },
+     "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "1,000" }
+    }
+   ]
+  },
+  {
+   "id": "dump-153",
+   "name": "Crate of Ultra Cores",
+   "description": null,
+   "locations": ["ultra_cores"],
+   "category": null,
+   "expiration": null,
+   "remainingPurchases": null,
+   "previouslyPurchased": false,
+   "choices": [
+    {
+     "id": 1,
+     "rewards": [
+      { "id": "UC", "name": "Ultra Cores", "quantity": "1,000" }
+     ],
+     "webRewards": [],
+     "webRealCostRewards": [
+      { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "10K" }
+     ],
+     "realCost": { "amount": "129.99", "currency": "CAD" },
+     "itemCost": null
+    }
+   ]
+  }
+ ],
+ "chains": {
+  "webchainstreak2": [
+   {
+    "id": "6af628f902c8a7d0cfd5a08a",
+    "name": "(1/7) Savage Leader",
+    "description": null,
+    "locations": ["web_standard", "web_special"],
+    "category": "ID_OCAT_NEW_CHARACTERS",
+    "expiration": 1795381200,
+    "remainingPurchases": 1,
+    "previouslyPurchased": false,
+    "choices": [
+     {
+      "id": 1,
+      "rewards": [
+       { "id": "SHARD_CYCLOPSMIGHTY", "name": "Cyclops (Mighty)", "quantity": "45" },
+       { "id": "RS_CYCLOPSMIGHTY_4", "name": "Cyclops (Mighty)", "quantity": "1" },
+       { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "20K" },
+       { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "10K" },
+       { "id": "SC", "name": "Gold", "quantity": "5M" },
+       { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "200" }
+      ],
+      "webRewards": [],
+      "webRealCostRewards": [
+       { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "3,000" }
+      ],
+      "realCost": { "amount": "39.99", "currency": "CAD" },
+      "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "300" }
+     }
+    ],
+    "chain": { "id": "webchainstreak2", "index": 1 }
+   },
+   {
+    "id": "6af628f902c8a7d0cfd5a093",
+    "name": "(2/7) Savage Leader",
+    "description": null,
+    "locations": ["web_standard", "web_special"],
+    "category": "ID_OCAT_NEW_CHARACTERS",
+    "expiration": 1795381200,
+    "remainingPurchases": 1,
+    "previouslyPurchased": false,
+    "choices": [
+     {
+      "id": 1,
+      "rewards": [
+       { "id": "SHARD_CYCLOPSMIGHTY", "name": "Cyclops (Mighty)", "quantity": "55" },
+       { "id": "RS_CYCLOPSMIGHTY_5", "name": "Cyclops (Mighty)", "quantity": "1" },
+       { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "30K" },
+       { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "10K" },
+       { "id": "SC", "name": "Gold", "quantity": "5M" },
+       { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "200" }
+      ],
+      "webRewards": [],
+      "webRealCostRewards": [
+       { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "3,000" }
+      ],
+      "realCost": { "amount": "39.99", "currency": "CAD" },
+      "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "300" }
+     }
+    ],
+    "chain": { "id": "webchainstreak2", "index": 2 }
+   },
+   {
+    "id": "6af628f902c8a7d0cfd5a098",
+    "name": "(3/7) Savage Leader",
+    "description": null,
+    "locations": ["web_standard", "web_special"],
+    "category": "ID_OCAT_NEW_CHARACTERS",
+    "expiration": 1795381200,
+    "remainingPurchases": 1,
+    "previouslyPurchased": false,
+    "choices": [
+     {
+      "id": 1,
+      "rewards": [
+       { "id": "SHARD_CYCLOPSMIGHTY", "name": "Cyclops (Mighty)", "quantity": "80" },
+       { "id": "RS_CYCLOPSMIGHTY_6", "name": "Cyclops (Mighty)", "quantity": "1" },
+       { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "40K" },
+       { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "12K" },
+       { "id": "SC", "name": "Gold", "quantity": "5M" },
+       { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "400" }
+      ],
+      "webRewards": [],
+      "webRealCostRewards": [
+       { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "4,000" }
+      ],
+      "realCost": { "amount": "49.99", "currency": "CAD" },
+      "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "400" }
+     }
+    ],
+    "chain": { "id": "webchainstreak2", "index": 3 }
+   },
+   {
+    "id": "6af628f902c8a7d0cfd5a0a0",
+    "name": "(4/7) Savage Leader",
+    "description": null,
+    "locations": ["web_standard", "web_special"],
+    "category": "ID_OCAT_NEW_CHARACTERS",
+    "expiration": 1795381200,
+    "remainingPurchases": 1,
+    "previouslyPurchased": false,
+    "choices": [
+     {
+      "id": 1,
+      "rewards": [
+       { "id": "SHARD_CYCLOPSMIGHTY", "name": "Cyclops (Mighty)", "quantity": "130" },
+       { "id": "RS_CYCLOPSMIGHTY_7", "name": "Cyclops (Mighty)", "quantity": "1" },
+       { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "50K" },
+       { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "14K" },
+       { "id": "SC", "name": "Gold", "quantity": "5M" },
+       { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "500" }
+      ],
+      "webRewards": [],
+      "webRealCostRewards": [
+       { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "5,000" }
+      ],
+      "realCost": { "amount": "69.99", "currency": "CAD" },
+      "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "500" }
+     }
+    ],
+    "chain": { "id": "webchainstreak2", "index": 4 }
+   },
+   {
+    "id": "6af628f902c8a7d0cfd5a0a6",
+    "name": "(5/7) Savage Leader",
+    "description": null,
+    "locations": ["web_standard", "web_special"],
+    "category": "ID_OCAT_NEW_CHARACTERS",
+    "expiration": 1795381200,
+    "remainingPurchases": 1,
+    "previouslyPurchased": false,
+    "choices": [
+     {
+      "id": 1,
+      "rewards": [
+       { "id": "SHARD_CYCLOPSMIGHTY", "name": "Cyclops (Mighty)", "quantity": "200" },
+       { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "60K" },
+       { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "16K" },
+       { "id": "SC", "name": "Gold", "quantity": "10M" },
+       { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "800" }
+      ],
+      "webRewards": [],
+      "webRealCostRewards": [
+       { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "6,000" }
+      ],
+      "realCost": { "amount": "79.99", "currency": "CAD" },
+      "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "600" }
+     }
+    ],
+    "chain": { "id": "webchainstreak2", "index": 5 }
+   },
+   {
+    "id": "6af628f902c8a7d0cfd5a0aa",
+    "name": "(6/7) Savage Leader",
+    "description": null,
+    "locations": ["web_standard", "web_special"],
+    "category": "ID_OCAT_NEW_CHARACTERS",
+    "expiration": 1795381200,
+    "remainingPurchases": 1,
+    "previouslyPurchased": false,
+    "choices": [
+     {
+      "id": 1,
+      "rewards": [
+       { "id": "SHARD_CYCLOPSMIGHTY", "name": "Cyclops (Mighty)", "quantity": "300" },
+       { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "80K" },
+       { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "18K" },
+       { "id": "SC", "name": "Gold", "quantity": "15M" },
+       { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "1,000" }
+      ],
+      "webRewards": [],
+      "webRealCostRewards": [
+       { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "10K" }
+      ],
+      "realCost": { "amount": "129.99", "currency": "CAD" },
+      "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "1,000" }
+     }
+    ],
+    "chain": { "id": "webchainstreak2", "index": 6 }
+   },
+   {
+    "id": "6af628f902c8a7d0cfd5a0b0",
+    "name": "(7/7) Savage Leader",
+    "description": null,
+    "locations": ["web_standard", "web_special"],
+    "category": "ID_OCAT_NEW_CHARACTERS",
+    "expiration": 1795381200,
+    "remainingPurchases": 1,
+    "previouslyPurchased": false,
+    "choices": [
+     {
+      "id": 1,
+      "rewards": [
+       { "id": "PD_CYCLOPSMIGHTY_1", "name": "Cyclops (Mighty)", "quantity": "1" },
+       { "id": "ISO8-TIER-3-A-CURRENCY", "name": "T4 Level 1 Ions", "quantity": "100K" },
+       { "id": "GACHA_CRATE_ISO8_T4_BASIC_TOKEN_2c51c796", "name": "Basic T4 Iso-8 Orb Fragments", "quantity": "20K" },
+       { "id": "SC", "name": "Gold", "quantity": "20M" },
+       { "id": "CONSUMABLE_XPLVL80", "name": "L4 Training Module", "quantity": "1,500" }
+      ],
+      "webRewards": [],
+      "webRealCostRewards": [
+       { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "10K" }
+      ],
+      "realCost": { "amount": "129.99", "currency": "CAD" },
+      "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "1,000" }
+     }
+    ],
+    "chain": { "id": "webchainstreak2", "index": 7 }
+   }
+  ],
+  "nov26e1cyberbreach": [
+   {
+    "id": "6aecef4302c8a7d0cf209f8c",
+    "name": "Cyber Breach: Cores Pack (2/5)",
+    "description": null,
+    "locations": ["web_standard"],
+    "category": "ID_OCAT_EVENTS",
+    "expiration": 1794776400,
+    "remainingPurchases": 1,
+    "previouslyPurchased": false,
+    "choices": [
+     {
+      "id": 1,
+      "rewards": [
+       { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "30K" },
+       { "id": "HC", "name": "Power Cores", "quantity": "1,000" }
+      ],
+      "webRewards": [
+       { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "1,500" }
+      ],
+      "webRealCostRewards": [
+       { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "1,000" }
+      ],
+      "realCost": { "amount": "12.99", "currency": "CAD" },
+      "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "100" }
+     }
+    ],
+    "chain": { "id": "nov26e1cyberbreach", "index": 2 }
+   },
+   {
+    "id": "6aecef4302c8a7d0cf209f99",
+    "name": "Cyber Breach: Cores Pack (3/5)",
+    "description": null,
+    "locations": ["web_standard"],
+    "category": "ID_OCAT_EVENTS",
+    "expiration": 1794776400,
+    "remainingPurchases": 1,
+    "previouslyPurchased": false,
+    "choices": [
+     {
+      "id": 1,
+      "rewards": [
+       { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "30K" },
+       { "id": "HC", "name": "Power Cores", "quantity": "1,100" }
+      ],
+      "webRewards": [
+       { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "1,500" }
+      ],
+      "webRealCostRewards": [
+       { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "1,000" }
+      ],
+      "realCost": { "amount": "12.99", "currency": "CAD" },
+      "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "100" }
+     }
+    ],
+    "chain": { "id": "nov26e1cyberbreach", "index": 3 }
+   },
+   {
+    "id": "6aecef4302c8a7d0cf209fa2",
+    "name": "Cyber Breach: Cores Pack (4/5)",
+    "description": null,
+    "locations": ["web_standard"],
+    "category": "ID_OCAT_EVENTS",
+    "expiration": 1794776400,
+    "remainingPurchases": 1,
+    "previouslyPurchased": false,
+    "choices": [
+     {
+      "id": 1,
+      "rewards": [
+       { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "75K" },
+       { "id": "HC", "name": "Power Cores", "quantity": "2,300" }
+      ],
+      "webRewards": [
+       { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "3,750" }
+      ],
+      "webRealCostRewards": [
+       { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "2,000" }
+      ],
+      "realCost": { "amount": "24.99", "currency": "CAD" },
+      "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "200" }
+     }
+    ],
+    "chain": { "id": "nov26e1cyberbreach", "index": 4 }
+   },
+   {
+    "id": "6aecef4302c8a7d0cf209fab",
+    "name": "Cyber Breach: Cores Pack (5/5)",
+    "description": null,
+    "locations": ["web_standard"],
+    "category": "ID_OCAT_EVENTS",
+    "expiration": 1794776400,
+    "remainingPurchases": 1,
+    "previouslyPurchased": false,
+    "choices": [
+     {
+      "id": 1,
+      "rewards": [
+       { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "200K" },
+       { "id": "HC", "name": "Power Cores", "quantity": "6,000" }
+      ],
+      "webRewards": [
+       { "id": "EVTA_META_NOV_D", "name": "Cyber Breach Milestone Points", "quantity": "10K" }
+      ],
+      "webRealCostRewards": [
+       { "id": "BFYB-CUR", "name": "Strike Points", "quantity": "5,000" }
+      ],
+      "realCost": { "amount": "69.99", "currency": "CAD" },
+      "itemCost": { "id": "UC", "name": "Ultra Cores", "quantity": "500" }
+     }
+    ],
+    "chain": { "id": "nov26e1cyberbreach", "index": 5 }
+   }
+  ]
+ }
+}

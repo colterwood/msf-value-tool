@@ -1,0 +1,4 @@
+node_modules/
+.DS_Store
+# Personal store and roster snapshots can be kept out of git by writing them here instead
+data/*.local.js

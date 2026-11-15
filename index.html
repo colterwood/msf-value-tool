@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MSF Store Value</title>
+<style>
+  :root {
+    --bg: #0f1115; --panel: #181b22; --input: #0b0d12; --line: #2a2f3a;
+    --text: #e6e8ee; --muted: #9aa3b2; --accent: #4f8cff;
+    --excellent: #a371f7; --good: #3fb950; --fair: #d29922; --poor: #f85149;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); }
+  header { padding: 14px 20px; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px 24px; align-items: baseline; }
+  header h1 { margin: 0; font-size: 20px; }
+  #status { color: var(--muted); font-size: 13px; }
+  nav { display: flex; gap: 2px; padding: 6px 20px 0; border-bottom: 1px solid var(--line); overflow-x: auto; }
+  nav button { background: none; border: none; color: var(--muted); padding: 10px 14px; font-size: 15px; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; }
+  nav button.active { color: var(--text); border-bottom-color: var(--accent); }
+  main { padding: 20px; max-width: 1240px; }
+  section[hidden] { display: none; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin-bottom: 16px; overflow-x: auto; }
+  label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+  label.inline { display: inline-flex; align-items: center; gap: 6px; margin: 0; color: var(--text); font-size: 14px; }
+  label.inline input { width: auto; }
+  input, select, textarea { background: var(--input); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 8px; font: inherit; width: 100%; }
+  input[type="number"] { font-variant-numeric: tabular-nums; }
+  textarea { min-height: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+  button.primary { background: var(--accent); color: #fff; border: none; border-radius: 6px; padding: 9px 14px; font: inherit; cursor: pointer; }
+  button.ghost { background: none; color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; font: inherit; cursor: pointer; }
+  button.ghost.small { padding: 4px 8px; font-size: 13px; }
+  button:disabled { opacity: .5; cursor: default; }
+  .grid3 { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; }
+  .grid4 { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 12px; }
+  .row { display: grid; grid-template-columns: 1fr 130px 40px; gap: 8px; margin-bottom: 8px; align-items: center; }
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.clickable { cursor: pointer; }
+  tr.detail td { background: var(--input); }
+  table.breakdown th:first-child { width: 44%; }
+  table.best th:first-child { width: 22%; }
+  table.best th:nth-child(3) { width: 20%; }
+  tr.sub td { border-bottom: none; padding-top: 1px; padding-bottom: 1px; }
+  tr.sub td:first-child { padding-left: 22px; }
+  tr.full td { font-weight: 600; }
+  .grade { display: inline-block; padding: 2px 9px; border-radius: 999px; font-weight: 600; font-size: 13px; white-space: nowrap; }
+  .grade.Excellent { background: rgba(163,113,247,.18); color: var(--excellent); }
+  .grade.Good { background: rgba(63,185,80,.18); color: var(--good); }
+  .grade.Fair { background: rgba(210,153,34,.18); color: var(--fair); }
+  .grade.Poor { background: rgba(248,81,73,.18); color: var(--poor); }
+  .chip { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font: inherit; font-size: 14px; cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .grade.letter-A { background: rgba(163,113,247,.18); color: var(--excellent); }
+  .grade.letter-B { background: rgba(63,185,80,.18); color: var(--good); }
+  .grade.letter-C { background: rgba(210,153,34,.18); color: var(--fair); }
+  .grade.letter-D { background: rgba(154,163,178,.18); color: var(--muted); }
+  .grade.letter-F { background: rgba(248,81,73,.18); color: var(--poor); }
+  .modebar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+  .modebar h3 { margin: 0 8px 0 0; }
+  .mode-switch { display: inline-flex; gap: 6px; }
+  /* an offer's items and the full offer, one line each: name and count, value, value over price, grade */
+  .vals { display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto; gap: 2px 12px; align-items: baseline; }
+  .vals > div { display: contents; }
+  .vals .vv, .vals .vr, .vals .vx { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .vals .vx { grid-column: span 3; }
+  .vals .more > span, .vals .blank > span { color: var(--muted); }
+  .vals .full > span { font-weight: 600; border-top: 1px solid var(--line); padding-top: 4px; margin-top: 2px; }
+  .vnote { font-size: 13px; margin-top: 4px; }
+  table.store > tbody > tr > td:nth-child(3) { min-width: 400px; }
+  table.store tr.divider td { padding-top: 18px; font-size: 13px; }
+  .panel.vt { overflow-x: auto; }
+  .big { font-size: 30px; font-weight: 700; line-height: 1.1; }
+  .muted { color: var(--muted); }
+  .warn { color: var(--fair); }
+  .kv { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; font-size: 14px; }
+  .summary { display: flex; gap: 28px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 12px; }
+  .summary .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; }
+  code { background: var(--input); padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+  p { margin: 0 0 10px; }
+  .vt input { padding: 5px 6px; font-size: 13px; }
+  .vt td { padding: 4px 4px; }
+  .vt input[data-f="name"] { min-width: 170px; }
+  .vt input[data-f="character"], .vt input[data-f="aliases"] { min-width: 90px; }
+  .vt .note { font-size: 12px; line-height: 1.35; margin: 3px 0 4px; min-width: 230px; }
+  @media (max-width: 720px) {
+    .grid3, .grid4 { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 1fr 90px 36px; }
+    main { padding: 12px; }
+    table.store > tbody > tr > td:nth-child(3) { min-width: 260px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>MSF Store Value</h1>
+  <div id="status">Loading…</div>
+</header>
+<nav>
+  <button data-tab="offer" class="active">Value an offer</button>
+  <button data-tab="store">My store</button>
+  <button data-tab="table">Value table</button>
+</nav>
+<main>
+
+<section id="tab-offer">
+  <div class="panel">
+    <div class="modebar"><span class="muted">Rate the offer against its price in</span><span class="mode-switch"></span></div>
+    <div class="grid4">
+      <div><label for="offer-name">Offer name (optional)</label><input id="offer-name" placeholder="e.g. Weekly Gold Pack"></div>
+      <div><label for="offer-price">Price</label><input id="offer-price" type="number" min="0" step="0.01" placeholder="9.99"></div>
+      <div><label for="offer-currency">Currency of that price</label><input id="offer-currency" placeholder="CAD"></div>
+      <div><label for="offer-cores">Price in Ultra Cores (optional)</label><input id="offer-cores" type="number" min="0" step="1" placeholder="100"></div>
+    </div>
+    <p class="muted" style="margin:8px 0 0">Type both prices to value the offer both ways. An offer the store sells for Strike Points takes "Strike Points" as its currency.</p>
+    <label style="margin-top:14px">Contents</label>
+    <div id="offer-rows"></div>
+    <div class="actions">
+      <button class="ghost" id="add-row">+ Add item</button>
+      <button class="ghost" id="paste-toggle">Paste as text</button>
+      <button class="ghost" id="offer-clear">Clear</button>
+    </div>
+    <div id="paste-box" hidden style="margin-top:12px">
+      <textarea id="paste-text" placeholder="One item per line:&#10;500,000 Gold&#10;210x T4 Ability Material&#10;T4 Level 1 Ions x31000"></textarea>
+      <div class="actions"><button class="primary" id="paste-apply">Use these items</button></div>
+    </div>
+  </div>
+  <div class="panel" id="offer-result"></div>
+</section>
+
+<section id="tab-store" hidden>
+  <div class="panel">
+    <div class="modebar"><span class="muted">Rate every offer against its price in</span><span class="mode-switch"></span></div>
+    <h3 style="margin:0 0 6px">Refresh from your store</h3>
+    <p class="muted">The page cannot read the store itself: the offers only exist in your signed-in browser. A bookmark does the reading, and no Claude session is needed:</p>
+    <ol class="muted" style="margin:0 0 10px 1.2em;padding:0">
+      <li>Once, and again whenever this tool is updated (an old copy reads less): drag this link to your bookmarks bar, replacing the old one: <a id="grab-bookmarklet" href="#" style="color:var(--accent);font-weight:600">MSF: grab my offers</a></li>
+      <li><a href="https://marvelstrikeforce.com/en/store" target="_blank" rel="noopener" style="color:var(--accent)">Open your store</a> (signed in) and click the bookmark there. It reads the page's own offer data at once, every item of every offer, so nothing scrolls: a panel at the top right says how many offers and items it read, and that they are copied.</li>
+      <li>Double-click <code>update.cmd</code> in the tool folder and reload this page. It takes the read from the clipboard, so copy nothing else in between; it saves the read and rebuilds the values and the price history.</li>
+    </ol>
+    <p class="muted" style="margin:0 0 6px">For a quick look without saving, paste the copied read into this box instead. The page then says that the read is not saved; <code>update.cmd</code> is what saves it.</p>
+    <textarea id="store-paste" placeholder='Paste the JSON the bookmark copied, or {"updated":"2026-11-14T16:45:00Z","source":"web-store","offers":[{"name":"Gold Pack","price":12.99,"currency":"CAD","ultraCores":100,"contents":[{"item":"Gold","qty":5000000}]}]}'></textarea>
+    <div class="actions">
+      <button class="primary" id="store-import">Import pasted offers</button>
+      <button class="ghost" id="store-reload">Reload data/offers.js</button>
+      <button class="ghost" id="store-clear">Clear</button>
+      <label class="inline">Chain steps <select id="store-chain" style="margin-left:6px;width:auto"><option value="step">each step on its own</option><option value="path">with the steps before it added in</option></select></label>
+    </div>
+    <div id="store-meta" class="muted" style="margin-top:10px"></div>
+    <h3 style="margin:14px 0 6px">How to read the values</h3>
+    <p class="muted">Usual prices come from your own earlier store reads and from nothing else. Each item's figure is what the offer is worth for that item alone, its value at the usual price divided by the offer's price, and the items add up to the full offer, which gets the grade. The switch at the top shows the same against the offer's Ultra Core price.</p>
+    <div id="store-chart" class="muted" style="line-height:1.9"></div>
+  </div>
+  <div class="panel" id="store-list"></div>
+  <div class="panel">
+    <h3 style="margin:0 0 6px">Shop by resource</h3>
+    <p class="muted">Pick what you want to buy. Each offer that holds it is listed best first, with what the offer is worth for that resource alone and for everything in it. All lists every offer with a price.</p>
+    <div id="shop-buckets" class="chips" style="display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px"></div>
+    <div id="shop-list"></div>
+  </div>
+  <div class="panel">
+    <h3 style="margin:0 0 6px">Best buys by resource</h3>
+    <p class="muted">For each resource in your store today: its usual price in your earlier reads, the most an earlier read gave for the money, and the offers that sell it cheapest today. "If this is all you want" counts the offer's whole price against that one resource, which is what you actually pay for it; the earlier reads are measured the same way, over the offers that were read completely. "Inside a bundle" charges each item its share of the price in proportion to its usual price, so an item in a bundle is as cheap as the bundle is good. The stat crystals of a tier are one resource, whatever their class and stat. A chain step that needs earlier steps first is left out: it cannot be bought on its own.</p>
+    <div id="best-list"></div>
+  </div>
+</section>
+
+<section id="tab-table" hidden>
+  <div class="panel">
+    <div class="kv" id="table-meta"></div>
+    <div class="actions">
+      <input id="table-filter" placeholder="Filter items" style="max-width:240px">
+      <button class="ghost" id="table-add">+ Add item</button>
+      <button class="ghost" id="table-export">Export JSON</button>
+      <button class="ghost" id="table-import-toggle">Import JSON</button>
+      <button class="ghost" id="table-reset">Reset my edits</button>
+    </div>
+    <div id="table-add-box" hidden style="margin-top:12px">
+      <div class="grid3">
+        <div><label for="new-name">Name as shown in the store</label><input id="new-name" placeholder="Captain America shards"></div>
+        <div><label for="new-category">Category</label><select id="new-category"></select></div>
+        <div><label for="new-per">Value is per how many</label><input id="new-per" type="number" min="1" value="1"></div>
+      </div>
+      <div class="actions"><button class="primary" id="table-add-apply">Add</button></div>
+    </div>
+    <div id="table-import-box" hidden style="margin-top:12px">
+      <textarea id="table-import-text" placeholder='{"meta":{"currency":"CAD"},"items":{"gold":{"name":"Gold","category":"currency","per":1000000,"value":0.83,"coreValue":6.2}}}'></textarea>
+      <div class="actions"><button class="primary" id="table-import">Replace table with this JSON</button></div>
+    </div>
+  </div>
+  <div class="panel vt" id="table-list"></div>
+  <div class="panel">
+    <div class="modebar"><h3>Price history</h3><span class="muted">in</span><span class="mode-switch"></span></div>
+    <p class="muted" id="history-note"></p>
+    <div class="actions"><label class="inline">Resource <select id="history-item" style="margin-left:6px"></select></label></div>
+    <div id="history-list"></div>
+  </div>
+</section>
+
+</main>
+<datalist id="item-list"></datalist>
+<script src="engine.js"></script>
+<script src="pull.js"></script>
+<script src="data/values.js"></script>
+<script src="data/offers.js"></script>
+<script src="data/roster.js"></script>
+<script src="data/history.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
