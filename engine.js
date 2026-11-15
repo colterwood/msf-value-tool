@@ -21,7 +21,8 @@
  *                       // store reads before the one being rated (tools/market.js). basis: "own" (sold on its own)
  *                       // or "set" (only sold together with other things, the price split evenly). An item that
  *                       // only comes beside things sold on their own has no value at all. days: the read days the
- *                       // usual price is the middle of. firstSeen: no earlier read carried it.
+ *                       // usual price is picked from (the best price that held two thirds of the time over six
+ *                       // months, see tools/market.js). firstSeen: no earlier read carried it.
  *                       // id (and ids: [...]) is the store's own resource id: an offer line that carries one resolves by it.
  *       "shard:iron man": { name: "Iron Man shards", category: "shard", character: "Iron Man", per: 1, value: 0.2 },
  *       "points:iron_vengeance": { name: "...", category: "points", excludeFromValue: true }

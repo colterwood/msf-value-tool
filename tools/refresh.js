@@ -39,13 +39,15 @@ const VALUES_HEADER = '/*\n' +
   ' *                       with other things that have no offer of their own, the price split evenly.\n' +
   ' *                       An item that only comes beside things sold on their own has no price.\n' +
   ' *   observed.perCash    usual units per CA$; observed.perCore: usual units per Ultra Core\n' +
-  ' *   observed.days       the read days the usual price is the middle of: the days BEFORE the read\n' +
-  ' *                       being rated (meta.baseline.ratedDay), so a sale never sets its own yardstick\n' +
+  ' *   observed.days       the read days the usual price comes from: the days BEFORE the read being\n' +
+  ' *                       rated (meta.baseline.ratedDay) and within six months of it. The usual price\n' +
+  ' *                       is the best of those days\' prices that was matched or beaten at least two\n' +
+  ' *                       thirds of the time, each read counting for the days it stands for\n' +
+  ' *                       (meta.baseline.weights), so a sale never sets its own yardstick\n' +
   ' *   observed.firstSeen  no earlier read carried it: priced by the rated read itself, so it rates\n' +
   ' *                       about 1x until there is a second read\n' +
   ' *   observed.byDay      its price on each read day that has one, by the same rules: { day: { per\n' +
-  ' *                       (units per CA$), offer } }. The usual price is the middle of the days in\n' +
-  ' *                       observed.days. observed.coreByDay is the same per Ultra Core\n' +
+  ' *                       (units per CA$), offer } }. observed.coreByDay is the same per Ultra Core\n' +
   ' *   observed.best       the cheapest of those days: { per, day, offer }; observed.bestCore the\n' +
   ' *                       same per Ultra Core\n' +
   ' *   observed.family     set when the price is shared with every item of a family: the stat crystals\n' +
@@ -151,7 +153,7 @@ function tidy(table) {
   const report = M.applyPrices(table, p);
   const readDays = Object.keys(archive.reads).sort();
   const unplaced = Object.keys(p.cashObs.unplaced);
-  console.log('rated read: ' + p.ratedDay + ' | usual prices from the reads before it: ' + (readDays.filter((d) => d < p.ratedDay).join(', ') || 'none yet'));
+  console.log('rated read: ' + p.ratedDay + ' | usual prices from the reads before it, since ' + p.from + ': ' + (Object.keys(p.weights).sort().map((d) => d + ' (stands for ' + Number(p.weights[d].toFixed(1)) + ' days)').join(', ') || 'none yet'));
   console.log('priced: ' + report.own + ' sold on their own, ' + report.set + ' only sold in sets; ' + report.firstSeen + ' of them first seen in the rated read; ' + report.unpriced + ' rows without a price' + (unplaced.length ? ' | ' + unplaced.length + ' line names no row matches: ' + unplaced.slice(0, 6).join(', ') : ''));
   console.log('Ultra Core tiers (CA$ -> cores): ' + p.tiers.map((t) => t[0] + ' -> ' + t[1]).join(', '));
   report.changes.sort((a, b) => Math.abs(Math.log(b.after / b.before)) - Math.abs(Math.log(a.after / a.before)));
@@ -179,7 +181,10 @@ function tidy(table) {
   m.source = 'Your own store reads (' + readDays.join(', ') + '); built ' + now.slice(0, 10);
   m.updated = now.slice(0, 10);
   m.coreTiers = p.tiers;
-  m.baseline = { method: 'own-history', builtAt: now, ratedDay: p.ratedDay, readDays: readDays, archivedOffers: archive.offers.length, priced: report.own + report.set, firstSeen: report.firstSeen };
+  // months, share and weights say how the usual price was picked: the best day price matched or beaten
+  // at least `share` of the time over the last `months`, each earlier read standing for `weights` days
+  m.baseline = { method: 'own-history', builtAt: now, ratedDay: p.ratedDay, readDays: readDays, archivedOffers: archive.offers.length, priced: report.own + report.set, firstSeen: report.firstSeen,
+    months: p.months, share: Number(p.share.toFixed(4)), from: p.from, weights: p.weights };
   m.gradeNote = 'Value per CA$ (or per Ultra Core): the offer\'s contents at their usual prices, divided by its price. Usual prices come from your own earlier store reads (see the top of data/values.js), so 1× means the offer charges what these things usually cost you, and each item\'s own figure says what the offer is worth for that item alone.';
   archive.updated = now;
 

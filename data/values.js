@@ -9,13 +9,15 @@
  *                       with other things that have no offer of their own, the price split evenly.
  *                       An item that only comes beside things sold on their own has no price.
  *   observed.perCash    usual units per CA$; observed.perCore: usual units per Ultra Core
- *   observed.days       the read days the usual price is the middle of: the days BEFORE the read
- *                       being rated (meta.baseline.ratedDay), so a sale never sets its own yardstick
+ *   observed.days       the read days the usual price comes from: the days BEFORE the read being
+ *                       rated (meta.baseline.ratedDay) and within six months of it. The usual price
+ *                       is the best of those days' prices that was matched or beaten at least two
+ *                       thirds of the time, each read counting for the days it stands for
+ *                       (meta.baseline.weights), so a sale never sets its own yardstick
  *   observed.firstSeen  no earlier read carried it: priced by the rated read itself, so it rates
  *                       about 1x until there is a second read
  *   observed.byDay      its price on each read day that has one, by the same rules: { day: { per
- *                       (units per CA$), offer } }. The usual price is the middle of the days in
- *                       observed.days. observed.coreByDay is the same per Ultra Core
+ *                       (units per CA$), offer } }. observed.coreByDay is the same per Ultra Core
  *   observed.best       the cheapest of those days: { per, day, offer }; observed.bestCore the
  *                       same per Ultra Core
  *   observed.family     set when the price is shared with every item of a family: the stat crystals
@@ -125,7 +127,7 @@ window.MSF_VALUE_TABLE = {
     ],
     "baseline": {
       "method": "own-history",
-      "builtAt": "2026-11-15T20:13:53.187Z",
+      "builtAt": "2026-11-15T21:04:08.297Z",
       "ratedDay": "2026-11-15",
       "readDays": [
         "2026-10-18",
@@ -136,7 +138,16 @@ window.MSF_VALUE_TABLE = {
       ],
       "archivedOffers": 414,
       "priced": 251,
-      "firstSeen": 3
+      "firstSeen": 3,
+      "months": 6,
+      "share": 0.6667,
+      "from": "2026-05-15",
+      "weights": {
+        "2026-10-18": 10,
+        "2026-10-24": 9.5,
+        "2026-11-06": 10.5,
+        "2026-11-14": 4.5
+      }
     },
     "gradeNote": "Value per CA$ (or per Ultra Core): the offer's contents at their usual prices, divided by its price. Usual prices come from your own earlier store reads (see the top of data/values.js), so 1× means the offer charges what these things usually cost you, and each item's own figure says what the offer is worth for that item alone."
   },
@@ -383,12 +394,12 @@ window.MSF_VALUE_TABLE = {
       "category": "currency",
       "per": 1000000,
       "aliases": [],
-      "value": 0.833,
+      "value": 1.42829,
       "id": "SC",
       "observed": {
         "basis": "own",
-        "perCash": 1200480,
-        "perCore": 150000,
+        "perCash": 700140,
+        "perCore": 87500,
         "days": [
           "2026-10-18",
           "2026-10-24",
@@ -435,7 +446,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 6.66667
+      "coreValue": 11.4286
     },
     "power_cores": {
       "name": "Power Cores",
@@ -1229,12 +1240,12 @@ window.MSF_VALUE_TABLE = {
       "per": 1,
       "aliases": [],
       "character": "Iron Monger",
-      "value": 0.3499,
+      "value": 0.4333,
       "id": "SHARD_IRONMONGER",
       "observed": {
         "basis": "own",
-        "perCash": 2.85796,
-        "perCore": 0.4,
+        "perCash": 2.30787,
+        "perCore": 0.3,
         "days": [
           "2026-10-18",
           "2026-11-06",
@@ -1289,7 +1300,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 2.5
+      "coreValue": 3.33333
     },
     "shard:ironheart (mkii)": {
       "name": "Ironheart (MKII) shards",
@@ -2335,12 +2346,12 @@ window.MSF_VALUE_TABLE = {
       "per": 1,
       "aliases": [],
       "character": "Ulysses Klaue",
-      "value": 0.3499,
+      "value": 0.4333,
       "id": "SHARD_ULYSSESKLAUE",
       "observed": {
         "basis": "own",
-        "perCash": 2.85796,
-        "perCore": 0.4,
+        "perCash": 2.30787,
+        "perCore": 0.3,
         "days": [
           "2026-10-18",
           "2026-11-06",
@@ -2395,7 +2406,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 2.5
+      "coreValue": 3.33333
     },
     "shard:vahl": {
       "name": "Vahl shards",
@@ -2510,12 +2521,12 @@ window.MSF_VALUE_TABLE = {
       "per": 1,
       "aliases": [],
       "character": "Whiplash",
-      "value": 0.3499,
+      "value": 0.4333,
       "id": "SHARD_WHIPLASH",
       "observed": {
         "basis": "own",
-        "perCash": 2.85796,
-        "perCore": 0.4,
+        "perCash": 2.30787,
+        "perCore": 0.3,
         "days": [
           "2026-10-18",
           "2026-11-06",
@@ -2570,7 +2581,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 2.5
+      "coreValue": 3.33333
     },
     "shard:x-23": {
       "name": "X-23 shards",
@@ -2811,12 +2822,12 @@ window.MSF_VALUE_TABLE = {
       "per": 1,
       "aliases": [],
       "character": "Phantom Rider",
-      "value": 0.0476445,
+      "value": 0.03495,
       "id": "ABILITY_MATERIAL_UNIQUE_ABILITY_MAT_PHANTOMRIDER_BASIC",
       "observed": {
         "basis": "own",
-        "perCash": 20.9888,
-        "perCore": 2.82843,
+        "perCash": 28.6123,
+        "perCore": 4,
         "days": [
           "2026-10-18",
           "2026-11-14"
@@ -2862,7 +2873,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 0.353553
+      "coreValue": 0.25
     },
     "ability_material:phantom_rider_special_awakened": {
       "name": "Phantom Rider's Special Awakened Ability Material",
@@ -2870,12 +2881,12 @@ window.MSF_VALUE_TABLE = {
       "per": 1,
       "aliases": [],
       "character": "Phantom Rider",
-      "value": 0.0476445,
+      "value": 0.03495,
       "id": "ABILITY_MATERIAL_UNIQUE_ABILITY_MAT_PHANTOMRIDER_SPECIAL",
       "observed": {
         "basis": "own",
-        "perCash": 20.9888,
-        "perCore": 2.82843,
+        "perCash": 28.6123,
+        "perCore": 4,
         "days": [
           "2026-10-18",
           "2026-11-14"
@@ -2921,7 +2932,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 0.353553
+      "coreValue": 0.25
     },
     "ability_material:phantom_rider_ultimate_awakened": {
       "name": "Phantom Rider's Ultimate Awakened Ability Material",
@@ -2929,12 +2940,12 @@ window.MSF_VALUE_TABLE = {
       "per": 1,
       "aliases": [],
       "character": "Phantom Rider",
-      "value": 0.0476445,
+      "value": 0.03495,
       "id": "ABILITY_MATERIAL_UNIQUE_ABILITY_MAT_PHANTOMRIDER_ULTIMATE",
       "observed": {
         "basis": "own",
-        "perCash": 20.9888,
-        "perCore": 2.82843,
+        "perCash": 28.6123,
+        "perCore": 4,
         "days": [
           "2026-10-18",
           "2026-11-14"
@@ -2980,7 +2991,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 0.353553
+      "coreValue": 0.25
     },
     "ability_material:t1": {
       "name": "T1 Ability Material",
@@ -3023,12 +3034,12 @@ window.MSF_VALUE_TABLE = {
       "category": "ability",
       "per": 1,
       "aliases": [],
-      "value": 0.0268714,
+      "value": 0.0270162,
       "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT",
       "observed": {
         "basis": "own",
-        "perCash": 37.2143,
-        "perCore": 4.64993,
+        "perCash": 37.0148,
+        "perCore": 4.625,
         "days": [
           "2026-10-18",
           "2026-10-24",
@@ -3092,7 +3103,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 0.215057
+      "coreValue": 0.216216
     },
     "iso8:t1_ions": {
       "name": "T1 Ions",
@@ -4212,12 +4223,12 @@ window.MSF_VALUE_TABLE = {
       "category": "iso8",
       "per": 1000000,
       "aliases": [],
-      "value": 3.32217,
+      "value": 3.70185,
       "id": "ISO8-TIER-2-B-CURRENCY",
       "observed": {
         "basis": "set",
-        "perCash": 301008,
-        "perCore": 39618.2,
+        "perCash": 270135,
+        "perCore": 36000,
         "days": [
           "2026-10-18",
           "2026-10-24",
@@ -4281,19 +4292,19 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 25.2409
+      "coreValue": 27.7778
     },
     "iso8:t3_level_5_ions": {
       "name": "T3 Level 5 Ions",
       "category": "iso8",
       "per": 1000000,
       "aliases": [],
-      "value": 1.86369,
+      "value": 2.98143,
       "id": "ISO8-TIER-2-C-CURRENCY",
       "observed": {
         "basis": "set",
-        "perCash": 536569,
-        "perCore": 72332.6,
+        "perCash": 335410,
+        "perCore": 43600,
         "days": [
           "2026-10-18",
           "2026-10-24",
@@ -4357,7 +4368,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 13.825
+      "coreValue": 22.9358
     },
     "iso8:t3_protector_armor_level_1_iso-8": {
       "name": "T3 Protector Armor Level 1 Iso-8",
@@ -7103,12 +7114,12 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 100,
       "aliases": [],
-      "value": 0.271139,
+      "value": 0.148457,
       "id": "GEAR_RED_BASIC_CAT_BIT",
       "observed": {
         "basis": "set",
-        "perCash": 368.815,
-        "perCore": 47.9257,
+        "perCash": 673.595,
+        "perCore": 87.5,
         "days": [
           "2026-10-18",
           "2026-11-14"
@@ -7154,7 +7165,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 2.08656
+      "coreValue": 1.14286
     },
     "gear:crimson_biopolymers": {
       "name": "Crimson Biopolymers",
@@ -7354,14 +7365,14 @@ window.MSF_VALUE_TABLE = {
     "gear:crimson_focus_catalyst_part": {
       "name": "Crimson Focus Catalyst Part",
       "category": "gear",
-      "per": 1,
+      "per": 100,
       "aliases": [],
-      "value": 0.0101047,
+      "value": 0.412381,
       "id": "GEAR_RED_FOCUS_MAT_BIT",
       "observed": {
         "basis": "set",
-        "perCash": 98.9636,
-        "perCore": 12.8598,
+        "perCash": 242.494,
+        "perCore": 31.5,
         "days": [
           "2026-10-18",
           "2026-11-14"
@@ -7407,7 +7418,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 0.0777617
+      "coreValue": 3.1746
     },
     "gear:crimson_focused_chi": {
       "name": "Crimson Focused Chi",
@@ -7423,14 +7434,14 @@ window.MSF_VALUE_TABLE = {
     "gear:crimson_health_catalyst_part": {
       "name": "Crimson Health Catalyst Part",
       "category": "gear",
-      "per": 1,
+      "per": 100,
       "aliases": [],
-      "value": 0.0101047,
+      "value": 0.742286,
       "id": "GEAR_RED_HEALTH_MAT_BIT",
       "observed": {
         "basis": "set",
-        "perCash": 98.9636,
-        "perCore": 12.8598,
+        "perCash": 134.719,
+        "perCore": 17.5,
         "days": [
           "2026-10-18",
           "2026-11-14"
@@ -7476,7 +7487,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 0.0777617
+      "coreValue": 5.71429
     },
     "gear:crimson_hyperphage": {
       "name": "Crimson Hyperphage",
@@ -7754,12 +7765,12 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 1,
       "aliases": [],
-      "value": 0.0401019,
+      "value": 0.02598,
       "id": "GEAR_RED_RESIST_MAT_BIT",
       "observed": {
         "basis": "set",
-        "perCash": 24.9365,
-        "perCore": 3.24037,
+        "perCash": 38.4911,
+        "perCore": 5,
         "days": [
           "2026-10-18",
           "2026-11-14"
@@ -7805,7 +7816,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 0.308607
+      "coreValue": 0.2
     },
     "gear:crimson_ritual_salts": {
       "name": "Crimson Ritual Salts",
@@ -7966,12 +7977,12 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 1,
       "aliases": [],
-      "value": 0.355511,
+      "value": 0.888668,
       "id": "GEAR_RED_MAGIC3",
       "observed": {
         "basis": "set",
-        "perCash": 2.81285,
-        "perCore": 0.375,
+        "perCash": 1.12528,
+        "perCore": 0.15,
         "days": [
           "2026-10-18",
           "2026-11-06",
@@ -8026,7 +8037,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 2.66667
+      "coreValue": 6.66667
     },
     "gear:improved_arcane_powder": {
       "name": "Improved Arcane Powder",
@@ -9244,11 +9255,11 @@ window.MSF_VALUE_TABLE = {
       "category": "orb",
       "per": 1,
       "aliases": [],
-      "value": 0.0111778,
+      "value": 0.0124975,
       "observed": {
         "basis": "set",
-        "perCash": 89.4628,
-        "perCore": 11.547,
+        "perCash": 80.016,
+        "perCore": 10,
         "days": [
           "2026-10-18",
           "2026-11-06"
@@ -9286,7 +9297,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 0.0866026
+      "coreValue": 0.1
     },
     "orb:mega_override": {
       "name": "MEGA Override Orb Fragments",
@@ -11041,12 +11052,12 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 100,
       "aliases": [],
-      "value": 0.900155,
+      "value": 0.259185,
       "id": "GEAR_TEAL_MYSTIC_MAT_BIT",
       "observed": {
         "basis": "set",
-        "perCash": 111.092,
-        "perCore": 14.9844,
+        "perCash": 385.825,
+        "perCore": 54,
         "days": [
           "2026-11-06",
           "2026-11-14"
@@ -11092,7 +11103,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 6.67361
+      "coreValue": 1.85185
     },
     "gear:augmented_basic_catalyst_part": {
       "name": "Augmented Basic Catalyst Part",
@@ -11199,12 +11210,12 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 100,
       "aliases": [],
-      "value": 0.986067,
+      "value": 0.259185,
       "id": "GEAR_TEAL_MYSTIC_MAT_C2",
       "observed": {
         "basis": "set",
-        "perCash": 101.413,
-        "perCore": 13.6788,
+        "perCash": 385.825,
+        "perCore": 54,
         "days": [
           "2026-11-06",
           "2026-11-14"
@@ -11250,7 +11261,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 7.31058
+      "coreValue": 1.85185
     },
     "gear:augmented_focus_catalyst_part": {
       "name": "Augmented Focus Catalyst Part",
@@ -11279,12 +11290,12 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 1,
       "aliases": [],
-      "value": 0.0664805,
+      "value": 0.01428,
       "id": "GEAR_TEAL_MYSTIC_MAT_C8",
       "observed": {
         "basis": "set",
-        "perCash": 15.042,
-        "perCore": 1.91703,
+        "perCash": 70.028,
+        "perCore": 8.75,
         "days": [
           "2026-11-06",
           "2026-11-14"
@@ -11330,7 +11341,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 0.52164
+      "coreValue": 0.114286
     },
     "gear:augmented_resistance_catalyst_part": {
       "name": "Augmented Resistance Catalyst Part",
@@ -11388,12 +11399,12 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 1,
       "aliases": [],
-      "value": 0.0664805,
+      "value": 0.01428,
       "id": "GEAR_TEAL_MYSTIC_MAT_C1",
       "observed": {
         "basis": "set",
-        "perCash": 15.042,
-        "perCore": 1.91703,
+        "perCash": 70.028,
+        "perCore": 8.75,
         "days": [
           "2026-11-06",
           "2026-11-14"
@@ -11439,7 +11450,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 0.52164
+      "coreValue": 0.114286
     },
     "gear:augmented_uru": {
       "name": "Augmented Uru",
@@ -11484,14 +11495,14 @@ window.MSF_VALUE_TABLE = {
     "gear:augmented_vial": {
       "name": "Augmented Vial",
       "category": "gear",
-      "per": 1,
+      "per": 100,
       "aliases": [],
-      "value": 0.0110246,
+      "value": 0.259185,
       "id": "GEAR_TEAL_MYSTIC_MAT_C3",
       "observed": {
         "basis": "set",
-        "perCash": 90.7061,
-        "perCore": 12.2347,
+        "perCash": 385.825,
+        "perCore": 54,
         "days": [
           "2026-11-06",
           "2026-11-14"
@@ -11537,7 +11548,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 0.0817347
+      "coreValue": 1.85185
     },
     "orb:black_friday_sneak_peaks": {
       "name": "Black Friday Sneak Peaks Orb Fragments",
@@ -11602,12 +11613,12 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 1,
       "aliases": [],
-      "value": 0.390898,
+      "value": 0.444334,
       "id": "GEAR_RED_MYSTIC_MAT_C9",
       "observed": {
         "basis": "set",
-        "perCash": 2.55821,
-        "perCore": 0.336749,
+        "perCash": 2.25056,
+        "perCore": 0.3,
         "days": [
           "2026-11-06",
           "2026-11-14"
@@ -11653,7 +11664,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 2.96957
+      "coreValue": 3.33333
     },
     "gear:crimson_laser_torch": {
       "name": "Crimson Laser Torch",
@@ -11696,12 +11707,12 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 1,
       "aliases": [],
-      "value": 0.390898,
+      "value": 0.444334,
       "id": "GEAR_RED_MYSTIC_MAT_C5",
       "observed": {
         "basis": "set",
-        "perCash": 2.55821,
-        "perCore": 0.336749,
+        "perCash": 2.25056,
+        "perCore": 0.3,
         "days": [
           "2026-11-06",
           "2026-11-14"
@@ -11747,7 +11758,7 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 2.96957
+      "coreValue": 3.33333
     },
     "gear:crimson_titanium_alloy": {
       "name": "Crimson Titanium Alloy",

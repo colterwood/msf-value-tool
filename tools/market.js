@@ -12,8 +12,12 @@
  *   2. An offer in which nothing has ever been sold on its own, up to that day, is a set: its
  *      price is split evenly, line by line, and each line has that price that day (T3 Level 4
  *      and Level 5 Ions, the pieces of a gear pack). The cheapest such split is the day's price.
- *   3. The USUAL price of an item is the middle of its day prices over the read days BEFORE the
- *      read being rated. Today's offers never set their own yardstick, so a sale reads as a sale.
+ *   3. The USUAL price of an item is the best of its day prices that was matched or beaten at
+ *      least two thirds of the time, over the reads of the last six months BEFORE the read being
+ *      rated. Each read counts for the days it stands for: half the gap to the read before it and
+ *      half the gap to the read after it, at most a week each way. So today's offers never set
+ *      their own yardstick, reading the store every day of a sale adds days and not votes, and a
+ *      sale price only becomes the usual one once it has stood for two thirds of the record.
  *   4. An item with no earlier day price is priced by the rated read itself, the same two ways,
  *      and marked firstSeen: it rates about 1x by construction until a second read exists.
  *
@@ -331,16 +335,75 @@ function median(a) {
   return n ? (n % 2 ? s[(n - 1) / 2] : Math.sqrt(s[n / 2 - 1] * s[n / 2])) : NaN;
 }
 
+/* ---------- the usual price ---------- */
+
+const USUAL_MONTHS = 6;        // only the reads of the last six months count
+const USUAL_SHARE = 2 / 3;     // the usual price was matched or beaten at least this share of that time
+const STANDS_FOR_CAP = 7;      // a read stands for at most a week before it and a week after it
+
+const dayNumber = (d) => Date.parse(d + 'T00:00:00Z') / 86400000;
+
+/** The first day that still counts when `ratedDay` is rated: the same day of the month, six months back. */
+function windowStart(ratedDay, months) {
+  const d = new Date(ratedDay + 'T00:00:00Z');
+  if (isNaN(d)) return '';
+  const day = d.getUTCDate();
+  d.setUTCDate(1);
+  d.setUTCMonth(d.getUTCMonth() - (months == null ? USUAL_MONTHS : months));
+  const last = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 0)).getUTCDate();
+  d.setUTCDate(Math.min(day, last));
+  return d.toISOString().slice(0, 10);
+}
+
+/**
+ * How many days each read before the rated one stands for: half the gap to the read before it
+ * and half the gap to the read after it (for the last one, the rated read), each at most a week.
+ * The first read has nothing before it and gets the week. Returns { day: days }.
+ */
+function readWeights(readDays, ratedDay) {
+  const seen = {};
+  const ds = readDays.concat([ratedDay]).filter((d) => d <= ratedDay && !seen[d] && (seen[d] = true)).sort();
+  const w = {};
+  ds.forEach((d, i) => {
+    if (d === ratedDay) return;
+    const before = i > 0 ? Math.min((dayNumber(d) - dayNumber(ds[i - 1])) / 2, STANDS_FOR_CAP) : STANDS_FOR_CAP;
+    const after = Math.min((dayNumber(ds[i + 1]) - dayNumber(d)) / 2, STANDS_FOR_CAP);
+    w[d] = before + after;
+  });
+  return w;
+}
+
+/**
+ * The best price that was matched or beaten for at least `share` of the time. pairs are
+ * [price of one unit, days it stood]: the cheapest prices are counted first, and the answer is
+ * the price at which the days counted reach the share.
+ */
+function availablePrice(pairs, share) {
+  const s = pairs.filter((p) => p[0] > 0 && isFinite(p[0]) && p[1] > 0).sort((a, b) => a[0] - b[0]);
+  const total = s.reduce((a, p) => a + p[1], 0);
+  let run = 0;
+  for (let i = 0; i < s.length; i++) {
+    run += s[i][1];
+    if (run >= share * total - 1e-9) return s[i][0];
+  }
+  return NaN;
+}
+
 /**
  * Price everything the observations carry, as of the read being rated (see the header for the
- * rules). Observations after the rated day are ignored.
+ * rules). Observations after the rated day, or more than six months before it, are ignored.
+ * opts.readDays: every day the store was read, whether or not an item was on sale then (default:
+ * the days the observations carry); the gaps between them say how long each read stands for.
  * Returns { what: { basis: 'own' | 'set', usual (price of one unit), firstSeen, days (the read
- * days the usual price is the middle of), offers (observations behind its day prices), byDay:
+ * days the usual price comes from), offers (observations behind its day prices), byDay:
  * { day: { price (the cheapest that day), offer, offers, basis } }, best: { cost, day, offer } } }.
  */
-function priceItems(obs, ratedDay) {
+function priceItems(obs, ratedDay, opts) {
+  opts = opts || {};
+  const from = ratedDay ? windowStart(ratedDay) : '';
+  const inWindow = (d) => !ratedDay || (d <= ratedDay && d >= from);
   const byDay = {};
-  obs.forEach((o) => { if (ratedDay && o.day > ratedDay) return; (byDay[o.day] = byDay[o.day] || []).push(o); });
+  obs.forEach((o) => { if (!inWindow(o.day)) return; (byDay[o.day] = byDay[o.day] || []).push(o); });
   const info = {}, soldAlone = {};
   const note = (what, basis, o, cost) => {
     if (!(cost > 0) || !isFinite(cost)) return;
@@ -357,13 +420,14 @@ function priceItems(obs, ratedDay) {
       else if (o.lines.every((l) => !soldAlone[l[0]])) o.lines.forEach((l) => note(l[0], 'set', o, o.price / o.lines.length / l[1]));
     });
   });
+  const weight = ratedDay ? readWeights((opts.readDays || Object.keys(byDay)).filter(inWindow), ratedDay) : {};
   Object.keys(info).forEach((k) => {
     const e = info[k];
     const all = Object.keys(e.byDay).sort();
     const earlier = ratedDay ? all.filter((d) => d < ratedDay) : all;
     e.days = earlier.length ? earlier : all;
     e.firstSeen = !earlier.length;
-    e.usual = median(e.days.map((d) => e.byDay[d].price));
+    e.usual = availablePrice(e.days.map((d) => [e.byDay[d].price, weight[d] || 1]), USUAL_SHARE);
     e.basis = e.days.some((d) => e.byDay[d].basis === 'own') ? 'own' : 'set';
     e.offers = all.reduce((a, d) => a + e.byDay[d].offers, 0);
     e.best = null;
@@ -386,7 +450,12 @@ function prices(archive, table, opts) {
   const tiers = coreTiers(archive);
   const cashObs = observations(archive, table, { mode: 'cash', tiers: tiers });
   const coreObs = observations(archive, table, { mode: 'cores', tiers: tiers });
-  return { ratedDay: ratedDay, tiers: tiers, cash: priceItems(cashObs.obs, ratedDay), cores: priceItems(coreObs.obs, ratedDay), cashObs: cashObs, coreObs: coreObs };
+  // every day the store was read counts as a read, whether or not a given item was on sale then
+  const from = windowStart(ratedDay);
+  const readDays = Object.keys(archive.reads || {}).filter((d) => d <= ratedDay && d >= from);
+  const how = { readDays: readDays };
+  return { ratedDay: ratedDay, tiers: tiers, from: from, months: USUAL_MONTHS, share: USUAL_SHARE, weights: readWeights(readDays, ratedDay),
+    cash: priceItems(cashObs.obs, ratedDay, how), cores: priceItems(coreObs.obs, ratedDay, how), cashObs: cashObs, coreObs: coreObs };
 }
 
 function sig6(n) { return n == null || !isFinite(n) ? null : Number(Number(n).toPrecision(6)); }
@@ -454,5 +523,6 @@ module.exports = {
   familyOf: familyOf, familyLabel: familyLabel,
   emptyArchive: emptyArchive, addToArchive: addToArchive, removeDay: removeDay, offerSig: offerSig, mergeLines: mergeLines, storeEntries: storeEntries,
   coreTiers: coreTiers, tierCores: tierCores, bonusCores: bonusCores, corePrice: corePrice, observations: observations, median: median, priceItems: priceItems,
+  USUAL_MONTHS: USUAL_MONTHS, USUAL_SHARE: USUAL_SHARE, windowStart: windowStart, readWeights: readWeights, availablePrice: availablePrice,
   latestDay: latestDay, prices: prices, applyPrices: applyPrices, dayOffers: dayOffers
 };

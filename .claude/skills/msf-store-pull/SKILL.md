@@ -87,7 +87,7 @@ and rewrites `data/values.js` and `data/history.js`. It uses no network. Read it
   and the items first seen in the rated read, which rate about 1× until the next one (46 on
   14 November). `line names no row matches` must not appear after a page-data read.
 - `usual prices that moved`: up to 15 items whose usual price changed by more than 2%. Each should
-  be explained by the reads: an earlier day joined its middle, or it got an offer of its own.
+  be explained by the reads: an earlier day joined the days it is picked from, or it got an offer of its own.
 - `per CA$` and `per Ultra Core`: offers rated, the grade spread and the five best. Most offers at
   D or F is normal (129 of the 143 rated per CA$ on 14 November). Many A grades at once is a sale
   or a wrong yardstick: look at the items behind them in `data/reads.json`.

@@ -11,26 +11,27 @@ the offer as a whole and of each item in it, against the price in CA$ or in Ultr
 
 ## Status
 
-The numbers here describe the read of 14 November 2026, the one this version was built and checked
+The numbers here describe the read of 15 November 2026, the one this version was built and checked
 on. Every later read changes them: the page's header and `node tools/refresh.js --dry-run` give the
 current ones.
 
-| Part | State on 14 November 2026 |
+| Part | State on 15 November 2026 |
 | --- | --- |
-| Store reads | Four: 18 October, 24 October and 6 November (read from the offer cards) and 14 November (read from the page's own data) |
-| That read, `data/offers.js` | 14 November, 16:45 UTC: 155 offers with 688 lines, every line with the store's id. 148 offers are priced in CA$ and 7 in Strike Points |
-| Archive, `data/reads.json` | 405 offers: the money offers that were read completely, which is 131 of the 212 offers of the first read, then 89 of 120, 109 of 167 and 143 of 155. An offer on sale in several reads is kept once (40 were), so the four counts add up to more |
-| Value table, `data/values.js` | 406 rows. 248 have a usual price: 158 sold on their own and 90 only sold together. 247 of the 248 also have one in Ultra Cores, and 46 were first seen on 14 November. 145 rows have no price, 10 are points and 3 are training modules priced from L4 (the page counts the modules and leaves the points out: 251 of 396 items with prices) |
-| Ratings of that read | Per CA$: 143 offers rated, 5 A, 2 B, 7 C, 73 D and 56 F. Per Ultra Core: 138 rated, 5 A, 2 B, 6 C, 75 D and 50 F |
-| Price history, `data/history.js` | Four days, in both currencies |
+| Store reads | Five: 18 October, 24 October and 6 November (read from the offer cards), 14 and 15 November (read from the page's own data) |
+| That read, `data/offers.js` | 15 November, 20:13 UTC: 154 offers with 687 lines, every line with the store's id. 147 offers are priced in CA$ and 7 in Strike Points |
+| Archive, `data/reads.json` | 414 offers: the money offers that were read completely, which is 131 of the 212 offers of the first read, then 89 of 120, 109 of 167, 143 of 155 and 144 of 154. An offer on sale in several reads is kept once (175 were), so the five counts add up to more |
+| Value table, `data/values.js` | 409 rows. 251 have a usual price: 158 sold on their own and 93 only sold together. 250 of the 251 also have one in Ultra Cores, and 3 were first seen on 15 November. 145 rows have no price, 10 are points and 3 are training modules priced from L4 (the page counts the modules and leaves the points out: 254 of 399 items with prices) |
+| Ratings of that read | Per CA$: 142 offers rated, 8 A, 2 B, 9 C, 73 D and 50 F. Per Ultra Core: 137 rated, 8 A, 2 B, 11 C, 72 D and 44 F |
+| Price history, `data/history.js` | Five days, in both currencies |
 
 What was thin on that day:
 
-- Only four reads. Three days stood behind that day's usual prices, and 117 of the 202 items priced
-  from those days were on sale on only one of them.
-- The 46 first-seen items rate about 1×, because the read being rated also set their price. 36 of
-  the 155 offers hold only such items, and 27 of those read exactly 1.00×.
-- 34 of the 155 offers hold something with no price of its own (or a pass tier), so their value
+- Five reads in four weeks. Of the 248 rows priced from earlier days, 140 rest on a single day, 34
+  on two, 33 on three and 41 on four. Where there is one day, that day's price is the usual price.
+- Gold's usual price is 700K per CA$. It sold alone on three reads, and the better offers (about
+  1.2M per CA$) were there for 65% of that time, just short of the two thirds the rule asks for.
+  More reads will settle it.
+- 33 of the 154 offers hold something with no price of its own (or a pass tier), so their value
   is a floor and they are marked incomplete.
 - The 7 Strike Store offers have no money price. They get a value per 1,000 Strike Points instead
   of a rating, except one that holds nothing with a price.
@@ -49,7 +50,7 @@ yourself the same way:
   sells it cheapest today, next to its usual price and the most an earlier read gave for the
   money. Chain steps that need earlier steps first are left out there: they cannot be bought on
   their own.
-- For every item, its price on each read day: the numbers its usual price is the middle of.
+- For every item, its price on each read day: the numbers its usual price is picked from.
 
 ## Keeping it current
 
@@ -89,8 +90,12 @@ that was priced in CA$ and read completely.
   is the cheapest of them: the best way to buy it that day.
 - **Only sold together.** An offer in which nothing has ever been sold on its own, up to that day,
   splits its price evenly, line by line: T3 Level 4 and Level 5 Ions, the pieces of a gear pack.
-- **Usual price.** The middle of the day prices over the read days before the read being rated.
-  Today's offers never set their own yardstick, so a sale reads as a sale.
+- **Usual price.** The best of the day prices that was matched or beaten at least two thirds of
+  the time, over the reads of the last six months before the read being rated. Each read counts
+  for the days it stands for: half the gap to the read before it and half the gap to the read
+  after it, at most a week each way. So today's offers never set their own yardstick, reading the
+  store every day of a sale adds days rather than votes, and a sale price only becomes the usual
+  price once it has stood for two thirds of the record.
 - **First seen.** An item with no earlier day price is priced by the rated read itself, the same
   two ways, so it rates about 1× until there is a second read.
 - **No price of its own.** An item that only ever comes beside things sold on their own has no
@@ -132,23 +137,39 @@ The grade comes from the number as shown, to two decimals, in either currency (`
 | D | 1× to 1.25× | about the usual price |
 | F | below 1× | worse than usual: wait |
 
-**A worked example** from the 14 November read. Turn Up the Power (option 1) costs CA$6.99 or 50
-Ultra Cores. T4 Ability Material ×210 is worth CA$5.61 at its usual price, which is 0.80× of the
-price. T4 Level 1 Ions ×31,000 are worth CA$5.17, or 0.74×. The offer is worth CA$10.78, or 1.54×:
-grade C (its 500 Strike Points are not counted). In Ultra Cores the lines read 0.90× and 0.72×,
-and the offer 1.62×. The currencies differ because the tiers do not charge the same CA$ per core:
-CA$6.99 is 50 cores, CA$12.99 is 100.
+**A worked example** from the 15 November read. T3 L5 Ions Brawler Pack costs CA$12.99 or 100
+Ultra Cores (its Strike Points and event points are not counted):
 
-**Why a sale reads as a sale.** T3 stat crystals usually cost about 10 per CA$: 405 for CA$39.99
-on each of the three earlier reads. On 14 November the ISO Fest packs (T3 L5 Ions Blaster, Brawler
-and Controller Pack) sell 405 of them plus 9.3 million ions for CA$12.99. They read 5.64×, and the
-ISO Fest: T3 Level 5 Ions Trove reads 11.04× (5.56× and 10.85× in Ultra Cores).
+| | Value | Per CA$ | Per Ultra Core |
+| --- | --- | --- | --- |
+| T3 stat crystals ×405 | CA$39.99 | 3.08× | 3.00× |
+| T3 Level 1 Ions ×3,000,000 | CA$14.43 | 1.11× | 1.11× |
+| T3 Level 4 Ions ×3,000,000 | CA$11.11 | 0.85× | 0.83× |
+| T3 Level 5 Ions ×3,300,000 | CA$9.84 | 0.76× | 0.76× |
+| Full offer | CA$75.37 | 5.80×, grade A | 5.70×, grade A |
+
+The currencies differ because the price tiers do not all charge the same CA$ per Ultra Core:
+CA$12.99 is 100 cores, and the CA$39.99 the crystals usually cost is 300.
+
+**Why a sale reads as a sale.** T3 stat crystals cost about 10 per CA$: 405 for CA$39.99 on each
+of the three reads that sold them alone. The ISO Fest packs (T3 L5 Ions Blaster, Brawler and
+Controller Pack) sell 405 of them plus 9.3 million ions for CA$12.99, so they read 5.80×, and the
+ISO Fest: T3 Level 5 Ions Trove reads 11.26× (5.70× and 11.04× in Ultra Cores).
+
+**Why it stays a sale.** T3 Level 5 Ions were at the fest price on three of the five reads
+(858K per CA$ against 335K and 270K). Counted per read, two more daily reads would make the fest
+price the usual one. Counted by time, the earlier fest reads stand for 14.5 of the 34.5 days on
+record and each further daily read adds one day, so the usual price stays 335K and the fest's
+ions-only offer reads 1.78× to the end of the fest.
 
 ## Limits
 
 - Items tied to one character (shards, promotions, awakened ability materials) are priced for
   that character alone, so a new character's offers are first seen.
 - The even split inside sets is a convention, not knowledge.
+- The two thirds is a choice. At one half, a two-week sale read daily would become the usual price
+  after about a week on a one-month record. At two thirds, a better price that was there for less
+  than two thirds of the time is not the usual one, which is what happens to gold above.
 - 145 rows have no price: no complete money offer has carried them, or they only come beside
   things sold on their own, or only in chain steps that could not be bought yet.
 - A read is filed under its UTC date, and a later read of the same day replaces the earlier one.
@@ -180,5 +201,5 @@ ISO Fest: T3 Level 5 Ions Trove reads 11.04× (5.56× and 10.85× in Ultra Cores
   writing.
 - `npm test` runs the tests with Node's built-in runner (Node 18 or newer). One test rebuilds the
   prices from `data/reads.json` and compares them with `data/values.js`, so commit the data
-  files together. The worked example above is checked too, for as long as the 14 November read
+  files together. The worked example above is checked too, for as long as the 15 November read
   is the one in `data/offers.js`.

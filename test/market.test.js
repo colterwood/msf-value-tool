@@ -12,34 +12,100 @@ const near = (a, b, tol) => assert.ok(Math.abs(a - b) <= (tol == null ? 1e-9 : t
 const o = (day, title, price, lines) => ({ day: day, title: title, price: price, lines: lines });
 const RATED = '2026-11-14';
 
-test('an item sold on its own: the day\'s price is its cheapest own offer, the usual price the middle of the earlier days', () => {
+test('an item sold on its own: the day\'s price is its cheapest own offer, the usual price the best one that held two thirds of the time', () => {
   const info = M.priceItems([
     o('2026-10-18', 'Small pack', 10, [['gold', 5000000]]),        // 2.0 per million
     o('2026-10-18', 'Big pack', 30, [['gold', 30000000]]),         // 1.0 per million: the best way that day
     o('2026-10-24', 'Big pack', 30, [['gold', 30000000]]),         // 1.0
+    o('2026-10-30', 'Big pack', 30, [['gold', 30000000]]),         // 1.0
     o('2026-11-06', 'Dear pack', 30, [['gold', 20000000]]),        // 1.5
     o(RATED, 'Sale', 10, [['gold', 40000000]]),                    // 0.25: today, a sale
     o('2026-11-20', 'Later', 10, [['gold', 90000000]])             // after the rated read: not part of this rating at all
   ], RATED).gold;
   assert.equal(info.basis, 'own');
   assert.equal(info.firstSeen, false);
-  assert.deepEqual(info.days, ['2026-10-18', '2026-10-24', '2026-11-06']);   // the rated read is not among them
-  near(info.usual, 1e-6);                                                     // the middle of 1.0, 1.0, 1.5 per million
+  assert.deepEqual(info.days, ['2026-10-18', '2026-10-24', '2026-10-30', '2026-11-06']);   // the rated read is not among them
+  // the four reads stand for 10, 6, 6.5 and 7.5 days: 1.0 per million held for 22.5 of the 30, more than two thirds
+  near(info.usual, 1e-6);
   near(info.byDay['2026-10-18'].price, 1e-6);
   assert.equal(info.byDay['2026-10-18'].offer, 'Big pack');
   assert.equal(info.byDay['2026-10-18'].offers, 2);
-  assert.equal(info.offers, 5);
+  assert.equal(info.offers, 6);
   assert.equal(info.byDay['2026-11-20'], undefined);
   // the cheapest it has ever been is today's sale, and that sale reads as one
   assert.deepEqual(info.best, { cost: 10 / 40000000, day: RATED, offer: 'Sale' });
   near(40000000 * info.usual / 10, 4);
-  // an even number of days: the geometric middle of the two central ones
+  // a better price that was there less than two thirds of the time is not the usual one: 1.0 held 19.5 of 30 days here
+  const short = M.priceItems([o('2026-10-18', 'a', 10, [['x', 10]]), o('2026-10-24', 'b', 10, [['x', 10]]), o('2026-11-06', 'c', 15, [['x', 10]]), o(RATED, 'd', 1, [['x', 10]])], RATED).x;
+  near(short.usual, 1.5);
+  // two reads that stand for ten days each: neither price held two thirds of the time alone, so the dearer one is the usual price
   const two = M.priceItems([o('2026-10-18', 'a', 10, [['x', 10]]), o('2026-10-24', 'b', 40, [['x', 10]]), o(RATED, 'c', 1, [['x', 10]])], RATED).x;
-  near(two.usual, 2);
-  near(M.median([1, 4]), 2); near(M.median([3, 1, 2]), 2); assert.ok(isNaN(M.median([])));
+  near(two.usual, 4);
   // the same observations in any order give the same prices
   const a = [o('2026-10-18', 'p', 10, [['x', 10]]), o('2026-10-18', 'q', 9, [['x', 10], ['y', 3]]), o('2026-10-24', 'r', 8, [['y', 4], ['z', 1]]), o(RATED, 's', 7, [['z', 2]])];
   assert.deepEqual(M.priceItems(a.slice().reverse(), RATED), M.priceItems(a, RATED));
+});
+
+test('each read counts for the days it stands for, so reading daily during a sale does not make the sale the usual price', () => {
+  // half the gap to the read before and half the gap to the read after, at most a week each way; the first read gets the week before it
+  assert.deepEqual(M.readWeights(['2026-10-18', '2026-10-24', '2026-11-06', '2026-11-14', '2026-11-15'], '2026-11-15'), { '2026-10-18': 10, '2026-10-24': 9.5, '2026-11-06': 10.5, '2026-11-14': 4.5 });
+  assert.deepEqual(M.readWeights(['2026-11-15', '2026-11-14', '2026-11-14', '2026-11-20'], '2026-11-15'), { '2026-11-14': 7.5 });   // any order, each day once, later reads left out
+  assert.deepEqual(M.readWeights(['2026-06-01', '2026-11-01'], '2026-11-15'), { '2026-06-01': 14, '2026-11-01': 14 });               // a long gap is a week each way, not months
+  assert.deepEqual(M.readWeights([], '2026-11-15'), {});
+  // the best price matched or beaten two thirds of the time: cheapest first, until the days counted reach the share
+  near(M.availablePrice([[1, 10], [2, 9.5], [3, 10.5]], 2 / 3), 3);       // 1 and 2 together held 19.5 of 30 days
+  near(M.availablePrice([[1, 10], [2, 10], [3, 10]], 2 / 3), 2);          // exactly two thirds is enough
+  near(M.availablePrice([[3, 10], [1, 25]], 2 / 3), 1);
+  near(M.availablePrice([[5, 1]], 2 / 3), 5);
+  assert.ok(isNaN(M.availablePrice([], 2 / 3)));
+  assert.equal(M.USUAL_SHARE, 2 / 3);
+  assert.equal(M.USUAL_MONTHS, 6);
+
+  // Ions at 0.10 each on three weekly reads, then a fest at 0.04 that is read every day
+  const regular = (d) => o(d, 'Ions Special', 2, [['l5', 10], ['l4', 10]]);
+  const fest = (d) => o(d, 'Fest', 0.8, [['l5', 10], ['l4', 10]]);
+  const festDays = ['2026-11-14', '2026-11-15', '2026-11-16', '2026-11-17', '2026-11-18', '2026-11-19', '2026-11-20', '2026-11-21', '2026-11-22', '2026-11-23', '2026-11-24', '2026-11-25', '2026-11-26', '2026-11-27', '2026-11-28'];
+  const obs = ['2026-10-24', '2026-10-31', '2026-11-07'].map(regular).concat(festDays.map(fest));
+  const usualOn = (day) => M.priceItems(obs, day).l5.usual;
+  near(usualOn('2026-11-14'), 0.1);            // the first day of the fest: 2.5x
+  near(usualOn('2026-11-21'), 0.1);            // a week of daily reads later it still reads as a sale: the fest reads stand for 10 days, the regular ones for 24.5
+  near(usualOn('2026-11-28'), 0.1);            // and on its last day: 17 days against 24.5 is not two thirds
+  // counted per read instead, the fest would have been the usual price by then: 7 of the 10 reads before 21 November
+  assert.ok(7 / 10 > M.USUAL_SHARE);
+  assert.deepEqual(M.readWeights(['2026-10-24', '2026-10-31', '2026-11-07'].concat(festDays), '2026-11-21'),
+    { '2026-10-24': 10.5, '2026-10-31': 7, '2026-11-07': 7, '2026-11-14': 4, '2026-11-15': 1, '2026-11-16': 1, '2026-11-17': 1, '2026-11-18': 1, '2026-11-19': 1, '2026-11-20': 1 });
+  // a sale that goes on long enough does become the usual price: here once it has stood for two thirds of the record
+  const long = ['2026-10-24', '2026-10-31'].map(regular).concat(['2026-11-07', '2026-11-14', '2026-11-21', '2026-11-28', '2026-12-05', '2026-12-12'].map(fest));
+  near(M.priceItems(long, '2026-12-05').l5.usual, 0.1);        // the fest reads stand for 28 days of 45.5: not yet
+  near(M.priceItems(long, '2026-12-12').l5.usual, 0.04);       // 35 of 52.5, exactly two thirds: now it is
+});
+
+test('only the reads of the last six months count, and a read with nothing of an item on sale still shapes the days', () => {
+  assert.equal(M.windowStart('2026-11-15'), '2026-05-15');
+  assert.equal(M.windowStart('2026-08-31'), '2026-02-28');       // no 31 February: the last day of that month
+  assert.equal(M.windowStart('2027-01-15'), '2026-07-15');
+  const obs = [
+    o('2026-05-14', 'Old price', 10, [['x', 100]]),             // a day too old: it no longer counts at all
+    o('2026-05-15', 'Gold then', 20, [['x', 100]]),
+    o('2026-11-01', 'Gold now', 30, [['x', 100]]),
+    o('2026-11-15', 'Today', 30, [['x', 100]])
+  ];
+  const info = M.priceItems(obs, '2026-11-15').x;
+  assert.deepEqual(info.days, ['2026-05-15', '2026-11-01']);
+  assert.equal(info.byDay['2026-05-14'], undefined);
+  assert.equal(info.offers, 3);
+  near(info.usual, 0.3);                                         // two reads of fourteen days each: the dearer one
+  // an item sold alone long ago and only in sets since: while that day still counts the sets price nothing, afterwards it is a set item again
+  const mixed = [o('2026-04-15', 'Y alone', 5, [['y', 10]]), o('2026-08-15', 'Pair', 4, [['y', 10], ['w', 10]]), o('2026-10-01', 'Pair', 4, [['y', 10], ['w', 10]]), o('2026-11-15', 'Pair', 4, [['y', 10], ['w', 10]])];
+  const then = M.priceItems(mixed, '2026-10-01');                // six months back is 1 April: the day Y sold alone counts
+  assert.deepEqual([then.y.basis, then.y.days, then.w], ['own', ['2026-04-15'], undefined]);
+  const now = M.priceItems(mixed, '2026-11-15');                 // six months back is 15 May: it no longer does
+  assert.deepEqual([now.y.basis, now.w.basis, now.y.days], ['set', 'set', ['2026-08-15', '2026-10-01']]);
+  near(now.y.usual, 0.2);
+  // the store was also read on days when x was not on sale: those reads shorten the days its own reads stand for
+  const sparse = [o('2026-10-01', 'cheap', 10, [['x', 100]]), o('2026-10-29', 'dear', 20, [['x', 100]]), o('2026-11-15', 'today', 20, [['x', 100]])];
+  near(M.priceItems(sparse, '2026-11-15').x.usual, 0.2);                                                                 // 14 days each: the dearer
+  near(M.priceItems(sparse, '2026-11-15', { readDays: ['2026-10-01', '2026-10-27', '2026-10-29', '2026-10-31', '2026-11-15'] }).x.usual, 0.1);   // 14 days against 2: the cheaper held
 });
 
 test('an item with no earlier read is priced by the rated read itself and marked first seen', () => {
@@ -65,7 +131,7 @@ test('items only sold together split the offer evenly; today\'s offers do not mo
   assert.equal(info.l4.basis, 'set');
   near(info.l5.byDay['2026-10-18'].price, 10 / 2700000);
   near(info.l5.byDay['2026-10-24'].price, 65 / 21800000);                         // the cheaper of the two that day
-  near(info.l5.usual, Math.sqrt((10 / 2700000) * (65 / 21800000)));
+  near(info.l5.usual, 10 / 2700000);                                              // two reads of ten days each: the cheaper day did not hold two thirds of the time
   assert.deepEqual(info.l5.days, ['2026-10-18', '2026-10-24']);
   // today's fest offer is a set too (nothing in it has ever been sold alone): it gives today's price, not the usual one
   near(info.l5.byDay[RATED].price, 3.5 / 3000000);
@@ -102,7 +168,7 @@ test('a new kind of offer today never rewrites an item\'s history', () => {
   const NEXT = '2026-11-20';
   info = M.priceItems([pair('2026-10-18'), pair('2026-10-24'), sale, pair(NEXT), o(NEXT, 'X alone', 1, [['x', 10]])], NEXT);
   assert.deepEqual(info.x.days, ['2026-10-18', '2026-10-24', RATED]);
-  near(info.x.usual, 0.1);                      // the middle of 0.10, 0.10 and the 0.05 sale
+  near(info.x.usual, 0.1);                      // the 0.05 sale stood for a third of the time: 0.10 is still the usual price
   assert.equal(info.x.basis, 'own');
   assert.deepEqual(info.y.days, ['2026-10-18', '2026-10-24']);    // the pair is no longer a set once X sells alone
   near(info.y.usual, 0.1);
@@ -275,7 +341,7 @@ test('prices written into the table: both currencies, where the number comes fro
   assert.equal(g.observed.offers, 3);
   assert.deepEqual(g.observed.best, { per: Number((13000000 / 6.99).toPrecision(6)), day: '2026-11-14', offer: 'Gold 2' });
   assert.deepEqual(g.observed.bestCore, { per: 260000, day: '2026-11-14', offer: 'Gold 2' });
-  // its price on each read day, the rated one included: what the usual price is the middle of, and what today is
+  // its price on each read day, the rated one included: what the usual price is picked from, and what today is
   const perDay = (price) => Number((13000000 / price).toPrecision(6));
   assert.deepEqual(g.observed.byDay, {
     '2026-10-18': { per: perDay(12.99), offer: 'Gold 0' },
@@ -390,21 +456,37 @@ test('the latest read: every item on its own and the whole offer, per CA$ and pe
   }
 
   // The rest pins the README's worked example to the read it was taken from. A later read has
-  // other offers, so it only runs while the read of 14 November 2026 is the one on file.
-  if (table.meta.baseline.ratedDay !== '2026-11-14') return;
+  // other offers, so it only runs while the read of 15 November 2026 is the one on file.
+  if (table.meta.baseline.ratedDay !== '2026-11-15') return;
   const pick = (list, name) => list.find((r) => r.name === name);
-  const tup = pick(cash, 'Turn Up the Power (option 1)'), tupCores = pick(cores, 'Turn Up the Power (option 1)');
-  assert.equal(tup.price, 6.99);
-  assert.deepEqual(tup.lines.filter((l) => !l.excluded).map((l) => [l.item, l.qty, l.value.toFixed(2), l.vsTypical.toFixed(2)]), [['T4 Ability Material', 210, '5.61', '0.80'], ['T4 Level 1 Ions', 31000, '5.17', '0.74']]);
-  assert.equal(tup.perDollar.toFixed(2), '1.54');
-  assert.equal(tupCores.price, 50);
-  assert.deepEqual(tupCores.lines.filter((l) => !l.excluded).map((l) => l.vsTypical.toFixed(2)), ['0.90', '0.72']);
-  assert.equal(tupCores.perDollar.toFixed(2), '1.62');
-  // a sale reads as a sale: the ISO Fest bundles against what crystals and ions cost on the earlier reads
-  assert.ok(pick(cash, 'ISO Fest: T3 Level 5 Ions Trove').perDollar > 5);
-  assert.ok(pick(cash, 'T3 L5 Ions Brawler Pack').perDollar > 3);
+  // an offer's lines as the page shows them: the same item once, the stat crystals of a tier together
+  const merged = (r) => {
+    const out = {};
+    r.lines.filter((l) => !l.excluded && l.value != null).forEach((l) => {
+      const fam = table.items[l.key].observed.family;
+      const e = out[fam || l.key] || (out[fam || l.key] = { name: fam ? E.familyLabel(fam) : l.item, qty: 0, value: 0, vs: 0 });
+      e.qty += l.qty; e.value += l.value; e.vs += l.vsTypical;
+    });
+    return Object.keys(out).map((k) => [out[k].name, out[k].qty, out[k].value.toFixed(2), out[k].vs.toFixed(2)]).sort((a, b) => b[2] - a[2]);
+  };
+  const pack = pick(cash, 'T3 L5 Ions Brawler Pack'), packCores = pick(cores, 'T3 L5 Ions Brawler Pack');
+  assert.equal(pack.price, 12.99);
+  assert.deepEqual(merged(pack), [['T3 stat crystals', 405, '39.99', '3.08'], ['T3 Level 1 Ions', 3000000, '14.43', '1.11'], ['T3 Level 4 Ions', 3000000, '11.11', '0.85'], ['T3 Level 5 Ions', 3300000, '9.84', '0.76']]);
+  assert.equal(pack.totalUsd.toFixed(2), '75.37');
+  assert.equal(pack.perDollar.toFixed(2), '5.80');
+  assert.equal(packCores.price, 100);
+  assert.deepEqual(merged(packCores).map((x) => x[3]), ['3.00', '1.11', '0.83', '0.76']);
+  assert.equal(packCores.perDollar.toFixed(2), '5.70');
+  // a sale reads as a sale, and stays one: the fest's offers against what crystals and ions cost most of the time
+  assert.equal(pick(cash, 'ISO Fest: T3 Level 5 Ions Trove').perDollar.toFixed(2), '11.26');
+  assert.equal(pick(cores, 'ISO Fest: T3 Level 5 Ions Trove').perDollar.toFixed(2), '11.04');
+  assert.equal(pick(cash, 'ISO Fest: T3 Level 5 Ions').perDollar.toFixed(2), '1.78');
   assert.equal(pick(cash, 'T3 L5 Ions Brawler Pack').perDollar, pick(cash, 'T3 L5 Ions Blaster Pack').perDollar);   // a crystal is a crystal
   assert.equal(pick(cash, 'T4 Ions').perDollar.toFixed(2), '1.00');                                               // sold at its usual price
+  // the fest price of the T3 Level 5 Ions held for 14.5 of the 34.5 days on record: not the usual price
+  assert.deepEqual(table.meta.baseline.weights, { '2026-10-18': 10, '2026-10-24': 9.5, '2026-11-06': 10.5, '2026-11-14': 4.5 });
+  assert.equal(table.items['iso8:t3_level_5_ions'].observed.perCash, 335410);
+  assert.equal(table.items.gold.observed.perCash, 700140);     // the better gold offers were there 65% of the time, short of two thirds
   // the Orange Mega Orb is one row whatever id a read showed for it: the same offer at the same price reads 1x
   assert.equal(Object.keys(table.items).filter((k) => table.items[k].name === 'Orange Mega Orb').length, 1);
   assert.ok(cash.filter((r) => /Orange Mega Orb$/.test(r.name) && r.price === 129.99).every((r) => r.perDollar.toFixed(2) === '1.00'));

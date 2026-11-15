@@ -324,6 +324,14 @@
     var b = t && t.meta && t.meta.baseline;
     return b && b.method === 'own-history' ? b : null;
   }
+  /** How a usual price is picked, in words, from what tools/refresh.js recorded in meta.baseline. */
+  function usualRule(t) {
+    var b = ownBaseline(t);
+    if (!b || !(Number(b.share) > 0)) return 'the middle of its prices on your earlier reads';   // a table built before the rule changed
+    var share = Math.abs(Number(b.share) - 2 / 3) < 0.001 ? 'two thirds' : Math.round(Number(b.share) * 100) + '%';
+    var months = Number(b.months) > 0 ? Number(b.months) : 6;
+    return 'the best price it could be had for at least ' + share + ' of the time over the last ' + (months === 6 ? 'six' : fmtNum(months, 0)) + ' months';
+  }
   /** What on the page does not belong together or is older than it should be, one sentence each. Nothing here refreshes itself. */
   function freshness(t) {
     var out = [];
@@ -1252,6 +1260,12 @@
     var rows = [];
     rows.push(['Source', esc(meta.source || 'not stated')]);
     if (b) rows.push(['Built', esc(dayText(b.builtAt)) + ' for the store read of ' + esc(dayText(b.ratedDay)) + ', from the ' + fmtNum(b.archivedOffers, 0) + ' offers kept from your reads of ' + esc(daysText(b.readDays))]);
+    if (b) {
+      var stands = b.weights && typeof b.weights === 'object' ? Object.keys(b.weights).sort() : [];
+      rows.push(['Usual price', esc(capital(usualRule(t))) + ', counting only the reads before the one being rated.' +
+        (stands.length ? ' <span class="muted">Each read counts for the days it stands for, half the gap to the reads on either side and at most a week each way: ' +
+          esc(stands.map(function (d) { return dayText(d, true) + ' ' + fmtNum(b.weights[d], 1); }).join(', ')) + ' days. Reading the store every day of a sale adds days, not votes.</span>' : '')]);
+    }
     rows.push(['Items', s.priced + ' with a price, ' + (s.total - s.priced) + ' without' + (s.points ? ', ' + s.points + ' never counted (event and loyalty points)' : '') + (edits ? ', ' + edits + ' local edit' + (edits === 1 ? '' : 's') : '') + (state.replacement ? ', table replaced from pasted JSON' : '')]);
     if (b) rows.push(['Currency', 'every value is in ' + esc(cash.label) + ', the store\'s own currency, and in Ultra Cores; nothing is converted']);
     if (tiers.length) rows.push(['Ultra Core price tiers', tiers.map(function (x) { return fmtMoney(Number(x[0]), cash.currency) + ' is ' + fmtNum(Number(x[1]), 0); }).join(', ') + ' Ultra Cores <span class="muted">(an offer typed in or read from the cards shows no Ultra Core price: it is the offer\'s Strike Points bonus divided by ten, or else the one of its price tier)</span>']);
@@ -1294,7 +1308,7 @@
     var days = Array.isArray(o.days) ? o.days : [];
     if (o.firstSeen) lines.push('first seen ' + dayText(days[0] || (ownBaseline(t) || {}).ratedDay || 'in the rated read') + ': no earlier price');
     else if (days.length) lines.push('from your read' + (days.length === 1 ? '' : 's') + ' of ' + daysText(days) + (o.offers != null ? ', ' + fmtNum(o.offers, 0) + ' offer' + (Number(o.offers) === 1 ? '' : 's') : ''));
-    // its price on each read day that has one: what the usual price is the middle of (the last six reads)
+    // its price on each read day that has one: what the usual price is picked from (the last six reads)
     var series = function (map) {
       var ds = Object.keys(map || {}).sort().slice(-6);
       return ds.filter(function (x) { return map[x] && map[x].per > 0; }).map(function (x) { return dayText(x, true) + ' ' + fmtPer(map[x].per); }).join(' · ');
@@ -1463,7 +1477,7 @@
     var field = u.mode === 'cores' ? 'coreItems' : 'items';
     var one = u.mode === 'cores' ? 'Ultra Core' : u.money;
     if ($('history-note')) {
-      $('history-note').innerHTML = 'How many of a resource one ' + esc(one) + ' bought on each day the store was read. "Its own price" is the price the rules give it that day: its cheapest offer of its own, or its even split of a set. The usual price is the middle of those over the reads before the one being rated. ' +
+      $('history-note').innerHTML = 'How many of a resource one ' + esc(one) + ' bought on each day the store was read. "Its own price" is the price the rules give it that day: its cheapest offer of its own, or its even split of a set. The usual price is ' + esc(usualRule(t)) + ', counting the reads before the one being rated, each for the days it stands for. ' +
         'The other columns count every offer that held it: the whole offer price against that one resource, and only the item\'s share of the price. ' +
         '<code>update.cmd</code> rebuilds these days from your saved reads; importing pasted offers records the day in this browser only.';
     }
@@ -1493,7 +1507,7 @@
     var how = '';
     if (it && it.userValue) how = ', your typed value';
     else if (it && it.derivedFrom) how = ', priced from another level';
-    else if (used.length) how = ', the middle of its own price on ' + daysText(used);
+    else if (used.length) how = ', picked from its own price on ' + daysText(used);
     else if (ownDays.length) how = ', first seen in the read being rated';
     var num = function (x) { return x != null ? fmtPer(x) : '<span class="muted">not known</span>'; };
     var cell = function (x) { return '<td class="num">' + num(x) + '</td>'; };
@@ -1504,7 +1518,8 @@
       '<table><thead><tr><th>Day</th><th class="num">Offers</th><th class="num">Its own price</th><th class="num">Best, whole price</th><th class="num">Average, whole price</th><th class="num">Best, price share</th><th class="num">Average, price share</th></tr></thead><tbody>' +
       rows.slice().reverse().map(function (d) {
         var p = own[d.date] && own[d.date].per > 0 ? own[d.date] : null;
-        return '<tr><td>' + esc(dayText(d.date)) + (rated && d.date === rated ? '<br><span class="muted">the read being rated</span>' : '') + '</td><td class="num">' + fmtNum(d.n, 0) + '</td>' +
+        var stood = b && b.weights && b.weights[d.date] != null ? Number(b.weights[d.date]) : null;
+        return '<tr><td>' + esc(dayText(d.date)) + (rated && d.date === rated ? '<br><span class="muted">the read being rated</span>' : (stood != null && p ? '<br><span class="muted">counts for ' + fmtNum(stood, 1) + ' day' + (stood === 1 ? '' : 's') + '</span>' : '')) + '</td><td class="num">' + fmtNum(d.n, 0) + '</td>' +
           withOffer(p ? p.per : null, p ? p.offer : null, 'none of its own') + withOffer(d.wb, d.wo, 'not known') + cell(d.wa) + cell(d.sb) + cell(d.sa) + '</tr>';
       }).join('') + '</tbody></table>';
   }
