@@ -34,7 +34,7 @@ const HEADER = '/*\n' +
   ' *   {\n' +
   ' *     updated: "2026-11-14T16:45:48Z",  // when the store was read\n' +
   ' *     source: "web-store" | "in-game",\n' +
-  ' *     bookmarklet: "2026-11-14",        // version of the reader that wrote it\n' +
+  ' *     bookmarklet: "2026-11-15",        // version of the reader that wrote it\n' +
   ' *     offers: [\n' +
   ' *       {\n' +
   ' *         name: "Offer title as shown",\n' +

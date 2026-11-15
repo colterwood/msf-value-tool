@@ -6,8 +6,10 @@
  * state (a Vuex store), so that is read first: at once, with nothing scrolled or clicked. If the
  * state is not there, it falls back to the cards: it scrolls every lazily rendered offer card
  * into view and reads each card (which shows five items and "+N More"). Either way the raw
- * result goes to `normalize`, the JSON is copied to the clipboard and shown in a box on the
- * page. The My store tab's "Import pasted offers" button takes that JSON.
+ * result goes to `normalize`, the JSON is copied to the clipboard, and a panel on the page says
+ * in words what was read (offers, items, sections) and what to do next: update.cmd, which saves
+ * the read from the clipboard. The JSON itself is behind a button there; the My store tab's
+ * "Import pasted offers" button takes it too.
  *
  * normalizeExtract(raw) is pure and turns either raw result (the packed state, `source: 'state'`;
  * or what the cards show: card text, "x3.6M" counts, "CA$6.99" prices) into the data/offers.js
@@ -127,36 +129,46 @@
     box.appendChild(line);
     document.body.appendChild(box);
 
-    // Show what was read: the count line, the JSON in a text box with Copy and Close, and a
-    // clipboard write where the browser allows one. `how` is appended to the count.
-    function show(data, how) {
+    // Say what was read, in words: how many offers and items, from which sections, and what to do
+    // next. The JSON goes to the clipboard where the browser allows it, and stays behind a button.
+    function show(data, how, instant) {
       var json = JSON.stringify(data, null, 1);
-      line.textContent = 'MSF Store Value: ' + data.offers.length + ' offers read' + how + '. Copy the box below, then paste it on the My store tab and click Import.';
+      var n = data.offers.length, items = 0, sections = {}, order = [];
+      data.offers.forEach(function (o) {
+        items += (o.contents || []).length;
+        var s = String(o.section || 'Store').split(' / ')[0];
+        if (!(s in sections)) { sections[s] = 0; order.push(s); }
+        sections[s] += 1;
+      });
+      var say = function (text, css) { var d = document.createElement('div'); d.textContent = text; d.style.cssText = 'margin-top:6px;' + (css || ''); box.appendChild(d); return d; };
+      line.style.cssText = 'font-weight:600';
+      line.textContent = n ? 'MSF Store Value: your store was read. ' + n + ' offer' + (n === 1 ? '' : 's') + ' with ' + items + ' item' + (items === 1 ? '' : 's') + how + '.'
+        : 'MSF Store Value: no offers were found on this page. Reload the store page, wait for the offers to show, and click the bookmark again.';
+      if (n) say(order.map(function (s) { return s + ' ' + sections[s]; }).join(' \u00b7 '), 'color:#aab3c5');
+      if (n && instant) say('It is instant because the store page already holds every offer as data: nothing has to scroll or load, and nothing is clicked.');
+      var next = say('');
       var ta = document.createElement('textarea');
       ta.value = json;
-      ta.style.cssText = 'display:block;width:100%;height:160px;margin-top:10px;font:12px monospace;color:#000;background:#fff';
+      ta.style.cssText = 'display:none;width:100%;height:160px;margin-top:10px;font:12px monospace;color:#000;background:#fff';
       var bar = document.createElement('div');
-      bar.style.cssText = 'margin-top:8px;display:flex;gap:8px';
-      var copy = document.createElement('button');
-      copy.textContent = 'Copy';
-      copy.style.cssText = 'padding:6px 12px;font:14px system-ui';
-      copy.onclick = function () { ta.select(); try { document.execCommand('copy'); } catch (e) { /* nothing */ } copy.textContent = 'Copied'; };
-      var close = document.createElement('button');
-      close.textContent = 'Close';
-      close.style.cssText = 'padding:6px 12px;font:14px system-ui';
-      close.onclick = function () { box.remove(); };
-      bar.appendChild(copy);
-      bar.appendChild(close);
+      bar.style.cssText = 'margin-top:8px;display:flex;gap:8px;flex-wrap:wrap';
+      var button = function (label, fn) { var b = document.createElement('button'); b.textContent = label; b.style.cssText = 'padding:6px 12px;font:14px system-ui'; b.onclick = fn; bar.appendChild(b); return b; };
+      var then = 'double-click update.cmd in the tool folder, then reload the tool\'s page.';
+      var copied = function (ok) { if (n) next.textContent = ok ? 'Copied. Next: ' + then : 'The browser did not allow the copy. Click Copy, then ' + then; };
+      button('Copy', function () { ta.style.display = 'block'; ta.select(); var ok = false; try { ok = !!document.execCommand('copy'); } catch (e) { ok = false; } copied(ok); });
+      button('Show what was copied', function () { ta.style.display = ta.style.display === 'block' ? 'none' : 'block'; });
+      button('Close', function () { box.remove(); });
       box.appendChild(ta);
       box.appendChild(bar);
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        return navigator.clipboard.writeText(json).then(function () { copy.textContent = 'Copied'; }, function () { /* the box is still there */ });
+        return navigator.clipboard.writeText(json).then(function () { copied(true); }, function () { copied(false); });
       }
+      copied(false);
     }
 
     if (stateData) {
       var noted = stateData.offers.filter(function (o) { return !!o.notes && !/^free claim$/.test(o.notes); }).length;
-      return show(stateData, ' from the page\'s own offer data' + (noted ? '; ' + noted + ' of them could not be read completely and say so in their notes' : ', every item included'));
+      return show(stateData, ' from the page\'s own offer data' + (noted ? '; ' + noted + ' of them could not be read completely and say so in their notes' : ', every item included'), true);
     }
 
     // The card route, when the state is not there.
@@ -282,7 +294,7 @@
 
     return render().then(readChains).then(function () {
       var data = normalize(readCards());
-      return show(data, busy().length ? ' (' + busy().length + ' cards never rendered)' : '');
+      return show(data, ' from the offer cards, which hide what is behind "+N More"' + (busy().length ? ' (' + busy().length + ' cards never rendered)' : ''));
     });
   }
 
@@ -610,7 +622,7 @@
     return {
       updated: raw.readAt || new Date().toISOString(),
       source: 'web-store',
-      bookmarklet: '2026-11-14',   // the version of this code; the page compares it with BOOKMARKLET_VERSION on import
+      bookmarklet: '2026-11-15',   // the version of this code; the page compares it with BOOKMARKLET_VERSION on import
       account: raw.account || null,
       priceCurrency: priceCurrency,
       note: fromState
@@ -621,7 +633,7 @@
   }
 
   /** Bump together with the `bookmarklet` stamp in normalizeExtract whenever the bookmarklet's behaviour changes. */
-  var BOOKMARKLET_VERSION = '2026-11-14';
+  var BOOKMARKLET_VERSION = '2026-11-15';
 
   function bookmarkletHref() {
     var src = '(' + extractStore.toString() + ')(' + normalizeExtract.toString() + ')';

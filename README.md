@@ -11,18 +11,22 @@ the offer as a whole and of each item in it, against the price in CA$ or in Ultr
 
 ## Status
 
+The numbers here describe the read of 14 November 2026, the one this version was built and checked
+on. Every later read changes them: the page's header and `node tools/refresh.js --dry-run` give the
+current ones.
+
 | Part | State on 14 November 2026 |
 | --- | --- |
 | Store reads | Four: 18 October, 24 October and 6 November (read from the offer cards) and 14 November (read from the page's own data) |
-| Latest read, `data/offers.js` | 14 November, 16:45 UTC: 155 offers with 688 lines, every line with the store's id. 148 offers are priced in CA$ and 7 in Strike Points |
+| That read, `data/offers.js` | 14 November, 16:45 UTC: 155 offers with 688 lines, every line with the store's id. 148 offers are priced in CA$ and 7 in Strike Points |
 | Archive, `data/reads.json` | 405 offers: the money offers that were read completely, which is 131 of the 212 offers of the first read, then 89 of 120, 109 of 167 and 143 of 155. An offer on sale in several reads is kept once (40 were), so the four counts add up to more |
 | Value table, `data/values.js` | 406 rows. 248 have a usual price: 158 sold on their own and 90 only sold together. 247 of the 248 also have one in Ultra Cores, and 46 were first seen on 14 November. 145 rows have no price, 10 are points and 3 are training modules priced from L4 (the page counts the modules and leaves the points out: 251 of 396 items with prices) |
-| Ratings of the latest read | Per CA$: 143 offers rated, 5 A, 2 B, 7 C, 73 D and 56 F. Per Ultra Core: 138 rated, 5 A, 2 B, 6 C, 75 D and 50 F |
+| Ratings of that read | Per CA$: 143 offers rated, 5 A, 2 B, 7 C, 73 D and 56 F. Per Ultra Core: 138 rated, 5 A, 2 B, 6 C, 75 D and 50 F |
 | Price history, `data/history.js` | Four days, in both currencies |
 
-What is thin:
+What was thin on that day:
 
-- Only four reads. Three days stand behind today's usual prices, and 117 of the 202 items priced
+- Only four reads. Three days stood behind that day's usual prices, and 117 of the 202 items priced
   from those days were on sale on only one of them.
 - The 46 first-seen items rate about 1×, because the read being rated also set their price. 36 of
   the 155 offers hold only such items, and 27 of those read exactly 1.00×.
@@ -55,8 +59,10 @@ Nothing updates by itself: a read starts in your signed-in browser.
    whenever `pull.js` changes, because an old bookmark keeps running old code.
 2. Open https://marvelstrikeforce.com/en/store signed in and click the bookmark. It only reads: it
    takes the page's own offer data at once (every offer, every item, the CA$ price and the Ultra
-   Core price) and copies it. If the page ever stops exposing that data, it falls back to reading
-   the offer cards, which is slow and misses the items a card hides behind "+N More".
+   Core price) and copies it. Nothing scrolls, so it is done at once: a panel at the top right
+   says how many offers and items it read. If the page ever stops exposing that data, it falls
+   back to reading the offer cards, which is slow and misses the items a card hides behind
+   "+N More".
 3. Double-click `update.cmd`, then reload `index.html`.
 
 `update.cmd` runs two commands, which also work by hand:

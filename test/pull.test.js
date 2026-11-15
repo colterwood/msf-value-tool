@@ -157,7 +157,7 @@ test('a state read gives the same top-level object as a card read, with nothing 
   assert.equal(out.account, 'CZARFACE level 109');
   assert.equal(out.priceCurrency, 'CAD');                        // the Strike Point price does not count
   assert.equal(out.bookmarklet, P.BOOKMARKLET_VERSION);
-  assert.equal(P.BOOKMARKLET_VERSION, '2026-11-14');
+  assert.equal(P.BOOKMARKLET_VERSION, '2026-11-15');
   assert.match(out.note, /own offer data/);
   assert.doesNotMatch(out.note, /grade as incomplete/);          // the card route's warning does not apply
   assert.match(P.normalizeExtract(raw).note, /grade as incomplete/);
@@ -388,7 +388,9 @@ function fakePage(offersState) {
   const navigator = { clipboard: { writeText(text) { touched.copied.push(text); return Promise.resolve(); } } };
   const location = { href: 'https://marvelstrikeforce.com/en/store' };
   const box = () => body.children[0];
-  return { document, navigator, location, touched, line: () => box().children[0].textContent, textarea: () => box().children.find((c) => c.tagName === 'TEXTAREA') };
+  return { document, navigator, location, touched, line: () => box().children[0].textContent, textarea: () => box().children.find((c) => c.tagName === 'TEXTAREA'),
+    says: () => box().children.filter((c) => c.tagName === 'DIV' && !c.children.length).map((c) => c.textContent),          // the panel's lines of text, in order
+    button: (label) => box().children.find((c) => c.tagName === 'DIV' && c.children.length).children.find((b) => b.textContent === label) };
 }
 // Run the bookmarklet itself (the javascript: URL's source) in that page.
 function runBookmarklet(page) {
@@ -422,10 +424,21 @@ test('the bookmarklet reads the page state at once: nothing scrolled or clicked,
   await runBookmarklet(page);
   assert.equal(page.touched.clicks, 0);
   assert.equal(page.touched.scrolls, 0);
-  assert.match(page.line(), /^MSF Store Value: 4 offers read from the page's own offer data/);
   const json = page.textarea().value;
-  assert.deepEqual(page.touched.copied, [json]);                 // the clipboard gets what the box shows
+  assert.deepEqual(page.touched.copied, [json]);                 // the clipboard gets the read
   const out = JSON.parse(json);
+  // the panel says in words what was read and what to do next; the JSON stays out of sight until asked for
+  const items = out.offers.reduce((a, o) => a + o.contents.length, 0);
+  assert.deepEqual(page.says(), [
+    "MSF Store Value: your store was read. 4 offers with " + items + " items from the page's own offer data, every item included.",
+    'Offers 1 \u00b7 Chain Offers 2 \u00b7 Ultra Cores 1',
+    'It is instant because the store page already holds every offer as data: nothing has to scroll or load, and nothing is clicked.',
+    "Copied. Next: double-click update.cmd in the tool folder, then reload the tool's page."
+  ]);
+  assert.match(page.textarea().style.cssText, /^display:none/);
+  assert.deepEqual(['Copy', 'Show what was copied', 'Close'].map((l) => typeof page.button(l).onclick), ['function', 'function', 'function']);
+  page.button('Show what was copied').onclick();
+  assert.equal(page.textarea().style.display, 'block');
   assert.equal(out.source, 'web-store');
   assert.equal(out.bookmarklet, P.BOOKMARKLET_VERSION);
   assert.equal(out.account, 'CZARFACE level 109');
@@ -475,9 +488,27 @@ test('without the page state the bookmarklet falls back to reading the cards', a
   for (const offersState of [undefined, null, {}, { offers: [] }, { offers: 'loading' }, { offers: [null] }, { offers: [{ id: 'x', choices: 'broken' }] }]) {
     const page = fakePage(offersState);
     await runBookmarklet(page);                                  // the fake page has no cards, so the card route reads nothing
-    assert.match(page.line(), /^MSF Store Value: 0 offers read\. Copy the box below/);
+    assert.match(page.line(), /^MSF Store Value: no offers were found on this page\. Reload the store page/);
+    assert.deepEqual(page.says().slice(1), ['']);                // nothing was read: no sections, no "copied", no next step
     const out = JSON.parse(page.textarea().value);
     assert.deepEqual(out.offers, []);
     assert.match(out.note, /grade as incomplete/);
   }
+});
+
+test('when the browser refuses the automatic copy, the panel says so and its Copy button does it', async () => {
+  const page = fakePage({ offers: [pageOffer()], daisychainOffers: {} });
+  page.navigator.clipboard.writeText = () => Promise.reject(new Error('Document is not focused'));
+  await runBookmarklet(page);
+  const last = () => page.says()[page.says().length - 1];
+  assert.equal(last(), "The browser did not allow the copy. Click Copy, then double-click update.cmd in the tool folder, then reload the tool's page.");
+  page.button('Copy').onclick();                                 // selects the read and copies it the old way
+  assert.equal(page.textarea().style.display, 'block');
+  assert.equal(last(), "Copied. Next: double-click update.cmd in the tool folder, then reload the tool's page.");
+  // a browser with no clipboard API at all gets the same instruction
+  const bare = fakePage({ offers: [pageOffer()], daisychainOffers: {} });
+  delete bare.navigator.clipboard;
+  await runBookmarklet(bare);
+  assert.match(bare.says()[bare.says().length - 1], /^The browser did not allow the copy\. Click Copy/);
+  assert.match(bare.line(), /^MSF Store Value: your store was read\. 1 offer with \d+ items from the page's own offer data, every item included\.$/);
 });

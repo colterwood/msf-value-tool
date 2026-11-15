@@ -1195,7 +1195,7 @@
     renderHistory();
     var want = window.MSFPull && window.MSFPull.BOOKMARKLET_VERSION;
     if (want && v.source === 'web-store' && v.bookmarklet !== want) {
-      alert('This JSON came from an older copy of the bookmark (' + (v.bookmarklet || 'no version') + '; current ' + want + '), so chain steps and other fixes may be missing. Drag the "MSF: grab my offers" link to your bookmarks bar again to replace the old one, then re-run it in the store.');
+      alert('This read came from an older copy of the bookmark (' + (v.bookmarklet || 'no version') + '; current ' + want + '). It is used as it is. Drag the "MSF: grab my offers" link to your bookmarks bar again to replace the old copy.');
     }
   });
   $('store-reload').addEventListener('click', function () {
