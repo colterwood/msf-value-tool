@@ -63,8 +63,8 @@ window.MSF_VALUE_TABLE = {
       "CAD": 1
     },
     "xpNote": "Training modules carry xp (L1 50, L2 200, L3 800, L4 1600). Levels without offers of their own are priced from L4 by XP through derivedFrom.",
-    "source": "Your own store reads (2026-10-18, 2026-10-24, 2026-11-06, 2026-11-14); built 2026-11-14",
-    "updated": "2026-11-14",
+    "source": "Your own store reads (2026-10-18, 2026-10-24, 2026-11-06, 2026-11-14, 2026-11-15); built 2026-11-15",
+    "updated": "2026-11-15",
     "coreTiers": [
       [
         2.99,
@@ -125,17 +125,18 @@ window.MSF_VALUE_TABLE = {
     ],
     "baseline": {
       "method": "own-history",
-      "builtAt": "2026-11-14T21:40:02.565Z",
-      "ratedDay": "2026-11-14",
+      "builtAt": "2026-11-15T20:13:53.187Z",
+      "ratedDay": "2026-11-15",
       "readDays": [
         "2026-10-18",
         "2026-10-24",
         "2026-11-06",
-        "2026-11-14"
+        "2026-11-14",
+        "2026-11-15"
       ],
-      "archivedOffers": 405,
-      "priced": 248,
-      "firstSeen": 46
+      "archivedOffers": 414,
+      "priced": 251,
+      "firstSeen": 3
     },
     "gradeNote": "Value per CA$ (or per Ultra Core): the offer's contents at their usual prices, divided by its price. Usual prices come from your own earlier store reads (see the top of data/values.js), so 1× means the offer charges what these things usually cost you, and each item's own figure says what the offer is worth for that item alone."
   },
@@ -212,9 +213,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 12,
+        "offers": 15,
         "firstSeen": false,
         "best": {
           "per": 161.551,
@@ -235,6 +237,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "XP Overload"
           },
           "2026-11-14": {
+            "per": 161.551,
+            "offer": "XP Overload"
+          },
+          "2026-11-15": {
             "per": 161.551,
             "offer": "XP Overload"
           }
@@ -260,6 +266,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 21,
             "offer": "XP Overload"
+          },
+          "2026-11-15": {
+            "per": 21,
+            "offer": "XP Overload"
           }
         }
       },
@@ -277,7 +287,8 @@ window.MSF_VALUE_TABLE = {
         "perCash": 21.1555,
         "perCore": 2.75,
         "days": [
-          "2026-10-18"
+          "2026-10-18",
+          "2026-11-14"
         ],
         "offers": 2,
         "firstSeen": false,
@@ -352,7 +363,8 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 2.5
+      "coreValue": 2.5,
+      "id": "ELITE_6_CUR"
     },
     "elite_7_credit": {
       "name": "Elite 7 Credit",
@@ -439,9 +451,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 29,
+        "offers": 36,
         "firstSeen": false,
         "best": {
           "per": 76.9823,
@@ -462,6 +475,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cyber Breach: Cores Pack (step 1 of 5)"
           },
           "2026-11-14": {
+            "per": 76.9823,
+            "offer": "Cyber Breach: Cores Pack (step 2 of 5)"
+          },
+          "2026-11-15": {
             "per": 76.9823,
             "offer": "Cyber Breach: Cores Pack (step 2 of 5)"
           }
@@ -487,6 +504,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 10,
             "offer": "Cyber Breach: Cores Pack (step 2 of 5)"
+          },
+          "2026-11-15": {
+            "per": 10,
+            "offer": "Cyber Breach: Cores Pack (step 2 of 5)"
           }
         }
       },
@@ -506,9 +527,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 4,
+        "offers": 5,
         "firstSeen": false,
         "best": {
           "per": 14287.8,
@@ -529,6 +551,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Premium Plus Chapter Battle Pass Ticket Pack"
           },
           "2026-11-14": {
+            "per": 14287.8,
+            "offer": "Premium Plus Chapter Battle Pass Ticket Pack"
+          },
+          "2026-11-15": {
             "per": 14287.8,
             "offer": "Premium Plus Chapter Battle Pass Ticket Pack"
           }
@@ -552,6 +578,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Premium Plus Chapter Battle Pass Ticket Pack"
           },
           "2026-11-14": {
+            "per": 2000,
+            "offer": "Premium Plus Chapter Battle Pass Ticket Pack"
+          },
+          "2026-11-15": {
             "per": 2000,
             "offer": "Premium Plus Chapter Battle Pass Ticket Pack"
           }
@@ -582,9 +612,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 8.0032,
@@ -605,6 +636,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cluster of Ultra Cores"
           },
           "2026-11-14": {
+            "per": 8.0032,
+            "offer": "Cluster of Ultra Cores"
+          },
+          "2026-11-15": {
             "per": 8.0032,
             "offer": "Cluster of Ultra Cores"
           }
@@ -1194,17 +1229,18 @@ window.MSF_VALUE_TABLE = {
       "per": 1,
       "aliases": [],
       "character": "Iron Monger",
-      "value": 0.389373,
+      "value": 0.3499,
       "id": "SHARD_IRONMONGER",
       "observed": {
         "basis": "own",
-        "perCash": 2.56823,
-        "perCore": 0.34641,
+        "perCash": 2.85796,
+        "perCore": 0.4,
         "days": [
           "2026-10-18",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 4,
+        "offers": 5,
         "firstSeen": false,
         "best": {
           "per": 2.85796,
@@ -1221,6 +1257,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cyber Breach: Iron Monger"
           },
           "2026-11-14": {
+            "per": 2.85796,
+            "offer": "Cyber Breach: Iron Monger"
+          },
+          "2026-11-15": {
             "per": 2.85796,
             "offer": "Cyber Breach: Iron Monger"
           }
@@ -1242,10 +1282,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 0.4,
             "offer": "Cyber Breach: Iron Monger"
+          },
+          "2026-11-15": {
+            "per": 0.4,
+            "offer": "Cyber Breach: Iron Monger"
           }
         }
       },
-      "coreValue": 2.88675
+      "coreValue": 2.5
     },
     "shard:ironheart (mkii)": {
       "name": "Ironheart (MKII) shards",
@@ -1265,17 +1309,18 @@ window.MSF_VALUE_TABLE = {
       "per": 1,
       "aliases": [],
       "character": "Jocasta",
-      "value": 0.557662,
+      "value": 0.699898,
       "id": "SHARD_JOCASTA",
       "observed": {
         "basis": "own",
-        "perCash": 1.7932,
-        "perCore": 0.244949,
+        "perCash": 1.42878,
+        "perCore": 0.2,
         "days": [
           "2026-10-18",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 3,
+        "offers": 4,
         "firstSeen": false,
         "best": {
           "per": 2.25056,
@@ -1292,6 +1337,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cyber Breach: Jocasta"
           },
           "2026-11-14": {
+            "per": 1.42878,
+            "offer": "Cyber Breach: Jocasta"
+          },
+          "2026-11-15": {
             "per": 1.42878,
             "offer": "Cyber Breach: Jocasta"
           }
@@ -1313,10 +1362,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 0.2,
             "offer": "Cyber Breach: Jocasta"
+          },
+          "2026-11-15": {
+            "per": 0.2,
+            "offer": "Cyber Breach: Jocasta"
           }
         }
       },
-      "coreValue": 4.08248
+      "coreValue": 5
     },
     "shard:juggernaut (zombie)": {
       "name": "Juggernaut (Zombie) shards",
@@ -2282,17 +2335,18 @@ window.MSF_VALUE_TABLE = {
       "per": 1,
       "aliases": [],
       "character": "Ulysses Klaue",
-      "value": 0.389373,
+      "value": 0.3499,
       "id": "SHARD_ULYSSESKLAUE",
       "observed": {
         "basis": "own",
-        "perCash": 2.56823,
-        "perCore": 0.34641,
+        "perCash": 2.85796,
+        "perCore": 0.4,
         "days": [
           "2026-10-18",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 4,
+        "offers": 5,
         "firstSeen": false,
         "best": {
           "per": 2.85796,
@@ -2309,6 +2363,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cyber Breach: Ulysses Klaue"
           },
           "2026-11-14": {
+            "per": 2.85796,
+            "offer": "Cyber Breach: Ulysses Klaue"
+          },
+          "2026-11-15": {
             "per": 2.85796,
             "offer": "Cyber Breach: Ulysses Klaue"
           }
@@ -2330,10 +2388,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 0.4,
             "offer": "Cyber Breach: Ulysses Klaue"
+          },
+          "2026-11-15": {
+            "per": 0.4,
+            "offer": "Cyber Breach: Ulysses Klaue"
           }
         }
       },
-      "coreValue": 2.88675
+      "coreValue": 2.5
     },
     "shard:vahl": {
       "name": "Vahl shards",
@@ -2396,9 +2458,10 @@ window.MSF_VALUE_TABLE = {
         "perCash": 4.0016,
         "perCore": 0.5,
         "days": [
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 4.0016,
@@ -2411,6 +2474,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Short on Wasp (Janet) Shards?"
           },
           "2026-11-14": {
+            "per": 4.0016,
+            "offer": "Short on Wasp (Janet) Shards?"
+          },
+          "2026-11-15": {
             "per": 4.0016,
             "offer": "Short on Wasp (Janet) Shards?"
           }
@@ -2428,6 +2495,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 0.5,
             "offer": "Short on Wasp (Janet) Shards?"
+          },
+          "2026-11-15": {
+            "per": 0.5,
+            "offer": "Short on Wasp (Janet) Shards?"
           }
         }
       },
@@ -2439,17 +2510,18 @@ window.MSF_VALUE_TABLE = {
       "per": 1,
       "aliases": [],
       "character": "Whiplash",
-      "value": 0.389373,
+      "value": 0.3499,
       "id": "SHARD_WHIPLASH",
       "observed": {
         "basis": "own",
-        "perCash": 2.56823,
-        "perCore": 0.34641,
+        "perCash": 2.85796,
+        "perCore": 0.4,
         "days": [
           "2026-10-18",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 4,
+        "offers": 5,
         "firstSeen": false,
         "best": {
           "per": 2.85796,
@@ -2466,6 +2538,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cyber Breach: Whiplash"
           },
           "2026-11-14": {
+            "per": 2.85796,
+            "offer": "Cyber Breach: Whiplash"
+          },
+          "2026-11-15": {
             "per": 2.85796,
             "offer": "Cyber Breach: Whiplash"
           }
@@ -2487,10 +2563,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 0.4,
             "offer": "Cyber Breach: Whiplash"
+          },
+          "2026-11-15": {
+            "per": 0.4,
+            "offer": "Cyber Breach: Whiplash"
           }
         }
       },
-      "coreValue": 2.88675
+      "coreValue": 2.5
     },
     "shard:x-23": {
       "name": "X-23 shards",
@@ -2663,9 +2743,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 14,
+        "offers": 16,
         "firstSeen": false,
         "best": {
           "per": 184.874,
@@ -2686,6 +2767,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cyber Breach: Terrific Training"
           },
           "2026-11-14": {
+            "per": 184.874,
+            "offer": "Cyber Breach: Terrific Training"
+          },
+          "2026-11-15": {
             "per": 184.874,
             "offer": "Cyber Breach: Terrific Training"
           }
@@ -2711,6 +2796,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 23.1,
             "offer": "Cyber Breach: Terrific Training"
+          },
+          "2026-11-15": {
+            "per": 23.1,
+            "offer": "Cyber Breach: Terrific Training"
           }
         }
       },
@@ -2722,16 +2811,17 @@ window.MSF_VALUE_TABLE = {
       "per": 1,
       "aliases": [],
       "character": "Phantom Rider",
-      "value": 0.03495,
+      "value": 0.0476445,
       "id": "ABILITY_MATERIAL_UNIQUE_ABILITY_MAT_PHANTOMRIDER_BASIC",
       "observed": {
         "basis": "own",
-        "perCash": 28.6123,
-        "perCore": 4,
+        "perCash": 20.9888,
+        "perCore": 2.82843,
         "days": [
-          "2026-10-18"
+          "2026-10-18",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 28.6123,
@@ -2744,6 +2834,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Phantom Rider Awakening"
           },
           "2026-11-14": {
+            "per": 15.3965,
+            "offer": "Awakened Quickdraw"
+          },
+          "2026-11-15": {
             "per": 15.3965,
             "offer": "Awakened Quickdraw"
           }
@@ -2761,10 +2855,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 2,
             "offer": "Awakened Quickdraw"
+          },
+          "2026-11-15": {
+            "per": 2,
+            "offer": "Awakened Quickdraw"
           }
         }
       },
-      "coreValue": 0.25
+      "coreValue": 0.353553
     },
     "ability_material:phantom_rider_special_awakened": {
       "name": "Phantom Rider's Special Awakened Ability Material",
@@ -2772,16 +2870,17 @@ window.MSF_VALUE_TABLE = {
       "per": 1,
       "aliases": [],
       "character": "Phantom Rider",
-      "value": 0.03495,
+      "value": 0.0476445,
       "id": "ABILITY_MATERIAL_UNIQUE_ABILITY_MAT_PHANTOMRIDER_SPECIAL",
       "observed": {
         "basis": "own",
-        "perCash": 28.6123,
-        "perCore": 4,
+        "perCash": 20.9888,
+        "perCore": 2.82843,
         "days": [
-          "2026-10-18"
+          "2026-10-18",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 28.6123,
@@ -2794,6 +2893,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Phantom Rider Awakening"
           },
           "2026-11-14": {
+            "per": 15.3965,
+            "offer": "Awakened Ghost Ride"
+          },
+          "2026-11-15": {
             "per": 15.3965,
             "offer": "Awakened Ghost Ride"
           }
@@ -2811,10 +2914,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 2,
             "offer": "Awakened Ghost Ride"
+          },
+          "2026-11-15": {
+            "per": 2,
+            "offer": "Awakened Ghost Ride"
           }
         }
       },
-      "coreValue": 0.25
+      "coreValue": 0.353553
     },
     "ability_material:phantom_rider_ultimate_awakened": {
       "name": "Phantom Rider's Ultimate Awakened Ability Material",
@@ -2822,16 +2929,17 @@ window.MSF_VALUE_TABLE = {
       "per": 1,
       "aliases": [],
       "character": "Phantom Rider",
-      "value": 0.03495,
+      "value": 0.0476445,
       "id": "ABILITY_MATERIAL_UNIQUE_ABILITY_MAT_PHANTOMRIDER_ULTIMATE",
       "observed": {
         "basis": "own",
-        "perCash": 28.6123,
-        "perCore": 4,
+        "perCash": 20.9888,
+        "perCore": 2.82843,
         "days": [
-          "2026-10-18"
+          "2026-10-18",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 28.6123,
@@ -2844,6 +2952,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Phantom Rider Awakening"
           },
           "2026-11-14": {
+            "per": 15.3965,
+            "offer": "Awakened Bucking Banshee"
+          },
+          "2026-11-15": {
             "per": 15.3965,
             "offer": "Awakened Bucking Banshee"
           }
@@ -2861,10 +2973,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 2,
             "offer": "Awakened Bucking Banshee"
+          },
+          "2026-11-15": {
+            "per": 2,
+            "offer": "Awakened Bucking Banshee"
           }
         }
       },
-      "coreValue": 0.25
+      "coreValue": 0.353553
     },
     "ability_material:t1": {
       "name": "T1 Ability Material",
@@ -2907,18 +3023,19 @@ window.MSF_VALUE_TABLE = {
       "category": "ability",
       "per": 1,
       "aliases": [],
-      "value": 0.0267272,
+      "value": 0.0268714,
       "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT",
       "observed": {
         "basis": "own",
-        "perCash": 37.415,
-        "perCore": 4.675,
+        "perCash": 37.2143,
+        "perCore": 4.64993,
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 12,
+        "offers": 13,
         "firstSeen": false,
         "best": {
           "per": 39.2157,
@@ -2939,6 +3056,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Ability Ultimate Stash"
           },
           "2026-11-14": {
+            "per": 33.6134,
+            "offer": "Cyber Breach: Ability Power Up"
+          },
+          "2026-11-15": {
             "per": 33.6134,
             "offer": "Cyber Breach: Ability Power Up"
           }
@@ -2964,10 +3085,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 4.25,
             "offer": "Ability Value Vault"
+          },
+          "2026-11-15": {
+            "per": 4.2,
+            "offer": "Cyber Breach: Ability Power Up"
           }
         }
       },
-      "coreValue": 0.213904
+      "coreValue": 0.215057
     },
     "iso8:t1_ions": {
       "name": "T1 Ions",
@@ -2982,32 +3107,41 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18"
         ],
-        "offers": 1,
+        "offers": 2,
         "firstSeen": false,
         "best": {
-          "per": 286123,
-          "day": "2026-10-18",
-          "offer": "Green ISO Ions Top Up"
+          "per": 858369,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Blue ISO"
         },
         "byDay": {
           "2026-10-18": {
             "per": 286123,
             "offer": "Green ISO Ions Top Up"
+          },
+          "2026-11-15": {
+            "per": 858369,
+            "offer": "Unlock Special: Blue ISO"
           }
         },
         "bestCore": {
-          "per": 40000,
-          "day": "2026-10-18",
-          "offer": "Green ISO Ions Top Up"
+          "per": 120000,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Blue ISO"
         },
         "coreByDay": {
           "2026-10-18": {
             "per": 40000,
             "offer": "Green ISO Ions Top Up"
+          },
+          "2026-11-15": {
+            "per": 120000,
+            "offer": "Unlock Special: Blue ISO"
           }
         }
       },
-      "coreValue": 25
+      "coreValue": 25,
+      "id": "ISO8-TIER-0-CURRENCY"
     },
     "iso8:t2_brawler_armor_level_1_iso-8": {
       "name": "T2 Brawler Armor Level 1 Iso-8",
@@ -3066,32 +3200,41 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18"
         ],
-        "offers": 1,
+        "offers": 2,
         "firstSeen": false,
         "best": {
-          "per": 572246,
-          "day": "2026-10-18",
-          "offer": "Blue ISO Ions Top Up"
+          "per": 1287550,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Blue ISO"
         },
         "byDay": {
           "2026-10-18": {
             "per": 572246,
             "offer": "Blue ISO Ions Top Up"
+          },
+          "2026-11-15": {
+            "per": 1287550,
+            "offer": "Unlock Special: Blue ISO"
           }
         },
         "bestCore": {
-          "per": 80000,
-          "day": "2026-10-18",
-          "offer": "Blue ISO Ions Top Up"
+          "per": 180000,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Blue ISO"
         },
         "coreByDay": {
           "2026-10-18": {
             "per": 80000,
             "offer": "Blue ISO Ions Top Up"
+          },
+          "2026-11-15": {
+            "per": 180000,
+            "offer": "Unlock Special: Blue ISO"
           }
         }
       },
-      "coreValue": 12.5
+      "coreValue": 12.5,
+      "id": "ISO8-TIER-1-C-CURRENCY"
     },
     "iso8:t3_blaster_armor_level_1_iso-8": {
       "name": "T3 Blaster Armor Level 1 Iso-8",
@@ -4069,18 +4212,19 @@ window.MSF_VALUE_TABLE = {
       "category": "iso8",
       "per": 1000000,
       "aliases": [],
-      "value": 2.98143,
+      "value": 3.32217,
       "id": "ISO8-TIER-2-B-CURRENCY",
       "observed": {
         "basis": "set",
-        "perCash": 335410,
-        "perCore": 43600,
+        "perCash": 301008,
+        "perCore": 39618.2,
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 7,
+        "offers": 8,
         "firstSeen": false,
         "best": {
           "per": 1030040,
@@ -4101,6 +4245,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cyber Breach: Ions Special"
           },
           "2026-11-14": {
+            "per": 270135,
+            "offer": "Cyber Breach: Ions Special"
+          },
+          "2026-11-15": {
             "per": 270135,
             "offer": "Cyber Breach: Ions Special"
           }
@@ -4126,28 +4274,33 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 36000,
             "offer": "Cyber Breach: Ions Special"
+          },
+          "2026-11-15": {
+            "per": 36000,
+            "offer": "Cyber Breach: Ions Special"
           }
         }
       },
-      "coreValue": 22.9358
+      "coreValue": 25.2409
     },
     "iso8:t3_level_5_ions": {
       "name": "T3 Level 5 Ions",
       "category": "iso8",
       "per": 1000000,
       "aliases": [],
-      "value": 2.98143,
+      "value": 1.86369,
       "id": "ISO8-TIER-2-C-CURRENCY",
       "observed": {
         "basis": "set",
-        "perCash": 335410,
-        "perCore": 43600,
+        "perCash": 536569,
+        "perCore": 72332.6,
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 8,
+        "offers": 10,
         "firstSeen": false,
         "best": {
           "per": 858369,
@@ -4168,6 +4321,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cyber Breach: Ions Special"
           },
           "2026-11-14": {
+            "per": 858369,
+            "offer": "ISO Fest: T3 Level 5 Ions"
+          },
+          "2026-11-15": {
             "per": 858369,
             "offer": "ISO Fest: T3 Level 5 Ions"
           }
@@ -4193,10 +4350,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 120000,
             "offer": "ISO Fest: T3 Level 5 Ions"
+          },
+          "2026-11-15": {
+            "per": 120000,
+            "offer": "ISO Fest: T3 Level 5 Ions"
           }
         }
       },
-      "coreValue": 22.9358
+      "coreValue": 13.825
     },
     "iso8:t3_protector_armor_level_1_iso-8": {
       "name": "T3 Protector Armor Level 1 Iso-8",
@@ -4812,9 +4973,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -4835,6 +4997,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -4858,6 +5024,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -4880,9 +5050,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -4903,6 +5074,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -4926,6 +5101,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -4948,9 +5127,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -4971,6 +5151,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -4994,6 +5178,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5016,9 +5204,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5039,6 +5228,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5062,6 +5255,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5084,9 +5281,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5107,6 +5305,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5130,6 +5332,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5152,9 +5358,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5175,6 +5382,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5198,6 +5409,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5220,9 +5435,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5243,6 +5459,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5266,6 +5486,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5288,9 +5512,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5311,6 +5536,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5334,6 +5563,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5356,9 +5589,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5379,6 +5613,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5402,6 +5640,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5424,9 +5666,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5447,6 +5690,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5470,6 +5717,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5492,9 +5743,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5515,6 +5767,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5538,6 +5794,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5560,9 +5820,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5583,6 +5844,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5606,6 +5871,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5628,9 +5897,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5651,6 +5921,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5674,6 +5948,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5696,9 +5974,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5719,6 +5998,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5742,6 +6025,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5764,9 +6051,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5787,6 +6075,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5812,6 +6104,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
           }
         },
         "family": "family:t4_crystals"
@@ -5832,9 +6128,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 4,
+        "offers": 5,
         "firstSeen": false,
         "best": {
           "per": 6000.6,
@@ -5855,6 +6152,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Ions"
           },
           "2026-11-14": {
+            "per": 6000.6,
+            "offer": "T4 Ions"
+          },
+          "2026-11-15": {
             "per": 6000.6,
             "offer": "T4 Ions"
           }
@@ -5880,6 +6181,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 857.143,
             "offer": "T4 Ions"
+          },
+          "2026-11-15": {
+            "per": 857.143,
+            "offer": "T4 Ions"
           }
         }
       },
@@ -5899,9 +6204,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5922,6 +6228,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5945,6 +6255,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -5967,9 +6281,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -5990,6 +6305,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6013,6 +6332,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6035,9 +6358,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -6058,6 +6382,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6081,6 +6409,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6103,9 +6435,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -6126,6 +6459,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6149,6 +6486,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6171,9 +6512,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -6194,6 +6536,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6217,6 +6563,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6239,9 +6589,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -6262,6 +6613,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6285,6 +6640,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6307,9 +6666,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -6330,6 +6690,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6353,6 +6717,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6375,9 +6743,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -6398,6 +6767,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6421,6 +6794,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6443,9 +6820,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -6466,6 +6844,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6489,6 +6871,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6511,9 +6897,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 20,
+        "offers": 25,
         "firstSeen": false,
         "best": {
           "per": 1.12528,
@@ -6534,6 +6921,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 1.12528,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 1.12528,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6557,6 +6948,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "T4 Iso Boost: Blaster"
           },
           "2026-11-14": {
+            "per": 0.15,
+            "offer": "T4 Iso Boost: Blaster"
+          },
+          "2026-11-15": {
             "per": 0.15,
             "offer": "T4 Iso Boost: Blaster"
           }
@@ -6619,8 +7014,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 50.4039,
           "day": "2026-11-14",
@@ -6628,6 +7023,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 50.4039,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 50.4039,
             "offer": "Morbius Power Pack"
           }
@@ -6639,6 +7038,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 6.552,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 6.552,
             "offer": "Morbius Power Pack"
           }
@@ -6659,48 +7062,58 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18"
         ],
-        "offers": 1,
+        "offers": 2,
         "firstSeen": false,
         "best": {
-          "per": 76.9823,
-          "day": "2026-10-18",
+          "per": 138.568,
+          "day": "2026-11-15",
           "offer": "Unlock Special: Crimson Catalysts"
         },
         "byDay": {
           "2026-10-18": {
             "per": 76.9823,
             "offer": "Unlock Special: Crimson Catalysts"
+          },
+          "2026-11-15": {
+            "per": 138.568,
+            "offer": "Unlock Special: Crimson Catalysts"
           }
         },
         "bestCore": {
-          "per": 10,
-          "day": "2026-10-18",
+          "per": 18,
+          "day": "2026-11-15",
           "offer": "Unlock Special: Crimson Catalysts"
         },
         "coreByDay": {
           "2026-10-18": {
             "per": 10,
             "offer": "Unlock Special: Crimson Catalysts"
+          },
+          "2026-11-15": {
+            "per": 18,
+            "offer": "Unlock Special: Crimson Catalysts"
           }
         }
       },
-      "coreValue": 0.1
+      "coreValue": 0.1,
+      "id": "GEAR_RED_ARMOR_MAT_BIT"
     },
     "gear:crimson_basic_catalyst_part": {
       "name": "Crimson Basic Catalyst Part",
       "category": "gear",
       "per": 100,
       "aliases": [],
-      "value": 0.148457,
+      "value": 0.271139,
       "id": "GEAR_RED_BASIC_CAT_BIT",
       "observed": {
         "basis": "set",
-        "perCash": 673.595,
-        "perCore": 87.5,
+        "perCash": 368.815,
+        "perCore": 47.9257,
         "days": [
-          "2026-10-18"
+          "2026-10-18",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 4,
         "firstSeen": false,
         "best": {
           "per": 673.595,
@@ -6715,6 +7128,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 201.939,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 230.947,
+            "offer": "Unlock Special: Crimson Catalysts"
           }
         },
         "bestCore": {
@@ -6730,10 +7147,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 26.25,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 30,
+            "offer": "Unlock Special: Crimson Catalysts"
           }
         }
       },
-      "coreValue": 1.14286
+      "coreValue": 2.08656
     },
     "gear:crimson_biopolymers": {
       "name": "Crimson Biopolymers",
@@ -6831,13 +7252,43 @@ window.MSF_VALUE_TABLE = {
     "gear:crimson_damage_catalyst_part": {
       "name": "Crimson Damage Catalyst Part",
       "category": "gear",
-      "per": 1,
+      "per": 100,
       "aliases": [],
-      "value": null,
-      "coreValue": null,
+      "value": 0.721667,
+      "coreValue": 5.55556,
       "observed": {
-        "perCash": null
-      }
+        "basis": "set",
+        "perCash": 138.568,
+        "perCore": 18,
+        "days": [
+          "2026-11-15"
+        ],
+        "offers": 1,
+        "firstSeen": true,
+        "best": {
+          "per": 138.568,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Crimson Catalysts"
+        },
+        "byDay": {
+          "2026-11-15": {
+            "per": 138.568,
+            "offer": "Unlock Special: Crimson Catalysts"
+          }
+        },
+        "bestCore": {
+          "per": 18,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Crimson Catalysts"
+        },
+        "coreByDay": {
+          "2026-11-15": {
+            "per": 18,
+            "offer": "Unlock Special: Crimson Catalysts"
+          }
+        }
+      },
+      "id": "GEAR_RED_DAMAGE_MAT_BIT"
     },
     "gear:crimson_dargonite": {
       "name": "Crimson Dargonite",
@@ -6865,8 +7316,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 42.0032,
           "day": "2026-11-14",
@@ -6874,6 +7325,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 42.0032,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 42.0032,
             "offer": "Morbius Power Pack"
           }
@@ -6887,6 +7342,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 5.46,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 5.46,
+            "offer": "Morbius Power Pack"
           }
         }
       },
@@ -6895,18 +7354,19 @@ window.MSF_VALUE_TABLE = {
     "gear:crimson_focus_catalyst_part": {
       "name": "Crimson Focus Catalyst Part",
       "category": "gear",
-      "per": 100,
+      "per": 1,
       "aliases": [],
-      "value": 0.412381,
+      "value": 0.0101047,
       "id": "GEAR_RED_FOCUS_MAT_BIT",
       "observed": {
         "basis": "set",
-        "perCash": 242.494,
-        "perCore": 31.5,
+        "perCash": 98.9636,
+        "perCore": 12.8598,
         "days": [
-          "2026-10-18"
+          "2026-10-18",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 4,
         "firstSeen": false,
         "best": {
           "per": 242.494,
@@ -6921,6 +7381,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 40.3877,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 138.568,
+            "offer": "Unlock Special: Crimson Catalysts"
           }
         },
         "bestCore": {
@@ -6936,10 +7400,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 5.25,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 18,
+            "offer": "Unlock Special: Crimson Catalysts"
           }
         }
       },
-      "coreValue": 3.1746
+      "coreValue": 0.0777617
     },
     "gear:crimson_focused_chi": {
       "name": "Crimson Focused Chi",
@@ -6955,22 +7423,23 @@ window.MSF_VALUE_TABLE = {
     "gear:crimson_health_catalyst_part": {
       "name": "Crimson Health Catalyst Part",
       "category": "gear",
-      "per": 100,
+      "per": 1,
       "aliases": [],
-      "value": 0.742286,
+      "value": 0.0101047,
       "id": "GEAR_RED_HEALTH_MAT_BIT",
       "observed": {
         "basis": "set",
-        "perCash": 134.719,
-        "perCore": 17.5,
+        "perCash": 98.9636,
+        "perCore": 12.8598,
         "days": [
-          "2026-10-18"
+          "2026-10-18",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 4,
         "firstSeen": false,
         "best": {
-          "per": 134.719,
-          "day": "2026-10-18",
+          "per": 138.568,
+          "day": "2026-11-15",
           "offer": "Unlock Special: Crimson Catalysts"
         },
         "byDay": {
@@ -6981,11 +7450,15 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 72.6979,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 138.568,
+            "offer": "Unlock Special: Crimson Catalysts"
           }
         },
         "bestCore": {
-          "per": 17.5,
-          "day": "2026-10-18",
+          "per": 18,
+          "day": "2026-11-15",
           "offer": "Unlock Special: Crimson Catalysts"
         },
         "coreByDay": {
@@ -6996,10 +7469,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 9.45,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 18,
+            "offer": "Unlock Special: Crimson Catalysts"
           }
         }
       },
-      "coreValue": 5.71429
+      "coreValue": 0.0777617
     },
     "gear:crimson_hyperphage": {
       "name": "Crimson Hyperphage",
@@ -7120,8 +7597,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 8.07754,
           "day": "2026-11-14",
@@ -7129,6 +7606,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 8.07754,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 8.07754,
             "offer": "Morbius Power Pack"
           }
@@ -7140,6 +7621,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 1.05,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 1.05,
             "offer": "Morbius Power Pack"
           }
@@ -7269,20 +7754,21 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 1,
       "aliases": [],
-      "value": 0.02598,
+      "value": 0.0401019,
       "id": "GEAR_RED_RESIST_MAT_BIT",
       "observed": {
         "basis": "set",
-        "perCash": 38.4911,
-        "perCore": 5,
+        "perCash": 24.9365,
+        "perCore": 3.24037,
         "days": [
-          "2026-10-18"
+          "2026-10-18",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 4,
         "firstSeen": false,
         "best": {
-          "per": 38.4911,
-          "day": "2026-10-18",
+          "per": 138.568,
+          "day": "2026-11-15",
           "offer": "Unlock Special: Crimson Catalysts"
         },
         "byDay": {
@@ -7293,11 +7779,15 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 16.1551,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 138.568,
+            "offer": "Unlock Special: Crimson Catalysts"
           }
         },
         "bestCore": {
-          "per": 5,
-          "day": "2026-10-18",
+          "per": 18,
+          "day": "2026-11-15",
           "offer": "Unlock Special: Crimson Catalysts"
         },
         "coreByDay": {
@@ -7308,10 +7798,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 2.1,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 18,
+            "offer": "Unlock Special: Crimson Catalysts"
           }
         }
       },
-      "coreValue": 0.2
+      "coreValue": 0.308607
     },
     "gear:crimson_ritual_salts": {
       "name": "Crimson Ritual Salts",
@@ -7380,8 +7874,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 8.07754,
           "day": "2026-11-14",
@@ -7389,6 +7883,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 8.07754,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 8.07754,
             "offer": "Morbius Power Pack"
           }
@@ -7400,6 +7898,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 1.05,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 1.05,
             "offer": "Morbius Power Pack"
           }
@@ -7464,17 +7966,18 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 1,
       "aliases": [],
-      "value": 0.562079,
+      "value": 0.355511,
       "id": "GEAR_RED_MAGIC3",
       "observed": {
         "basis": "set",
-        "perCash": 1.77911,
-        "perCore": 0.237171,
+        "perCash": 2.81285,
+        "perCore": 0.375,
         "days": [
           "2026-10-18",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 3,
+        "offers": 4,
         "firstSeen": false,
         "best": {
           "per": 4.03877,
@@ -7491,6 +7994,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Unlock Special: Crimson Gear"
           },
           "2026-11-14": {
+            "per": 4.03877,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 4.03877,
             "offer": "Morbius Power Pack"
           }
@@ -7512,10 +8019,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 0.525,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 0.525,
+            "offer": "Morbius Power Pack"
           }
         }
       },
-      "coreValue": 4.21637
+      "coreValue": 2.66667
     },
     "gear:improved_arcane_powder": {
       "name": "Improved Arcane Powder",
@@ -8152,32 +8663,41 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18"
         ],
-        "offers": 1,
+        "offers": 2,
         "firstSeen": false,
         "best": {
-          "per": 57224.6,
-          "day": "2026-10-18",
-          "offer": "Blue ISO Ions Top Up"
+          "per": 171674,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Blue ISO"
         },
         "byDay": {
           "2026-10-18": {
             "per": 57224.6,
             "offer": "Blue ISO Ions Top Up"
+          },
+          "2026-11-15": {
+            "per": 171674,
+            "offer": "Unlock Special: Blue ISO"
           }
         },
         "bestCore": {
-          "per": 8000,
-          "day": "2026-10-18",
-          "offer": "Blue ISO Ions Top Up"
+          "per": 24000,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Blue ISO"
         },
         "coreByDay": {
           "2026-10-18": {
             "per": 8000,
             "offer": "Blue ISO Ions Top Up"
+          },
+          "2026-11-15": {
+            "per": 24000,
+            "offer": "Unlock Special: Blue ISO"
           }
         }
       },
-      "coreValue": 0.125
+      "coreValue": 0.125,
+      "id": "GACHA_CRATE_ISO8_T2_BASIC_TOKEN_f8d78c4c"
     },
     "orb:basic_t3_iso-8": {
       "name": "Basic T3 Iso-8 Orb Fragments",
@@ -8191,9 +8711,10 @@ window.MSF_VALUE_TABLE = {
         "perCash": 14306.2,
         "perCore": 2000,
         "days": [
-          "2026-10-18"
+          "2026-10-18",
+          "2026-11-14"
         ],
-        "offers": 3,
+        "offers": 4,
         "firstSeen": false,
         "best": {
           "per": 14306.2,
@@ -8206,6 +8727,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "ISO Fest: T3 Level 5 Ions"
           },
           "2026-11-14": {
+            "per": 14306.2,
+            "offer": "ISO Fest: T3 Level 5 Ions"
+          },
+          "2026-11-15": {
             "per": 14306.2,
             "offer": "ISO Fest: T3 Level 5 Ions"
           }
@@ -8221,6 +8746,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "ISO Fest: T3 Level 5 Ions"
           },
           "2026-11-14": {
+            "per": 2000,
+            "offer": "ISO Fest: T3 Level 5 Ions"
+          },
+          "2026-11-15": {
             "per": 2000,
             "offer": "ISO Fest: T3 Level 5 Ions"
           }
@@ -8242,9 +8771,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 4,
+        "offers": 5,
         "firstSeen": false,
         "best": {
           "per": 501.253,
@@ -8265,6 +8795,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cyber Breach: Crimson Elite Orb"
           },
           "2026-11-14": {
+            "per": 501.253,
+            "offer": "Cyber Breach: Crimson Elite Orb"
+          },
+          "2026-11-15": {
             "per": 501.253,
             "offer": "Cyber Breach: Crimson Elite Orb"
           }
@@ -8290,6 +8824,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 66.6667,
             "offer": "Cyber Breach: Crimson Elite Orb"
+          },
+          "2026-11-15": {
+            "per": 66.6667,
+            "offer": "Cyber Breach: Crimson Elite Orb"
           }
         }
       },
@@ -8309,9 +8847,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 5,
+        "offers": 6,
         "firstSeen": false,
         "best": {
           "per": 286.123,
@@ -8332,6 +8871,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Unlock Special: Diamond Authority"
           },
           "2026-11-14": {
+            "per": 80.032,
+            "offer": "Diamond Orb Launch Special"
+          },
+          "2026-11-15": {
             "per": 80.032,
             "offer": "Diamond Orb Launch Special"
           }
@@ -8355,6 +8898,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Unlock Special: Diamond Authority"
           },
           "2026-11-14": {
+            "per": 10,
+            "offer": "Diamond Orb Launch Special"
+          },
+          "2026-11-15": {
             "per": 10,
             "offer": "Diamond Orb Launch Special"
           }
@@ -8425,9 +8972,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 4,
+        "offers": 5,
         "firstSeen": false,
         "best": {
           "per": 153.858,
@@ -8448,6 +8996,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Raid Warzone: Mega Pack"
           },
           "2026-11-14": {
+            "per": 153.858,
+            "offer": "Raid Warzone: Mega Pack"
+          },
+          "2026-11-15": {
             "per": 153.858,
             "offer": "Raid Warzone: Mega Pack"
           }
@@ -8471,6 +9023,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Raid Warzone: Mega Pack"
           },
           "2026-11-14": {
+            "per": 20,
+            "offer": "Raid Warzone: Mega Pack"
+          },
+          "2026-11-15": {
             "per": 20,
             "offer": "Raid Warzone: Mega Pack"
           }
@@ -8579,9 +9135,10 @@ window.MSF_VALUE_TABLE = {
         "perCash": 200.015,
         "perCore": 26,
         "days": [
-          "2026-10-18"
+          "2026-10-18",
+          "2026-11-14"
         ],
-        "offers": 5,
+        "offers": 7,
         "firstSeen": false,
         "best": {
           "per": 200.015,
@@ -8594,6 +9151,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "ISO Fest: ISO Fest Diamond Orb"
           },
           "2026-11-14": {
+            "per": 200.015,
+            "offer": "ISO Fest: ISO Fest Diamond Orb"
+          },
+          "2026-11-15": {
             "per": 200.015,
             "offer": "ISO Fest: ISO Fest Diamond Orb"
           }
@@ -8609,6 +9170,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "ISO Fest: ISO Fest Diamond Orb"
           },
           "2026-11-14": {
+            "per": 26,
+            "offer": "ISO Fest: ISO Fest Diamond Orb"
+          },
+          "2026-11-15": {
             "per": 26,
             "offer": "ISO Fest: ISO Fest Diamond Orb"
           }
@@ -8628,9 +9193,10 @@ window.MSF_VALUE_TABLE = {
         "perCash": 384.645,
         "perCore": 50,
         "days": [
-          "2026-10-18"
+          "2026-10-18",
+          "2026-11-14"
         ],
-        "offers": 5,
+        "offers": 7,
         "firstSeen": false,
         "best": {
           "per": 384.645,
@@ -8643,6 +9209,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "ISO Fest: ISO Fest Yellow Orb"
           },
           "2026-11-14": {
+            "per": 384.645,
+            "offer": "ISO Fest: ISO Fest Yellow Orb"
+          },
+          "2026-11-15": {
             "per": 384.645,
             "offer": "ISO Fest: ISO Fest Yellow Orb"
           }
@@ -8658,6 +9228,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "ISO Fest: ISO Fest Yellow Orb"
           },
           "2026-11-14": {
+            "per": 50,
+            "offer": "ISO Fest: ISO Fest Yellow Orb"
+          },
+          "2026-11-15": {
             "per": 50,
             "offer": "ISO Fest: ISO Fest Yellow Orb"
           }
@@ -8790,9 +9364,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 7,
+        "offers": 10,
         "firstSeen": false,
         "best": {
           "per": 0.00833403,
@@ -8813,6 +9388,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cyber Breach: Orange Mega Orb"
           },
           "2026-11-14": {
+            "per": 0.00833403,
+            "offer": "ISO Fest: Orange Mega Orb"
+          },
+          "2026-11-15": {
             "per": 0.00833403,
             "offer": "ISO Fest: Orange Mega Orb"
           }
@@ -8836,6 +9415,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cyber Breach: Orange Mega Orb"
           },
           "2026-11-14": {
+            "per": 0.00111111,
+            "offer": "ISO Fest: Orange Mega Orb"
+          },
+          "2026-11-15": {
             "per": 0.00111111,
             "offer": "ISO Fest: Orange Mega Orb"
           }
@@ -8936,32 +9519,41 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18"
         ],
-        "offers": 1,
+        "offers": 2,
         "firstSeen": false,
         "best": {
-          "per": 28612.3,
-          "day": "2026-10-18",
-          "offer": "Green ISO Ions Top Up"
+          "per": 171674,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Blue ISO"
         },
         "byDay": {
           "2026-10-18": {
             "per": 28612.3,
             "offer": "Green ISO Ions Top Up"
+          },
+          "2026-11-15": {
+            "per": 171674,
+            "offer": "Unlock Special: Blue ISO"
           }
         },
         "bestCore": {
-          "per": 4000,
-          "day": "2026-10-18",
-          "offer": "Green ISO Ions Top Up"
+          "per": 24000,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Blue ISO"
         },
         "coreByDay": {
           "2026-10-18": {
             "per": 4000,
             "offer": "Green ISO Ions Top Up"
+          },
+          "2026-11-15": {
+            "per": 24000,
+            "offer": "Unlock Special: Blue ISO"
           }
         }
       },
-      "coreValue": 0.25
+      "coreValue": 0.25,
+      "id": "GACHA_CRATE_ISO8_T1_PREMIUM_TOKEN_63c8d433"
     },
     "orb:t3_ability": {
       "name": "T3 Ability Orb Fragments",
@@ -9149,9 +9741,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 4,
+        "offers": 5,
         "firstSeen": false,
         "best": {
           "per": 0.0285755,
@@ -9172,6 +9765,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Premium Plus Chapter Battle Pass Ticket Pack"
           },
           "2026-11-14": {
+            "per": 0.0285755,
+            "offer": "Premium Plus Chapter Battle Pass Ticket Pack"
+          },
+          "2026-11-15": {
             "per": 0.0285755,
             "offer": "Premium Plus Chapter Battle Pass Ticket Pack"
           }
@@ -9197,6 +9794,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 0.004,
             "offer": "Premium Plus Chapter Battle Pass Ticket Pack"
+          },
+          "2026-11-15": {
+            "per": 0.004,
+            "offer": "Premium Plus Chapter Battle Pass Ticket Pack"
           }
         }
       },
@@ -9216,9 +9817,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 4,
+        "offers": 5,
         "firstSeen": false,
         "best": {
           "per": 114.449,
@@ -9239,6 +9841,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Raid Warzone: Raid Boost"
           },
           "2026-11-14": {
+            "per": 114.449,
+            "offer": "Raid Warzone: Raid Boost"
+          },
+          "2026-11-15": {
             "per": 114.449,
             "offer": "Raid Warzone: Raid Boost"
           }
@@ -9264,6 +9870,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 16,
             "offer": "Raid Warzone: Raid Boost"
+          },
+          "2026-11-15": {
+            "per": 16,
+            "offer": "Raid Warzone: Raid Boost"
           }
         }
       },
@@ -9283,9 +9893,10 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-10-18",
           "2026-10-24",
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 4,
+        "offers": 5,
         "firstSeen": false,
         "best": {
           "per": 85.8369,
@@ -9306,6 +9917,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Raid Warzone: Raid Boost"
           },
           "2026-11-14": {
+            "per": 85.8369,
+            "offer": "Raid Warzone: Raid Boost"
+          },
+          "2026-11-15": {
             "per": 85.8369,
             "offer": "Raid Warzone: Raid Boost"
           }
@@ -9329,6 +9944,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Raid Warzone: Raid Boost"
           },
           "2026-11-14": {
+            "per": 12,
+            "offer": "Raid Warzone: Raid Boost"
+          },
+          "2026-11-15": {
             "per": 12,
             "offer": "Raid Warzone: Raid Boost"
           }
@@ -9966,8 +10585,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 54.027,
           "day": "2026-11-14",
@@ -9975,6 +10594,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 54.027,
+            "offer": "Nightstalker Power Up"
+          },
+          "2026-11-15": {
             "per": 54.027,
             "offer": "Nightstalker Power Up"
           }
@@ -9986,6 +10609,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 7.2,
+            "offer": "Nightstalker Power Up"
+          },
+          "2026-11-15": {
             "per": 7.2,
             "offer": "Nightstalker Power Up"
           }
@@ -10264,9 +10891,10 @@ window.MSF_VALUE_TABLE = {
         "perCash": 15.3858,
         "perCore": 2,
         "days": [
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 15.3858,
@@ -10279,6 +10907,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cyber Breach: A.I. Avengers Mega Orb"
           },
           "2026-11-14": {
+            "per": 15.3858,
+            "offer": "Cyber Breach: A.I. Avengers Mega Orb"
+          },
+          "2026-11-15": {
             "per": 15.3858,
             "offer": "Cyber Breach: A.I. Avengers Mega Orb"
           }
@@ -10294,6 +10926,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Cyber Breach: A.I. Avengers Mega Orb"
           },
           "2026-11-14": {
+            "per": 2,
+            "offer": "Cyber Breach: A.I. Avengers Mega Orb"
+          },
+          "2026-11-15": {
             "per": 2,
             "offer": "Cyber Breach: A.I. Avengers Mega Orb"
           }
@@ -10313,9 +10949,10 @@ window.MSF_VALUE_TABLE = {
         "perCash": 320.128,
         "perCore": 40,
         "days": [
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 4,
+        "offers": 6,
         "firstSeen": false,
         "best": {
           "per": 320.128,
@@ -10328,6 +10965,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Raid Warzone: Daily Allied Supply"
           },
           "2026-11-14": {
+            "per": 320.128,
+            "offer": "Raid Warzone: Daily Allied Supply"
+          },
+          "2026-11-15": {
             "per": 320.128,
             "offer": "Raid Warzone: Daily Allied Supply"
           }
@@ -10343,6 +10984,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Raid Warzone: Daily Allied Supply"
           },
           "2026-11-14": {
+            "per": 40,
+            "offer": "Raid Warzone: Daily Allied Supply"
+          },
+          "2026-11-15": {
             "per": 40,
             "offer": "Raid Warzone: Daily Allied Supply"
           }
@@ -10388,23 +11033,25 @@ window.MSF_VALUE_TABLE = {
           }
         }
       },
-      "coreValue": 3.33333
+      "coreValue": 3.33333,
+      "id": "GACHA_CRATE_GT19_C5_C9_TOKEN_ea9ada8f"
     },
     "gear:augmented_arcane_powder": {
       "name": "Augmented Arcane Powder",
       "category": "gear",
       "per": 100,
       "aliases": [],
-      "value": 0.259185,
+      "value": 0.900155,
       "id": "GEAR_TEAL_MYSTIC_MAT_BIT",
       "observed": {
         "basis": "set",
-        "perCash": 385.825,
-        "perCore": 54,
+        "perCash": 111.092,
+        "perCore": 14.9844,
         "days": [
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 385.825,
@@ -10417,6 +11064,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Unlock Special: Teal Gear"
           },
           "2026-11-14": {
+            "per": 31.9871,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 31.9871,
             "offer": "Morbius Power Pack"
           }
@@ -10434,10 +11085,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 4.158,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 4.158,
+            "offer": "Morbius Power Pack"
           }
         }
       },
-      "coreValue": 1.85185
+      "coreValue": 6.67361
     },
     "gear:augmented_basic_catalyst_part": {
       "name": "Augmented Basic Catalyst Part",
@@ -10504,8 +11159,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 40.3877,
           "day": "2026-11-14",
@@ -10513,6 +11168,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 40.3877,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 40.3877,
             "offer": "Morbius Power Pack"
           }
@@ -10526,6 +11185,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 5.25,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 5.25,
+            "offer": "Morbius Power Pack"
           }
         }
       },
@@ -10536,16 +11199,17 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 100,
       "aliases": [],
-      "value": 0.259185,
+      "value": 0.986067,
       "id": "GEAR_TEAL_MYSTIC_MAT_C2",
       "observed": {
         "basis": "set",
-        "perCash": 385.825,
-        "perCore": 54,
+        "perCash": 101.413,
+        "perCore": 13.6788,
         "days": [
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 385.825,
@@ -10558,6 +11222,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Unlock Special: Teal Gear"
           },
           "2026-11-14": {
+            "per": 26.6559,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 26.6559,
             "offer": "Morbius Power Pack"
           }
@@ -10575,10 +11243,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 3.465,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 3.465,
+            "offer": "Morbius Power Pack"
           }
         }
       },
-      "coreValue": 1.85185
+      "coreValue": 7.31058
     },
     "gear:augmented_focus_catalyst_part": {
       "name": "Augmented Focus Catalyst Part",
@@ -10607,16 +11279,17 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 1,
       "aliases": [],
-      "value": 0.01428,
+      "value": 0.0664805,
       "id": "GEAR_TEAL_MYSTIC_MAT_C8",
       "observed": {
         "basis": "set",
-        "perCash": 70.028,
-        "perCore": 8.75,
+        "perCash": 15.042,
+        "perCore": 1.91703,
         "days": [
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 70.028,
@@ -10629,6 +11302,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Unlock Special: Uniquely Teal"
           },
           "2026-11-14": {
+            "per": 3.23102,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 3.23102,
             "offer": "Morbius Power Pack"
           }
@@ -10646,10 +11323,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 0.42,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 0.42,
+            "offer": "Morbius Power Pack"
           }
         }
       },
-      "coreValue": 0.114286
+      "coreValue": 0.52164
     },
     "gear:augmented_resistance_catalyst_part": {
       "name": "Augmented Resistance Catalyst Part",
@@ -10707,16 +11388,17 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 1,
       "aliases": [],
-      "value": 0.01428,
+      "value": 0.0664805,
       "id": "GEAR_TEAL_MYSTIC_MAT_C1",
       "observed": {
         "basis": "set",
-        "perCash": 70.028,
-        "perCore": 8.75,
+        "perCash": 15.042,
+        "perCore": 1.91703,
         "days": [
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 70.028,
@@ -10729,6 +11411,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Unlock Special: Uniquely Teal"
           },
           "2026-11-14": {
+            "per": 3.23102,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 3.23102,
             "offer": "Morbius Power Pack"
           }
@@ -10746,10 +11432,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 0.42,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 0.42,
+            "offer": "Morbius Power Pack"
           }
         }
       },
-      "coreValue": 0.114286
+      "coreValue": 0.52164
     },
     "gear:augmented_uru": {
       "name": "Augmented Uru",
@@ -10794,18 +11484,19 @@ window.MSF_VALUE_TABLE = {
     "gear:augmented_vial": {
       "name": "Augmented Vial",
       "category": "gear",
-      "per": 100,
+      "per": 1,
       "aliases": [],
-      "value": 0.259185,
+      "value": 0.0110246,
       "id": "GEAR_TEAL_MYSTIC_MAT_C3",
       "observed": {
         "basis": "set",
-        "perCash": 385.825,
-        "perCore": 54,
+        "perCash": 90.7061,
+        "perCore": 12.2347,
         "days": [
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 385.825,
@@ -10818,6 +11509,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Unlock Special: Teal Gear"
           },
           "2026-11-14": {
+            "per": 21.3247,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 21.3247,
             "offer": "Morbius Power Pack"
           }
@@ -10835,10 +11530,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 2.772,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 2.772,
+            "offer": "Morbius Power Pack"
           }
         }
       },
-      "coreValue": 1.85185
+      "coreValue": 0.0817347
     },
     "orb:black_friday_sneak_peaks": {
       "name": "Black Friday Sneak Peaks Orb Fragments",
@@ -10852,9 +11551,10 @@ window.MSF_VALUE_TABLE = {
         "perCash": 80.032,
         "perCore": 10,
         "days": [
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 80.032,
@@ -10867,6 +11567,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Black Friday Sneak Peak"
           },
           "2026-11-14": {
+            "per": 80.032,
+            "offer": "Black Friday Sneak Peak"
+          },
+          "2026-11-15": {
             "per": 80.032,
             "offer": "Black Friday Sneak Peak"
           }
@@ -10884,6 +11588,10 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 10,
             "offer": "Black Friday Sneak Peak"
+          },
+          "2026-11-15": {
+            "per": 10,
+            "offer": "Black Friday Sneak Peak"
           }
         }
       },
@@ -10894,16 +11602,17 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 1,
       "aliases": [],
-      "value": 0.444334,
+      "value": 0.390898,
       "id": "GEAR_RED_MYSTIC_MAT_C9",
       "observed": {
         "basis": "set",
-        "perCash": 2.25056,
-        "perCore": 0.3,
+        "perCash": 2.55821,
+        "perCore": 0.336749,
         "days": [
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 2.90792,
@@ -10916,6 +11625,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Unlock Special: Crimson Gear"
           },
           "2026-11-14": {
+            "per": 2.90792,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 2.90792,
             "offer": "Morbius Power Pack"
           }
@@ -10933,10 +11646,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 0.378,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 0.378,
+            "offer": "Morbius Power Pack"
           }
         }
       },
-      "coreValue": 3.33333
+      "coreValue": 2.96957
     },
     "gear:crimson_laser_torch": {
       "name": "Crimson Laser Torch",
@@ -10979,16 +11696,17 @@ window.MSF_VALUE_TABLE = {
       "category": "gear",
       "per": 1,
       "aliases": [],
-      "value": 0.444334,
+      "value": 0.390898,
       "id": "GEAR_RED_MYSTIC_MAT_C5",
       "observed": {
         "basis": "set",
-        "perCash": 2.25056,
-        "perCore": 0.3,
+        "perCash": 2.55821,
+        "perCore": 0.336749,
         "days": [
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 2.90792,
@@ -11001,6 +11719,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Unlock Special: Crimson Gear"
           },
           "2026-11-14": {
+            "per": 2.90792,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 2.90792,
             "offer": "Morbius Power Pack"
           }
@@ -11018,10 +11740,14 @@ window.MSF_VALUE_TABLE = {
           "2026-11-14": {
             "per": 0.378,
             "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
+            "per": 0.378,
+            "offer": "Morbius Power Pack"
           }
         }
       },
-      "coreValue": 3.33333
+      "coreValue": 2.96957
     },
     "gear:crimson_titanium_alloy": {
       "name": "Crimson Titanium Alloy",
@@ -11089,8 +11815,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 33.6026,
           "day": "2026-11-14",
@@ -11098,6 +11824,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 33.6026,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 33.6026,
             "offer": "Morbius Power Pack"
           }
@@ -11109,6 +11839,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 4.368,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 4.368,
             "offer": "Morbius Power Pack"
           }
@@ -11130,7 +11864,7 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-06"
         ],
-        "offers": 1,
+        "offers": 2,
         "firstSeen": false,
         "best": {
           "per": 57224.6,
@@ -11139,6 +11873,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-06": {
+            "per": 57224.6,
+            "offer": "Elite 4 Star Orb Offer"
+          },
+          "2026-11-15": {
             "per": 57224.6,
             "offer": "Elite 4 Star Orb Offer"
           }
@@ -11150,6 +11888,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-06": {
+            "per": 8000,
+            "offer": "Elite 4 Star Orb Offer"
+          },
+          "2026-11-15": {
             "per": 8000,
             "offer": "Elite 4 Star Orb Offer"
           }
@@ -11180,9 +11922,10 @@ window.MSF_VALUE_TABLE = {
         "perCash": 80.032,
         "perCore": 10,
         "days": [
-          "2026-11-06"
+          "2026-11-06",
+          "2026-11-14"
         ],
-        "offers": 2,
+        "offers": 3,
         "firstSeen": false,
         "best": {
           "per": 80.032,
@@ -11195,6 +11938,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Hidden Jungle Orb"
           },
           "2026-11-14": {
+            "per": 80.032,
+            "offer": "Hidden Jungle Orb"
+          },
+          "2026-11-15": {
             "per": 80.032,
             "offer": "Hidden Jungle Orb"
           }
@@ -11210,6 +11957,10 @@ window.MSF_VALUE_TABLE = {
             "offer": "Hidden Jungle Orb"
           },
           "2026-11-14": {
+            "per": 10,
+            "offer": "Hidden Jungle Orb"
+          },
+          "2026-11-15": {
             "per": 10,
             "offer": "Hidden Jungle Orb"
           }
@@ -12084,8 +12835,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 20.01,
           "day": "2026-11-14",
@@ -12093,6 +12844,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 20.01,
+            "offer": "Short on West Coast Avenger Shards?"
+          },
+          "2026-11-15": {
             "per": 20.01,
             "offer": "Short on West Coast Avenger Shards?"
           }
@@ -12104,6 +12859,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2.66667,
+            "offer": "Short on West Coast Avenger Shards?"
+          },
+          "2026-11-15": {
             "per": 2.66667,
             "offer": "Short on West Coast Avenger Shards?"
           }
@@ -12126,8 +12885,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 20.01,
           "day": "2026-11-14",
@@ -12135,6 +12894,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 20.01,
+            "offer": "Short on West Coast Avenger Shards?"
+          },
+          "2026-11-15": {
             "per": 20.01,
             "offer": "Short on West Coast Avenger Shards?"
           }
@@ -12146,6 +12909,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2.66667,
+            "offer": "Short on West Coast Avenger Shards?"
+          },
+          "2026-11-15": {
             "per": 2.66667,
             "offer": "Short on West Coast Avenger Shards?"
           }
@@ -12168,8 +12935,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 20.01,
           "day": "2026-11-14",
@@ -12177,6 +12944,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 20.01,
+            "offer": "Short on West Coast Avenger Shards?"
+          },
+          "2026-11-15": {
             "per": 20.01,
             "offer": "Short on West Coast Avenger Shards?"
           }
@@ -12188,6 +12959,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2.66667,
+            "offer": "Short on West Coast Avenger Shards?"
+          },
+          "2026-11-15": {
             "per": 2.66667,
             "offer": "Short on West Coast Avenger Shards?"
           }
@@ -12210,8 +12985,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 20.01,
           "day": "2026-11-14",
@@ -12219,6 +12994,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 20.01,
+            "offer": "Short on West Coast Avenger Shards?"
+          },
+          "2026-11-15": {
             "per": 20.01,
             "offer": "Short on West Coast Avenger Shards?"
           }
@@ -12230,6 +13009,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2.66667,
+            "offer": "Short on West Coast Avenger Shards?"
+          },
+          "2026-11-15": {
             "per": 2.66667,
             "offer": "Short on West Coast Avenger Shards?"
           }
@@ -12341,8 +13124,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 15.3858,
           "day": "2026-11-14",
@@ -12350,6 +13133,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 15.3858,
+            "offer": "Full Aperture"
+          },
+          "2026-11-15": {
             "per": 15.3858,
             "offer": "Full Aperture"
           }
@@ -12361,6 +13148,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2,
+            "offer": "Full Aperture"
+          },
+          "2026-11-15": {
             "per": 2,
             "offer": "Full Aperture"
           }
@@ -12382,8 +13173,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 40.008,
           "day": "2026-11-14",
@@ -12391,6 +13182,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 40.008,
+            "offer": "Visor Unleashed"
+          },
+          "2026-11-15": {
             "per": 40.008,
             "offer": "Visor Unleashed"
           }
@@ -12402,6 +13197,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 5,
+            "offer": "Visor Unleashed"
+          },
+          "2026-11-15": {
             "per": 5,
             "offer": "Visor Unleashed"
           }
@@ -12489,8 +13288,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 8.0032,
           "day": "2026-11-14",
@@ -12498,6 +13297,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 8.0032,
+            "offer": "Awakened Just A Taste"
+          },
+          "2026-11-15": {
             "per": 8.0032,
             "offer": "Awakened Just A Taste"
           }
@@ -12509,6 +13312,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 1,
+            "offer": "Awakened Just A Taste"
+          },
+          "2026-11-15": {
             "per": 1,
             "offer": "Awakened Just A Taste"
           }
@@ -12531,8 +13338,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 8.0032,
           "day": "2026-11-14",
@@ -12540,6 +13347,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 8.0032,
+            "offer": "Awakened Sharknado"
+          },
+          "2026-11-15": {
             "per": 8.0032,
             "offer": "Awakened Sharknado"
           }
@@ -12551,6 +13362,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 1,
+            "offer": "Awakened Sharknado"
+          },
+          "2026-11-15": {
             "per": 1,
             "offer": "Awakened Sharknado"
           }
@@ -12573,8 +13388,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 8.0032,
           "day": "2026-11-14",
@@ -12582,6 +13397,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 8.0032,
+            "offer": "Awakened Deep Dive"
+          },
+          "2026-11-15": {
             "per": 8.0032,
             "offer": "Awakened Deep Dive"
           }
@@ -12593,6 +13412,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 1,
+            "offer": "Awakened Deep Dive"
+          },
+          "2026-11-15": {
             "per": 1,
             "offer": "Awakened Deep Dive"
           }
@@ -12615,8 +13438,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 8.0032,
           "day": "2026-11-14",
@@ -12624,6 +13447,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 8.0032,
+            "offer": "Awakened Cute Carcharodon"
+          },
+          "2026-11-15": {
             "per": 8.0032,
             "offer": "Awakened Cute Carcharodon"
           }
@@ -12635,6 +13462,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 1,
+            "offer": "Awakened Cute Carcharodon"
+          },
+          "2026-11-15": {
             "per": 1,
             "offer": "Awakened Cute Carcharodon"
           }
@@ -12657,8 +13488,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 15.3965,
           "day": "2026-11-14",
@@ -12666,6 +13497,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 15.3965,
+            "offer": "Awakened Ghostly Gunslinger"
+          },
+          "2026-11-15": {
             "per": 15.3965,
             "offer": "Awakened Ghostly Gunslinger"
           }
@@ -12677,6 +13512,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2,
+            "offer": "Awakened Ghostly Gunslinger"
+          },
+          "2026-11-15": {
             "per": 2,
             "offer": "Awakened Ghostly Gunslinger"
           }
@@ -12699,8 +13538,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 15.3965,
           "day": "2026-11-14",
@@ -12708,6 +13547,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 15.3965,
+            "offer": "Awakened Quantum Blast"
+          },
+          "2026-11-15": {
             "per": 15.3965,
             "offer": "Awakened Quantum Blast"
           }
@@ -12719,6 +13562,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2,
+            "offer": "Awakened Quantum Blast"
+          },
+          "2026-11-15": {
             "per": 2,
             "offer": "Awakened Quantum Blast"
           }
@@ -12741,8 +13588,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 15.3965,
           "day": "2026-11-14",
@@ -12750,6 +13597,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 15.3965,
+            "offer": "Awakened Meteor Smackdown"
+          },
+          "2026-11-15": {
             "per": 15.3965,
             "offer": "Awakened Meteor Smackdown"
           }
@@ -12761,6 +13612,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2,
+            "offer": "Awakened Meteor Smackdown"
+          },
+          "2026-11-15": {
             "per": 2,
             "offer": "Awakened Meteor Smackdown"
           }
@@ -12796,8 +13651,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 15.3965,
           "day": "2026-11-14",
@@ -12805,6 +13660,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 15.3965,
+            "offer": "Awakened Violent Subjugation"
+          },
+          "2026-11-15": {
             "per": 15.3965,
             "offer": "Awakened Violent Subjugation"
           }
@@ -12816,6 +13675,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2,
+            "offer": "Awakened Violent Subjugation"
+          },
+          "2026-11-15": {
             "per": 2,
             "offer": "Awakened Violent Subjugation"
           }
@@ -12838,8 +13701,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 15.3965,
           "day": "2026-11-14",
@@ -12847,6 +13710,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 15.3965,
+            "offer": "Awakened Sweeping Destruction"
+          },
+          "2026-11-15": {
             "per": 15.3965,
             "offer": "Awakened Sweeping Destruction"
           }
@@ -12858,6 +13725,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2,
+            "offer": "Awakened Sweeping Destruction"
+          },
+          "2026-11-15": {
             "per": 2,
             "offer": "Awakened Sweeping Destruction"
           }
@@ -12880,8 +13751,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 15.3965,
           "day": "2026-11-14",
@@ -12889,6 +13760,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 15.3965,
+            "offer": "Awakened The Living Bomb-Burst"
+          },
+          "2026-11-15": {
             "per": 15.3965,
             "offer": "Awakened The Living Bomb-Burst"
           }
@@ -12900,6 +13775,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2,
+            "offer": "Awakened The Living Bomb-Burst"
+          },
+          "2026-11-15": {
             "per": 2,
             "offer": "Awakened The Living Bomb-Burst"
           }
@@ -12922,8 +13801,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 15.3965,
           "day": "2026-11-14",
@@ -12931,6 +13810,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 15.3965,
+            "offer": "Awakened Thunder Burst"
+          },
+          "2026-11-15": {
             "per": 15.3965,
             "offer": "Awakened Thunder Burst"
           }
@@ -12942,6 +13825,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2,
+            "offer": "Awakened Thunder Burst"
+          },
+          "2026-11-15": {
             "per": 2,
             "offer": "Awakened Thunder Burst"
           }
@@ -12964,8 +13851,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 15.3965,
           "day": "2026-11-14",
@@ -12973,6 +13860,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 15.3965,
+            "offer": "Awakened Rolling Thunder"
+          },
+          "2026-11-15": {
             "per": 15.3965,
             "offer": "Awakened Rolling Thunder"
           }
@@ -12984,6 +13875,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2,
+            "offer": "Awakened Rolling Thunder"
+          },
+          "2026-11-15": {
             "per": 2,
             "offer": "Awakened Rolling Thunder"
           }
@@ -13006,8 +13901,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 15.3965,
           "day": "2026-11-14",
@@ -13015,6 +13910,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 15.3965,
+            "offer": "Awakened Architect of Thunder"
+          },
+          "2026-11-15": {
             "per": 15.3965,
             "offer": "Awakened Architect of Thunder"
           }
@@ -13026,6 +13925,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2,
+            "offer": "Awakened Architect of Thunder"
+          },
+          "2026-11-15": {
             "per": 2,
             "offer": "Awakened Architect of Thunder"
           }
@@ -13058,8 +13961,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 187.067,
           "day": "2026-11-14",
@@ -13067,6 +13970,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 187.067,
+            "offer": "Cyber Breach: Ultron"
+          },
+          "2026-11-15": {
             "per": 187.067,
             "offer": "Cyber Breach: Ultron"
           }
@@ -13078,6 +13985,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 24.3,
+            "offer": "Cyber Breach: Ultron"
+          },
+          "2026-11-15": {
             "per": 24.3,
             "offer": "Cyber Breach: Ultron"
           }
@@ -13100,8 +14011,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 0.230947,
           "day": "2026-11-14",
@@ -13109,6 +14020,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 0.230947,
+            "offer": "Cyber Breach: Ultron"
+          },
+          "2026-11-15": {
             "per": 0.230947,
             "offer": "Cyber Breach: Ultron"
           }
@@ -13120,6 +14035,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 0.03,
+            "offer": "Cyber Breach: Ultron"
+          },
+          "2026-11-15": {
             "per": 0.03,
             "offer": "Cyber Breach: Ultron"
           }
@@ -13142,8 +14061,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 0.230947,
           "day": "2026-11-14",
@@ -13151,6 +14070,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 0.230947,
+            "offer": "Cyber Breach: Ultron"
+          },
+          "2026-11-15": {
             "per": 0.230947,
             "offer": "Cyber Breach: Ultron"
           }
@@ -13162,6 +14085,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 0.03,
+            "offer": "Cyber Breach: Ultron"
+          },
+          "2026-11-15": {
             "per": 0.03,
             "offer": "Cyber Breach: Ultron"
           }
@@ -13184,8 +14111,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 187.067,
           "day": "2026-11-14",
@@ -13193,6 +14120,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 187.067,
+            "offer": "Cyber Breach: Vision"
+          },
+          "2026-11-15": {
             "per": 187.067,
             "offer": "Cyber Breach: Vision"
           }
@@ -13204,6 +14135,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 24.3,
+            "offer": "Cyber Breach: Vision"
+          },
+          "2026-11-15": {
             "per": 24.3,
             "offer": "Cyber Breach: Vision"
           }
@@ -13226,8 +14161,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 0.230947,
           "day": "2026-11-14",
@@ -13235,6 +14170,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 0.230947,
+            "offer": "Cyber Breach: Vision"
+          },
+          "2026-11-15": {
             "per": 0.230947,
             "offer": "Cyber Breach: Vision"
           }
@@ -13246,6 +14185,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 0.03,
+            "offer": "Cyber Breach: Vision"
+          },
+          "2026-11-15": {
             "per": 0.03,
             "offer": "Cyber Breach: Vision"
           }
@@ -13268,8 +14211,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 0.230947,
           "day": "2026-11-14",
@@ -13277,6 +14220,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 0.230947,
+            "offer": "Cyber Breach: Vision"
+          },
+          "2026-11-15": {
             "per": 0.230947,
             "offer": "Cyber Breach: Vision"
           }
@@ -13288,6 +14235,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 0.03,
+            "offer": "Cyber Breach: Vision"
+          },
+          "2026-11-15": {
             "per": 0.03,
             "offer": "Cyber Breach: Vision"
           }
@@ -13412,8 +14363,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 1.42878,
           "day": "2026-11-14",
@@ -13421,6 +14372,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 1.42878,
+            "offer": "Cyber Breach: Hawkeye (Robot)"
+          },
+          "2026-11-15": {
             "per": 1.42878,
             "offer": "Cyber Breach: Hawkeye (Robot)"
           }
@@ -13432,6 +14387,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 0.2,
+            "offer": "Cyber Breach: Hawkeye (Robot)"
+          },
+          "2026-11-15": {
             "per": 0.2,
             "offer": "Cyber Breach: Hawkeye (Robot)"
           }
@@ -13454,8 +14413,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 1.42878,
           "day": "2026-11-14",
@@ -13463,6 +14422,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 1.42878,
+            "offer": "Cyber Breach: Human Torch (Jim)"
+          },
+          "2026-11-15": {
             "per": 1.42878,
             "offer": "Cyber Breach: Human Torch (Jim)"
           }
@@ -13474,6 +14437,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 0.2,
+            "offer": "Cyber Breach: Human Torch (Jim)"
+          },
+          "2026-11-15": {
             "per": 0.2,
             "offer": "Cyber Breach: Human Torch (Jim)"
           }
@@ -13639,8 +14606,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 0.0076929,
           "day": "2026-11-14",
@@ -13648,6 +14615,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 0.0076929,
+            "offer": "Cyber Breach: Jocasta 3-Diamond"
+          },
+          "2026-11-15": {
             "per": 0.0076929,
             "offer": "Cyber Breach: Jocasta 3-Diamond"
           }
@@ -13659,6 +14630,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 0.001,
+            "offer": "Cyber Breach: Jocasta 3-Diamond"
+          },
+          "2026-11-15": {
             "per": 0.001,
             "offer": "Cyber Breach: Jocasta 3-Diamond"
           }
@@ -13681,8 +14656,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 0.0076929,
           "day": "2026-11-14",
@@ -13690,6 +14665,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 0.0076929,
+            "offer": "Cyber Breach: Hawkeye (Robot) 3-Diamond"
+          },
+          "2026-11-15": {
             "per": 0.0076929,
             "offer": "Cyber Breach: Hawkeye (Robot) 3-Diamond"
           }
@@ -13701,6 +14680,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 0.001,
+            "offer": "Cyber Breach: Hawkeye (Robot) 3-Diamond"
+          },
+          "2026-11-15": {
             "per": 0.001,
             "offer": "Cyber Breach: Hawkeye (Robot) 3-Diamond"
           }
@@ -13723,8 +14706,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 0.0076929,
           "day": "2026-11-14",
@@ -13732,6 +14715,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 0.0076929,
+            "offer": "Cyber Breach: Human Torch (Jim) 3-Diamond"
+          },
+          "2026-11-15": {
             "per": 0.0076929,
             "offer": "Cyber Breach: Human Torch (Jim) 3-Diamond"
           }
@@ -13743,6 +14730,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 0.001,
+            "offer": "Cyber Breach: Human Torch (Jim) 3-Diamond"
+          },
+          "2026-11-15": {
             "per": 0.001,
             "offer": "Cyber Breach: Human Torch (Jim) 3-Diamond"
           }
@@ -13764,8 +14755,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 15.3858,
           "day": "2026-11-14",
@@ -13773,6 +14764,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 15.3858,
+            "offer": "Cyber Breach: Iron Raiders Mega Orb"
+          },
+          "2026-11-15": {
             "per": 15.3858,
             "offer": "Cyber Breach: Iron Raiders Mega Orb"
           }
@@ -13784,6 +14779,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 2,
+            "offer": "Cyber Breach: Iron Raiders Mega Orb"
+          },
+          "2026-11-15": {
             "per": 2,
             "offer": "Cyber Breach: Iron Raiders Mega Orb"
           }
@@ -13805,8 +14804,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 3,
-        "firstSeen": true,
+        "offers": 6,
+        "firstSeen": false,
         "best": {
           "per": 230.787,
           "day": "2026-11-14",
@@ -13814,6 +14813,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 230.787,
+            "offer": "Shadow Diamond Orbs: Premium"
+          },
+          "2026-11-15": {
             "per": 230.787,
             "offer": "Shadow Diamond Orbs: Premium"
           }
@@ -13825,6 +14828,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 30,
+            "offer": "Shadow Diamond Orbs: Premium"
+          },
+          "2026-11-15": {
             "per": 30,
             "offer": "Shadow Diamond Orbs: Premium"
           }
@@ -13856,8 +14863,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 2,
-        "firstSeen": true,
+        "offers": 4,
+        "firstSeen": false,
         "best": {
           "per": 400.16,
           "day": "2026-11-14",
@@ -13865,6 +14872,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 400.16,
+            "offer": "Shadow Rising: Web Special"
+          },
+          "2026-11-15": {
             "per": 400.16,
             "offer": "Shadow Rising: Web Special"
           }
@@ -13876,6 +14887,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 50,
+            "offer": "Shadow Rising: Web Special"
+          },
+          "2026-11-15": {
             "per": 50,
             "offer": "Shadow Rising: Web Special"
           }
@@ -13908,8 +14923,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 54.027,
           "day": "2026-11-14",
@@ -13917,6 +14932,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 54.027,
+            "offer": "Nightstalker Power Up"
+          },
+          "2026-11-15": {
             "per": 54.027,
             "offer": "Nightstalker Power Up"
           }
@@ -13928,6 +14947,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 7.2,
+            "offer": "Nightstalker Power Up"
+          },
+          "2026-11-15": {
             "per": 7.2,
             "offer": "Nightstalker Power Up"
           }
@@ -13950,8 +14973,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 54.027,
           "day": "2026-11-14",
@@ -13959,6 +14982,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 54.027,
+            "offer": "Nightstalker Power Up"
+          },
+          "2026-11-15": {
             "per": 54.027,
             "offer": "Nightstalker Power Up"
           }
@@ -13970,6 +14997,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 7.2,
+            "offer": "Nightstalker Power Up"
+          },
+          "2026-11-15": {
             "per": 7.2,
             "offer": "Nightstalker Power Up"
           }
@@ -13992,8 +15023,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 54.027,
           "day": "2026-11-14",
@@ -14001,6 +15032,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 54.027,
+            "offer": "Nightstalker Power Up"
+          },
+          "2026-11-15": {
             "per": 54.027,
             "offer": "Nightstalker Power Up"
           }
@@ -14012,6 +15047,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 7.2,
+            "offer": "Nightstalker Power Up"
+          },
+          "2026-11-15": {
             "per": 7.2,
             "offer": "Nightstalker Power Up"
           }
@@ -14033,8 +15072,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 3.55412,
           "day": "2026-11-14",
@@ -14042,6 +15081,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 3.55412,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 3.55412,
             "offer": "Morbius Power Pack"
           }
@@ -14053,6 +15096,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 0.462,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 0.462,
             "offer": "Morbius Power Pack"
           }
@@ -14074,8 +15121,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 3.55412,
           "day": "2026-11-14",
@@ -14083,6 +15130,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 3.55412,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 3.55412,
             "offer": "Morbius Power Pack"
           }
@@ -14094,6 +15145,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 0.462,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 0.462,
             "offer": "Morbius Power Pack"
           }
@@ -14115,8 +15170,8 @@ window.MSF_VALUE_TABLE = {
         "days": [
           "2026-11-14"
         ],
-        "offers": 1,
-        "firstSeen": true,
+        "offers": 2,
+        "firstSeen": false,
         "best": {
           "per": 24.2326,
           "day": "2026-11-14",
@@ -14124,6 +15179,10 @@ window.MSF_VALUE_TABLE = {
         },
         "byDay": {
           "2026-11-14": {
+            "per": 24.2326,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 24.2326,
             "offer": "Morbius Power Pack"
           }
@@ -14135,6 +15194,10 @@ window.MSF_VALUE_TABLE = {
         },
         "coreByDay": {
           "2026-11-14": {
+            "per": 3.15,
+            "offer": "Morbius Power Pack"
+          },
+          "2026-11-15": {
             "per": 3.15,
             "offer": "Morbius Power Pack"
           }
@@ -14153,6 +15216,100 @@ window.MSF_VALUE_TABLE = {
       "observed": {
         "perCash": null
       }
+    },
+    "gear:crimson_alien_spores": {
+      "name": "Crimson Alien Spores",
+      "category": "gear",
+      "per": 1,
+      "value": null,
+      "aliases": [],
+      "id": "GEAR_RED_SERUM1",
+      "coreValue": null,
+      "observed": {
+        "perCash": null
+      }
+    },
+    "iso8:t2_level_1_ions": {
+      "name": "T2 Level 1 Ions",
+      "category": "iso8",
+      "per": 1000000,
+      "value": 0.776669,
+      "aliases": [],
+      "id": "ISO8-TIER-1-A-CURRENCY",
+      "observed": {
+        "basis": "set",
+        "perCash": 1287550,
+        "perCore": 180000,
+        "days": [
+          "2026-11-15"
+        ],
+        "offers": 1,
+        "firstSeen": true,
+        "best": {
+          "per": 1287550,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Blue ISO"
+        },
+        "byDay": {
+          "2026-11-15": {
+            "per": 1287550,
+            "offer": "Unlock Special: Blue ISO"
+          }
+        },
+        "bestCore": {
+          "per": 180000,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Blue ISO"
+        },
+        "coreByDay": {
+          "2026-11-15": {
+            "per": 180000,
+            "offer": "Unlock Special: Blue ISO"
+          }
+        }
+      },
+      "coreValue": 5.55556
+    },
+    "iso8:t2_level_4_ions": {
+      "name": "T2 Level 4 Ions",
+      "category": "iso8",
+      "per": 1000000,
+      "value": 0.776669,
+      "aliases": [],
+      "id": "ISO8-TIER-1-B-CURRENCY",
+      "observed": {
+        "basis": "set",
+        "perCash": 1287550,
+        "perCore": 180000,
+        "days": [
+          "2026-11-15"
+        ],
+        "offers": 1,
+        "firstSeen": true,
+        "best": {
+          "per": 1287550,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Blue ISO"
+        },
+        "byDay": {
+          "2026-11-15": {
+            "per": 1287550,
+            "offer": "Unlock Special: Blue ISO"
+          }
+        },
+        "bestCore": {
+          "per": 180000,
+          "day": "2026-11-15",
+          "offer": "Unlock Special: Blue ISO"
+        },
+        "coreByDay": {
+          "2026-11-15": {
+            "per": 180000,
+            "offer": "Unlock Special: Blue ISO"
+          }
+        }
+      },
+      "coreValue": 5.55556
     }
   }
 };

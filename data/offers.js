@@ -31,7 +31,7 @@
  *   }
  */
 window.MSF_OFFERS = {
-  "updated": "2026-11-14T16:45:48.102Z",
+  "updated": "2026-11-15T20:13:05.023Z",
   "source": "web-store",
   "bookmarklet": "2026-11-14",
   "account": "CZARFACE level 109",
@@ -43,7 +43,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 2,
-      "expires": "9d 4h",
+      "expires": "8d 0h",
       "section": "Offers / RECOMMENDED",
       "sections": [
         "Offers / RECOMMENDED"
@@ -75,7 +75,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "9d 4h",
+      "expires": "8d 0h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -101,7 +101,7 @@ window.MSF_OFFERS = {
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "2d 4h",
+      "expires": "1d 0h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -120,14 +120,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Get 15 Level Tokens to catch up on Battle Pass progress!"
+      "description": "Get <color=#fff568>15 Level Tokens</color> to catch up on Battle Pass progress!"
     },
     {
       "name": "Short on West Coast Avenger Shards?",
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "9d 4h",
+      "expires": "8d 0h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -168,7 +168,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "8d 4h",
+      "expires": "7d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -519,14 +519,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 300
+      "ultraCores": 300,
+      "description": "A special launch offer has appeared for you! Recruit <color=#fff568>Cyclops (Mighty)</color> today!"
     },
     {
       "name": "Savage Leader (step 2 of 7)",
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "8d 4h",
+      "expires": "7d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -877,14 +878,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 300
+      "ultraCores": 300,
+      "description": "Power up <color=#fff568>Cyclops (Mighty)</color> with extra shards and vital resources to make your <color=#fff568>Savage Land</color> team strong!"
     },
     {
       "name": "Savage Leader (step 3 of 7)",
       "price": 49.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "8d 4h",
+      "expires": "7d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -1235,14 +1237,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 400
+      "ultraCores": 400,
+      "description": "Collect more <color=#fff568>Cyclops (Mighty)</color> shards and resources to secure victory with your <color=#fff568>Savage Land</color> lineup!"
     },
     {
       "name": "Savage Leader (step 4 of 7)",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "8d 4h",
+      "expires": "7d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -1593,14 +1596,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 500
+      "ultraCores": 500,
+      "description": "Boost <color=#fff568>Cyclops (Mighty)</color> even further and dominate War with your <color=#fff568>Savage Land</color> team!"
     },
     {
       "name": "Savage Leader (step 5 of 7)",
       "price": 79.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "8d 4h",
+      "expires": "7d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -1946,14 +1950,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 600
+      "ultraCores": 600,
+      "description": "Upgrade <color=#fff568>Cyclops (Mighty)</color> and stock up on essential resources to strengthen your <color=#fff568>Savage Land</color> team!"
     },
     {
       "name": "Savage Leader (step 6 of 7)",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "8d 4h",
+      "expires": "7d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -2299,14 +2304,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 1000
+      "ultraCores": 1000,
+      "description": "Take <color=#fff568>Cyclops (Mighty)</color> to the next level and make your <color=#fff568>Savage Land</color> team the best they can be!"
     },
     {
       "name": "Savage Leader (step 7 of 7)",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "8d 4h",
+      "expires": "7d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -2652,14 +2658,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 1000
+      "ultraCores": 1000,
+      "description": "Final step towards your full potential is here for <color=#fff568>Cyclops (Mighty)</color>!"
     },
     {
       "name": "Full Aperture",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "8d 4h",
+      "expires": "7d 0h",
       "section": "Offers / NEW CHARACTERS",
       "sections": [
         "Offers / NEW CHARACTERS"
@@ -2678,14 +2685,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Open Full Aperture Orb for a guaranteed 4-Yellow-Star Cyclops (Mighty), with a chance up to 7 Yellow Stars!"
+      "description": "Open <color=#fff568>Full Aperture Orb</color> for a guaranteed <color=#fff568>4-Yellow-Star Cyclops (Mighty)</color>, with a chance up to <color=#fff568>7 Yellow Stars</color>!"
     },
     {
       "name": "Visor Unleashed",
       "price": 49.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "8d 4h",
+      "expires": "7d 0h",
       "section": "Offers / NEW CHARACTERS",
       "sections": [
         "Offers / NEW CHARACTERS"
@@ -2704,14 +2711,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 400,
-      "description": "Each Visor Unleashed Orb contains up to 410 Cyclops (Mighty) shards with 50 shards guaranteed! He spreads and prolongs negative effects, applies Bleed & Silence, and boosts Speed Bar in War!"
+      "description": "Each <color=#fff568>Visor Unleashed Orb</color> contains <color=#fff568>up to 410 Cyclops (Mighty)</color> shards with <color=#fff568>50 shards guaranteed</color>! He spreads and prolongs negative effects, applies Bleed & Silence, and boosts Speed Bar in War!"
     },
     {
       "name": "Son of the Tiger (step 1 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -3187,14 +3194,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "A special launch offer has appeared for you! Recruit <color=#fff568>Ka-Zar</color> today!"
     },
     {
       "name": "Son of the Tiger (step 2 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -3670,14 +3678,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Power up <color=#fff568>Ka-Zar</color> with additional shards and vital resources to make your <color=#fff568>Savage Land</color> team the best they can be!"
     },
     {
       "name": "Son of the Tiger (step 3 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -4153,14 +4162,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Collect more <color=#fff568>Ka-Zar</color> shards and valuable resources to secure victory with your <color=#fff568>Savage Land</color> lineup!"
     },
     {
       "name": "Son of the Tiger (step 4 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -4641,14 +4651,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Boost <color=#fff568>Ka-Zar</color> even further and dominate War with your <color=#fff568>Savage Land</color> team!"
     },
     {
       "name": "Son of the Tiger (step 5 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -5124,14 +5135,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Upgrade <color=#fff568>Ka-Zar</color> and stock up on essential resources to strengthen your <color=#fff568>Savage Land</color> team!"
     },
     {
       "name": "Son of the Tiger (step 6 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -5612,14 +5624,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Take <color=#fff568>Ka-Zar</color> to the next level and make your <color=#fff568>Savage Land</color> team the best they can be!"
     },
     {
       "name": "Son of the Tiger (step 7 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -6095,14 +6108,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Power up <color=#fff568>Ka-Zar</color> with additional shards and vital resources to make your <color=#fff568>Savage Land</color> team the best they can be!"
     },
     {
       "name": "Son of the Tiger (step 8 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -6578,14 +6592,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Collect more <color=#fff568>Ka-Zar</color> shards and valuable resources to secure victory with your <color=#fff568>Savage Land</color> lineup!"
     },
     {
       "name": "Son of the Tiger (step 9 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -7061,14 +7076,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Boost <color=#fff568>Ka-Zar</color> even further and dominate War with your <color=#fff568>Savage Land</color> team!"
     },
     {
       "name": "Son of the Tiger (step 10 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -7549,14 +7565,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Upgrade <color=#fff568>Ka-Zar</color> and stock up on essential resources to strengthen your <color=#fff568>Savage Land</color> team!"
     },
     {
       "name": "Son of the Tiger (step 11 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -8032,14 +8049,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Take <color=#fff568>Ka-Zar</color> to the next level and make your <color=#fff568>Savage Land</color> team the best they can be!"
     },
     {
       "name": "Son of the Tiger (step 12 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -8515,14 +8533,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Power up <color=#fff568>Ka-Zar</color> with additional shards and vital resources to make your <color=#fff568>Savage Land</color> team the best they can be!"
     },
     {
       "name": "Son of the Tiger (step 13 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -8998,14 +9017,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Collect more <color=#fff568>Ka-Zar</color> shards and valuable resources to secure victory with your <color=#fff568>Savage Land</color> lineup!"
     },
     {
       "name": "Son of the Tiger (step 14 of 14)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -9486,14 +9506,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Final step towards your full potential is here for <color=#fff568>Ka-Zar</color>!"
     },
     {
       "name": "Hidden Jungle Orb",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / NEW CHARACTERS",
       "sections": [
         "Offers / NEW CHARACTERS"
@@ -9512,14 +9533,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 200,
-      "description": "Each Hidden Jungle Orb contains up to 250 Ka-Zar shards with 55 shards guaranteed! He flips negatives, grants Safeguard and Defense Up, heals allies, calls ally attacks!"
+      "description": "Each <color=#fff568>Hidden Jungle Orb</color> contains <color=#fff568>up to 250 Ka-Zar</color> shards with <color=#fff568>55 shards guaranteed</color>! He flips negatives, grants Safeguard and Defense Up, heals allies, calls ally attacks!"
     },
     {
       "name": "Black Friday Sneak Peak",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "5d 4h",
+      "expires": "4d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9539,14 +9560,14 @@ window.MSF_OFFERS = {
       ],
       "boughtBefore": true,
       "ultraCores": 200,
-      "description": "Get a sneak peek at Black Friday! Open the special Orb for a chance to earn up to 5-Diamond promotions for select powerhouse characters!"
+      "description": "Get a sneak peek at <color=#fff568>Black Friday</color>! Open the special Orb for a chance to earn up to <color=#fff568>5-Diamond promotions</color> for select powerhouse characters!"
     },
     {
       "name": "Jeff the Land Shark Full Awakening",
       "price": 79.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9580,14 +9601,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 600,
-      "description": "Great. Ability. Savings. Fully awaken Jeff the Land Shark's abilities with this limited-time bundle!"
+      "description": "Great. Ability. Savings. Fully awaken <color=#fff568>Jeff the Land Shark's abilities</color> with this limited-time bundle!"
     },
     {
       "name": "Phantom Rider Full Awakening",
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9621,14 +9642,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 300,
-      "description": "Great. Ability. Savings. Fully awaken Phantom Rider's abilities with this limited-time bundle!"
+      "description": "Great. Ability. Savings. Fully awaken <color=#fff568>Phantom Rider's abilities</color> with this limited-time bundle!"
     },
     {
       "name": "Quasar Full Awakening",
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9657,14 +9678,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 250,
-      "description": "Great. Ability. Savings. Fully awaken Quasar's abilities with this limited-time bundle!"
+      "description": "Great. Ability. Savings. Fully awaken <color=#fff568>Quasar's abilities</color> with this limited-time bundle!"
     },
     {
       "name": "Blastaar Full Awakening",
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9693,14 +9714,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 250,
-      "description": "Great. Ability. Savings. Fully awaken Blastaar's abilities with this limited-time bundle!"
+      "description": "Great. Ability. Savings. Fully awaken <color=#fff568>Blastaar's abilities</color> with this limited-time bundle!"
     },
     {
       "name": "Thunderstrike Full Awakening",
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9729,14 +9750,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 250,
-      "description": "Great. Ability. Savings. Fully awaken Thunderstrike's abilities with this limited-time bundle!"
+      "description": "Great. Ability. Savings. Fully awaken <color=#fff568>Thunderstrike's abilities</color> with this limited-time bundle!"
     },
     {
       "name": "Awakened Sharknado",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9755,14 +9776,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 200,
-      "description": "Hurry! Unlock the Special Awakened Ability for Jeff the Land Shark before this offer disappears!"
+      "description": "Hurry! Unlock the Special Awakened Ability for <color=#fff568>Jeff the Land Shark</color> before this offer disappears!"
     },
     {
       "name": "Awakened Cute Carcharodon",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9781,14 +9802,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 200,
-      "description": "Hurry! Unlock the Passive Awakened Ability for Jeff the Land Shark before this offer disappears!"
+      "description": "Hurry! Unlock the Passive Awakened Ability for <color=#fff568>Jeff the Land Shark</color> before this offer disappears!"
     },
     {
       "name": "Awakened Just A Taste",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9807,14 +9828,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 200,
-      "description": "Hurry! Unlock the Basic Awakened Ability for Jeff the Land Shark before this offer disappears!"
+      "description": "Hurry! Unlock the Basic Awakened Ability for <color=#fff568>Jeff the Land Shark</color> before this offer disappears!"
     },
     {
       "name": "Awakened Deep Dive",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9833,14 +9854,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 200,
-      "description": "Hurry! Unlock the Ultimate Awakened Ability for Jeff the Land Shark before this offer disappears!"
+      "description": "Hurry! Unlock the Ultimate Awakened Ability for <color=#fff568>Jeff the Land Shark</color> before this offer disappears!"
     },
     {
       "name": "Awakened Quickdraw",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9859,14 +9880,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Hurry! Unlock the Basic Awakened Ability for Phantom Rider before this offer disappears!"
+      "description": "Hurry! Unlock the Basic Awakened Ability for <color=#fff568>Phantom Rider</color> before this offer disappears!"
     },
     {
       "name": "Awakened Ghost Ride",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9885,14 +9906,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Hurry! Unlock the Special Awakened Ability for Phantom Rider before this offer disappears!"
+      "description": "Hurry! Unlock the Special Awakened Ability for <color=#fff568>Phantom Rider</color> before this offer disappears!"
     },
     {
       "name": "Awakened Bucking Banshee",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9911,14 +9932,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Hurry! Unlock the Ultimate Awakened Ability for Phantom Rider before this offer disappears!"
+      "description": "Hurry! Unlock the Ultimate Awakened Ability for <color=#fff568>Phantom Rider</color> before this offer disappears!"
     },
     {
       "name": "Awakened Ghostly Gunslinger",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9937,14 +9958,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Hurry! Unlock the Passive Awakened Ability for Phantom Rider before this offer disappears!"
+      "description": "Hurry! Unlock the Passive Awakened Ability for <color=#fff568>Phantom Rider</color> before this offer disappears!"
     },
     {
       "name": "Awakened Quantum Blast",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9963,14 +9984,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Hurry! Unlock the Basic Awakened Ability for Quasar before this offer disappears!"
+      "description": "Hurry! Unlock the Basic Awakened Ability for <color=#fff568>Quasar</color> before this offer disappears!"
     },
     {
       "name": "Awakened Meteor Smackdown",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -9989,14 +10010,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Hurry! Unlock the Ultimate Awakened Ability for Quasar before this offer disappears!"
+      "description": "Hurry! Unlock the Ultimate Awakened Ability for <color=#fff568>Quasar</color> before this offer disappears!"
     },
     {
       "name": "Awakened Violent Subjugation",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -10015,14 +10036,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Hurry! Unlock the Basic Awakened Ability for Blastaar before this offer disappears!"
+      "description": "Hurry! Unlock the Basic Awakened Ability for <color=#fff568>Blastaar</color> before this offer disappears!"
     },
     {
       "name": "Awakened Sweeping Destruction",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -10041,14 +10062,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Hurry! Unlock the Ultimate Awakened Ability for Blastaar before this offer disappears!"
+      "description": "Hurry! Unlock the Ultimate Awakened Ability for <color=#fff568>Blastaar</color> before this offer disappears!"
     },
     {
       "name": "Awakened The Living Bomb-Burst",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -10067,14 +10088,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Hurry! Unlock the Passive Awakened Ability for Blastaar before this offer disappears!"
+      "description": "Hurry! Unlock the Passive Awakened Ability for <color=#fff568>Blastaar</color> before this offer disappears!"
     },
     {
       "name": "Awakened Thunder Burst",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -10093,14 +10114,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Hurry! Unlock the Basic Awakened Ability for Thunderstrike before this offer disappears!"
+      "description": "Hurry! Unlock the Basic Awakened Ability for <color=#fff568>Thunderstrike</color> before this offer disappears!"
     },
     {
       "name": "Awakened Rolling Thunder",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -10119,14 +10140,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Hurry! Unlock the Ultimate Awakened Ability for Thunderstrike before this offer disappears!"
+      "description": "Hurry! Unlock the Ultimate Awakened Ability for <color=#fff568>Thunderstrike</color> before this offer disappears!"
     },
     {
       "name": "Awakened Architect of Thunder",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -10145,176 +10166,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Hurry! Unlock the Passive Awakened Ability for Thunderstrike before this offer disappears!"
-    },
-    {
-      "name": "Ability Essentials Vault",
-      "price": 6.99,
-      "currency": "CAD",
-      "purchaseLimit": 5,
-      "expires": "4h 14m",
-      "section": "Offers / RECOMMENDED",
-      "sections": [
-        "Offers / RECOMMENDED"
-      ],
-      "contents": [
-        {
-          "item": "T2 Ability Material",
-          "id": "ABILITY_MATERIAL_BLUE_ABILITY_MAT",
-          "qty": 600
-        },
-        {
-          "item": "T1 Ability Material",
-          "id": "ABILITY_MATERIAL_GREEN_ABILITY_MAT",
-          "qty": 1000
-        },
-        {
-          "item": "T4 Ability Material",
-          "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT",
-          "qty": 135
-        },
-        {
-          "item": "T3 Ability Material",
-          "id": "ABILITY_MATERIAL_PURPLE_ABILITY_MAT",
-          "qty": 300
-        },
-        {
-          "item": "T2 Ability Material",
-          "id": "ABILITY_MATERIAL_BLUE_ABILITY_MAT",
-          "qty": 60,
-          "webBonus": true
-        },
-        {
-          "item": "T1 Ability Material",
-          "id": "ABILITY_MATERIAL_GREEN_ABILITY_MAT",
-          "qty": 100,
-          "webBonus": true
-        },
-        {
-          "item": "T4 Ability Material",
-          "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT",
-          "qty": 15,
-          "webBonus": true
-        },
-        {
-          "item": "T3 Ability Material",
-          "id": "ABILITY_MATERIAL_PURPLE_ABILITY_MAT",
-          "qty": 30,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "id": "BFYB-CUR",
-          "qty": 500,
-          "webBonus": true
-        }
-      ],
-      "ultraCores": 50,
-      "description": "Take your roster to new heights of power by unlocking their potential with this pack of Ability Materials!"
-    },
-    {
-      "name": "Ability Value Vault",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 5,
-      "expires": "4h 14m",
-      "section": "Offers / RECOMMENDED",
-      "sections": [
-        "Offers / RECOMMENDED"
-      ],
-      "contents": [
-        {
-          "item": "T4 Ability Material",
-          "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT",
-          "qty": 385
-        },
-        {
-          "item": "T4 Ability Material",
-          "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT",
-          "qty": 40,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "id": "BFYB-CUR",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "ultraCores": 100,
-      "description": "Train hard, fight harder. Boost your team now!"
-    },
-    {
-      "name": "Ability Ultimate Vault",
-      "price": 24.99,
-      "currency": "CAD",
-      "purchaseLimit": 5,
-      "expires": "4h 14m",
-      "section": "Offers / RECOMMENDED",
-      "sections": [
-        "Offers / RECOMMENDED"
-      ],
-      "contents": [
-        {
-          "item": "T2 Ability Material",
-          "id": "ABILITY_MATERIAL_BLUE_ABILITY_MAT",
-          "qty": 400
-        },
-        {
-          "item": "T1 Ability Material",
-          "id": "ABILITY_MATERIAL_GREEN_ABILITY_MAT",
-          "qty": 400
-        },
-        {
-          "item": "T4 Ability Material",
-          "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT",
-          "qty": 840
-        },
-        {
-          "item": "T3 Ability Material",
-          "id": "ABILITY_MATERIAL_PURPLE_ABILITY_MAT",
-          "qty": 480
-        },
-        {
-          "item": "T2 Ability Material",
-          "id": "ABILITY_MATERIAL_BLUE_ABILITY_MAT",
-          "qty": 40,
-          "webBonus": true
-        },
-        {
-          "item": "T1 Ability Material",
-          "id": "ABILITY_MATERIAL_GREEN_ABILITY_MAT",
-          "qty": 40,
-          "webBonus": true
-        },
-        {
-          "item": "T4 Ability Material",
-          "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT",
-          "qty": 85,
-          "webBonus": true
-        },
-        {
-          "item": "T3 Ability Material",
-          "id": "ABILITY_MATERIAL_PURPLE_ABILITY_MAT",
-          "qty": 50,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "id": "BFYB-CUR",
-          "qty": 2000,
-          "webBonus": true
-        }
-      ],
-      "ultraCores": 200,
-      "description": "Sharpen your roster with this ability pack."
+      "description": "Hurry! Unlock the Passive Awakened Ability for <color=#fff568>Thunderstrike</color> before this offer disappears!"
     },
     {
       "name": "Cyber Breach: Ultron",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -10354,14 +10213,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Instantly power up Ultron to 1-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Instantly power up Ultron to 1-Diamond and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Vision",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -10401,14 +10260,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Instantly power up Vision to 1-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Instantly power up Vision to 1-Diamond and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Sentient Squad",
       "price": 49.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -10493,14 +10352,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 400,
-      "description": "Instantly power up Ultron, Vision, Yellowjacket, and Crossbones to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Instantly power up Ultron, Vision, Yellowjacket, and Crossbones to 2-Diamond and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Crimson Elite Orb",
       "price": 3.99,
       "currency": "CAD",
       "purchaseLimit": 94,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -10525,14 +10384,14 @@ window.MSF_OFFERS = {
       ],
       "boughtBefore": true,
       "ultraCores": 30,
-      "description": "Earn Gear Tier 19 and 20 Mini-Unique, and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Earn Gear Tier 19 and 20 Mini-Unique, and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Orange Mega Orb",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -10562,14 +10421,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Open this Orb to stock up on T4 Level 1 Ions and T4 Iso-8 Credits, also gain progress in the Cyber Breach Milestone! This special Orb will automatically open upon purchase."
+      "description": "Open this Orb to stock up on <color=#fff568>T4 Level 1 Ions</color> and <color=#fff568>T4 Iso-8 Credits</color>, also gain progress in the <color=#fff568>Cyber Breach</color> Milestone! This special Orb will automatically open upon purchase."
     },
     {
       "name": "Cyber Breach: Basic Pack",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -10594,14 +10453,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 500,
-      "description": "Get ahead in the Cyber Breach Leaderboard to secure 3-Diamond for Whiplash, Ulysses Klaue, Iron Monger!"
+      "description": "Get ahead in the <color=#fff568>Cyber Breach</color> Leaderboard to secure 3-Diamond for Whiplash, Ulysses Klaue, Iron Monger!"
     },
     {
       "name": "Cyber Breach: Ultimate Pack",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 50,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -10626,14 +10485,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Get ahead in the Cyber Breach Leaderboard to secure 3-Diamond for Whiplash, Ulysses Klaue, Iron Monger!"
+      "description": "Get ahead in the <color=#fff568>Cyber Breach</color> Leaderboard to secure 3-Diamond for Whiplash, Ulysses Klaue, Iron Monger!"
     },
     {
       "name": "Cyber Breach: GT21 Mutant",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -10693,14 +10552,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Earn Gear Tier 21 Mutant Mini-Unique, and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Earn Gear Tier 21 Mutant Mini-Unique, and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: GT21 Tech",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -10760,14 +10619,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Earn Gear Tier 21 Tech Mini-Unique, and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Earn Gear Tier 21 Tech Mini-Unique, and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: GT21 Bio",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -10827,14 +10686,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Earn Gear Tier 21 Bio Mini-Unique, and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Earn Gear Tier 21 Bio Mini-Unique, and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: GT21 Skill",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -10894,14 +10753,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Earn Gear Tier 21 Skill Mini-Unique, and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Earn Gear Tier 21 Skill Mini-Unique, and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: GT21 Mystic",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -10961,14 +10820,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Earn Gear Tier 21 Mystic Mini-Unique, and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Earn Gear Tier 21 Mystic Mini-Unique, and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Ions Special",
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11003,14 +10862,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 150,
-      "description": "Earn T3 Level 4 and Level 5 Ions, and also gain progress in the Cyber Breach Milestone!"
+      "description": "Earn T3 Level 4 and Level 5 Ions, and also gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Ability Power Up",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11040,14 +10899,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 200,
-      "description": "Strengthen your roster with T4 Ability Materials and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Strengthen your roster with T4 Ability Materials and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Terrific Training",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11077,14 +10936,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 200,
-      "description": "Pick up a great L4 Training Module bundle to level up characters and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Pick up a great L4 Training Module bundle to level up characters and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Whiplash",
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 9,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11114,14 +10973,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 250,
-      "description": "Strengthen your roster with Whiplash shards and earn points toward the Cyber Breach Milestone!"
+      "description": "Strengthen your roster with <color=#fff568>Whiplash</color> shards and earn points toward the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Ulysses Klaue",
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 9,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11151,14 +11010,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 250,
-      "description": "Power up your roster with Ulysses Klaue shards and make progress in the Cyber Breach Milestone!"
+      "description": "Power up your roster with <color=#fff568>Ulysses Klaue</color> shards and make progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Iron Monger",
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 9,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11188,14 +11047,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 250,
-      "description": "Boost your roster with Iron Monger shards and claim progress toward the Cyber Breach Milestone!"
+      "description": "Boost your roster with <color=#fff568>Iron Monger</color> shards and claim progress toward the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Jocasta",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 9,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11225,14 +11084,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 500,
-      "description": "Grab Jocasta shards and score points to push further in the Cyber Breach Milestone!"
+      "description": "Grab <color=#fff568>Jocasta</color> shards and score points to push further in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Hawkeye (Robot)",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 9,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11262,14 +11121,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 500,
-      "description": "Gear up with Hawkeye (Robot) shards and rack up points in the Cyber Breach Milestone!"
+      "description": "Gear up with <color=#fff568>Hawkeye (Robot)</color> shards and rack up points in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Human Torch (Jim)",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 9,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11299,14 +11158,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 500,
-      "description": "Gather Human Torch (Jim) shards and unlock more rewards as you advance in the Cyber Breach Milestone!"
+      "description": "Gather <color=#fff568>Human Torch (Jim)</color> shards and unlock more rewards as you advance in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Jocasta 2-Diamond",
       "price": 549.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11346,14 +11205,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 4000,
-      "description": "Instantly power up Jocasta to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Instantly power up <color=#fff568>Jocasta</color> to 2-Diamond and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Hawkeye (Robot) 2-Diamond",
       "price": 549.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11393,14 +11252,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 4000,
-      "description": "Instantly power up Hawkeye (Robot) to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Instantly power up <color=#fff568>Hawkeye (Robot)</color> to 2-Diamond and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Human Torch (Jim) 2-Diamond",
       "price": 549.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11440,14 +11299,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 4000,
-      "description": "Instantly power up Human Torch (Jim) to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Instantly power up <color=#fff568>Human Torch (Jim)</color> to 2-Diamond and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Whiplash 2-Diamond",
       "price": 549.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11487,14 +11346,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 4000,
-      "description": "Instantly power up Whiplash to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Instantly power up <color=#fff568>Whiplash</color> to 2-Diamond and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Ulysses Klaue 2-Diamond",
       "price": 549.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11534,14 +11393,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 4000,
-      "description": "Instantly power up Ulysses Klaue to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Instantly power up <color=#fff568>Ulysses Klaue</color> to 2-Diamond and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Iron Monger 2-Diamond",
       "price": 549.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11581,14 +11440,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 4000,
-      "description": "Instantly power up Iron Monger to 2-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Instantly power up <color=#fff568>Iron Monger</color> to 2-Diamond and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Jocasta 3-Diamond",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11618,14 +11477,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Upgrade Jocasta to 3-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Upgrade <color=#fff568>Jocasta</color> to <color=#fff568>3-Diamond</color> and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Hawkeye (Robot) 3-Diamond",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11655,14 +11514,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Empower Hawkeye (Robot) with a 3-Diamond upgrade and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Empower <color=#fff568>Hawkeye (Robot)</color> with a <color=#fff568>3-Diamond</color> upgrade and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Human Torch (Jim) 3-Diamond",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11692,14 +11551,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Boost Human Torch (Jim) to 3-Diamond and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Boost <color=#fff568>Human Torch (Jim)</color> to <color=#fff568>3-Diamond</color> and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: A.I. Avengers Mega Orb",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11729,14 +11588,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Open this Orb for a chance to get 400 Shards for A.I. Avengers, plus a bunch of points toward the Cyber Breach Milestone!"
+      "description": "Open this Orb for a chance to get 400 Shards for A.I. Avengers, plus a bunch of points toward the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Iron Raiders Mega Orb",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -11766,14 +11625,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Open this Orb for a chance to get 500 Shards for Iron Raiders, plus a bunch of points toward the Cyber Breach Milestone!"
+      "description": "Open this Orb for a chance to get 500 Shards for Iron Raiders, plus a bunch of points toward the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Cores Pack (step 2 of 5)",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -11934,14 +11793,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 100
+      "ultraCores": 100,
+      "description": "Continue your upgrades with more <color=#fff568>Power Cores</color> and make progress toward the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Cores Pack (step 3 of 5)",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -12102,14 +11962,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 100
+      "ultraCores": 100,
+      "description": "Power up your roster with more <color=#fff568>Power Cores</color> and advance the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Cores Pack (step 4 of 5)",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -12270,14 +12131,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 200
+      "ultraCores": 200,
+      "description": "Stock up on <color=#fff568>Power Cores</color> and earn progress toward the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Cores Pack (step 5 of 5)",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Chain Offers",
       "sections": [
         "Chain Offers"
@@ -12438,14 +12300,15 @@ window.MSF_OFFERS = {
           }
         ]
       },
-      "ultraCores": 500
+      "ultraCores": 500,
+      "description": "Push your upgrades further with more <color=#fff568>Power Cores</color> and earn progress toward the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Cyber Breach: Ka-Zar Premium Pack",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12485,14 +12348,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 200,
-      "description": "Strengthen your roster with Ka-Zar Shards, Gold, and T3 Level 1 Ions and also grab a bunch of points to gain progress in the Cyber Breach Milestone!"
+      "description": "Strengthen your roster with <color=#fff568>Ka-Zar Shards, Gold, and T3 Level 1 Ions</color> and also grab a bunch of points to gain progress in the <color=#fff568>Cyber Breach</color> Milestone!"
     },
     {
       "name": "Raid Warzone: Daily Allied Supply",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12516,14 +12379,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "Get Allied Supply XIII Orbs for Raid Warzone progress!"
+      "description": "Get Allied Supply XIII Orbs for <color=#fff568>Raid Warzone</color> progress!"
     },
     {
       "name": "Raid Warzone: Mega Pack",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12547,14 +12410,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Get ahead in Raid Warzone Milestone and propel your Alliance to Gold Orb Fragments!"
+      "description": "Get ahead in <color=#fff568>Raid Warzone</color> Milestone and propel your Alliance to Gold Orb Fragments!"
     },
     {
       "name": "Raid Warzone: Special Bundle",
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 4,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12583,14 +12446,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 300,
-      "description": "Claim this special deal to boost your progress in the Raid Warzone Milestone!"
+      "description": "Claim this special deal to boost your progress in the <color=#fff568>Raid Warzone</color> Milestone!"
     },
     {
       "name": "Raid Warzone: Raid Boost",
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12619,14 +12482,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 50,
-      "description": "Stock up on Raid Supplies and get ahead in the Raid Warzone Milestone!"
+      "description": "Stock up on Raid Supplies and get ahead in the <color=#fff568>Raid Warzone</color> Milestone!"
     },
     {
       "name": "Raid Warzone: Daily Allied Supply",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12650,14 +12513,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 200,
-      "description": "Get Allied Supply XIII Orbs for Raid Warzone progress!"
+      "description": "Get Allied Supply XIII Orbs for <color=#fff568>Raid Warzone</color> progress!"
     },
     {
       "name": "Shadow Diamond Orbs: Premium",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12681,14 +12544,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Open these Orbs to earn Diamonds for Shadow Conclaves and gain progress in the Shadow Radiance Milestone to get 5-Diamond Shadow Conclave characters."
+      "description": "Open these Orbs to earn Diamonds for Shadow Conclaves and gain progress in the <color=#fff568>Shadow Radiance</color> Milestone to get 5-Diamond Shadow Conclave characters."
     },
     {
       "name": "Shadow Diamond Orbs: Standard",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 8,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12712,14 +12575,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 500,
-      "description": "Open these Orbs to earn Diamonds for Shadow Conclaves and gain progress in the Shadow Radiance Milestone to get 5-Diamond Shadow Conclave characters."
+      "description": "Open these Orbs to earn Diamonds for Shadow Conclaves and gain progress in the <color=#fff568>Shadow Radiance</color> Milestone to get 5-Diamond Shadow Conclave characters."
     },
     {
       "name": "Shadow Diamond Orbs: Starter",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 20,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12743,14 +12606,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 200,
-      "description": "Open these Orbs to earn Diamonds for Shadow Conclaves and gain progress in the Shadow Radiance Milestone to get 5-Diamond Shadow Conclave characters."
+      "description": "Open these Orbs to earn Diamonds for Shadow Conclaves and gain progress in the <color=#fff568>Shadow Radiance</color> Milestone to get 5-Diamond Shadow Conclave characters."
     },
     {
       "name": "Shadow Rising: Web Special",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12774,14 +12637,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 200,
-      "description": "Don't miss this special offer with the Shadow Rising Orbs! Get up to 200 Shadow Conclave Shards from each and keep climbing the Milestone for more rewards!"
+      "description": "Don't miss this special offer with the <color=#fff568>Shadow Rising Orbs</color>! Get up to 200 <color=#fff568>Shadow Conclave Shards</color> from each and keep climbing the Milestone for more rewards!"
     },
     {
       "name": "Shadow Rising Orb",
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "3d 4h",
+      "expires": "2d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12805,74 +12668,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 50,
-      "description": "Crack open this orb to collect 90 to 200 Shadow Conclave shards and boost your Shadow Rising Milestone progress toward additional rewards!"
-    },
-    {
-      "name": "Turn Up the Power (option 1)",
-      "price": 6.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "4h 14m",
-      "section": "dual offers",
-      "sections": [
-        "dual offers"
-      ],
-      "contents": [
-        {
-          "item": "T4 Ability Material",
-          "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT",
-          "qty": 210
-        },
-        {
-          "item": "T4 Level 1 Ions",
-          "id": "ISO8-TIER-3-A-CURRENCY",
-          "qty": 31000
-        },
-        {
-          "item": "Strike Points",
-          "id": "BFYB-CUR",
-          "qty": 500,
-          "webBonus": true
-        }
-      ],
-      "ultraCores": 50
-    },
-    {
-      "name": "Turn Up the Power (option 2)",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "4h 14m",
-      "section": "dual offers",
-      "sections": [
-        "dual offers"
-      ],
-      "contents": [
-        {
-          "item": "T4 Ability Material",
-          "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT",
-          "qty": 460
-        },
-        {
-          "item": "T4 Level 1 Ions",
-          "id": "ISO8-TIER-3-A-CURRENCY",
-          "qty": 69300
-        },
-        {
-          "item": "Strike Points",
-          "id": "BFYB-CUR",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "ultraCores": 100
+      "description": "Crack open this orb to collect <color=#fff568>90 to 200 Shadow Conclave shards</color> and boost your <color=#fff568>Shadow Rising Milestone progress</color> toward additional rewards!"
     },
     {
       "name": "ISO Fest: ISO Fest Diamond Orb",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "15d 4h",
+      "expires": "14d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12902,14 +12705,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Open this Orb to earn up to 4 Diamonds for select characters, also gain progress in the ISO Fest Milestone!"
+      "description": "Open this Orb to earn up to <color=#fff568>4 Diamonds</color> for select characters, also gain progress in the <color=#fff568>ISO Fest</color> Milestone!"
     },
     {
       "name": "ISO Fest: ISO Fest Yellow Orb",
       "price": 129.99,
       "currency": "CAD",
-      "purchaseLimit": 99,
-      "expires": "15d 4h",
+      "purchaseLimit": 97,
+      "expires": "14d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12938,15 +12741,16 @@ window.MSF_OFFERS = {
           "webBonus": true
         }
       ],
+      "boughtBefore": true,
       "ultraCores": 1000,
-      "description": "Open this Orb to earn up to 810 Shards for select characters, also gain progress in the ISO Fest Milestone!"
+      "description": "Open this Orb to earn up to <color=#fff568>810 Shards</color> for select characters, also gain progress in the <color=#fff568>ISO Fest</color> Milestone!"
     },
     {
       "name": "ISO Fest: ISO Fest Diamond Orb",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "15d 4h",
+      "expires": "14d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -12976,14 +12780,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 500,
-      "description": "Open this Orb to earn up to 4 Diamonds for select characters, also gain progress in the ISO Fest Milestone!"
+      "description": "Open this Orb to earn up to <color=#fff568>4 Diamonds</color> for select characters, also gain progress in the <color=#fff568>ISO Fest</color> Milestone!"
     },
     {
       "name": "ISO Fest: ISO Fest Yellow Orb",
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "15d 4h",
+      "expires": "14d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -13013,14 +12817,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 250,
-      "description": "Open this Orb to earn up to 810 Shards for select characters, also gain progress in the ISO Fest Milestone!"
+      "description": "Open this Orb to earn up to <color=#fff568>810 Shards</color> for select characters, also gain progress in the <color=#fff568>ISO Fest</color> Milestone!"
     },
     {
       "name": "ISO Fest: Orange Mega Orb",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "15d 4h",
+      "expires": "14d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -13050,14 +12854,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Open this Orb to stock up on T4 Level 1 Ions and T4 Iso-8 Credits, also gain progress in the ISO Fest Milestone! This special Orb will automatically open upon purchase."
+      "description": "Open this Orb to stock up on <color=#fff568>T4 Level 1 Ions</color> and <color=#fff568>T4 Iso-8 Credits</color>, also gain progress in the <color=#fff568>ISO Fest</color> Milestone! This special Orb will automatically open upon purchase."
     },
     {
       "name": "T3 L5 Ions Blaster Pack",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "15d 4h",
+      "expires": "14d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -13128,14 +12932,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 100,
-      "description": "ISO Fest: Earn a supply of T3 Level 5 Ions and T3 Blaster Level 1 Iso-8 Crystals, also gain progress in this Milestone event!"
+      "description": "<color=#fff568>ISO Fest</color>: Earn a supply of <color=#fff568>T3 Level 5 Ions</color> and <color=#fff568>T3 Blaster Level 1 Iso-8 Crystals</color>, also gain progress in this Milestone event!"
     },
     {
       "name": "T3 L5 Ions Brawler Pack",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 9,
-      "expires": "15d 4h",
+      "expires": "14d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -13207,14 +13011,14 @@ window.MSF_OFFERS = {
       ],
       "boughtBefore": true,
       "ultraCores": 100,
-      "description": "ISO Fest: Earn a supply of T3 Level 5 Ions and T3 Brawler Level 1 Iso-8 Crystals, also gain progress in this Milestone event!"
+      "description": "<color=#fff568>ISO Fest</color>: Earn a supply of <color=#fff568>T3 Level 5 Ions</color> and <color=#fff568>T3 Brawler Level 1 Iso-8 Crystals</color>, also gain progress in this Milestone event!"
     },
     {
       "name": "T3 L5 Ions Controller Pack",
       "price": 12.99,
       "currency": "CAD",
       "purchaseLimit": 9,
-      "expires": "15d 4h",
+      "expires": "14d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -13286,14 +13090,14 @@ window.MSF_OFFERS = {
       ],
       "boughtBefore": true,
       "ultraCores": 100,
-      "description": "ISO Fest: Earn a supply of T3 Level 5 Ions and T3 Controller Level 1 Iso-8 Crystals, also gain progress in this Milestone event!"
+      "description": "<color=#fff568>ISO Fest</color>: Earn a supply of <color=#fff568>T3 Level 5 Ions</color> and <color=#fff568>T3 Controller Level 1 Iso-8 Crystals</color>, also gain progress in this Milestone event!"
     },
     {
       "name": "ISO Fest: T3 Level 5 Ions Trove",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 3,
-      "expires": "15d 4h",
+      "expires": "14d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -13489,14 +13293,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Seize the T3 Level 5 Ions and boost 5 characters of each role trait to T3 Level 5 Iso-8, also grab a bunch of points to gain progress in this Milestone event!"
+      "description": "Seize the <color=#fff568>T3 Level 5 Ions</color> and boost 5 characters of each role trait to <color=#fff568>T3 Level 5 Iso-8</color>, also grab a bunch of points to gain progress in this Milestone event!"
     },
     {
       "name": "ISO Fest: T3 Level 5 Ions",
       "price": 6.99,
       "currency": "CAD",
       "purchaseLimit": 98,
-      "expires": "15d 4h",
+      "expires": "14d 0h",
       "section": "Offers / EVENTS",
       "sections": [
         "Offers / EVENTS"
@@ -13533,14 +13337,14 @@ window.MSF_OFFERS = {
       ],
       "boughtBefore": true,
       "ultraCores": 50,
-      "description": "Secure a trove of T3 Level 5 Ions, also gain progress in the ISO Fest Milestone!"
+      "description": "Secure a trove of <color=#fff568>T3 Level 5 Ions</color>, also gain progress in the <color=#fff568>ISO Fest</color> Milestone!"
     },
     {
       "name": "ISO Fest: Orange Mega Orb",
       "price": 119.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "15d 4h",
+      "expires": "14d 0h",
       "section": "Offers / WEB EXCLUSIVE",
       "sections": [
         "Offers / WEB EXCLUSIVE"
@@ -13570,14 +13374,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 900,
-      "description": "Open this Orb to stock up on T4 Level 1 Ions and T4 Iso-8 Credits, also gain progress in the ISO Fest Milestone! This special Orb will automatically open upon purchase."
+      "description": "Open this Orb to stock up on <color=#fff568>T4 Level 1 Ions</color> and <color=#fff568>T4 Iso-8 Credits</color>, also gain progress in the <color=#fff568>ISO Fest</color> Milestone! This special Orb will automatically open upon purchase."
     },
     {
       "name": "Nightstalker Power Up",
       "price": 19.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -13611,14 +13415,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 150,
-      "description": "Reinforce your Nightstalkers team and rise victorious in battle!"
+      "description": "Reinforce your <color=#fff568>Nightstalkers</color> team and rise victorious in battle!"
     },
     {
       "name": "Morbius Power Pack",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -13737,14 +13541,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Prepare Morbius for battle with this special upgrade and crush the competition!"
+      "description": "Prepare <color=#fff568>Morbius</color> for battle with this special upgrade and crush the competition!"
     },
     {
       "name": "Iso Boost: Controller",
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 4h",
+      "expires": "46m 54s",
       "section": "Offers / FEATURED",
       "sections": [
         "Offers / FEATURED"
@@ -13791,154 +13595,11 @@ window.MSF_OFFERS = {
       "description": "Build a stronger roster faster with valuable Iso-8 resources. Grab this special offer before it's gone!"
     },
     {
-      "name": "Whiplash Power Pack",
-      "price": 12.99,
-      "currency": "CAD",
-      "purchaseLimit": 3,
-      "expires": "4h 14m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Whiplash shards",
-          "id": "SHARD_WHIPLASH",
-          "qty": 20
-        },
-        {
-          "item": "Gold",
-          "id": "SC",
-          "qty": 340000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "id": "BFYB-CUR",
-          "qty": 1000,
-          "webBonus": true
-        }
-      ],
-      "ultraCores": 100,
-      "description": "Upgrade Whiplash to push through Mission 2 of the Breaker Event: Sabretooth!"
-    },
-    {
-      "name": "Morbius Power Pack",
-      "price": 19.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "4h 14m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "UT_MORBIUS_UT7YSTRIALS",
-          "id": "UT_MORBIUS_UT7YSTRIALS",
-          "qty": 1
-        },
-        {
-          "item": "Gold",
-          "id": "SC",
-          "qty": 520000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "id": "BFYB-CUR",
-          "qty": 1500,
-          "webBonus": true
-        }
-      ],
-      "ultraCores": 150,
-      "description": "Upgrade Morbius to push through Mission 5 of the Breaker Event: Sabretooth!"
-    },
-    {
-      "name": "Oath Power Pack",
-      "price": 19.99,
-      "currency": "CAD",
-      "purchaseLimit": 1,
-      "expires": "4h 14m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "UT_OATH_UT7YSTRIALS",
-          "id": "UT_OATH_UT7YSTRIALS",
-          "qty": 1
-        },
-        {
-          "item": "Gold",
-          "id": "SC",
-          "qty": 520000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "id": "BFYB-CUR",
-          "qty": 1500,
-          "webBonus": true
-        }
-      ],
-      "ultraCores": 150,
-      "description": "Upgrade Oath to push through Mission 5 of the Breaker Event: Sabretooth!"
-    },
-    {
-      "name": "Iron Raiders Upgrade Combo",
-      "price": 34.99,
-      "currency": "CAD",
-      "purchaseLimit": 3,
-      "expires": "4h 14m",
-      "section": "Offers / FEATURED",
-      "sections": [
-        "Offers / FEATURED"
-      ],
-      "contents": [
-        {
-          "item": "Iron Monger shards",
-          "id": "SHARD_IRONMONGER",
-          "qty": 45
-        },
-        {
-          "item": "Ulysses Klaue shards",
-          "id": "SHARD_ULYSSESKLAUE",
-          "qty": 45
-        },
-        {
-          "item": "Yellowjacket shards",
-          "id": "SHARD_YELLOWJACKET",
-          "qty": 225
-        },
-        {
-          "item": "Crossbones shards",
-          "id": "SHARD_CROSSBONES",
-          "qty": 225
-        },
-        {
-          "item": "Gold",
-          "id": "SC",
-          "qty": 860000,
-          "webBonus": true
-        },
-        {
-          "item": "Strike Points",
-          "id": "BFYB-CUR",
-          "qty": 2500,
-          "webBonus": true
-        }
-      ],
-      "ultraCores": 250,
-      "description": "Upgrade Iron Raiders to push through Missions 2 and 10 of the Breaker Event: Sabretooth!"
-    },
-    {
       "name": "S.T.R.I.K.E Pass Catch-Up!",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 5,
-      "expires": "9d 4h",
+      "expires": "8d 0h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -13957,14 +13618,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 200,
-      "description": "Get 20 S.T.R.I.K.E. Levels to catch up on S.T.R.I.K.E pass progress!"
+      "description": "Get <color=#fff568>20 S.T.R.I.K.E. Levels</color> to catch up on S.T.R.I.K.E pass progress!"
     },
     {
       "name": "T4 Ions",
       "price": 99.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "5d 4h",
+      "expires": "4d 0h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -13990,7 +13651,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "5d 4h",
+      "expires": "4d 0h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -14036,7 +13697,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "5d 4h",
+      "expires": "4d 0h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -14082,7 +13743,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "5d 4h",
+      "expires": "4d 0h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -14128,7 +13789,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "5d 4h",
+      "expires": "4d 0h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -14174,7 +13835,7 @@ window.MSF_OFFERS = {
       "price": 39.99,
       "currency": "CAD",
       "purchaseLimit": 99,
-      "expires": "5d 4h",
+      "expires": "4d 0h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -14216,11 +13877,329 @@ window.MSF_OFFERS = {
       "description": "All the Crystals you need to go from T4 Level 1 to T4 Level 3"
     },
     {
+      "name": "Unlock Special: Training Drill",
+      "price": 39.99,
+      "currency": "CAD",
+      "purchaseLimit": 5,
+      "expires": "1d 4h",
+      "section": "Offers / UNLOCKED OFFERS",
+      "sections": [
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "L4 Training Module",
+          "id": "CONSUMABLE_XPLVL80",
+          "qty": 2200
+        },
+        {
+          "item": "Strike Points",
+          "id": "BFYB-CUR",
+          "qty": 3000,
+          "webBonus": true
+        }
+      ],
+      "ultraCores": 300,
+      "description": "Pick up this special Training Module offer to level up your new character!"
+    },
+    {
+      "name": "Unlock Special: Awesome Ability",
+      "price": 69.99,
+      "currency": "CAD",
+      "purchaseLimit": 2,
+      "expires": "1d 4h",
+      "section": "Offers / UNLOCKED OFFERS",
+      "sections": [
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "T4 Ability Material",
+          "id": "ABILITY_MATERIAL_ORANGE_ABILITY_MAT",
+          "qty": 500
+        },
+        {
+          "item": "T3 Ability Material",
+          "id": "ABILITY_MATERIAL_PURPLE_ABILITY_MAT",
+          "qty": 1000
+        },
+        {
+          "item": "T2 Ability Material",
+          "id": "ABILITY_MATERIAL_BLUE_ABILITY_MAT",
+          "qty": 300
+        },
+        {
+          "item": "T1 Ability Material",
+          "id": "ABILITY_MATERIAL_GREEN_ABILITY_MAT",
+          "qty": 100
+        },
+        {
+          "item": "Strike Points",
+          "id": "BFYB-CUR",
+          "qty": 5000,
+          "webBonus": true
+        }
+      ],
+      "ultraCores": 500,
+      "description": "Grab this bundle to get the abilites of your new roster member up to speed!"
+    },
+    {
+      "name": "Unlock Special: Crimson Gear",
+      "price": 39.99,
+      "currency": "CAD",
+      "purchaseLimit": 2,
+      "expires": "1d 4h",
+      "section": "Offers / UNLOCKED OFFERS",
+      "sections": [
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Crimson Alien Spores",
+          "id": "GEAR_RED_SERUM1",
+          "qty": 18
+        },
+        {
+          "item": "Crimson Shoggoth Ichor",
+          "id": "GEAR_RED_MYSTIC_MAT_C5",
+          "qty": 100
+        },
+        {
+          "item": "Crimson Celestial Lattice",
+          "id": "GEAR_RED_MYSTIC_MAT_C9",
+          "qty": 100
+        },
+        {
+          "item": "Armory 19 Orb Fragments",
+          "id": "GACHA_CRATE_GT19_C5_C9_TOKEN_ea9ada8f",
+          "qty": 80000
+        },
+        {
+          "item": "Strike Points",
+          "id": "BFYB-CUR",
+          "qty": 3000,
+          "webBonus": true
+        }
+      ],
+      "ultraCores": 300,
+      "description": "Pick up the Crimson Unique and Mini-Unique gear for your new character to help them jump right into the greatest challenges."
+    },
+    {
+      "name": "Unlock Special: Crimson Gear",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 2,
+      "expires": "1d 4h",
+      "section": "Offers / UNLOCKED OFFERS",
+      "sections": [
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Crimson Arcane Powder",
+          "id": "GEAR_RED_MYSTIC_MAT_BIT",
+          "qty": 300
+        },
+        {
+          "item": "Crimson Esoteric Glyphs",
+          "id": "GEAR_RED_MYSTIC_MAT_C2",
+          "qty": 300
+        },
+        {
+          "item": "Crimson Vial",
+          "id": "GEAR_RED_MYSTIC_MAT_C3",
+          "qty": 300
+        },
+        {
+          "item": "Armory 19 Orb Fragments",
+          "id": "GACHA_CRATE_GT19_C5_C9_TOKEN_ea9ada8f",
+          "qty": 110000
+        },
+        {
+          "item": "Strike Points",
+          "id": "BFYB-CUR",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "ultraCores": 200,
+      "description": "Grab the Crimson gear needed to power up the latest character added to your roster."
+    },
+    {
+      "name": "Unlock Special: Crimson Catalysts",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 2,
+      "expires": "1d 4h",
+      "section": "Offers / UNLOCKED OFFERS",
+      "sections": [
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Crimson Basic Catalyst Part",
+          "id": "GEAR_RED_BASIC_CAT_BIT",
+          "qty": 500
+        },
+        {
+          "item": "Crimson Damage Catalyst Part",
+          "id": "GEAR_RED_DAMAGE_MAT_BIT",
+          "qty": 300
+        },
+        {
+          "item": "Crimson Focus Catalyst Part",
+          "id": "GEAR_RED_FOCUS_MAT_BIT",
+          "qty": 300
+        },
+        {
+          "item": "Crimson Health Catalyst Part",
+          "id": "GEAR_RED_HEALTH_MAT_BIT",
+          "qty": 300
+        },
+        {
+          "item": "Crimson Resistance Catalyst Part",
+          "id": "GEAR_RED_RESIST_MAT_BIT",
+          "qty": 300
+        },
+        {
+          "item": "Crimson Armor Catalyst Part",
+          "id": "GEAR_RED_ARMOR_MAT_BIT",
+          "qty": 300
+        },
+        {
+          "item": "Strike Points",
+          "id": "BFYB-CUR",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "ultraCores": 100,
+      "description": "Use these Catalysts to craft your way to Crimson gear greatness for your new roster member."
+    },
+    {
+      "name": "Unlock Special: Purple ISO",
+      "price": 24.99,
+      "currency": "CAD",
+      "purchaseLimit": 5,
+      "expires": "1d 4h",
+      "section": "Offers / UNLOCKED OFFERS",
+      "sections": [
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Basic T3 Iso-8 Orb Fragments",
+          "id": "GACHA_CRATE_ISO8_T3_BASIC_TOKEN_6812fd67",
+          "qty": 30000
+        },
+        {
+          "item": "T3 Level 1 Ions",
+          "id": "ISO8-TIER-2-A-CURRENCY",
+          "qty": 150000
+        },
+        {
+          "item": "Strike Points",
+          "id": "BFYB-CUR",
+          "qty": 2000,
+          "webBonus": true
+        }
+      ],
+      "ultraCores": 200,
+      "description": "Embolden your newest character with T3 ISO!"
+    },
+    {
+      "name": "Unlock Special: Blue ISO",
+      "price": 6.99,
+      "currency": "CAD",
+      "purchaseLimit": 5,
+      "expires": "1d 4h",
+      "section": "Offers / UNLOCKED OFFERS",
+      "sections": [
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Basic T2 Iso-8 Orb Fragments",
+          "id": "GACHA_CRATE_ISO8_T2_BASIC_TOKEN_f8d78c4c",
+          "qty": 200000
+        },
+        {
+          "item": "T2 Level 1 Ions",
+          "id": "ISO8-TIER-1-A-CURRENCY",
+          "qty": 1500000
+        },
+        {
+          "item": "T2 Level 4 Ions",
+          "id": "ISO8-TIER-1-B-CURRENCY",
+          "qty": 1500000
+        },
+        {
+          "item": "T2 Level 5 Ions",
+          "id": "ISO8-TIER-1-C-CURRENCY",
+          "qty": 1500000
+        },
+        {
+          "item": "Premium T1 Iso-8 Orb Fragments",
+          "id": "GACHA_CRATE_ISO8_T1_PREMIUM_TOKEN_63c8d433",
+          "qty": 200000
+        },
+        {
+          "item": "T1 Ions",
+          "id": "ISO8-TIER-0-CURRENCY",
+          "qty": 1000000
+        },
+        {
+          "item": "Strike Points",
+          "id": "BFYB-CUR",
+          "qty": 500,
+          "webBonus": true
+        }
+      ],
+      "ultraCores": 50,
+      "description": "Empower your newest character with T2 ISO!"
+    },
+    {
+      "name": "Unlock Special: Diamond Authority",
+      "price": 12.99,
+      "currency": "CAD",
+      "purchaseLimit": 5,
+      "expires": "1d 4h",
+      "section": "Offers / UNLOCKED OFFERS",
+      "sections": [
+        "Offers / UNLOCKED OFFERS"
+      ],
+      "contents": [
+        {
+          "item": "Diamond Orb Fragments",
+          "id": "GACHA_CRATE_DIAMOND_BASIC_TOKEN_de8786ff",
+          "qty": 2000
+        },
+        {
+          "item": "Elite 7 Credit",
+          "id": "ELITE_7_CUR",
+          "qty": 2500
+        },
+        {
+          "item": "Elite 6 Credit",
+          "id": "ELITE_6_CUR",
+          "qty": 5000
+        },
+        {
+          "item": "Strike Points",
+          "id": "BFYB-CUR",
+          "qty": 1000,
+          "webBonus": true
+        }
+      ],
+      "ultraCores": 100,
+      "description": "More Diamonds means MORE POWER! Power up with this Diamond Bundle!"
+    },
+    {
       "name": "Awakened Protector of the Universe",
       "price": 49.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 21h",
+      "expires": "18h 3m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -14244,14 +14223,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 350,
-      "description": "Unlock Quasar's Ultimate Awakened Ability with this limited time offer and unleash his Quantum Constructs Battlefield Effect!"
+      "description": "Unlock <color=#fff568>Quasar's</color> Ultimate Awakened Ability with this limited time offer and unleash his <color=#fff568>Quantum Constructs Battlefield Effect</color>!"
     },
     {
       "name": "Awakened Living Bomb-Burst",
       "price": 49.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "1d 21h",
+      "expires": "18h 3m",
       "section": "Offers / UNLOCKED OFFERS",
       "sections": [
         "Offers / UNLOCKED OFFERS"
@@ -14275,14 +14254,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 350,
-      "description": "Unlock Blastaar's Passive Awakened Ability with this limited time offer and unleash the full capabilities of his new status effect, Bomb-Burst!"
+      "description": "Unlock <color=#fff568>Blastaar's</color> Passive Awakened Ability with this limited time offer and unleash the full capabilities of his new status effect, <color=#fff568>Bomb-Burst</color>!"
     },
     {
       "name": "Diamond Orb Mega Launch Special",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -14306,14 +14285,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 1000,
-      "description": "Take your roster to the next level with this deal on multiple Diamonds Orbs and Elite 7 Credits!"
+      "description": "Take your roster to the next level with this deal on multiple <color=#ffda21>Diamonds Orbs</color> and Elite 7 Credits!"
     },
     {
       "name": "Diamond Orb Launch Special",
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 25,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -14332,40 +14311,55 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 200,
-      "description": "Harness the power of Diamonds! Earn 20 Silver Diamond Credits and a guaranteed Diamond Promotion with each orb!"
+      "description": "Harness the power of Diamonds! Earn 20 Silver Diamond Credits and a <color=#ffda21>guaranteed Diamond Promotion</color> with each orb!"
     },
     {
-      "name": "Dark Promotion Sale - Diamond Tier",
-      "price": 129.99,
+      "name": "Elite 4 Star Orb Offer",
+      "price": 6.99,
       "currency": "CAD",
-      "purchaseLimit": 5,
-      "expires": "4h 14m",
+      "purchaseLimit": 3,
+      "expires": "1d 0h",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
       ],
       "contents": [
         {
-          "item": "Dark Promotion Credit",
-          "id": "PROMOTION_CUR_ULT",
-          "qty": 2750
+          "item": "Elite 4 Credit",
+          "id": "ELITE_4_CUR",
+          "qty": 125000
+        },
+        {
+          "item": "Elite 4 Credit",
+          "id": "ELITE_4_CUR",
+          "qty": 125000
+        },
+        {
+          "item": "Elite 4 Credit",
+          "id": "ELITE_4_CUR",
+          "qty": 125000
+        },
+        {
+          "item": "Elite 4 Credit",
+          "id": "ELITE_4_CUR",
+          "qty": 25000
         },
         {
           "item": "Strike Points",
           "id": "BFYB-CUR",
-          "qty": 10000,
+          "qty": 500,
           "webBonus": true
         }
       ],
-      "ultraCores": 1000,
-      "description": "Power up the likes of Doctor Doom and Morgan Le Fay when you use these Dark Promotion Credits to get the next Red Star for them! Save big on 2,750 Dark Promotion Credits. Achieve new Red Star Levels with this offer today!"
+      "ultraCores": 50,
+      "description": "Take advantage of this exclusive offer and buy now! This orb will guarantee you a <color=#fff568>4-Red Star or higher</color> Promotion!"
     },
     {
       "name": "XP Overload",
       "price": 129.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -14391,7 +14385,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -14417,7 +14411,7 @@ window.MSF_OFFERS = {
       "price": 24.99,
       "currency": "CAD",
       "purchaseLimit": 10,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "Offers / GENERAL",
       "sections": [
         "Offers / GENERAL"
@@ -14443,7 +14437,7 @@ window.MSF_OFFERS = {
       "price": 69.99,
       "currency": "CAD",
       "purchaseLimit": 2,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "battle pass and s.t.r.i.k.e pass offers",
       "sections": [
         "battle pass and s.t.r.i.k.e pass offers"
@@ -14467,14 +14461,14 @@ window.MSF_OFFERS = {
         }
       ],
       "ultraCores": 500,
-      "description": "Get bonus Shop Credits when you purchase 1 Premium Plus Chapter Battle Pass Tickets with this Web Exclusive bundle! Tickets can be redeemed in-game to activate any single Premium Plus Chapter Battle Pass. Valid only for Chapter Battle Passes."
+      "description": "Get bonus Shop Credits when you purchase 1 Premium Plus Chapter Battle Pass Tickets with this Web Exclusive bundle! Tickets can be redeemed in-game to activate any single Premium Plus Chapter Battle Pass. <color=#fff568>Valid only for Chapter Battle Passes.</color>"
     },
     {
       "name": "(untitled)",
       "price": 34.99,
       "currency": "CAD",
       "purchaseLimit": 1,
-      "expires": "6d 4h",
+      "expires": "5d 0h",
       "section": "Time Heist",
       "sections": [
         "Time Heist"
@@ -14519,7 +14513,7 @@ window.MSF_OFFERS = {
       "price": 6000,
       "currency": "Strike Points",
       "purchaseLimit": 5,
-      "expires": "4h 14m",
+      "expires": "1d 0h",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -14540,7 +14534,7 @@ window.MSF_OFFERS = {
       "price": 5000,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -14554,14 +14548,14 @@ window.MSF_OFFERS = {
       ],
       "boughtBefore": true,
       "paidWith": "Strike Points",
-      "description": "Get the edge on your opponents with T4 Ability Materials bundle!"
+      "description": "Get the edge on your opponents with <color=#f9b41e>T4 Ability Materials</color> bundle!"
     },
     {
       "name": "Gold Standard",
       "price": 2500,
       "currency": "Strike Points",
       "purchaseLimit": 15,
-      "expires": "25d 4h",
+      "expires": "24d 0h",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -14575,14 +14569,14 @@ window.MSF_OFFERS = {
       ],
       "boughtBefore": true,
       "paidWith": "Strike Points",
-      "description": "Boost your roster power with this Gold bundle!"
+      "description": "Boost your roster power with this <color=#f8e50b>Gold</color> bundle!"
     },
     {
       "name": "Training Bootcamp",
       "price": 2500,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -14596,14 +14590,14 @@ window.MSF_OFFERS = {
       ],
       "boughtBefore": true,
       "paidWith": "Strike Points",
-      "description": "Level up your top characters with this Training Module bundle!"
+      "description": "Level up your top characters with this <color=#f9b41e>Training Module</color> bundle!"
     },
     {
       "name": "Augmented Energy",
       "price": 1000,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -14627,14 +14621,14 @@ window.MSF_OFFERS = {
       ],
       "boughtBefore": true,
       "paidWith": "Strike Points",
-      "description": "Conquer enemies and Campaigns with Armory Orbs and Campaign Energy!"
+      "description": "Conquer enemies and Campaigns with <color=#0bbef8>Armory Orbs</color> and <color=#fff624>Campaign Energy</color>!"
     },
     {
       "name": "Gold Standard",
       "price": 500,
       "currency": "Strike Points",
       "purchaseLimit": 30,
-      "expires": "25d 4h",
+      "expires": "24d 0h",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -14648,14 +14642,14 @@ window.MSF_OFFERS = {
       ],
       "boughtBefore": true,
       "paidWith": "Strike Points",
-      "description": "Boost your roster power with this Gold bundle!"
+      "description": "Boost your roster power with this <color=#f8e50b>Gold</color> bundle!"
     },
     {
       "name": "Training Bootcamp",
       "price": 500,
       "currency": "Strike Points",
       "purchaseLimit": 100,
-      "expires": "4h 14m",
+      "expires": "46m 54s",
       "section": "STRIKE STORE",
       "sections": [
         "STRIKE STORE"
@@ -14668,7 +14662,7 @@ window.MSF_OFFERS = {
         }
       ],
       "paidWith": "Strike Points",
-      "description": "Level up your top characters with this Training Module bundle!"
+      "description": "Level up your top characters with this <color=#f9b41e>Training Module</color> bundle!"
     },
     {
       "name": "Power Cores",
